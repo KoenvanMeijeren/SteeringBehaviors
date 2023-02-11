@@ -1,4 +1,4 @@
-name: lint
+name: Coding standards
 on:
   push:
     branches:
@@ -15,7 +15,7 @@ defaults:
     shell: pwsh
 
 jobs:
-  lint_csharp:
+  coding_standards:
     runs-on: windows-2019
     steps:
     - uses: actions/checkout@v2
