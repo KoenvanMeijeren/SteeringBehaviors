@@ -20,15 +20,7 @@ namespace SteeringCS.entity
 
         public virtual void Render(Graphics graphic)
         {
-            graphic.FillEllipse(Brushes.Blue, new Rectangle((int) Position.EastPosition,(int) Position.NorthPosition, 10, 10));
+            graphic.FillEllipse(Brushes.Blue, new Rectangle((int)Position.EastPosition, (int)Position.NorthPosition, 10, 10));
         }
-        
-
     }
-    
-
-
-    
-
-    
 }

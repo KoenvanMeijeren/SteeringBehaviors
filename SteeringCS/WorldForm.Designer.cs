@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.dbPanel = new SteeringCS.DbPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.pauseBtn = new System.Windows.Forms.Button();
             this.continueBtn = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dbPanel
@@ -48,18 +48,18 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.continueBtn);
-            this.panel1.Controls.Add(this.pauseBtn);
-            this.panel1.Location = new System.Drawing.Point(822, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(267, 537);
-            this.panel1.TabIndex = 1;
+            this.mainPanel.Controls.Add(this.continueBtn);
+            this.mainPanel.Controls.Add(this.pauseBtn);
+            this.mainPanel.Location = new System.Drawing.Point(822, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(267, 537);
+            this.mainPanel.TabIndex = 1;
             // 
             // pauseBtn
             // 
-            this.pauseBtn.Location = new System.Drawing.Point(15, 12);
+            this.pauseBtn.Location = new System.Drawing.Point(15, 10);
             this.pauseBtn.Name = "pauseBtn";
-            this.pauseBtn.Size = new System.Drawing.Size(75, 23);
+            this.pauseBtn.Size = new System.Drawing.Size(100, 25);
             this.pauseBtn.TabIndex = 0;
             this.pauseBtn.Text = "Pause";
             this.pauseBtn.UseVisualStyleBackColor = true;
@@ -67,9 +67,9 @@
             // 
             // continueBtn
             // 
-            this.continueBtn.Location = new System.Drawing.Point(96, 12);
+            this.continueBtn.Location = new System.Drawing.Point(135, 10);
             this.continueBtn.Name = "continueBtn";
-            this.continueBtn.Size = new System.Drawing.Size(75, 23);
+            this.continueBtn.Size = new System.Drawing.Size(100, 25);
             this.continueBtn.TabIndex = 1;
             this.continueBtn.Text = "Continue";
             this.continueBtn.UseVisualStyleBackColor = true;
@@ -79,12 +79,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1089, 537);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.dbPanel);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WorldForm";
             this.Text = "Steering";
-            this.panel1.ResumeLayout(false);
+            this.mainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -92,7 +92,7 @@
         #endregion
 
         private DbPanel dbPanel;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Button pauseBtn;
         private System.Windows.Forms.Button continueBtn;
     }
