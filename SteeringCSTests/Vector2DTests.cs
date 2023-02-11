@@ -1,4 +1,4 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using SteeringCS.util;
 
 namespace SteeringCSTests
@@ -11,7 +11,7 @@ namespace SteeringCSTests
             // Arrange
             const int ExpectedEastPosition = 0;
             const int ExpectedNorthPosition = 0;
-            
+
             // Act
             var vector = new Vector2D();
 
