@@ -8,7 +8,7 @@ namespace SteeringCS.behaviour
         public SeekBehaviour(MovingEntity movingEntity) : base(movingEntity)
         {
         }
-        
+
         public override Vector2D Calculate()
         {
             var targetPosition = MovingEntity.World.Target.Position.Clone();

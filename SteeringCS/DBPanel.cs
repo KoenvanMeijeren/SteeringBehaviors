@@ -4,11 +4,10 @@ namespace SteeringCS
 {
     internal class DbPanel : Panel
     {
-        public DbPanel() 
+        public DbPanel()
         {
-           this.DoubleBuffered = true;
+            DoubleBuffered = true;
         }
-        
     }
 }
 

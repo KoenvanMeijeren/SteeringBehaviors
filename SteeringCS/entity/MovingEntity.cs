@@ -27,13 +27,13 @@ namespace SteeringCS.entity
             {
                 return;
             }
-            
+
             var steeringForce = SteeringBehaviour.Calculate();
             var acceleration = steeringForce.Divide(Mass);
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
             Position.Add(Velocity.Multiply(timeElapsed));
-            
+
             // ToDo: Find out what the purpose is of this code.
             //update the heading if the vehicle has a velocity greater than a very small value
             //if (m_vVelocity.LengthSq() > 0.00000001)
@@ -41,10 +41,10 @@ namespace SteeringCS.entity
             //    m_vHeading = Vec2DNormalize(m_vVelocity);
             //    m_vSide = m_vHeading.Perp();
             //} 
-            
+
             //treat the screen as a toroid
             //WrapAround(m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient());
-            
+
             Console.WriteLine(ToString());
         }
 

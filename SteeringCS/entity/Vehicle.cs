@@ -15,7 +15,7 @@ namespace SteeringCS.entity
             Scale = DefaultScale;
             Color = Color.Black;
         }
-        
+
         public override void Render(Graphics graphic)
         {
             var leftCorner = Position.EastPosition - Scale;
@@ -23,8 +23,8 @@ namespace SteeringCS.entity
             var size = Scale * 2;
 
             var pen = new Pen(Color, 2);
-            graphic.DrawEllipse(pen, new Rectangle((int) leftCorner, (int) rightCorner, (int) size, (int) size));
-            graphic.DrawLine(pen, (int) Position.EastPosition, (int) Position.NorthPosition, (int) Position.EastPosition + (int)(Velocity.EastPosition * 2), (int)Position.NorthPosition + (int)(Velocity.NorthPosition * 2));
+            graphic.DrawEllipse(pen, new Rectangle((int)leftCorner, (int)rightCorner, (int)size, (int)size));
+            graphic.DrawLine(pen, (int)Position.EastPosition, (int)Position.NorthPosition, (int)Position.EastPosition + (int)(Velocity.EastPosition * 2), (int)Position.NorthPosition + (int)(Velocity.NorthPosition * 2));
         }
     }
 }

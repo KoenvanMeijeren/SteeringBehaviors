@@ -11,7 +11,7 @@ namespace SteeringCS
         private readonly World _world;
 
         private const float TimeDelta = 0.8f;
-        
+
         public WorldForm()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace SteeringCS
         {
             _world.Render(eventArgs.Graphics);
         }
-        
+
         private void dbPanel1_MouseClick(object sender, MouseEventArgs eventArgs)
         {
             _world.Target.Position = new Vector2D(eventArgs.X, eventArgs.Y);

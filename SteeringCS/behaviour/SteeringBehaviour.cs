@@ -13,6 +13,4 @@ namespace SteeringCS.behaviour
             MovingEntity = movingEntity;
         }
     }
-
-    
 }

@@ -10,9 +10,9 @@ namespace SteeringCS.world
     {
         private readonly List<MovingEntity> _entities = new List<MovingEntity>();
         public Vehicle Target { get; private set; }
-        
-        private int _width;
-        private int _height;
+
+        private readonly int _width;
+        private readonly int _height;
 
         public World(int width, int height)
         {
@@ -23,10 +23,10 @@ namespace SteeringCS.world
 
         private void Populate()
         {
-            var vehicle = new Vehicle(new Vector2D(10,10), this)
+            var vehicle = new Vehicle(new Vector2D(10, 10), this)
             {
                 Color = Color.Blue,
-                
+
             };
             _entities.Add(vehicle);
 
@@ -43,7 +43,7 @@ namespace SteeringCS.world
             {
                 entity.SteeringBehaviour = new SeekBehaviour(entity);
                 entity.Update(timeElapsed);
-            }  
+            }
         }
 
         public void Render(Graphics graphics)

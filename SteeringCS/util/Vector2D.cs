@@ -2,15 +2,15 @@
 
 namespace SteeringCS.util
 {
-   
+
     public class Vector2D
     {
         public double EastPosition { get; private set; }
         public double NorthPosition { get; private set; }
 
-        public Vector2D() : this(0,0)
+        public Vector2D() : this(0, 0)
         {
-            
+
         }
 
         public Vector2D(double eastPosition, double northPosition)
@@ -68,22 +68,20 @@ namespace SteeringCS.util
             {
                 return this;
             }
-            
+
             Normalize();
             Multiply(max);
             return this;
         }
-        
+
         public Vector2D Clone()
         {
             return new Vector2D(EastPosition, NorthPosition);
         }
-        
+
         public override string ToString()
         {
             return $"({EastPosition},{NorthPosition})";
         }
     }
-
-
 }
