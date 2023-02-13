@@ -14,7 +14,7 @@ namespace SteeringCSTests
             // Mocked values
             const int EastPosition = 2, NorthPosition = 3, WorldWidth = 20, WorldHeight = 20;
             const double ExpectedEastPosition = 98.0d, ExpectedNorthPosition = 37.0d;
-            
+
             // Arrange
             var position = new Vector2D(EastPosition, NorthPosition);
             var world = new World(WorldWidth, WorldHeight);
@@ -28,13 +28,13 @@ namespace SteeringCSTests
             Assert.AreEqual(ExpectedEastPosition, velocity.EastPosition);
             Assert.AreEqual(ExpectedNorthPosition, velocity.NorthPosition);
         }
-        
+
         [Test]
         public void Test_CalculateDidNotChangeExistingValues_02_Ok()
         {
             // Mocked values
             const int EastPosition = 2, NorthPosition = 3, WorldWidth = 20, WorldHeight = 20;
-            
+
             // Arrange
             var position = new Vector2D(EastPosition, NorthPosition);
             var world = new World(WorldWidth, WorldHeight);
