@@ -29,17 +29,17 @@ namespace SteeringCS.util
             return (EastPosition * EastPosition) + (NorthPosition * NorthPosition);
         }
 
-        public Vector2D Add(Vector2D vehicle)
+        public Vector2D Add(Vector2D vector)
         {
-            EastPosition += vehicle.EastPosition;
-            NorthPosition += vehicle.NorthPosition;
+            EastPosition += vector.EastPosition;
+            NorthPosition += vector.NorthPosition;
             return this;
         }
 
-        public Vector2D Subtract(Vector2D vehicle)
+        public Vector2D Subtract(Vector2D vector)
         {
-            EastPosition -= vehicle.EastPosition;
-            NorthPosition -= vehicle.NorthPosition;
+            EastPosition -= vector.EastPosition;
+            NorthPosition -= vector.NorthPosition;
             return this;
         }
 
@@ -52,6 +52,11 @@ namespace SteeringCS.util
 
         public Vector2D Divide(double value)
         {
+            if (value == 0 || value == 0.0)
+            {
+                throw new ArithmeticException("Cannot divide vector by zero!");
+            }
+
             EastPosition /= value;
             NorthPosition /= value;
             return this;
@@ -59,7 +64,8 @@ namespace SteeringCS.util
 
         public Vector2D Normalize()
         {
-            return Divide(Length());
+            var length = Length();
+            return length == 0 ? this : Divide(length);
         }
 
         public Vector2D Truncate(double max)
