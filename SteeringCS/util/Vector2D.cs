@@ -56,7 +56,7 @@ namespace SteeringCS.util
             {
                 throw new ArithmeticException("Cannot divide vector by zero!");
             }
-            
+
             EastPosition /= value;
             NorthPosition /= value;
             return this;
