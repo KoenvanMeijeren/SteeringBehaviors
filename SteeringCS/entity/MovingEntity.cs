@@ -12,10 +12,10 @@ namespace SteeringCS.entity
             MaxSpeedDefault = 150;
 
         public Vector2D Velocity { get; set; }
-        public float Mass { get; }
-        public float MaxSpeed { get; }
+        public float Mass { get; set; }
+        public float MaxSpeed { get; set; }
 
-        public SteeringBehaviour SteeringBehaviour { get; set; }
+        public SteeringBehavior SteeringBehavior { get; set; }
 
         protected MovingEntity(Vector2D position, World world) : base(position, world)
         {
@@ -26,12 +26,12 @@ namespace SteeringCS.entity
 
         public override void Update(float timeElapsed)
         {
-            if (SteeringBehaviour == null)
+            if (SteeringBehavior == null)
             {
                 return;
             }
 
-            var steeringForce = SteeringBehaviour.Calculate();
+            var steeringForce = SteeringBehavior.Calculate();
             var acceleration = steeringForce.Divide(Mass);
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
@@ -49,6 +49,44 @@ namespace SteeringCS.entity
             //WrapAround(m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient());
 
             Console.WriteLine(ToString());
+        }
+
+        public void AddSeekingBehavior()
+        {
+            SteeringBehavior = new SeekingBehavior(this);
+        }
+
+        public void AddFleeingBehavior()
+        {
+            // TO DO
+        }
+
+        public void AddIdleBehavior()
+        {
+            SteeringBehavior = new IdlingBehavior(this);
+        }
+
+        public void AddSteeringBehavior(SteeringBehaviorOptions steeringBehaviourOption)
+        {
+            switch (steeringBehaviourOption)
+            {
+                case SteeringBehaviorOptions.IdlingBehavior:
+                    {
+                        AddIdleBehavior();
+                        break;
+                    }
+                case SteeringBehaviorOptions.SeekingBehavior:
+                    {
+                        AddSeekingBehavior();
+                        break;
+                    }
+                case SteeringBehaviorOptions.FleeingBehavior:
+                    {
+                        AddFleeingBehavior();
+                        break;
+                    }
+                default: break;
+            }
         }
 
         public override string ToString()

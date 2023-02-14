@@ -6,8 +6,8 @@ namespace SteeringCS.util
 
     public class Vector2D
     {
-        public double EastPosition { get; private set; }
-        public double NorthPosition { get; private set; }
+        public double EastPosition { get; set; }
+        public double NorthPosition { get; set; }
 
         public Vector2D() : this(0, 0)
         {
