@@ -60,14 +60,14 @@ namespace SteeringCS.entity
 
         public void AddIdleBehavior()
         {
-            SteeringBehavior = new IdleBehavior(this);
+            SteeringBehavior = new IdlingBehavior(this);
         }
 
         public void AddSteeringBehavior(SteeringBehaviorOptions steeringBehaviourOption)
         {
             switch (steeringBehaviourOption)
             {
-                case SteeringBehaviorOptions.IdleBehavior:
+                case SteeringBehaviorOptions.IdlingBehavior:
                     {
                         AddIdleBehavior();
                         break;

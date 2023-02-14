@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace SteeringCS.behaviour
 {
-    internal class IdleBehavior : SteeringBehavior
+    internal class IdlingBehavior : SteeringBehavior
     {
-        public IdleBehavior(MovingEntity movingEntity) : base(movingEntity)
+        public IdlingBehavior(MovingEntity movingEntity) : base(movingEntity)
         {
         }
 

@@ -5,7 +5,7 @@ namespace SteeringCS.behaviour
 {
     public enum SteeringBehaviorOptions
     {
-        IdleBehavior,
+        IdlingBehavior,
         SeekingBehavior,
         FleeingBehavior
     }

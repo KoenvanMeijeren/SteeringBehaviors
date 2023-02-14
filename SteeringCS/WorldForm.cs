@@ -9,7 +9,7 @@ namespace SteeringCS
 {
     public partial class WorldForm : Form
     {
-        public const SteeringBehaviorOptions SteeringBehaviorOptionDefault = SteeringBehaviorOptions.IdleBehavior;
+        public const SteeringBehaviorOptions SteeringBehaviorOptionDefault = SteeringBehaviorOptions.IdlingBehavior;
         private World _world;
 
         private const float TimeDelta = 0.8f;
