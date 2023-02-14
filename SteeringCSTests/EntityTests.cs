@@ -117,7 +117,7 @@ namespace SteeringCSTests
             Assert.AreEqual(world, movingEntity.World);
         }
     }
-    
+
     public class VehicleTests
     {
         [Test]
