@@ -44,8 +44,8 @@ namespace SteeringCSTests
                 WorldHeight = 25,
                 TimeElapsed = 10;
 
-            const string ExpectedVelocity = "(333,33,133,33)",
-                ExpectedPosition = "(333,33,133,33)";
+            const string ExpectedVelocity = "(333.33,133.33)",
+                ExpectedPosition = "(333.33,133.33)";
 
             // Arrange
             var position = new Vector2D(EastPosition, NorthPosition);

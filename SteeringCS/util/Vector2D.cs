@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace SteeringCS.util
 {
@@ -87,7 +88,7 @@ namespace SteeringCS.util
 
         public override string ToString()
         {
-            return $"({Math.Round(EastPosition, 2)},{Math.Round(NorthPosition, 2)})";
+            return $"({Math.Round(EastPosition, 2).ToString(CultureInfo.InvariantCulture)},{Math.Round(NorthPosition, 2).ToString(CultureInfo.InvariantCulture)})";
         }
     }
 }
