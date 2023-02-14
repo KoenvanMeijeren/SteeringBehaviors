@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using SteeringCS.behaviour;
+using SteeringCS.behavior;
 using SteeringCS.entity;
 using SteeringCS.util;
 using SteeringCS.world;
@@ -19,7 +19,7 @@ namespace SteeringCSTests
             var position = new Vector2D(EastPosition, NorthPosition);
             var world = new World(WorldWidth, WorldHeight);
             var vehicle = new Vehicle(position, world);
-            var behavior = new SeekBehaviour(vehicle);
+            var behavior = new SeekingBehavior(vehicle);
 
             // Act
             var velocity = behavior.Calculate();
@@ -39,7 +39,7 @@ namespace SteeringCSTests
             var position = new Vector2D(EastPosition, NorthPosition);
             var world = new World(WorldWidth, WorldHeight);
             var vehicle = new Vehicle(position, world);
-            var behavior = new SeekBehaviour(vehicle);
+            var behavior = new SeekingBehavior(vehicle);
 
             // Act
             var velocity = behavior.Calculate();

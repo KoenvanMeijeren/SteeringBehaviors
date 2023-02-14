@@ -1,7 +1,7 @@
 ﻿using SteeringCS.entity;
 using SteeringCS.util;
 
-namespace SteeringCS.behaviour
+namespace SteeringCS.behavior
 {
     public class SeekingBehavior : SteeringBehavior
     {

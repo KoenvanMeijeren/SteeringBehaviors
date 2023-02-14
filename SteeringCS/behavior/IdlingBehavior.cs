@@ -1,15 +1,10 @@
 ﻿using SteeringCS.entity;
 using SteeringCS.util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SteeringCS.behaviour
+namespace SteeringCS.behavior
 {
-    internal class IdlingBehavior : SteeringBehavior
+    public class IdlingBehavior : SteeringBehavior
     {
         public IdlingBehavior(MovingEntity movingEntity) : base(movingEntity)
         {

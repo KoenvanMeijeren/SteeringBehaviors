@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 using NUnit.Framework;
-using SteeringCS.behaviour;
+using SteeringCS.behavior;
 using SteeringCS.entity;
 using SteeringCS.util;
 using SteeringCS.world;
@@ -31,7 +31,7 @@ namespace SteeringCSTests
             Assert.AreEqual(MovingEntity.MaxSpeedDefault, movingEntity.MaxSpeed);
             Assert.AreEqual(EastPosition, movingEntity.Velocity.EastPosition);
             Assert.AreEqual(NorthPosition, movingEntity.Velocity.NorthPosition);
-            Assert.IsNull(movingEntity.SteeringBehaviour);
+            Assert.IsNull(movingEntity.SteeringBehavior);
             Assert.AreEqual(ExpectedString, movingEntity.ToString());
         }
 
@@ -56,8 +56,7 @@ namespace SteeringCSTests
             var movingEntity = new MovingEntityImplementation(position, world);
             var previousVelocity = movingEntity.Velocity.Clone();
             var previousPosition = movingEntity.Position.Clone();
-            var seekingBehaviour = new SeekBehaviour(movingEntity);
-            movingEntity.SteeringBehaviour = seekingBehaviour;
+            movingEntity.AddSeekingBehavior();
             movingEntity.Update(TimeElapsed);
 
             // Assert
@@ -68,7 +67,7 @@ namespace SteeringCSTests
         }
 
         [Test]
-        public void Calculate_02_DoesNotChangeWithoutSteeringBehaviour_Ok()
+        public void Calculate_02_DoesNotChangeWithoutSteeringBehavior_Ok()
         {
             // Mocked values
             const int EastPosition = 0,
