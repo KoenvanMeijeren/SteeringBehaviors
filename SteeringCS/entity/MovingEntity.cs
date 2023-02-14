@@ -10,7 +10,7 @@ namespace SteeringCS.entity
     {
         public const int MassDefault = 30,
             MaxSpeedDefault = 150;
-        
+
         public Vector2D Velocity { get; set; }
         public float Mass { get; }
         public float MaxSpeed { get; }
