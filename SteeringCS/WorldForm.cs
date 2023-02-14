@@ -110,7 +110,7 @@ namespace SteeringCS
         private SteeringBehaviorOptions GetSelectedSteeringBehaviour()
         {
             var selected = SteeringBehaviorOptions.SeekingBehavior;
-            if (SteeringBehaviorSelector.SelectedItem!= null)
+            if (SteeringBehaviorSelector.SelectedItem != null)
             {
                 selected = (SteeringBehaviorOptions)SteeringBehaviorSelector.SelectedItem;
             }
