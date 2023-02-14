@@ -6,7 +6,7 @@ namespace SteeringCS.entity
 {
     public class Vehicle : MovingEntity
     {
-        private const int DefaultScale = 5;
+        public const int DefaultScale = 5;
         public Color Color { get; set; }
 
         public Vehicle(Vector2D position, World world) : base(position, world)

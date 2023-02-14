@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Drawing;
+using NUnit.Framework;
 using SteeringCS.behaviour;
 using SteeringCS.entity;
 using SteeringCS.util;
@@ -115,6 +116,33 @@ namespace SteeringCSTests
             // Assert
             Assert.AreEqual(ExpectedScale, movingEntity.Scale);
             Assert.AreEqual(world, movingEntity.World);
+        }
+    }
+    
+    public class VehicleTests
+    {
+        [Test]
+        public void Create_01_Ok()
+        {
+            // Mocked values
+            const int EastPosition = 0,
+                NorthPosition = 0,
+                WorldWidth = 20,
+                WorldHeight = 25;
+
+            const float ExpectedScale = Vehicle.DefaultScale;
+
+            // Arrange
+            var position = new Vector2D(EastPosition, NorthPosition);
+            var world = new World(WorldWidth, WorldHeight);
+
+            // Act
+            var movingEntity = new Vehicle(position, world);
+
+            // Assert
+            Assert.AreEqual(ExpectedScale, movingEntity.Scale);
+            Assert.AreEqual(world, movingEntity.World);
+            Assert.AreEqual(Color.Black, movingEntity.Color);
         }
     }
 
