@@ -18,13 +18,13 @@ namespace SteeringCS.entity
 
         public override void Render(Graphics graphic)
         {
-            var leftCorner = Position.EastPosition - Scale;
-            var rightCorner = Position.NorthPosition - Scale;
+            var leftCorner = Position.XPosition - Scale;
+            var rightCorner = Position.YPosition - Scale;
             var size = Scale * 2;
 
             var pen = new Pen(Color, 2);
             graphic.DrawEllipse(pen, new Rectangle((int)leftCorner, (int)rightCorner, (int)size, (int)size));
-            graphic.DrawLine(pen, (int)Position.EastPosition, (int)Position.NorthPosition, (int)Position.EastPosition + (int)(Velocity.EastPosition * 2), (int)Position.NorthPosition + (int)(Velocity.NorthPosition * 2));
+            graphic.DrawLine(pen, (int)Position.XPosition, (int)Position.YPosition, (int)Position.XPosition + (int)(Velocity.XPosition * 2), (int)Position.YPosition + (int)(Velocity.YPosition * 2));
         }
     }
 }

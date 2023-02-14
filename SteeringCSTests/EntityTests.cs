@@ -13,14 +13,14 @@ namespace SteeringCSTests
         public void Create_01_Ok()
         {
             // Mocked values
-            const int EastPosition = 0,
-                NorthPosition = 0,
+            const int XPosition = 0,
+                YPosition = 0,
                 WorldWidth = 20,
                 WorldHeight = 25;
             const string ExpectedString = "(0,0)";
 
             // Arrange
-            var position = new Vector2D(EastPosition, NorthPosition);
+            var position = new Vector2D(XPosition, YPosition);
             var world = new World(WorldWidth, WorldHeight);
 
             // Act
@@ -29,8 +29,8 @@ namespace SteeringCSTests
             // Assert
             Assert.AreEqual(MovingEntity.MassDefault, movingEntity.Mass);
             Assert.AreEqual(MovingEntity.MaxSpeedDefault, movingEntity.MaxSpeed);
-            Assert.AreEqual(EastPosition, movingEntity.Velocity.EastPosition);
-            Assert.AreEqual(NorthPosition, movingEntity.Velocity.NorthPosition);
+            Assert.AreEqual(XPosition, movingEntity.Velocity.XPosition);
+            Assert.AreEqual(YPosition, movingEntity.Velocity.YPosition);
             Assert.IsNull(movingEntity.SteeringBehavior);
             Assert.AreEqual(ExpectedString, movingEntity.ToString());
         }
@@ -39,8 +39,8 @@ namespace SteeringCSTests
         public void Calculate_01_Ok()
         {
             // Mocked values
-            const int EastPosition = 0,
-                NorthPosition = 0,
+            const int XPosition = 0,
+                YPosition = 0,
                 WorldWidth = 20,
                 WorldHeight = 25,
                 TimeElapsed = 10;
@@ -49,7 +49,7 @@ namespace SteeringCSTests
                 ExpectedPosition = "(333.33,133.33)";
 
             // Arrange
-            var position = new Vector2D(EastPosition, NorthPosition);
+            var position = new Vector2D(XPosition, YPosition);
             var world = new World(WorldWidth, WorldHeight);
 
             // Act
@@ -70,14 +70,14 @@ namespace SteeringCSTests
         public void Calculate_02_DoesNotChangeWithoutSteeringBehavior_Ok()
         {
             // Mocked values
-            const int EastPosition = 0,
-                NorthPosition = 0,
+            const int XPosition = 0,
+                YPosition = 0,
                 WorldWidth = 20,
                 WorldHeight = 25,
                 TimeElapsed = 10;
 
             // Arrange
-            var position = new Vector2D(EastPosition, NorthPosition);
+            var position = new Vector2D(XPosition, YPosition);
             var world = new World(WorldWidth, WorldHeight);
 
             // Act
@@ -98,15 +98,15 @@ namespace SteeringCSTests
         public void Create_01_Ok()
         {
             // Mocked values
-            const int EastPosition = 0,
-                NorthPosition = 0,
+            const int XPosition = 0,
+                YPosition = 0,
                 WorldWidth = 20,
                 WorldHeight = 25;
 
             const float ExpectedScale = 0;
 
             // Arrange
-            var position = new Vector2D(EastPosition, NorthPosition);
+            var position = new Vector2D(XPosition, YPosition);
             var world = new World(WorldWidth, WorldHeight);
 
             // Act
@@ -124,15 +124,15 @@ namespace SteeringCSTests
         public void Create_01_Ok()
         {
             // Mocked values
-            const int EastPosition = 0,
-                NorthPosition = 0,
+            const int XPosition = 0,
+                YPosition = 0,
                 WorldWidth = 20,
                 WorldHeight = 25;
 
             const float ExpectedScale = Vehicle.DefaultScale;
 
             // Arrange
-            var position = new Vector2D(EastPosition, NorthPosition);
+            var position = new Vector2D(XPosition, YPosition);
             var world = new World(WorldWidth, WorldHeight);
 
             // Act
