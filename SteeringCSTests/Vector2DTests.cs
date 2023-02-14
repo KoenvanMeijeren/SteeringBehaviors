@@ -10,43 +10,43 @@ namespace SteeringCSTests
         public void Test_CreateEmpty_01_Ok()
         {
             // Arrange
-            const int ExpectedEastPosition = 0;
-            const int ExpectedNorthPosition = 0;
+            const int ExpectedXPosition = 0;
+            const int ExpectedYPosition = 0;
 
             // Act
             var vector = new Vector2D();
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
         }
 
         [Test]
         public void Test_CreateNotEmpty_02_Ok()
         {
             // Arrange
-            const int ExpectedEastPosition = 4;
-            const int ExpectedNorthPosition = 5;
+            const int ExpectedXPosition = 4;
+            const int ExpectedYPosition = 5;
 
             // Act
-            var vector = new Vector2D(ExpectedEastPosition, ExpectedNorthPosition);
+            var vector = new Vector2D(ExpectedXPosition, ExpectedYPosition);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
         }
 
         [Test]
         public void Test_LengthEmpty_01_Ok()
         {
             // Mocked values
-            const int EastPosition = 0, NorthPosition = 0;
+            const int XPosition = 0, YPosition = 0;
 
             // Arrange
             const int ExpectedLength = 0;
 
             // Act
-            var vector = new Vector2D(EastPosition, NorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
 
             // Assert
             Assert.AreEqual(ExpectedLength, vector.Length());
@@ -56,13 +56,13 @@ namespace SteeringCSTests
         public void Test_LengthSame_02_Ok()
         {
             // Mocked values
-            const int EastPosition = 6, NorthPosition = 6;
+            const int XPosition = 6, YPosition = 6;
 
             // Arrange
-            var expectedLength = Math.Sqrt((EastPosition * EastPosition) + (NorthPosition * NorthPosition));
+            var expectedLength = Math.Sqrt((XPosition * XPosition) + (YPosition * YPosition));
 
             // Act
-            var vector = new Vector2D(EastPosition, NorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
 
             // Assert
             Assert.AreEqual(expectedLength, vector.Length());
@@ -72,13 +72,13 @@ namespace SteeringCSTests
         public void Test_LengthDifferent_03_Ok()
         {
             // Mocked values
-            const int EastPosition = 4, NorthPosition = 6;
+            const int XPosition = 4, YPosition = 6;
 
             // Arrange
-            var expectedLength = Math.Sqrt((EastPosition * EastPosition) + (NorthPosition * NorthPosition));
+            var expectedLength = Math.Sqrt((XPosition * XPosition) + (YPosition * YPosition));
 
             // Act
-            var vector = new Vector2D(EastPosition, NorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
 
             // Assert
             Assert.AreEqual(expectedLength, vector.Length());
@@ -88,13 +88,13 @@ namespace SteeringCSTests
         public void Test_LengthSquaredEmpty_01_Ok()
         {
             // Mocked values
-            const int EastPosition = 0, NorthPosition = 0;
+            const int XPosition = 0, YPosition = 0;
 
             // Arrange
-            const double ExpectedLength = (EastPosition * EastPosition) + (NorthPosition * NorthPosition);
+            const double ExpectedLength = (XPosition * XPosition) + (YPosition * YPosition);
 
             // Act
-            var vector = new Vector2D(EastPosition, NorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
 
             // Assert
             Assert.AreEqual(ExpectedLength, vector.LengthSquared());
@@ -104,13 +104,13 @@ namespace SteeringCSTests
         public void Test_LengthSquaredSame_02_Ok()
         {
             // Mocked values
-            const int EastPosition = 6, NorthPosition = 6;
+            const int XPosition = 6, YPosition = 6;
 
             // Arrange
-            const double ExpectedLength = (EastPosition * EastPosition) + (NorthPosition * NorthPosition);
+            const double ExpectedLength = (XPosition * XPosition) + (YPosition * YPosition);
 
             // Act
-            var vector = new Vector2D(EastPosition, NorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
 
             // Assert
             Assert.AreEqual(ExpectedLength, vector.LengthSquared());
@@ -120,13 +120,13 @@ namespace SteeringCSTests
         public void Test_LengthSquaredDifferent_03_Ok()
         {
             // Mocked values
-            const int EastPosition = 4, NorthPosition = 6;
+            const int XPosition = 4, YPosition = 6;
 
             // Arrange
-            const double ExpectedLength = (EastPosition * EastPosition) + (NorthPosition * NorthPosition);
+            const double ExpectedLength = (XPosition * XPosition) + (YPosition * YPosition);
 
             // Act
-            var vector = new Vector2D(EastPosition, NorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
 
             // Assert
             Assert.AreEqual(ExpectedLength, vector.LengthSquared());
@@ -136,168 +136,168 @@ namespace SteeringCSTests
         public void Test_AddEmpty_01_Ok()
         {
             // Mocked values
-            const int EastPosition = 0,
-                NorthPosition = 0,
-                AddEastPosition = 0,
-                AddNorthPosition = 0;
+            const int XPosition = 0,
+                YPosition = 0,
+                AddXPosition = 0,
+                AddYPosition = 0;
 
-            const int ExpectedEastPosition = EastPosition + AddEastPosition;
-            const int ExpectedNorthPosition = NorthPosition + AddNorthPosition;
+            const int ExpectedXPosition = XPosition + AddXPosition;
+            const int ExpectedYPosition = YPosition + AddYPosition;
 
             // Arrange
-            var vector = new Vector2D(EastPosition, NorthPosition);
-            var vectorToAdd = new Vector2D(AddEastPosition, AddNorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
+            var vectorToAdd = new Vector2D(AddXPosition, AddYPosition);
 
             // Act
             vector.Add(vectorToAdd);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
         }
 
         [Test]
         public void Test_AddDifferent_02_Ok()
         {
             // Mocked values
-            const int EastPosition = 1,
-                NorthPosition = 2,
-                AddEastPosition = 3,
-                AddNorthPosition = 5;
+            const int XPosition = 1,
+                YPosition = 2,
+                AddXPosition = 3,
+                AddYPosition = 5;
 
-            const int ExpectedEastPosition = EastPosition + AddEastPosition;
-            const int ExpectedNorthPosition = NorthPosition + AddNorthPosition;
+            const int ExpectedXPosition = XPosition + AddXPosition;
+            const int ExpectedYPosition = YPosition + AddYPosition;
 
             // Arrange
-            var vector = new Vector2D(EastPosition, NorthPosition);
-            var vectorToAdd = new Vector2D(AddEastPosition, AddNorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
+            var vectorToAdd = new Vector2D(AddXPosition, AddYPosition);
 
             // Act
             vector.Add(vectorToAdd);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
         }
 
         [Test]
         public void Test_AddSame_03_Ok()
         {
             // Mocked values
-            const int EastPosition = 2,
-                NorthPosition = 2,
-                AddEastPosition = 2,
-                AddNorthPosition = 2;
+            const int XPosition = 2,
+                YPosition = 2,
+                AddXPosition = 2,
+                AddYPosition = 2;
 
-            const int ExpectedEastPosition = EastPosition + AddEastPosition;
-            const int ExpectedNorthPosition = NorthPosition + AddNorthPosition;
+            const int ExpectedXPosition = XPosition + AddXPosition;
+            const int ExpectedYPosition = YPosition + AddYPosition;
 
             // Arrange
-            var vector = new Vector2D(EastPosition, NorthPosition);
-            var vectorToAdd = new Vector2D(AddEastPosition, AddNorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
+            var vectorToAdd = new Vector2D(AddXPosition, AddYPosition);
 
             // Act
             vector.Add(vectorToAdd);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
         }
 
         [Test]
         public void Test_AddNegative_04_Ok()
         {
             // Mocked values
-            const int EastPosition = 2,
-                NorthPosition = 2,
-                AddEastPosition = -3,
-                AddNorthPosition = 5;
+            const int XPosition = 2,
+                YPosition = 2,
+                AddXPosition = -3,
+                AddYPosition = 5;
 
-            const int ExpectedEastPosition = EastPosition + AddEastPosition;
-            const int ExpectedNorthPosition = NorthPosition + AddNorthPosition;
+            const int ExpectedXPosition = XPosition + AddXPosition;
+            const int ExpectedYPosition = YPosition + AddYPosition;
 
             // Arrange
-            var vector = new Vector2D(EastPosition, NorthPosition);
-            var vectorToAdd = new Vector2D(AddEastPosition, AddNorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
+            var vectorToAdd = new Vector2D(AddXPosition, AddYPosition);
 
             // Act
             vector.Add(vectorToAdd);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
         }
 
         [Test]
         public void Test_SubtractEmpty_01_Ok()
         {
             // Mocked values
-            const int EastPosition = 0,
-                NorthPosition = 0,
-                AddEastPosition = 0,
-                AddNorthPosition = 0;
+            const int XPosition = 0,
+                YPosition = 0,
+                AddXPosition = 0,
+                AddYPosition = 0;
 
-            const int ExpectedEastPosition = EastPosition + AddEastPosition;
-            const int ExpectedNorthPosition = NorthPosition + AddNorthPosition;
+            const int ExpectedXPosition = XPosition + AddXPosition;
+            const int ExpectedYPosition = YPosition + AddYPosition;
 
             // Arrange
-            var vector = new Vector2D(EastPosition, NorthPosition);
-            var vectorToSubtract = new Vector2D(AddEastPosition, AddNorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
+            var vectorToSubtract = new Vector2D(AddXPosition, AddYPosition);
 
             // Act
             vector.Subtract(vectorToSubtract);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
         }
 
         [Test]
         public void Test_SubtractDifferent_02_Ok()
         {
             // Mocked values
-            const int EastPosition = 1,
-                NorthPosition = 2,
-                SubtractEastPosition = 3,
-                SubtractNorthPosition = 5;
+            const int XPosition = 1,
+                YPosition = 2,
+                SubtractXPosition = 3,
+                SubtractYPosition = 5;
 
-            const int ExpectedEastPosition = EastPosition - SubtractEastPosition;
-            const int ExpectedNorthPosition = NorthPosition - SubtractNorthPosition;
+            const int ExpectedXPosition = XPosition - SubtractXPosition;
+            const int ExpectedYPosition = YPosition - SubtractYPosition;
 
             // Arrange
-            var vector = new Vector2D(EastPosition, NorthPosition);
-            var vectorToSubtract = new Vector2D(SubtractEastPosition, SubtractNorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
+            var vectorToSubtract = new Vector2D(SubtractXPosition, SubtractYPosition);
 
             // Act
             vector.Subtract(vectorToSubtract);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
         }
 
         [Test]
         public void Test_SubtractSame_03_Ok()
         {
             // Mocked values
-            const int EastPosition = 2,
-                NorthPosition = 2,
-                SubtractEastPosition = 2,
-                SubtractNorthPosition = 2;
+            const int XPosition = 2,
+                YPosition = 2,
+                SubtractXPosition = 2,
+                SubtractYPosition = 2;
 
-            const int ExpectedEastPosition = EastPosition - SubtractEastPosition;
-            const int ExpectedNorthPosition = NorthPosition - SubtractNorthPosition;
+            const int ExpectedXPosition = XPosition - SubtractXPosition;
+            const int ExpectedYPosition = YPosition - SubtractYPosition;
 
             // Arrange
-            var vector = new Vector2D(EastPosition, NorthPosition);
-            var vectorToSubtract = new Vector2D(SubtractEastPosition, SubtractNorthPosition);
+            var vector = new Vector2D(XPosition, YPosition);
+            var vectorToSubtract = new Vector2D(SubtractXPosition, SubtractYPosition);
 
             // Act
             vector.Subtract(vectorToSubtract);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
         }
 
         [Test]
@@ -320,8 +320,8 @@ namespace SteeringCSTests
             vector.Subtract(vectorToSubtract);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
         }
 
         [Test]
@@ -342,8 +342,8 @@ namespace SteeringCSTests
             vector.Multiply(MultipleValue);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
         }
 
         [Test]
@@ -364,8 +364,8 @@ namespace SteeringCSTests
             vector.Multiply(MultipleValue);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
         }
 
         [Test]
@@ -416,8 +416,8 @@ namespace SteeringCSTests
             vector.Multiply(MultipleValue);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
         }
 
         [Test]
@@ -436,8 +436,8 @@ namespace SteeringCSTests
             vector.Normalize();
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
         }
 
         [Test]
@@ -456,8 +456,8 @@ namespace SteeringCSTests
             vector.Normalize();
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
         }
 
         [Test]
@@ -476,8 +476,8 @@ namespace SteeringCSTests
             vector.Truncate(0);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
         }
 
         [Test]
@@ -497,8 +497,8 @@ namespace SteeringCSTests
             vector.Truncate(length + 1);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
         }
 
         [Test]
@@ -518,8 +518,8 @@ namespace SteeringCSTests
             vector.Truncate(length - 1);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
         }
 
         [Test]
@@ -535,8 +535,8 @@ namespace SteeringCSTests
             newVector.Multiply(2);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.EastPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.NorthPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
+            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
         }
 
         [Test]

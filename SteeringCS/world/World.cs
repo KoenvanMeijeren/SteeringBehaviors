@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using SteeringCS.behaviour;
+using SteeringCS.behavior;
 using SteeringCS.entity;
 using SteeringCS.util;
 
@@ -38,11 +38,11 @@ namespace SteeringCS.world
             };
         }
 
-        public void EditPopulation(SteeringBehaviorOptions steeringBehaviourOption, int mass, int maxSpeed)
+        public void EditPopulation(SteeringBehaviorOptions steeringBehaviorOption, int mass, int maxSpeed)
         {
             foreach (var entity in _entities)
             {
-                entity.AddSteeringBehavior(steeringBehaviourOption);
+                entity.AddSteeringBehavior(steeringBehaviorOption);
                 entity.Mass = mass;
                 entity.MaxSpeed = maxSpeed;
             }

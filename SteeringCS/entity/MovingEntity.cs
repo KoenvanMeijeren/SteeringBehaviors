@@ -1,5 +1,5 @@
 ﻿using System;
-using SteeringCS.behaviour;
+using SteeringCS.behavior;
 using SteeringCS.util;
 using SteeringCS.world;
 
@@ -8,16 +8,19 @@ namespace SteeringCS.entity
 
     public abstract class MovingEntity : BaseGameEntity
     {
-        public Vector2D Velocity { get; set; }
+        public const int MassDefault = 30,
+            MaxSpeedDefault = 150;
+
+        public Vector2D Velocity { get; protected set; }
         public float Mass { get; set; }
         public float MaxSpeed { get; set; }
 
-        public SteeringBehavior SteeringBehavior { get; set; }
+        public SteeringBehavior SteeringBehavior { get; private set; }
 
         protected MovingEntity(Vector2D position, World world) : base(position, world)
         {
-            Mass = 30;
-            MaxSpeed = 150;
+            Mass = MassDefault;
+            MaxSpeed = MaxSpeedDefault;
             Velocity = new Vector2D();
         }
 
@@ -55,7 +58,7 @@ namespace SteeringCS.entity
 
         public void AddFleeingBehavior()
         {
-            // TO DO
+            // TODO
         }
 
         public void AddIdleBehavior()
@@ -63,9 +66,9 @@ namespace SteeringCS.entity
             SteeringBehavior = new IdlingBehavior(this);
         }
 
-        public void AddSteeringBehavior(SteeringBehaviorOptions steeringBehaviourOption)
+        public void AddSteeringBehavior(SteeringBehaviorOptions steeringBehaviorOption)
         {
-            switch (steeringBehaviourOption)
+            switch (steeringBehaviorOption)
             {
                 case SteeringBehaviorOptions.IdlingBehavior:
                     {

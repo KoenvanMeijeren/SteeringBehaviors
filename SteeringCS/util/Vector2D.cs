@@ -1,22 +1,23 @@
 ﻿using System;
+using System.Globalization;
 
 namespace SteeringCS.util
 {
 
     public class Vector2D
     {
-        public double EastPosition { get; set; }
-        public double NorthPosition { get; set; }
+        public double XPosition { get; private set; }
+        public double YPosition { get; private set; }
 
         public Vector2D() : this(0, 0)
         {
 
         }
 
-        public Vector2D(double eastPosition, double northPosition)
+        public Vector2D(double xPosition, double yPosition)
         {
-            EastPosition = eastPosition;
-            NorthPosition = northPosition;
+            XPosition = xPosition;
+            YPosition = yPosition;
         }
 
         public double Length()
@@ -26,27 +27,27 @@ namespace SteeringCS.util
 
         public double LengthSquared()
         {
-            return (EastPosition * EastPosition) + (NorthPosition * NorthPosition);
+            return (XPosition * XPosition) + (YPosition * YPosition);
         }
 
         public Vector2D Add(Vector2D vector)
         {
-            EastPosition += vector.EastPosition;
-            NorthPosition += vector.NorthPosition;
+            XPosition += vector.XPosition;
+            YPosition += vector.YPosition;
             return this;
         }
 
         public Vector2D Subtract(Vector2D vector)
         {
-            EastPosition -= vector.EastPosition;
-            NorthPosition -= vector.NorthPosition;
+            XPosition -= vector.XPosition;
+            YPosition -= vector.YPosition;
             return this;
         }
 
         public Vector2D Multiply(double value)
         {
-            EastPosition *= value;
-            NorthPosition *= value;
+            XPosition *= value;
+            YPosition *= value;
             return this;
         }
 
@@ -57,8 +58,8 @@ namespace SteeringCS.util
                 throw new ArithmeticException("Cannot divide vector by zero!");
             }
 
-            EastPosition /= value;
-            NorthPosition /= value;
+            XPosition /= value;
+            YPosition /= value;
             return this;
         }
 
@@ -82,12 +83,12 @@ namespace SteeringCS.util
 
         public Vector2D Clone()
         {
-            return new Vector2D(EastPosition, NorthPosition);
+            return new Vector2D(XPosition, YPosition);
         }
 
         public override string ToString()
         {
-            return $"({EastPosition},{NorthPosition})";
+            return $"({Math.Round(XPosition, 2).ToString(CultureInfo.InvariantCulture)},{Math.Round(YPosition, 2).ToString(CultureInfo.InvariantCulture)})";
         }
     }
 }

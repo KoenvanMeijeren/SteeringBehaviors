@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="behavior\IdleBehavior.cs" />
+    <Compile Include="behavior\IdlingBehavior.cs" />
     <Compile Include="entity\BaseGameEntity.cs" />
     <Compile Include="behavior\SeekingBehavior.cs" />
     <Compile Include="DBPanel.cs">

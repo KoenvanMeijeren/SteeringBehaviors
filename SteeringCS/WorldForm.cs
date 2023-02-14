@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using SteeringCS.behaviour;
+using SteeringCS.behavior;
 using SteeringCS.util;
 using SteeringCS.world;
 using Timer = System.Timers.Timer;
@@ -9,11 +9,11 @@ namespace SteeringCS
 {
     public partial class WorldForm : Form
     {
-        public const SteeringBehaviorOptions SteeringBehaviorOptionDefault = SteeringBehaviorOptions.IdlingBehavior;
+        private const SteeringBehaviorOptions SteeringBehaviorOptionDefault = SteeringBehaviorOptions.IdlingBehavior;
         private World _world;
 
         private const float TimeDelta = 0.8f;
-        private Timer Timer = new Timer();
+        private readonly Timer _timer = new Timer();
 
         public WorldForm()
         {
@@ -21,13 +21,13 @@ namespace SteeringCS
             Initialize();
         }
 
-        public void Initialize()
+        private void Initialize()
         {
             _world = new World(width: dbPanel.Width, height: dbPanel.Height);
 
-            Timer.Elapsed += Timer_Elapsed;
-            Timer.Interval = 20;
-            Timer.Enabled = true;
+            _timer.Elapsed += Timer_Elapsed;
+            _timer.Interval = 20;
+            _timer.Enabled = true;
             InitializeSteeringBehaviorSelector();
         }
 
@@ -60,22 +60,22 @@ namespace SteeringCS
 
         private void updateIntervalSelector_ValueChanged(object sender, EventArgs e)
         {
-            Timer.Interval = (int)UpdateIntervalSelector.Value;
+            _timer.Interval = (int)UpdateIntervalSelector.Value;
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
         {
-            if (Timer.Enabled)
+            if (_timer.Enabled)
             {
                 pauseButton.Text = "Unpause";
                 nextButton.Enabled = true;
-                Timer.Enabled = false;
+                _timer.Enabled = false;
                 return;
             }
 
             pauseButton.Text = "Pause";
             nextButton.Enabled = false;
-            Timer.Enabled = true;
+            _timer.Enabled = true;
         }
 
         private void nextButton_Click(object sender, EventArgs e)
@@ -103,11 +103,11 @@ namespace SteeringCS
         {
             var mass = (int)MassSelector.Value;
             var maxSpeed = (int)MaxSpeedSelector.Value;
-            var steeringBehaviourOption = GetSelectedSteeringBehaviour();
-            _world.EditPopulation(steeringBehaviourOption, mass, maxSpeed);
+            var steeringBehaviorOption = GetSelectedSteeringBehavior();
+            _world.EditPopulation(steeringBehaviorOption, mass, maxSpeed);
         }
 
-        private SteeringBehaviorOptions GetSelectedSteeringBehaviour()
+        private SteeringBehaviorOptions GetSelectedSteeringBehavior()
         {
             var selected = SteeringBehaviorOptions.SeekingBehavior;
             if (SteeringBehaviorSelector.SelectedItem != null)
