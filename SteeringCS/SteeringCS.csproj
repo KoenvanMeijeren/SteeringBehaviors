@@ -4,6 +4,7 @@
   <PropertyGroup>
     <GenerateResourceMSBuildArchitecture>CurrentArchitecture</GenerateResourceMSBuildArchitecture>
     <GenerateResourceMSBuildRuntime>CurrentRuntime</GenerateResourceMSBuildRuntime>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SteeringCS</RootNamespace>
     <AssemblyName>SteeringCS</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
@@ -50,8 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="behavior\IdleBehavior.cs" />
     <Compile Include="entity\BaseGameEntity.cs" />
-    <Compile Include="behaviour\SeekBehaviour.cs" />
+    <Compile Include="behavior\SeekingBehavior.cs" />
     <Compile Include="DBPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -65,7 +67,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="behaviour\SteeringBehaviour.cs" />
+    <Compile Include="behavior\SteeringBehavior.cs" />
     <Compile Include="util\Vector2D.cs" />
     <Compile Include="world\World.cs" />
     <EmbeddedResource Include="WorldForm.resx">
@@ -79,6 +81,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

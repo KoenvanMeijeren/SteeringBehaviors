@@ -3,9 +3,9 @@ using SteeringCS.util;
 
 namespace SteeringCS.behaviour
 {
-    public class SeekBehaviour : SteeringBehaviour
+    public class SeekingBehavior : SteeringBehavior
     {
-        public SeekBehaviour(MovingEntity movingEntity) : base(movingEntity)
+        public SeekingBehavior(MovingEntity movingEntity) : base(movingEntity)
         {
         }
 

@@ -3,12 +3,19 @@ using SteeringCS.util;
 
 namespace SteeringCS.behaviour
 {
-    public abstract class SteeringBehaviour
+    public enum SteeringBehaviorOptions
+    {
+        IdleBehavior,
+        SeekingBehavior,
+        FleeingBehavior
+    }
+
+    public abstract class SteeringBehavior
     {
         protected MovingEntity MovingEntity { get; }
         public abstract Vector2D Calculate();
 
-        protected SteeringBehaviour(MovingEntity movingEntity)
+        protected SteeringBehavior(MovingEntity movingEntity)
         {
             MovingEntity = movingEntity;
         }
