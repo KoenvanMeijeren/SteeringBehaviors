@@ -87,7 +87,7 @@ namespace SteeringCS.util
 
         public override string ToString()
         {
-            return $"({EastPosition},{NorthPosition})";
+            return $"({Math.Round(EastPosition, 2)},{Math.Round(NorthPosition, 2)})";
         }
     }
 }

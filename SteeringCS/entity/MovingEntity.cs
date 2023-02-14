@@ -8,6 +8,9 @@ namespace SteeringCS.entity
 
     public abstract class MovingEntity : BaseGameEntity
     {
+        public const int MassDefault = 30,
+            MaxSpeedDefault = 150;
+        
         public Vector2D Velocity { get; set; }
         public float Mass { get; }
         public float MaxSpeed { get; }
@@ -16,8 +19,8 @@ namespace SteeringCS.entity
 
         protected MovingEntity(Vector2D position, World world) : base(position, world)
         {
-            Mass = 30;
-            MaxSpeed = 150;
+            Mass = MassDefault;
+            MaxSpeed = MaxSpeedDefault;
             Velocity = new Vector2D();
         }
 
