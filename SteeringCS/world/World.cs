@@ -26,8 +26,9 @@ namespace SteeringCS.world
             var vehicle = new Vehicle(new Vector2D(10, 10), this)
             {
                 Color = Color.Blue,
-
             };
+
+            vehicle.AddSeekingBehavior();
             _entities.Add(vehicle);
 
             Target = new Vehicle(new Vector2D(100, 60), this)
@@ -37,11 +38,20 @@ namespace SteeringCS.world
             };
         }
 
+        public void EditPopulation(SteeringBehaviorOptions steeringBehaviourOption, int mass, int maxSpeed)
+        {
+            foreach (var entity in _entities)
+            {
+                entity.AddSteeringBehavior(steeringBehaviourOption);
+                entity.Mass = mass;
+                entity.MaxSpeed = maxSpeed;
+            }
+        }
+
         public void Update(float timeElapsed)
         {
             foreach (var entity in _entities)
             {
-                entity.SteeringBehaviour = new SeekBehaviour(entity);
                 entity.Update(timeElapsed);
             }
         }
