@@ -23,7 +23,7 @@ namespace SteeringCS.world
 
         private void Populate()
         {
-            var vehicle = new Vehicle(new Vector2D(_width / 2, _height / 2), this)
+            var vehicle = new Vehicle(new Vector2D(Width / 2, Height / 2), this)
             {
                 Color = Color.Blue,
             };
