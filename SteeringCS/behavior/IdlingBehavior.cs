@@ -12,7 +12,7 @@ namespace SteeringCS.behavior
 
         public override Vector2D Calculate()
         {
-            var vector = new Vector2D(0, 0);
+            Vector2D vector = new Vector2D(0, 0);
             return vector;
         }
     }

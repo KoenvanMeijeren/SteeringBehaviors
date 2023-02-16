@@ -101,7 +101,7 @@ namespace SteeringCS.util
 
         public Vector2D Normalize()
         {
-            var length = Length();
+            double length = Length();
             return length == 0 ? this : Divide(length);
         }
 

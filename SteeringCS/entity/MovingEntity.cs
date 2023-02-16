@@ -31,8 +31,8 @@ namespace SteeringCS.entity
                 return;
             }
 
-            var steeringForce = SteeringBehavior.Calculate();
-            var acceleration = steeringForce.Divide(Mass);
+            Vector2D steeringForce = SteeringBehavior.Calculate();
+            Vector2D acceleration = steeringForce.Divide(Mass);
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
             AlterVectorToStayInsideOfWorld(Velocity);
@@ -112,30 +112,30 @@ namespace SteeringCS.entity
 
         public Vector2D AlterVectorToStayInsideOfWorld(Vector2D vector)
         {
-            var position = Position.Clone();
-            var targetedPosition = position.Add(vector);
+            Vector2D position = Position.Clone();
+            Vector2D targetPosition = position.Add(vector);
 
-            var maxY = World.Height;
-            var maxX = World.Width;
+            int maxY = World.Height;
+            int maxX = World.Width;
 
-            if (targetedPosition.YPosition < 0)
+            if (targetPosition.YPosition < 0)
             {
-                vector.SubtractY(targetedPosition.YPosition);
+                vector.SubtractY(targetPosition.YPosition);
             }
 
-            if (targetedPosition.XPosition < 0)
+            if (targetPosition.XPosition < 0)
             {
-                vector.SubtractX(targetedPosition.XPosition);
+                vector.SubtractX(targetPosition.XPosition);
             }
 
-            if (targetedPosition.YPosition > maxY)
+            if (targetPosition.YPosition > maxY)
             {
-                vector.SubtractY(targetedPosition.YPosition - maxY);
+                vector.SubtractY(targetPosition.YPosition - maxY);
             }
 
-            if (targetedPosition.XPosition > maxX)
+            if (targetPosition.XPosition > maxX)
             {
-                vector.SubtractX(targetedPosition.XPosition - maxX);
+                vector.SubtractX(targetPosition.XPosition - maxX);
             }
 
             return vector;

@@ -101,15 +101,15 @@ namespace SteeringCS
 
         private void UpdateEntityValues()
         {
-            var mass = (int)MassSelector.Value;
-            var maxSpeed = (int)MaxSpeedSelector.Value;
-            var steeringBehaviorOption = GetSelectedSteeringBehavior();
+            int mass = (int)MassSelector.Value;
+            int maxSpeed = (int)MaxSpeedSelector.Value;
+            SteeringBehaviorOptions steeringBehaviorOption = GetSelectedSteeringBehavior();
             _world.EditPopulation(steeringBehaviorOption, mass, maxSpeed);
         }
 
         private SteeringBehaviorOptions GetSelectedSteeringBehavior()
         {
-            var selected = SteeringBehaviorOptions.SeekingBehavior;
+            SteeringBehaviorOptions selected = SteeringBehaviorOptions.SeekingBehavior;
             if (SteeringBehaviorSelector.SelectedItem != null)
             {
                 selected = (SteeringBehaviorOptions)SteeringBehaviorSelector.SelectedItem;
