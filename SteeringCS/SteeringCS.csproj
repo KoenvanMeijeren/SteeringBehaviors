@@ -51,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="behavior\FleeingBehavior.cs" />
     <Compile Include="behavior\IdlingBehavior.cs" />
+    <Compile Include="behavior\MosquitoBehavior.cs" />
     <Compile Include="behavior\WanderingBehavior.cs" />
     <Compile Include="entity\BaseGameEntity.cs" />
     <Compile Include="behavior\SeekingBehavior.cs" />

@@ -58,6 +58,18 @@ namespace SteeringCS.util
             return this;
         }
 
+        public Vector2D SubtractY(double amount)
+        {
+            YPosition -= amount;
+            return this;
+        }
+
+        public Vector2D SubtractX(double amount)
+        {
+            XPosition -= amount;
+            return this;
+        }
+
         public Vector2D Multiply(double value)
         {
             XPosition *= value;

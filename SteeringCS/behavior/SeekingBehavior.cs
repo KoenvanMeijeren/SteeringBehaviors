@@ -5,13 +5,23 @@ namespace SteeringCS.behavior
 {
     public class SeekingBehavior : SteeringBehavior
     {
+        private const int ArrivalRange = 200;
         public SeekingBehavior(MovingEntity movingEntity) : base(movingEntity)
         {
         }
 
         public override Vector2D Calculate()
         {
-            return Calculate(MovingEntity, MovingEntity.World.Target.Position);
+            var targetPosition = MovingEntity.World.Target.Position.Clone();
+            var desiredVelocity = targetPosition.Subtract(MovingEntity.Position);
+
+            if (desiredVelocity.Length() > ArrivalRange)
+            {
+                return desiredVelocity;
+            }
+
+            var actualVelocity = desiredVelocity.Subtract(MovingEntity.Velocity);
+            return actualVelocity;
         }
         
         public static Vector2D Calculate(MovingEntity movingEntity, Vector2D targetPosition)

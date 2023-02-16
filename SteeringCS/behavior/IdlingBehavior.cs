@@ -12,8 +12,7 @@ namespace SteeringCS.behavior
 
         public override Vector2D Calculate()
         {
-            var rnd = new Random();
-            var vector = new Vector2D(rnd.Next(-1000, 1000), rnd.Next(-1000, 1000));
+            var vector = new Vector2D(0, 0);
             return vector;
         }
     }

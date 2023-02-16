@@ -10,6 +10,7 @@ namespace SteeringCS.behavior
         IdlingBehavior,
         SeekingBehavior,
         FleeingBehavior,
+        MosquitoBehavior,
         WanderingBehavior
     }
 
