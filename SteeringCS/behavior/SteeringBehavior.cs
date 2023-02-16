@@ -24,14 +24,14 @@ namespace SteeringCS.behavior
         {
             MovingEntity = movingEntity;
         }
-        
+
         protected int RandomClamped()
         {
             return Randomizer.NextDouble() >= 0.5 ? -1 : 1;
         }
-        
+
         protected double GetRandomNumber(double minimum, double maximum)
-        { 
+        {
             return Randomizer.NextDouble() * (maximum - minimum) + minimum;
         }
 
@@ -40,7 +40,7 @@ namespace SteeringCS.behavior
         /// </summary>
         public virtual void Render(Graphics graphic)
         {
-            
+
         }
     }
 }

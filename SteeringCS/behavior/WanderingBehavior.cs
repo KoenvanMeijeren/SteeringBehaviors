@@ -11,12 +11,12 @@ namespace SteeringCS.behavior
 
         private const double WanderDistance = 0.3;
         private const int WanderJitter = 5,
-            CircleRadius = 20, 
+            CircleRadius = 20,
             CircleSize = CircleRadius * 2;
 
         private readonly int _randomClampedXPosition, _randomClampedYPosition;
         private double _wanderTheta = Math.PI / 2;
-        
+
         public WanderingBehavior(MovingEntity movingEntity) : base(movingEntity)
         {
             _randomClampedXPosition = RandomClamped();
@@ -28,7 +28,7 @@ namespace SteeringCS.behavior
             var randomNewPosition = new Vector2D(_randomClampedXPosition * WanderJitter, _randomClampedYPosition * WanderJitter);
             _targetCircle = MovingEntity.Position.Clone().Add(randomNewPosition);
             _selectedPoint = _targetCircle.Clone();
-            
+
             var xPosition = CircleRadius * Math.Cos(_wanderTheta);
             var yPosition = CircleRadius * Math.Sin(_wanderTheta);
             _wanderTheta += GetRandomNumber(-WanderDistance, WanderDistance);
@@ -45,7 +45,7 @@ namespace SteeringCS.behavior
             {
                 return;
             }
-            
+
             const int CenterRadius = 2, CenterSize = CenterRadius * 2;
             var outerLeftCorner = _targetCircle.XPosition - CircleRadius;
             var outerRightCorner = _targetCircle.YPosition - CircleRadius;

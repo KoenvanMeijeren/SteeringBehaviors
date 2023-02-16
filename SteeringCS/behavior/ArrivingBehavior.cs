@@ -13,7 +13,7 @@ namespace SteeringCS.behavior
         {
             return new Vector2D();
         }
-        
+
         public static Vector2D Calculate(MovingEntity movingEntity, Vector2D targetPosition)
         {
             var desiredVelocity = targetPosition.Clone().Subtract(movingEntity.Position);

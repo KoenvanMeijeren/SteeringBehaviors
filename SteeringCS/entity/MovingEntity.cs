@@ -76,36 +76,36 @@ namespace SteeringCS.entity
         {
             SteeringBehavior = new WanderingBehavior(this);
         }
-        
+
         public void AddSteeringBehavior(SteeringBehaviorOptions steeringBehaviorOption)
         {
             switch (steeringBehaviorOption)
             {
                 case SteeringBehaviorOptions.IdlingBehavior:
-                {
-                    AddIdlingBehavior();
-                    break;
-                }
+                    {
+                        AddIdlingBehavior();
+                        break;
+                    }
                 case SteeringBehaviorOptions.SeekingBehavior:
-                {
-                    AddSeekingBehavior();
-                    break;
-                }
+                    {
+                        AddSeekingBehavior();
+                        break;
+                    }
                 case SteeringBehaviorOptions.FleeingBehavior:
-                {
-                    AddFleeingBehavior();
-                    break;
-                }
+                    {
+                        AddFleeingBehavior();
+                        break;
+                    }
                 case SteeringBehaviorOptions.MosquitoBehavior:
-                {
-                    AddMosquitoBehavior();
-                    break;
-                }
+                    {
+                        AddMosquitoBehavior();
+                        break;
+                    }
                 case SteeringBehaviorOptions.WanderingBehavior:
-                {
-                    AddWanderingBehavior();
-                    break;
-                }
+                    {
+                        AddWanderingBehavior();
+                        break;
+                    }
                 default: break;
             }
         }

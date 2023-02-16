@@ -36,7 +36,7 @@ namespace SteeringCS.util
             YPosition += vector.YPosition;
             return this;
         }
-        
+
         public Vector2D Add(double x, double y)
         {
             XPosition += x;
@@ -50,7 +50,7 @@ namespace SteeringCS.util
             YPosition -= vector.YPosition;
             return this;
         }
-        
+
         public Vector2D Subtract(double x, double y)
         {
             XPosition -= x;
@@ -93,7 +93,7 @@ namespace SteeringCS.util
         {
             XPosition = x;
         }
-        
+
         public void SetYPosition(double y)
         {
             YPosition = y;
