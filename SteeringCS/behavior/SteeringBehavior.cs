@@ -1,5 +1,6 @@
 ﻿using SteeringCS.entity;
 using SteeringCS.util;
+using System;
 
 namespace SteeringCS.behavior
 {
@@ -7,7 +8,8 @@ namespace SteeringCS.behavior
     {
         IdlingBehavior,
         SeekingBehavior,
-        FleeingBehavior
+        FleeingBehavior,
+        MosquitoBehavior
     }
 
     public abstract class SteeringBehavior

@@ -11,13 +11,13 @@ namespace SteeringCS.world
         private readonly List<MovingEntity> _entities = new List<MovingEntity>();
         public Vehicle Target { get; private set; }
 
-        private readonly int _width;
-        private readonly int _height;
+        public int Width { get; private set; }
+        public int Height { get; private set; }
 
         public World(int width, int height)
         {
-            _width = width;
-            _height = height;
+            Width = width;
+            Height = height;
             Populate();
         }
 
