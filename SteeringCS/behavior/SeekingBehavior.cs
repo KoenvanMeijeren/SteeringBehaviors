@@ -5,6 +5,7 @@ namespace SteeringCS.behavior
 {
     public class SeekingBehavior : SteeringBehavior
     {
+        private const int ArrivalRange = 200;
         public SeekingBehavior(MovingEntity movingEntity) : base(movingEntity)
         {
         }
@@ -14,7 +15,7 @@ namespace SteeringCS.behavior
             var targetPosition = MovingEntity.World.Target.Position.Clone();
             var desiredVelocity = targetPosition.Subtract(MovingEntity.Position);
 
-            if (desiredVelocity.Length() > 200)
+            if (desiredVelocity.Length() > ArrivalRange)
             {
                 return desiredVelocity;
             }
