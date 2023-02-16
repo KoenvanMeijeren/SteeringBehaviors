@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="behavior\IdlingBehavior.cs" />
+    <Compile Include="behavior\WanderingBehavior.cs" />
     <Compile Include="entity\BaseGameEntity.cs" />
     <Compile Include="behavior\SeekingBehavior.cs" />
     <Compile Include="DBPanel.cs">
