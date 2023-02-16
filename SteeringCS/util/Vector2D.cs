@@ -77,6 +77,16 @@ namespace SteeringCS.util
             return this;
         }
 
+        public void SetXPosition(double x)
+        {
+            XPosition = x;
+        }
+        
+        public void SetYPosition(double y)
+        {
+            YPosition = y;
+        }
+
         public Vector2D Normalize()
         {
             var length = Length();
