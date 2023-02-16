@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SteeringCS.behavior
 {
-    internal class MosquitoBehavior : SteeringBehavior
+    public class MosquitoBehavior : SteeringBehavior
     {
         public MosquitoBehavior(MovingEntity movingEntity) : base(movingEntity)
         {
