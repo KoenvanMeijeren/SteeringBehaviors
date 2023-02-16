@@ -34,7 +34,7 @@ namespace SteeringCS.behavior
             _wanderTheta += GetRandomNumber(-WanderDistance, WanderDistance);
             _selectedPoint.Add(xPosition, yPosition);
 
-            return SeekingBehavior.Calculate(MovingEntity, _selectedPoint);
+            return ArrivingBehavior.Calculate(MovingEntity, _selectedPoint);
         }
 
         public override void Render(Graphics graphic)

@@ -23,13 +23,5 @@ namespace SteeringCS.behavior
             var actualVelocity = desiredVelocity.Subtract(MovingEntity.Velocity);
             return actualVelocity;
         }
-        
-        public static Vector2D Calculate(MovingEntity movingEntity, Vector2D targetPosition)
-        {
-            var desiredVelocity = targetPosition.Clone().Subtract(movingEntity.Position);
-            var actualVelocity = desiredVelocity.Subtract(movingEntity.Velocity);
-
-            return actualVelocity;
-        }
     }
 }
