@@ -35,6 +35,7 @@ namespace SteeringCS.entity
             var acceleration = steeringForce.Divide(Mass);
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
+            AlterVectorToStayInsideOfWorld(Velocity);
             Position.Add(Velocity.Multiply(timeElapsed));
 
             // ToDo: Find out what the purpose is of this code.
@@ -58,7 +59,12 @@ namespace SteeringCS.entity
 
         public void AddFleeingBehavior()
         {
-            // TODO
+            SteeringBehavior = new FleeingBehavior(this);
+        }
+
+        public void AddMosquitoBehavior()
+        {
+            SteeringBehavior = new MosquitoBehavior(this);
         }
 
         public void AddIdleBehavior()
@@ -85,8 +91,44 @@ namespace SteeringCS.entity
                         AddFleeingBehavior();
                         break;
                     }
+                case SteeringBehaviorOptions.MosquitoBehavior:
+                    {
+                        AddMosquitoBehavior();
+                        break;
+                    }
                 default: break;
             }
+        }
+
+        public Vector2D AlterVectorToStayInsideOfWorld(Vector2D vector)
+        {
+            var position = Position.Clone();
+            var targetedPosition = position.Add(vector);
+
+            var maxY = World.Height;
+            var maxX = World.Width;
+
+            if (targetedPosition.YPosition < 0)
+            {
+                vector.SubtractY(targetedPosition.YPosition);
+            }
+
+            if (targetedPosition.XPosition < 0)
+            {
+                vector.SubtractX(targetedPosition.XPosition);
+            }
+
+            if (targetedPosition.YPosition > maxY)
+            {
+                vector.SubtractY(targetedPosition.YPosition - maxY);
+            }
+
+            if (targetedPosition.XPosition > maxX)
+            {
+                vector.SubtractX(targetedPosition.XPosition - maxX);
+            }
+
+            return vector;
         }
 
         public override string ToString()

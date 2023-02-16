@@ -13,8 +13,13 @@ namespace SteeringCS.behavior
         {
             var targetPosition = MovingEntity.World.Target.Position.Clone();
             var desiredVelocity = targetPosition.Subtract(MovingEntity.Position);
-            var actualVelocity = desiredVelocity.Subtract(MovingEntity.Velocity);
 
+            if (desiredVelocity.Length() > 200)
+            {
+                return desiredVelocity;
+            }
+
+            var actualVelocity = desiredVelocity.Subtract(MovingEntity.Velocity);
             return actualVelocity;
         }
     }
