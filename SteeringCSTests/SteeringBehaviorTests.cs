@@ -16,13 +16,13 @@ namespace SteeringCSTests
             const double ExpectedXPosition = 98.0d, ExpectedYPosition = 37.0d;
 
             // Arrange
-            var position = new Vector2D(XPosition, YPosition);
-            var world = new World(WorldWidth, WorldHeight);
-            var vehicle = new Vehicle(position, world);
-            var behavior = new SeekingBehavior(vehicle);
+            Vector2D position = new Vector2D(XPosition, YPosition);
+            World world = new World(WorldWidth, WorldHeight);
+            Vehicle vehicle = new Vehicle(position, world);
+            SeekingBehavior behavior = new SeekingBehavior(vehicle);
 
             // Act
-            var velocity = behavior.Calculate();
+            Vector2D velocity = behavior.Calculate();
 
             // Assert
             Assert.AreEqual(ExpectedXPosition, velocity.XPosition);
@@ -36,13 +36,13 @@ namespace SteeringCSTests
             const int XPosition = 2, YPosition = 3, WorldWidth = 20, WorldHeight = 20;
 
             // Arrange
-            var position = new Vector2D(XPosition, YPosition);
-            var world = new World(WorldWidth, WorldHeight);
-            var vehicle = new Vehicle(position, world);
-            var behavior = new SeekingBehavior(vehicle);
+            Vector2D position = new Vector2D(XPosition, YPosition);
+            World world = new World(WorldWidth, WorldHeight);
+            Vehicle vehicle = new Vehicle(position, world);
+            SeekingBehavior behavior = new SeekingBehavior(vehicle);
 
             // Act
-            var velocity = behavior.Calculate();
+            Vector2D velocity = behavior.Calculate();
 
             // Assert
             Assert.AreNotEqual(position, velocity);

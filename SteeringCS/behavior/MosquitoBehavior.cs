@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SteeringCS.behavior
 {
-    internal class MosquitoBehavior : SteeringBehavior
+    public class MosquitoBehavior : SteeringBehavior
     {
         public MosquitoBehavior(MovingEntity movingEntity) : base(movingEntity)
         {
@@ -16,9 +16,7 @@ namespace SteeringCS.behavior
 
         public override Vector2D Calculate()
         {
-            var randomizer = new Random();
-            var vector = new Vector2D(randomizer.Next(-1000, 1000), randomizer.Next(-1000, 1000));
-            return vector;
+            return new Vector2D(Randomizer.Next(-1000, 1000), Randomizer.Next(-1000, 1000));
         }
     }
 }

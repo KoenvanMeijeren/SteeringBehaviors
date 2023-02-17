@@ -23,7 +23,7 @@ namespace SteeringCS.world
 
         private void Populate()
         {
-            var vehicle = new Vehicle(new Vector2D(Width / 2, Height / 2), this)
+            Vehicle vehicle = new Vehicle(new Vector2D(Width / 2, Height / 2), this)
             {
                 Color = Color.Blue,
             };
@@ -40,7 +40,7 @@ namespace SteeringCS.world
 
         public void EditPopulation(SteeringBehaviorOptions steeringBehaviorOption, int mass, int maxSpeed)
         {
-            foreach (var entity in _entities)
+            foreach (MovingEntity entity in _entities)
             {
                 entity.AddSteeringBehavior(steeringBehaviorOption);
                 entity.Mass = mass;
@@ -50,7 +50,7 @@ namespace SteeringCS.world
 
         public void Update(float timeElapsed)
         {
-            foreach (var entity in _entities)
+            foreach (MovingEntity entity in _entities)
             {
                 entity.Update(timeElapsed);
             }

@@ -16,11 +16,11 @@ namespace SteeringCS.behavior
 
         public override Vector2D Calculate()
         {
-            var targetPosition = MovingEntity.World.Target.Position.Clone();
-            var myPosition = MovingEntity.Position.Clone();
+            Vector2D targetPosition = MovingEntity.World.Target.Position.Clone();
+            Vector2D myPosition = MovingEntity.Position.Clone();
 
-            var desiredVelocity = myPosition.Subtract(targetPosition);
-            var actualVelocity = desiredVelocity.Subtract(MovingEntity.Velocity);
+            Vector2D desiredVelocity = myPosition.Subtract(targetPosition);
+            Vector2D actualVelocity = desiredVelocity.Subtract(MovingEntity.Velocity);
 
             return actualVelocity;
         }
