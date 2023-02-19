@@ -9,6 +9,7 @@ namespace SteeringCS.world
     public class World
     {
         private readonly List<MovingEntity> _entities = new List<MovingEntity>();
+        private Grid _grid;
         public Vehicle Target { get; private set; }
 
         public int Width { get; private set; }
@@ -19,6 +20,7 @@ namespace SteeringCS.world
             Width = width;
             Height = height;
             Populate();
+            _grid = new Grid(width, height, _entities);
         }
 
         private void Populate()
