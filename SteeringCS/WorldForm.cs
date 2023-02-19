@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using SteeringCS.behavior;
+using SteeringCS.entity;
 using SteeringCS.util;
 using SteeringCS.world;
 using Timer = System.Timers.Timer;
@@ -9,7 +10,6 @@ namespace SteeringCS
 {
     public partial class WorldForm : Form
     {
-        private const SteeringBehaviorOptions SteeringBehaviorOptionDefault = SteeringBehaviorOptions.IdlingBehavior;
         private World _world;
 
         private const float TimeDelta = 0.8f;
@@ -28,16 +28,6 @@ namespace SteeringCS
             _timer.Elapsed += Timer_Elapsed;
             _timer.Interval = 20;
             _timer.Enabled = true;
-            InitializeSteeringBehaviorSelector();
-        }
-
-        private void InitializeSteeringBehaviorSelector()
-        {
-            foreach (SteeringBehaviorOptions option in Enum.GetValues(typeof(SteeringBehaviorOptions)))
-            {
-                SteeringBehaviorSelector.Items.Add(option);
-            }
-            SteeringBehaviorSelector.SelectedItem = SteeringBehaviorOptionDefault;
         }
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs eventArgs)
@@ -58,64 +48,35 @@ namespace SteeringCS
             dbPanel.Invalidate();
         }
 
-        private void updateIntervalSelector_ValueChanged(object sender, EventArgs e)
+        public void UpdateTimerInterval(int interval)
         {
-            _timer.Interval = (int)UpdateIntervalSelector.Value;
+            _timer.Interval = interval;
         }
 
-        private void pauseButton_Click(object sender, EventArgs e)
+        public bool IsTimerEnabled()
         {
-            if (_timer.Enabled)
-            {
-                pauseButton.Text = "Unpause";
-                nextButton.Enabled = true;
-                _timer.Enabled = false;
-                return;
-            }
+            return _timer.Enabled;
+        }
 
-            pauseButton.Text = "Pause";
-            nextButton.Enabled = false;
+        public void EnableTimer()
+        {
             _timer.Enabled = true;
         }
 
-        private void nextButton_Click(object sender, EventArgs e)
+        public void DisableTimer()
+        {
+            _timer.Enabled = false;
+        }
+
+        public void UpdateWorld()
         {
             _world.Update(TimeDelta);
             dbPanel.Invalidate();
         }
 
-        private void MassSelector_ValueChanged(object sender, EventArgs e)
+        public void UpdateEntityValues(int mass, int maxSpeed, SteeringBehaviorOptions steeringBehaviorOption)
         {
-            UpdateEntityValues();
-        }
-
-        private void MaxSpeedSelector_ValueChanged(object sender, EventArgs e)
-        {
-            UpdateEntityValues();
-        }
-
-        private void SteeringBehaviorSelector_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateEntityValues();
-        }
-
-        private void UpdateEntityValues()
-        {
-            int mass = (int)MassSelector.Value;
-            int maxSpeed = (int)MaxSpeedSelector.Value;
-            SteeringBehaviorOptions steeringBehaviorOption = GetSelectedSteeringBehavior();
             _world.EditPopulation(steeringBehaviorOption, mass, maxSpeed);
-        }
-
-        private SteeringBehaviorOptions GetSelectedSteeringBehavior()
-        {
-            SteeringBehaviorOptions selected = SteeringBehaviorOptions.SeekingBehavior;
-            if (SteeringBehaviorSelector.SelectedItem != null)
-            {
-                selected = (SteeringBehaviorOptions)SteeringBehaviorSelector.SelectedItem;
-            }
-
-            return selected;
         }
     }
 }

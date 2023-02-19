@@ -13,7 +13,8 @@ namespace SteeringCS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WorldForm());
+            WorldForm worldForm = new WorldForm();
+            Application.Run(new MultiFormContext(worldForm, new DebugForm(worldForm)));
         }
     }
 }
