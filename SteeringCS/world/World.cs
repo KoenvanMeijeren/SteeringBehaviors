@@ -54,7 +54,10 @@ namespace SteeringCS.world
         {
             foreach (MovingEntity entity in _entities)
             {
+                Vector2D oldPos = entity.Position.Clone();
                 entity.Update(timeElapsed);
+                Vector2D newPos = entity.Position.Clone();
+                _grid.MoveEntityIfInDifferentTile(oldPos, newPos, entity);
             }
         }
 

@@ -45,25 +45,44 @@ namespace SteeringCS.world
             return (length - 1) / _gridTileSize;
         }
 
-        private void addEntity(MovingEntity entity)
+        private void addEntity(MovingEntity entity, Vector2D position)
         {
-            int TileX = getCoordinateOfTile((int)entity.Position.XPosition);
-            int TileY = getCoordinateOfTile((int)entity.Position.YPosition);
+            int TileX = getCoordinateOfTile((int)position.XPosition);
+            int TileY = getCoordinateOfTile((int)position.YPosition);
 
             _gridTiles[TileX, TileY].AddEntity(entity);
+            Console.WriteLine(TileX + " " + TileY);
+        }
+
+        private void removeEntity(MovingEntity entity, Vector2D position)
+        {
+            int TileX = getCoordinateOfTile((int)position.XPosition);
+            int TileY = getCoordinateOfTile((int)position.YPosition);
+
+            _gridTiles[TileX, TileY].RemoveEntity(entity);
         }
 
         private void addEntities(List<MovingEntity> entities)
         {
             foreach(MovingEntity entity in entities)
             {
-                addEntity(entity);
+                addEntity(entity, entity.Position);
             }
         }
 
         public void MoveEntityIfInDifferentTile(Vector2D oldPos, Vector2D newPos, MovingEntity entity)
         {
-            //TODO
+            int oldTileX = getCoordinateOfTile((int)oldPos.XPosition);
+            int oldTileY = getCoordinateOfTile((int)oldPos.YPosition);
+
+            int newTileX = getCoordinateOfTile((int)newPos.XPosition);
+            int newTileY = getCoordinateOfTile((int)newPos.YPosition);
+
+            if (oldTileX != newTileX || oldTileY != newTileY)
+            {
+                removeEntity(entity, oldPos);
+                addEntity(entity, newPos);
+            }
         }
 
         public void Render(Graphics graphic)
