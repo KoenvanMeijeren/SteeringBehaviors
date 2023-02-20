@@ -1,6 +1,8 @@
 ﻿using SteeringCS.entity;
+using SteeringCS.util;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,21 +14,72 @@ namespace SteeringCS.world
         private int _width;
         private int _height;
         private const int _gridTileSize = 64;
-        private BaseGameEntity[,] _gridContent;
+        private GridTile[,] _gridTiles;
 
-        public Grid(int width, int height)
+        public Grid(int width, int height, List<MovingEntity> entities)
         {
             _width = width;
             _height = height;
-            initializeGridContent();
+            initializeGridTiles();
+            addEntities(entities);
         }
 
-        private void initializeGridContent()
+        private void initializeGridTiles()
         {
-            int AmountOfTilesX = (_width + _gridTileSize - 1) / _gridTileSize;
-            int AmountOfTilesY = (_height + _gridTileSize - 1) / _gridTileSize;
+            int AmountOfTilesX = getCoordinateOfTile(_width) + 1;
+            int AmountOfTilesY = getCoordinateOfTile(_height) + 1;
 
-            _gridContent = new BaseGameEntity[AmountOfTilesX, AmountOfTilesY];
+            _gridTiles = new GridTile[AmountOfTilesX, AmountOfTilesY];
+
+            for (int x = 0; x < _gridTiles.GetLength(0); x++)
+            {
+                for (int y = 0; y < _gridTiles.GetLength(1); y++)
+                {
+                    _gridTiles[x, y] = new GridTile();
+                }
+            }
+        }
+
+        private int getCoordinateOfTile(int length)
+        {
+            return (length - 1) / _gridTileSize;
+        }
+
+        private void addEntity(MovingEntity entity)
+        {
+            int TileX = getCoordinateOfTile((int)entity.Position.XPosition);
+            int TileY = getCoordinateOfTile((int)entity.Position.YPosition);
+
+            _gridTiles[TileX, TileY].AddEntity(entity);
+        }
+
+        private void addEntities(List<MovingEntity> entities)
+        {
+            foreach(MovingEntity entity in entities)
+            {
+                addEntity(entity);
+            }
+        }
+
+        public void MoveEntityIfInDifferentTile(Vector2D oldPos, Vector2D newPos, MovingEntity entity)
+        {
+            //TODO
+        }
+
+        public void Render(Graphics graphic)
+        {
+            Pen pen = new Pen(Color.Fuchsia, 1);
+            Rectangle rectangle = new Rectangle(0, 0, 64, 64);
+
+            for (int x = 0; x < _gridTiles.GetLength(0); x++)
+            {
+                for (int y = 0; y < _gridTiles.GetLength(1); y++)
+                {
+                    rectangle.X = x * _gridTileSize;
+                    rectangle.Y = y * _gridTileSize;
+                    graphic.DrawRectangle(pen, rectangle);
+                }
+            }
         }
     }
 }

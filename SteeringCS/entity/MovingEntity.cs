@@ -49,7 +49,7 @@ namespace SteeringCS.entity
             //treat the screen as a toroid
             //WrapAround(m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient());
 
-            Console.WriteLine(ToString());
+            /*Console.WriteLine(ToString());*/
         }
 
         public void AddSeekingBehavior()

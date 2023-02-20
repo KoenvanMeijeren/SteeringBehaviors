@@ -74,6 +74,7 @@
     <Compile Include="behavior\SteeringBehavior.cs" />
     <Compile Include="util\Vector2D.cs" />
     <Compile Include="world\Grid.cs" />
+    <Compile Include="world\GridTile.cs" />
     <Compile Include="world\World.cs" />
     <EmbeddedResource Include="WorldForm.resx">
       <DependentUpon>WorldForm.cs</DependentUpon>

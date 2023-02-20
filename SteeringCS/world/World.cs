@@ -60,6 +60,7 @@ namespace SteeringCS.world
 
         public void Render(Graphics graphics)
         {
+            _grid.Render(graphics);
             _entities.ForEach(entity => entity.Render(graphics));
             Target.Render(graphics);
         }
