@@ -25,5 +25,10 @@ namespace SteeringCS.world
         {
             _entities.Remove(entity);
         }
+
+        public bool IsEmpty()
+        {
+            return _entities.Count == 0;
+        }
     }
 }

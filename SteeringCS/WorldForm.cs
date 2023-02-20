@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using SteeringCS.behavior;
 using SteeringCS.entity;
@@ -11,6 +12,7 @@ namespace SteeringCS
     public partial class WorldForm : Form
     {
         private World _world;
+        private bool _renderGrid;
 
         private const float TimeDelta = 0.8f;
         private readonly Timer _timer = new Timer();
@@ -38,6 +40,11 @@ namespace SteeringCS
 
         private void dbPanel1_Paint(object sender, PaintEventArgs eventArgs)
         {
+            if (_renderGrid)
+            {
+                _world.RenderGrid(eventArgs.Graphics);
+            }
+
             _world.Render(eventArgs.Graphics);
         }
 
@@ -77,6 +84,16 @@ namespace SteeringCS
         public void UpdateEntityValues(int mass, int maxSpeed, SteeringBehaviorOptions steeringBehaviorOption)
         {
             _world.EditPopulation(steeringBehaviorOption, mass, maxSpeed);
+        }
+
+        public void DisableGridRender()
+        {
+            _renderGrid = false;
+        }
+
+        public void EnableGridRender()
+        {
+            _renderGrid = true;
         }
     }
 }

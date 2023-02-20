@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.ShowGridCheckbox = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.SteeringBehaviorSelector = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,6 +51,8 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.ShowGridCheckbox);
+            this.mainPanel.Controls.Add(this.label6);
             this.mainPanel.Controls.Add(this.label5);
             this.mainPanel.Controls.Add(this.SteeringBehaviorSelector);
             this.mainPanel.Controls.Add(this.label4);
@@ -63,8 +67,29 @@
             this.mainPanel.Controls.Add(this.UpdateIntervalSelector);
             this.mainPanel.Location = new System.Drawing.Point(12, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(260, 216);
+            this.mainPanel.Size = new System.Drawing.Size(260, 317);
             this.mainPanel.TabIndex = 1;
+            // 
+            // ShowGridCheckbox
+            // 
+            this.ShowGridCheckbox.AutoSize = true;
+            this.ShowGridCheckbox.Location = new System.Drawing.Point(0, 256);
+            this.ShowGridCheckbox.Name = "ShowGridCheckbox";
+            this.ShowGridCheckbox.Size = new System.Drawing.Size(62, 20);
+            this.ShowGridCheckbox.TabIndex = 14;
+            this.ShowGridCheckbox.Text = "Show";
+            this.ShowGridCheckbox.UseVisualStyleBackColor = true;
+            this.ShowGridCheckbox.CheckedChanged += new System.EventHandler(this.ShowGridCheckbox_CheckedChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(-3, 232);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(98, 16);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Grid settings:";
             // 
             // label5
             // 
@@ -228,7 +253,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 220);
+            this.ClientSize = new System.Drawing.Size(286, 329);
             this.Controls.Add(this.mainPanel);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DebugForm";
@@ -256,6 +281,8 @@
         private System.Windows.Forms.NumericUpDown MassSelector;
         private System.Windows.Forms.ComboBox SteeringBehaviorSelector;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox ShowGridCheckbox;
     }
 }
 

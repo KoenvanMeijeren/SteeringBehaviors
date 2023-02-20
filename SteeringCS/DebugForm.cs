@@ -17,6 +17,7 @@ namespace SteeringCS
             _worldForm = worldForm;
             InitializeComponent();
             InitializeSteeringBehaviorSelector();
+            Text = pauseButton.Text;
         }
 
         private void InitializeSteeringBehaviorSelector()
@@ -86,6 +87,17 @@ namespace SteeringCS
             }
 
             return selected;
+        }
+
+        private void ShowGridCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ShowGridCheckbox.Checked)
+            {
+                _worldForm.EnableGridRender();
+                return;
+            }
+
+            _worldForm.DisableGridRender();
         }
     }
 }

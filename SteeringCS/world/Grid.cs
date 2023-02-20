@@ -14,6 +14,7 @@ namespace SteeringCS.world
         private int _width;
         private int _height;
         private const int _gridTileSize = 64;
+        private readonly Color _gridColor = Color.SeaGreen;
         private GridTile[,] _gridTiles;
 
         public Grid(int width, int height, List<MovingEntity> entities)
@@ -87,8 +88,9 @@ namespace SteeringCS.world
 
         public void Render(Graphics graphic)
         {
-            Pen pen = new Pen(Color.Fuchsia, 1);
-            Rectangle rectangle = new Rectangle(0, 0, 64, 64);
+            Pen penDefault = new Pen(_gridColor);
+            Pen penActive = new Pen(_gridColor, 3);
+            Rectangle rectangle = new Rectangle(0, 0, _gridTileSize, _gridTileSize);
 
             for (int x = 0; x < _gridTiles.GetLength(0); x++)
             {
@@ -96,7 +98,22 @@ namespace SteeringCS.world
                 {
                     rectangle.X = x * _gridTileSize;
                     rectangle.Y = y * _gridTileSize;
-                    graphic.DrawRectangle(pen, rectangle);
+
+                    graphic.DrawRectangle(penDefault, rectangle);
+                }
+            }
+
+            for (int x = 0; x < _gridTiles.GetLength(0); x++)
+            {
+                for (int y = 0; y < _gridTiles.GetLength(1); y++)
+                {
+                    rectangle.X = x * _gridTileSize;
+                    rectangle.Y = y * _gridTileSize;
+
+                    if (!_gridTiles[x,y].IsEmpty())
+                    {
+                        graphic.DrawRectangle(penActive, rectangle);
+                    }
                 }
             }
         }
