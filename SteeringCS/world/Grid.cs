@@ -99,21 +99,13 @@ namespace SteeringCS.world
                     rectangle.X = x * _gridTileSize;
                     rectangle.Y = y * _gridTileSize;
 
-                    graphic.DrawRectangle(penDefault, rectangle);
-                }
-            }
-
-            for (int x = 0; x < _gridTiles.GetLength(0); x++)
-            {
-                for (int y = 0; y < _gridTiles.GetLength(1); y++)
-                {
-                    rectangle.X = x * _gridTileSize;
-                    rectangle.Y = y * _gridTileSize;
-
                     if (!_gridTiles[x, y].IsEmpty())
                     {
                         graphic.DrawRectangle(penActive, rectangle);
+                        continue;
                     }
+
+                    graphic.DrawRectangle(penDefault, rectangle);
                 }
             }
         }
