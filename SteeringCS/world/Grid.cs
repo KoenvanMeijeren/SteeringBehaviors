@@ -65,7 +65,7 @@ namespace SteeringCS.world
 
         private void addEntities(List<MovingEntity> entities)
         {
-            foreach(MovingEntity entity in entities)
+            foreach (MovingEntity entity in entities)
             {
                 addEntity(entity, entity.Position);
             }
@@ -110,7 +110,7 @@ namespace SteeringCS.world
                     rectangle.X = x * _gridTileSize;
                     rectangle.Y = y * _gridTileSize;
 
-                    if (!_gridTiles[x,y].IsEmpty())
+                    if (!_gridTiles[x, y].IsEmpty())
                     {
                         graphic.DrawRectangle(penActive, rectangle);
                     }
