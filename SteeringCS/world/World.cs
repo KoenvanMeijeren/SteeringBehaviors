@@ -9,6 +9,7 @@ namespace SteeringCS.world
     public class World
     {
         private readonly List<MovingEntity> _entities = new List<MovingEntity>();
+        private Grid _grid;
         public Vehicle Target { get; private set; }
 
         public int Width { get; private set; }
@@ -19,6 +20,7 @@ namespace SteeringCS.world
             Width = width;
             Height = height;
             Populate();
+            _grid = new Grid(width, height, _entities);
         }
 
         private void Populate()
@@ -52,7 +54,10 @@ namespace SteeringCS.world
         {
             foreach (MovingEntity entity in _entities)
             {
+                Vector2D oldPos = entity.Position.Clone();
                 entity.Update(timeElapsed);
+                Vector2D newPos = entity.Position.Clone();
+                _grid.MoveEntityIfInDifferentTile(oldPos, newPos, entity);
             }
         }
 
@@ -60,6 +65,11 @@ namespace SteeringCS.world
         {
             _entities.ForEach(entity => entity.Render(graphics));
             Target.Render(graphics);
+        }
+
+        public void RenderGrid(Graphics graphics)
+        {
+            _grid.Render(graphics);
         }
     }
 }
