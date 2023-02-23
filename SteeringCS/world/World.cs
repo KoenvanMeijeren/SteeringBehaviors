@@ -2,6 +2,7 @@
 using System.Drawing;
 using SteeringCS.behavior;
 using SteeringCS.entity;
+using SteeringCS.graph;
 using SteeringCS.util;
 
 namespace SteeringCS.world
@@ -70,6 +71,16 @@ namespace SteeringCS.world
         public void RenderGrid(Graphics graphics)
         {
             _grid.Render(graphics);
+        }
+
+        public void RenderGridOutline(Graphics graphics)
+        {
+            _grid.RenderOutline(graphics);
+        }
+
+        public void RenderGraph(Graphics graphics)
+        {
+            _grid.RenderGraph(graphics);
         }
     }
 }
