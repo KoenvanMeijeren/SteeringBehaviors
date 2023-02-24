@@ -10,7 +10,7 @@ namespace SteeringCS.grid
 {
     public class WallTile : GridTile
     {
-        private Image image = Image.FromFile("C:\\Users\\jobva\\OneDrive\\Bureaublad\\School\\Leerjaar 3\\AAI\\Week 1\\SteeringBehaviors\\SteeringCS\\grid\\testtile.png");
+        private Image image = Image.FromFile("grid/wall.png");
 
         public WallTile(int size, int x, int y) : base(size, x, y)
         {
