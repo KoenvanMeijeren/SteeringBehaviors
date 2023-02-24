@@ -12,7 +12,11 @@ namespace SteeringCS
     public partial class WorldForm : Form
     {
         private World _world;
+        private const int _worldHeight = 640;
+        private const int _worldWidth = 640;
+
         private bool _renderGrid;
+        private bool _renderGraph;
 
         private const float TimeDelta = 0.8f;
         private readonly Timer _timer = new Timer();
@@ -25,7 +29,14 @@ namespace SteeringCS
 
         private void Initialize()
         {
-            _world = new World(width: dbPanel.Width, height: dbPanel.Height);
+            Width = _worldWidth + 116;
+            Height = _worldHeight + 140;
+
+            dbPanel.Width = _worldWidth;
+            dbPanel.Height = _worldHeight;
+            dbPanel.Location = new Point(50, 50);
+
+            _world = new World(width: _worldWidth, height: _worldHeight);
 
             _timer.Elapsed += Timer_Elapsed;
             _timer.Interval = 20;
@@ -40,9 +51,16 @@ namespace SteeringCS
 
         private void dbPanel1_Paint(object sender, PaintEventArgs eventArgs)
         {
+            _world.RenderGrid(eventArgs.Graphics);
+
             if (_renderGrid)
             {
-                _world.RenderGrid(eventArgs.Graphics);
+                _world.RenderGridOutline(eventArgs.Graphics);
+            }
+
+            if (_renderGraph)
+            {
+                _world.RenderGraph(eventArgs.Graphics);
             }
 
             _world.Render(eventArgs.Graphics);
@@ -94,6 +112,16 @@ namespace SteeringCS
         public void EnableGridRender()
         {
             _renderGrid = true;
+        }
+
+        public void DisableGraphRender()
+        {
+            _renderGraph = false;
+        }
+
+        public void EnableGraphRender()
+        {
+            _renderGraph = true;
         }
     }
 }

@@ -99,5 +99,16 @@ namespace SteeringCS
 
             _worldForm.DisableGridRender();
         }
+
+        private void ShowGraphCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ShowGraphCheckbox.Checked)
+            {
+                _worldForm.EnableGraphRender();
+                return;
+            }
+
+            _worldForm.DisableGraphRender();
+        }
     }
 }

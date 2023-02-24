@@ -37,7 +37,7 @@
             this.dbPanel.Location = new System.Drawing.Point(0, 0);
             this.dbPanel.Margin = new System.Windows.Forms.Padding(4);
             this.dbPanel.Name = "dbPanel";
-            this.dbPanel.Size = new System.Drawing.Size(815, 537);
+            this.dbPanel.Size = new System.Drawing.Size(327, 233);
             this.dbPanel.TabIndex = 0;
             this.dbPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.dbPanel1_Paint);
             this.dbPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dbPanel1_MouseClick);
@@ -46,6 +46,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(816, 537);
             this.Controls.Add(this.dbPanel);
             this.Margin = new System.Windows.Forms.Padding(4);

@@ -43,6 +43,7 @@
             this.pauseButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.UpdateIntervalSelector = new System.Windows.Forms.NumericUpDown();
+            this.ShowGraphCheckbox = new System.Windows.Forms.CheckBox();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxSpeedSelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MassSelector)).BeginInit();
@@ -51,6 +52,7 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.ShowGraphCheckbox);
             this.mainPanel.Controls.Add(this.ShowGridCheckbox);
             this.mainPanel.Controls.Add(this.label6);
             this.mainPanel.Controls.Add(this.label5);
@@ -75,9 +77,9 @@
             this.ShowGridCheckbox.AutoSize = true;
             this.ShowGridCheckbox.Location = new System.Drawing.Point(0, 256);
             this.ShowGridCheckbox.Name = "ShowGridCheckbox";
-            this.ShowGridCheckbox.Size = new System.Drawing.Size(62, 20);
+            this.ShowGridCheckbox.Size = new System.Drawing.Size(88, 20);
             this.ShowGridCheckbox.TabIndex = 14;
-            this.ShowGridCheckbox.Text = "Show";
+            this.ShowGridCheckbox.Text = "Show grid";
             this.ShowGridCheckbox.UseVisualStyleBackColor = true;
             this.ShowGridCheckbox.CheckedChanged += new System.EventHandler(this.ShowGridCheckbox_CheckedChanged);
             // 
@@ -249,6 +251,17 @@
             0});
             this.UpdateIntervalSelector.ValueChanged += new System.EventHandler(this.updateIntervalSelector_ValueChanged);
             // 
+            // ShowGraphCheckbox
+            // 
+            this.ShowGraphCheckbox.AutoSize = true;
+            this.ShowGraphCheckbox.Location = new System.Drawing.Point(117, 256);
+            this.ShowGraphCheckbox.Name = "ShowGraphCheckbox";
+            this.ShowGraphCheckbox.Size = new System.Drawing.Size(100, 20);
+            this.ShowGraphCheckbox.TabIndex = 15;
+            this.ShowGraphCheckbox.Text = "Show graph";
+            this.ShowGraphCheckbox.UseVisualStyleBackColor = true;
+            this.ShowGraphCheckbox.CheckedChanged += new System.EventHandler(this.ShowGraphCheckbox_CheckedChanged);
+            // 
             // DebugForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -283,6 +296,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox ShowGridCheckbox;
+        private System.Windows.Forms.CheckBox ShowGraphCheckbox;
     }
 }
 
