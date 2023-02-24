@@ -36,63 +36,63 @@ namespace SteeringCS.graph
 
         private void createEdgesWithSurroundingVertices(int vertexX, int vertexY)
         {
-            Vertex VertexCurrent = _vertices[vertexX, vertexY];
+            Vertex vertexCurrent = _vertices[vertexX, vertexY];
 
-            Vertex VertexNorth = getVertex(vertexX, vertexY-1);
-            Vertex VertexNorthEast = getVertex(vertexX+1, vertexY-1);
-            Vertex VertexEast = getVertex(vertexX+1, vertexY);
-            Vertex VertexSouthEast = getVertex(vertexX+1, vertexY+1);
-            Vertex VertexSouth = getVertex(vertexX, vertexY+1);
-            Vertex VertexSouthWest = getVertex(vertexX-1, vertexY+1);
-            Vertex VertexWest = getVertex(vertexX-1, vertexY);
-            Vertex VertexNorthWest = getVertex(vertexX-1, vertexY-1);
+            Vertex vertexNorth = getVertex(vertexX, vertexY-1);
+            Vertex vertexNorthEast = getVertex(vertexX+1, vertexY-1);
+            Vertex vertexEast = getVertex(vertexX+1, vertexY);
+            Vertex vertexSouthEast = getVertex(vertexX+1, vertexY+1);
+            Vertex vertexSouth = getVertex(vertexX, vertexY+1);
+            Vertex vertexSouthWest = getVertex(vertexX-1, vertexY+1);
+            Vertex vertexWest = getVertex(vertexX-1, vertexY);
+            Vertex vertexNorthWest = getVertex(vertexX-1, vertexY-1);
 
-            if (VertexNorth != null)
+            if (vertexNorth != null)
             {
-                Edge edge = new Edge(VertexCurrent, VertexNorth);
-                VertexCurrent.AddEdge(edge);
+                Edge edge = new Edge(vertexCurrent, vertexNorth);
+                vertexCurrent.AddEdge(edge);
             }
 
-            if (VertexNorthEast != null && VertexNorth != null && VertexEast != null)
+            if (vertexNorthEast != null && vertexNorth != null && vertexEast != null)
             {
-                Edge edge = new Edge(VertexCurrent, VertexNorthEast);
-                VertexCurrent.AddEdge(edge);
+                Edge edge = new Edge(vertexCurrent, vertexNorthEast);
+                vertexCurrent.AddEdge(edge);
             }
 
-            if (VertexEast != null)
+            if (vertexEast != null)
             {
-                Edge edge = new Edge(VertexCurrent, VertexEast);
-                VertexCurrent.AddEdge(edge);
+                Edge edge = new Edge(vertexCurrent, vertexEast);
+                vertexCurrent.AddEdge(edge);
             }
 
-            if (VertexSouthEast != null && VertexSouth != null && VertexEast != null)
+            if (vertexSouthEast != null && vertexSouth != null && vertexEast != null)
             {
-                Edge edge = new Edge(VertexCurrent, VertexSouthEast);
-                VertexCurrent.AddEdge(edge);
+                Edge edge = new Edge(vertexCurrent, vertexSouthEast);
+                vertexCurrent.AddEdge(edge);
             }
 
-            if (VertexSouth != null)
+            if (vertexSouth != null)
             {
-                Edge edge = new Edge(VertexCurrent, VertexSouth);
-                VertexCurrent.AddEdge(edge);
+                Edge edge = new Edge(vertexCurrent, vertexSouth);
+                vertexCurrent.AddEdge(edge);
             }
 
-            if (VertexSouthWest != null && VertexSouth != null && VertexWest != null)
+            if (vertexSouthWest != null && vertexSouth != null && vertexWest != null)
             {
-                Edge edge = new Edge(VertexCurrent, VertexSouthWest);
-                VertexCurrent.AddEdge(edge);
+                Edge edge = new Edge(vertexCurrent, vertexSouthWest);
+                vertexCurrent.AddEdge(edge);
             }
 
-            if (VertexWest != null)
+            if (vertexWest != null)
             {
-                Edge edge = new Edge(VertexCurrent, VertexWest);
-                VertexWest.AddEdge(edge);
+                Edge edge = new Edge(vertexCurrent, vertexWest);
+                vertexWest.AddEdge(edge);
             }
 
-            if (VertexNorthWest != null && VertexNorth != null && VertexWest != null)
+            if (vertexNorthWest != null && vertexNorth != null && vertexWest != null)
             {
-                Edge edge = new Edge(VertexCurrent, VertexNorthWest);
-                VertexCurrent.AddEdge(edge);
+                Edge edge = new Edge(vertexCurrent, vertexNorthWest);
+                vertexCurrent.AddEdge(edge);
             }
         }
 
