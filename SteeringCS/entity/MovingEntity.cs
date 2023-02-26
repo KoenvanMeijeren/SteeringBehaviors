@@ -142,7 +142,7 @@ namespace SteeringCS.entity
         {
             Vector2D position = Position.Clone();
 
-            World.Grid.AlterVectorToStayOutOfWalls2(position, vector);
+            World.Grid.AlterVectorToStayOutOfWalls(position, vector);
         }
 
         public override string ToString()

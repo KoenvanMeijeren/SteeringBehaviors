@@ -156,71 +156,7 @@ namespace SteeringCS.world
                 addEntity(entity, newPos);
             }
         }
-
         public void AlterVectorToStayOutOfWalls(Vector2D position, Vector2D vector)
-        {
-            Vector2D targetPosition = position.Clone().Add(vector);
-
-            int tileX = getCoordinateOfTile((int)targetPosition.XPosition);
-            int tileY = getCoordinateOfTile((int)targetPosition.YPosition);
-
-            GridTile gridTile = _gridTiles[tileX, tileY];
-
-            if (gridTile == null || !(gridTile is WallTile))
-            {
-                return;
-            }
-
-            WallTile wallTile = (WallTile) gridTile;
-            int wallTileCenterX = wallTile.Position.X + (wallTile._size / 2);
-            int wallTileCenterY = wallTile.Position.Y + (wallTile._size / 2);
-
-            Vector2D centerPositionWall = new Vector2D(wallTileCenterX, wallTileCenterY);
-            Vector2D differenceFromWall = position.Clone().Subtract(centerPositionWall);
-
-            if (differenceFromWall.XPosition < 0 && Math.Abs(differenceFromWall.XPosition) > Math.Abs(differenceFromWall.YPosition))
-            {
-                //Position is to the west of the wall
-                vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
-            }
-
-            else if (differenceFromWall.XPosition > 0 && Math.Abs(differenceFromWall.XPosition) > Math.Abs(differenceFromWall.YPosition))
-            {
-                //Position is to the east of the wall
-                vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile._size));
-            }
-
-            else if(differenceFromWall.YPosition < 0 && Math.Abs(differenceFromWall.YPosition) > Math.Abs(differenceFromWall.XPosition))
-            {
-                //Position is to the north of the wall
-                vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y -1);
-            }
-
-            else if(differenceFromWall.YPosition > 0 && Math.Abs(differenceFromWall.YPosition) > Math.Abs(differenceFromWall.XPosition))
-            {
-                //Position is to the south of the wall
-                vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile._size));
-            }
-
-
-
-            targetPosition = position.Clone().Add(vector);
-
-            tileX = getCoordinateOfTile((int)targetPosition.XPosition);
-            tileY = getCoordinateOfTile((int)targetPosition.YPosition);
-
-            gridTile = _gridTiles[tileX, tileY];
-
-            if (gridTile == null || !(gridTile is WallTile))
-            {
-                return;
-            }
-
-            Console.WriteLine("X:" + vector.XPosition + " Y:" + vector.YPosition);
-            vector.SetYPosition(0);
-        }
-
-        public void AlterVectorToStayOutOfWalls2(Vector2D position, Vector2D vector)
         {
             // Check if target position is in a wall tile
             Vector2D targetPosition = position.Clone().Add(vector);
