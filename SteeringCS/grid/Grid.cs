@@ -47,7 +47,7 @@ namespace SteeringCS.world
             for (int x = 0; x < MaxX; x++)
             {
                 _gridTiles[x, 0] = new WallTile(_gridTileSize, x * _gridTileSize, 0);
-                _gridTiles[x, MaxY - 1] = new WallTile(_gridTileSize, x * _gridTileSize, (MaxY-1) * _gridTileSize);
+                _gridTiles[x, MaxY - 1] = new WallTile(_gridTileSize, x * _gridTileSize, (MaxY - 1) * _gridTileSize);
             }
 
             for (int y = 1; y < MaxY - 1; y++)
@@ -81,7 +81,7 @@ namespace SteeringCS.world
             {
                 for (int y = 0; y < _gridTiles.GetLength(1); y++)
                 {
-                    if (_gridTiles[x,y] == null)
+                    if (_gridTiles[x, y] == null)
                     {
                         _gridTiles[x, y] = new PathTile(_gridTileSize, x * _gridTileSize, y * _gridTileSize);
                     }
@@ -97,7 +97,7 @@ namespace SteeringCS.world
             {
                 for (int y = 0; y < _gridTiles.GetLength(1); y++)
                 {
-                    if (_gridTiles[x,y] is PathTile pathTile)
+                    if (_gridTiles[x, y] is PathTile pathTile)
                     {
                         vertices[x, y] = pathTile.Vertex;
                     }
