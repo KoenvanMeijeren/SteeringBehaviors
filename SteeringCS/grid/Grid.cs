@@ -185,12 +185,14 @@ namespace SteeringCS.world
             double SouthDistanceFromWallTileCenter = position.YPosition - wallTileCenterY + measureBuffer;
             double WestDistanceFromWallTileCenter = wallTileCenterX - position.XPosition + measureBuffer;
 
+            GridTile gridTileNorth = _gridTiles[tileX, tileY - 1];
+            GridTile gridTileEast = _gridTiles[tileX + 1, tileY];
+            GridTile gridTileSouth = _gridTiles[tileX, tileY + 1];
+            GridTile gridTileWest = _gridTiles[tileX - 1, tileY];
+
             // Handle encountering north east corner
             if (NorthDistanceFromWallTileCenter > halfWallTileSize && EastDistanceFromWallTileCenter > halfWallTileSize)
             {
-                GridTile gridTileNorth = _gridTiles[tileX, tileY - 1];
-                GridTile gridTileEast = _gridTiles[tileX + 1, tileY];
-
                 if (gridTileNorth is WallTile && gridTileEast is WallTile)
                 {
                     vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile._size + 1));
@@ -223,9 +225,6 @@ namespace SteeringCS.world
             // Handle encountering south east corner
             if (SouthDistanceFromWallTileCenter > halfWallTileSize && EastDistanceFromWallTileCenter > halfWallTileSize)
             {
-                GridTile gridTileSouth = _gridTiles[tileX, tileY + 1];
-                GridTile gridTileEast = _gridTiles[tileX + 1, tileY];
-
                 if (gridTileSouth is WallTile && gridTileEast is WallTile)
                 {
                     vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile._size + 1));
@@ -258,9 +257,6 @@ namespace SteeringCS.world
             // Handle encountering south west corner
             if (SouthDistanceFromWallTileCenter > halfWallTileSize && WestDistanceFromWallTileCenter > halfWallTileSize)
             {
-                GridTile gridTileSouth = _gridTiles[tileX, tileY + 1];
-                GridTile gridTileWest = _gridTiles[tileX - 1, tileY];
-
                 if (gridTileSouth is WallTile && gridTileWest is WallTile)
                 {
                     vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
@@ -293,9 +289,6 @@ namespace SteeringCS.world
             // Handle encountering north west corner
             if (NorthDistanceFromWallTileCenter > halfWallTileSize && WestDistanceFromWallTileCenter > halfWallTileSize)
             {
-                GridTile gridTileNorth = _gridTiles[tileX, tileY - 1];
-                GridTile gridTileWest = _gridTiles[tileX - 1, tileY];
-
                 if (gridTileNorth is WallTile && gridTileWest is WallTile)
                 {
                     vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
