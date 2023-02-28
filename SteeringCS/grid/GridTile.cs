@@ -13,7 +13,7 @@ namespace SteeringCS.world
 {
     public abstract class GridTile
     {
-        public int _size; 
+        public int _size;
         public Position Position;
 
         public GridTile(int size, int x, int y)
@@ -21,7 +21,7 @@ namespace SteeringCS.world
             _size = size;
             Position = new Position(x, y);
         }
-            
+
         public abstract void Draw(Graphics graphic);
     }
 }

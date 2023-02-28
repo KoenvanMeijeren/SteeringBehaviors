@@ -16,7 +16,7 @@ namespace SteeringCS.grid
         public Vertex Vertex;
         private List<MovingEntity> _entities;
 
-        public PathTile(int size, int x, int y) : base (size, x, y)
+        public PathTile(int size, int x, int y) : base(size, x, y)
         {
             Vertex = new Vertex(x + (size / 2), y + (size / 2));
             _entities = new List<MovingEntity>();

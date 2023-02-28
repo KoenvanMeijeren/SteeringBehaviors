@@ -36,6 +36,7 @@ namespace SteeringCS.entity
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
             AlterVectorToStayInsideOfWorld(Velocity);
+            AlterVectorToStayOutOfWalls(Velocity);
             Position.Add(Velocity.Multiply(timeElapsed));
 
             // ToDo: Find out what the purpose is of this code.
@@ -48,8 +49,6 @@ namespace SteeringCS.entity
 
             //treat the screen as a toroid
             //WrapAround(m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient());
-
-            /*Console.WriteLine(ToString());*/
         }
 
         public void AddSeekingBehavior()
@@ -110,7 +109,7 @@ namespace SteeringCS.entity
             }
         }
 
-        public Vector2D AlterVectorToStayInsideOfWorld(Vector2D vector)
+        public void AlterVectorToStayInsideOfWorld(Vector2D vector)
         {
             Vector2D position = Position.Clone();
             Vector2D targetPosition = position.Add(vector);
@@ -137,8 +136,13 @@ namespace SteeringCS.entity
             {
                 vector.SubtractX(targetPosition.XPosition - maxX);
             }
+        }
 
-            return vector;
+        public void AlterVectorToStayOutOfWalls(Vector2D vector)
+        {
+            Vector2D position = Position.Clone();
+
+            World.Grid.AlterVectorToStayOutOfWalls(position, vector);
         }
 
         public override string ToString()

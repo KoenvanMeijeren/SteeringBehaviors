@@ -47,7 +47,7 @@ namespace SteeringCS.world
             for (int x = 0; x < MaxX; x++)
             {
                 _gridTiles[x, 0] = new WallTile(_gridTileSize, x * _gridTileSize, 0);
-                _gridTiles[x, MaxY - 1] = new WallTile(_gridTileSize, x * _gridTileSize, (MaxY-1) * _gridTileSize);
+                _gridTiles[x, MaxY - 1] = new WallTile(_gridTileSize, x * _gridTileSize, (MaxY - 1) * _gridTileSize);
             }
 
             for (int y = 1; y < MaxY - 1; y++)
@@ -81,7 +81,7 @@ namespace SteeringCS.world
             {
                 for (int y = 0; y < _gridTiles.GetLength(1); y++)
                 {
-                    if (_gridTiles[x,y] == null)
+                    if (_gridTiles[x, y] == null)
                     {
                         _gridTiles[x, y] = new PathTile(_gridTileSize, x * _gridTileSize, y * _gridTileSize);
                     }
@@ -97,7 +97,7 @@ namespace SteeringCS.world
             {
                 for (int y = 0; y < _gridTiles.GetLength(1); y++)
                 {
-                    if (_gridTiles[x,y] is PathTile pathTile)
+                    if (_gridTiles[x, y] is PathTile pathTile)
                     {
                         vertices[x, y] = pathTile.Vertex;
                     }
@@ -120,7 +120,6 @@ namespace SteeringCS.world
             if (_gridTiles[TileX, TileY] is PathTile pathTile)
             {
                 pathTile.AddEntity(entity);
-                Console.WriteLine(TileX + " " + TileY);
             }
         }
 
@@ -157,6 +156,197 @@ namespace SteeringCS.world
                 addEntity(entity, newPos);
             }
         }
+        public void AlterVectorToStayOutOfWalls(Vector2D position, Vector2D vector)
+        {
+            // Check if target position is in a wall tile
+            Vector2D targetPosition = position.Clone().Add(vector);
+
+            int tileX = getCoordinateOfTile((int)targetPosition.XPosition);
+            int tileY = getCoordinateOfTile((int)targetPosition.YPosition);
+
+            GridTile gridTile = _gridTiles[tileX, tileY];
+
+            if (gridTile == null || !(gridTile is WallTile))
+            {
+                return;
+            }
+
+            WallTile wallTile = (WallTile)gridTile;
+
+            // Calculate distance of every direction from center of encountering block
+            int halfWallTileSize = wallTile._size / 2;
+            int measureBuffer = 1;
+
+            int wallTileCenterX = wallTile.Position.X + halfWallTileSize;
+            int wallTileCenterY = wallTile.Position.Y + halfWallTileSize;
+
+            double NorthDistanceFromWallTileCenter = wallTileCenterY - position.YPosition + measureBuffer;
+            double EastDistanceFromWallTileCenter = position.XPosition - wallTileCenterX + measureBuffer;
+            double SouthDistanceFromWallTileCenter = position.YPosition - wallTileCenterY + measureBuffer;
+            double WestDistanceFromWallTileCenter = wallTileCenterX - position.XPosition + measureBuffer;
+
+            GridTile gridTileNorth = _gridTiles[tileX, tileY - 1];
+            GridTile gridTileEast = _gridTiles[tileX + 1, tileY];
+            GridTile gridTileSouth = _gridTiles[tileX, tileY + 1];
+            GridTile gridTileWest = _gridTiles[tileX - 1, tileY];
+
+            // Handle encountering north east corner
+            if (NorthDistanceFromWallTileCenter > halfWallTileSize && EastDistanceFromWallTileCenter > halfWallTileSize)
+            {
+                if (gridTileNorth is WallTile && gridTileEast is WallTile)
+                {
+                    vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile._size + 1));
+                    vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                    return;
+                }
+
+                if (gridTileNorth is WallTile)
+                {
+                    vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile._size + 1));
+                    return;
+                }
+
+                if (gridTileEast is WallTile)
+                {
+                    vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                    return;
+                }
+
+                if (NorthDistanceFromWallTileCenter > EastDistanceFromWallTileCenter)
+                {
+                    vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                    return;
+                }
+
+                vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile._size + 1));
+                return;
+            }
+
+            // Handle encountering south east corner
+            if (SouthDistanceFromWallTileCenter > halfWallTileSize && EastDistanceFromWallTileCenter > halfWallTileSize)
+            {
+                if (gridTileSouth is WallTile && gridTileEast is WallTile)
+                {
+                    vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile._size + 1));
+                    vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile._size + 1));
+                    return;
+                }
+
+                if (gridTileSouth is WallTile)
+                {
+                    vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile._size + 1));
+                    return;
+                }
+
+                if (gridTileEast is WallTile)
+                {
+                    vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile._size + 1));
+                    return;
+                }
+
+                if (SouthDistanceFromWallTileCenter > EastDistanceFromWallTileCenter)
+                {
+                    vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile._size + 1));
+                    return;
+                }
+
+                vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile._size + 1));
+                return;
+            }
+
+            // Handle encountering south west corner
+            if (SouthDistanceFromWallTileCenter > halfWallTileSize && WestDistanceFromWallTileCenter > halfWallTileSize)
+            {
+                if (gridTileSouth is WallTile && gridTileWest is WallTile)
+                {
+                    vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
+                    vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile._size + 1));
+                    return;
+                }
+
+                if (gridTileSouth is WallTile)
+                {
+                    vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
+                    return;
+                }
+
+                if (gridTileWest is WallTile)
+                {
+                    vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile._size + 1));
+                    return;
+                }
+
+                if (SouthDistanceFromWallTileCenter > WestDistanceFromWallTileCenter)
+                {
+                    vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile._size + 1));
+                    return;
+                }
+
+                vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
+                return;
+            }
+
+            // Handle encountering north west corner
+            if (NorthDistanceFromWallTileCenter > halfWallTileSize && WestDistanceFromWallTileCenter > halfWallTileSize)
+            {
+                if (gridTileNorth is WallTile && gridTileWest is WallTile)
+                {
+                    vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
+                    vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                    return;
+                }
+
+                if (gridTileNorth is WallTile)
+                {
+                    vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
+                    return;
+                }
+
+                if (gridTileWest is WallTile)
+                {
+                    vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                    return;
+                }
+
+                if (NorthDistanceFromWallTileCenter > WestDistanceFromWallTileCenter)
+                {
+                    vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                    return;
+                }
+
+                vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
+                return;
+            }
+
+            // Handle encountering north wall
+            if (NorthDistanceFromWallTileCenter > halfWallTileSize)
+            {
+                vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                return;
+            }
+
+            // Handle encountering east wall
+            if (EastDistanceFromWallTileCenter > halfWallTileSize)
+            {
+                vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile._size + 1));
+                return;
+            }
+
+            // Handle encountering south wall
+            if (SouthDistanceFromWallTileCenter > halfWallTileSize)
+            {
+                vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile._size + 1));
+                return;
+            }
+
+            // Handle encountering west wall
+            if (WestDistanceFromWallTileCenter > halfWallTileSize)
+            {
+                vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
+                return;
+            }
+        }
+
 
         public void Render(Graphics graphic)
         {

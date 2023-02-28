@@ -26,7 +26,7 @@ namespace SteeringCS.graph
             {
                 for (int y = 0; y < _vertices.GetLength(1); y++)
                 {
-                    if (_vertices[x,y] != null)
+                    if (_vertices[x, y] != null)
                     {
                         createEdgesWithSurroundingVertices(x, y);
                     }
@@ -38,14 +38,14 @@ namespace SteeringCS.graph
         {
             Vertex vertexCurrent = _vertices[vertexX, vertexY];
 
-            Vertex vertexNorth = getVertex(vertexX, vertexY-1);
-            Vertex vertexNorthEast = getVertex(vertexX+1, vertexY-1);
-            Vertex vertexEast = getVertex(vertexX+1, vertexY);
-            Vertex vertexSouthEast = getVertex(vertexX+1, vertexY+1);
-            Vertex vertexSouth = getVertex(vertexX, vertexY+1);
-            Vertex vertexSouthWest = getVertex(vertexX-1, vertexY+1);
-            Vertex vertexWest = getVertex(vertexX-1, vertexY);
-            Vertex vertexNorthWest = getVertex(vertexX-1, vertexY-1);
+            Vertex vertexNorth = getVertex(vertexX, vertexY - 1);
+            Vertex vertexNorthEast = getVertex(vertexX + 1, vertexY - 1);
+            Vertex vertexEast = getVertex(vertexX + 1, vertexY);
+            Vertex vertexSouthEast = getVertex(vertexX + 1, vertexY + 1);
+            Vertex vertexSouth = getVertex(vertexX, vertexY + 1);
+            Vertex vertexSouthWest = getVertex(vertexX - 1, vertexY + 1);
+            Vertex vertexWest = getVertex(vertexX - 1, vertexY);
+            Vertex vertexNorthWest = getVertex(vertexX - 1, vertexY - 1);
 
             if (vertexNorth != null)
             {
@@ -114,25 +114,25 @@ namespace SteeringCS.graph
         public void Render(Graphics graphic)
         {
             int vertexSize = 1;
-            Pen penVertex = new Pen(_renderColor , 4);
+            Pen penVertex = new Pen(_renderColor, 4);
             Pen penEdge = new Pen(_renderColor);
-            Rectangle rectangle = new Rectangle(0,0, vertexSize, vertexSize);
+            Rectangle rectangle = new Rectangle(0, 0, vertexSize, vertexSize);
 
 
             for (int x = 0; x < _vertices.GetLength(0); x++)
             {
                 for (int y = 0; y < _vertices.GetLength(1); y++)
                 {
-                    if (_vertices[x,y] == null)
+                    if (_vertices[x, y] == null)
                     {
                         continue;
                     }
 
-                    rectangle.X = _vertices[x, y].Position.X - (vertexSize/2);
-                    rectangle.Y = _vertices[x, y].Position.Y - (vertexSize/2);
+                    rectangle.X = _vertices[x, y].Position.X - (vertexSize / 2);
+                    rectangle.Y = _vertices[x, y].Position.Y - (vertexSize / 2);
                     graphic.DrawEllipse(penVertex, rectangle);
 
-                    foreach(Edge edge in _vertices[x, y].Edges)
+                    foreach (Edge edge in _vertices[x, y].Edges)
                     {
                         graphic.DrawLine(penEdge, edge.OwnerVertex.Position.X, edge.OwnerVertex.Position.Y, edge.DestinationVertex.Position.X, edge.DestinationVertex.Position.Y);
                     }
