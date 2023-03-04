@@ -4,484 +4,291 @@ using Src.util;
 
 namespace SteeringCSTests.util
 {
-    public class VectorTests
+    public class VectorImmutableTests
     {
-        [Test]
-        public void Test_CreateEmpty_01_Ok()
+        [TestCase(0, 0, "(0,0)")]
+        [TestCase(3, 4, "(3,4)")]
+        [TestCase(6, 6, "(6,6)")]
+        public void Test_Create_01_Ok(double x, double y, string expectedResult)
         {
-            // Arrange
-            const int ExpectedXPosition = 0;
-            const int ExpectedYPosition = 0;
-
             // Act
-            Vector vector = new Vector(0, 0);
+            VectorImmutable vector = new VectorImmutable(x, y);
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.X);
-            Assert.AreEqual(ExpectedYPosition, vector.Y);
+            Assert.AreEqual(x, vector.X);
+            Assert.AreEqual(Math.Round(x, 2), vector.XRounded);
+            Assert.AreEqual(y, vector.Y);
+            Assert.AreEqual(Math.Round(y, 2), vector.YRounded);
+            Assert.AreEqual(expectedResult, vector.ToString());
         }
 
-        [Test]
-        public void Test_CreateNotEmpty_02_Ok()
+        [TestCase(0, 0, 0)]
+        [TestCase(3, 4, 5.0)]
+        [TestCase(6, 6, 8.4852813742385695d)]
+        public void Test_Length_01_Ok(double x, double y, double expectedResult)
         {
-            // Arrange
-            const int ExpectedXPosition = 4;
-            const int ExpectedYPosition = 5;
-
             // Act
-            Vector vector = new Vector(ExpectedXPosition, ExpectedYPosition);
+            VectorImmutable vector = new VectorImmutable(x, y);
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.X);
-            Assert.AreEqual(ExpectedYPosition, vector.Y);
+            Assert.AreEqual(expectedResult, vector.Length);
         }
-
-        [Test]
-        public void Test_LengthEmpty_01_Ok()
+        
+        [TestCase(0, 0, 0)]
+        [TestCase(3, 4, 25.0)]
+        [TestCase(6, 6, 72.0)]
+        public void Test_LengthSquared_01_Ok(double x, double y, double expectedResult)
         {
-            // Mocked values
-            const int XPosition = 0, YPosition = 0;
-
-            // Arrange
-            const int ExpectedLength = 0;
-
             // Act
-            Vector vector = new Vector(XPosition, YPosition);
+            VectorImmutable vector = new VectorImmutable(x, y);
 
             // Assert
-            Assert.AreEqual(ExpectedLength, vector.Length());
+            Assert.AreEqual(expectedResult, vector.LengthSquared);
         }
 
-        [Test]
-        public void Test_LengthSame_02_Ok()
+        [TestCase(new double[]{0,0}, new double[]{0,0}, "(0,0)")]
+        [TestCase(new double[]{1,2}, new double[]{2,1}, "(3,3)")]
+        [TestCase(new double[]{1,2}, new double[]{3,5}, "(4,7)")]
+        [TestCase(new double[]{-2,2}, new double[]{3,5}, "(1,7)")]
+        public void Test_AddWithVector_01_Ok(double[] leftPositions, double[] rightPositions, string expectedResult)
         {
-            // Mocked values
-            const int XPosition = 6, YPosition = 6;
-
             // Arrange
-            double expectedLength = Math.Sqrt((XPosition * XPosition) + (YPosition * YPosition));
-
+            VectorImmutable left = new VectorImmutable(leftPositions[0], leftPositions[1]);
+            VectorImmutable right = new VectorImmutable(rightPositions[0], rightPositions[1]);
+            
             // Act
-            Vector vector = new Vector(XPosition, YPosition);
+            VectorImmutable result = left + right;
 
             // Assert
-            Assert.AreEqual(expectedLength, vector.Length());
+            Assert.AreEqual(expectedResult, result.ToString());
         }
-
-        [Test]
-        public void Test_LengthDifferent_03_Ok()
+        
+        [TestCase(new double[]{0,0}, 0, 0, "(0,0)")]
+        [TestCase(new double[]{0,0}, 0, 2, "(0,2)")]
+        [TestCase(new double[]{1,2}, 3, 4, "(4,6)")]
+        [TestCase(new double[]{1,2}, 3, 3, "(4,5)")]
+        [TestCase(new double[]{-2,2}, 4, 4, "(2,6)")]
+        public void Test_AddWithValues_01_Ok(double[] leftPositions, double leftValue, double rightValue, string expectedResult)
         {
-            // Mocked values
-            const int XPosition = 4, YPosition = 6;
-
             // Arrange
-            double expectedLength = Math.Sqrt((XPosition * XPosition) + (YPosition * YPosition));
-
+            VectorImmutable vector = new VectorImmutable(leftPositions[0], leftPositions[1]);
+            
             // Act
-            Vector vector = new Vector(XPosition, YPosition);
+            VectorImmutable resultWithMethod = vector.Add(leftValue, rightValue);
 
             // Assert
-            Assert.AreEqual(expectedLength, vector.Length());
+            Assert.AreEqual(expectedResult, resultWithMethod.ToString());
         }
-
-        [Test]
-        public void Test_LengthSquaredEmpty_01_Ok()
+        
+        [TestCase(new double[]{0,0}, 0, "(0,0)")]
+        [TestCase(new double[]{1,2}, 3, "(4,5)")]
+        [TestCase(new double[]{-2,2}, 4,  "(2,6)")]
+        public void Test_AddWithValue_01_Ok(double[] leftPositions, double value, string expectedResult)
         {
-            // Mocked values
-            const int XPosition = 0, YPosition = 0;
-
             // Arrange
-            const double ExpectedLength = (XPosition * XPosition) + (YPosition * YPosition);
-
+            VectorImmutable vector = new VectorImmutable(leftPositions[0], leftPositions[1]);
+            
             // Act
-            Vector vector = new Vector(XPosition, YPosition);
+            VectorImmutable resultWithValueRight = vector + value;
+            VectorImmutable resultWithValueLeft = value + vector;
 
             // Assert
-            Assert.AreEqual(ExpectedLength, vector.LengthSquared());
+            Assert.AreEqual(expectedResult, resultWithValueRight.ToString());
+            Assert.AreEqual(expectedResult, resultWithValueLeft.ToString());
         }
-
-        [Test]
-        public void Test_LengthSquaredSame_02_Ok()
+               
+        [TestCase(new double[]{0,0}, new double[]{0,0}, "(0,0)")]
+        [TestCase(new double[]{3,2}, new double[]{2,1}, "(1,1)")]
+        [TestCase(new double[]{4,2}, new double[]{3,5}, "(1,-3)")]
+        [TestCase(new double[]{-2,2}, new double[]{3,5}, "(-5,-3)")]
+        public void Test_SubtractWithVector_01_Ok(double[] leftPositions, double[] rightPositions, string expectedResult)
         {
-            // Mocked values
-            const int XPosition = 6, YPosition = 6;
-
             // Arrange
-            const double ExpectedLength = (XPosition * XPosition) + (YPosition * YPosition);
-
+            VectorImmutable left = new VectorImmutable(leftPositions[0], leftPositions[1]);
+            VectorImmutable right = new VectorImmutable(rightPositions[0], rightPositions[1]);
+            
             // Act
-            Vector vector = new Vector(XPosition, YPosition);
+            VectorImmutable result = left - right;
 
             // Assert
-            Assert.AreEqual(ExpectedLength, vector.LengthSquared());
+            Assert.AreEqual(expectedResult, result.ToString());
         }
-
-        [Test]
-        public void Test_LengthSquaredDifferent_03_Ok()
+        
+        [TestCase(new double[]{0,0}, 0, 0, "(0,0)")]
+        [TestCase(new double[]{0,0}, 0, 2, "(0,-2)")]
+        [TestCase(new double[]{5,2}, 3, 4, "(2,-2)")]
+        [TestCase(new double[]{5,2}, 3, 3, "(2,-1)")]
+        [TestCase(new double[]{6,2}, 4, 4, "(2,-2)")]
+        public void Test_SubtractWithValues_01_Ok(double[] leftPositions, double leftValue, double rightValue, string expectedResult)
         {
-            // Mocked values
-            const int XPosition = 4, YPosition = 6;
-
             // Arrange
-            const double ExpectedLength = (XPosition * XPosition) + (YPosition * YPosition);
-
+            VectorImmutable vector = new VectorImmutable(leftPositions[0], leftPositions[1]);
+            
             // Act
-            Vector vector = new Vector(XPosition, YPosition);
+            VectorImmutable resultWithMethod = vector.Subtract(leftValue, rightValue);
 
             // Assert
-            Assert.AreEqual(ExpectedLength, vector.LengthSquared());
+            Assert.AreEqual(expectedResult, resultWithMethod.ToString());
         }
-
-        [Test]
-        public void Test_AddEmpty_01_Ok()
+        
+        [TestCase(new double[]{0,0}, 0, "(0,0)")]
+        [TestCase(new double[]{6,2}, 3, "(3,-1)")]
+        [TestCase(new double[]{-2,2}, 4,  "(-6,-2)")]
+        public void Test_SubtractWithValue_01_Ok(double[] leftPositions, double value, string expectedResult)
         {
-            // Mocked values
-            const int XPosition = 0,
-                YPosition = 0,
-                AddXPosition = 0,
-                AddYPosition = 0;
-
-            const int ExpectedXPosition = XPosition + AddXPosition;
-            const int ExpectedYPosition = YPosition + AddYPosition;
-
             // Arrange
-            Vector vector = new Vector(XPosition, YPosition);
-            Vector vectorToAdd = new Vector(AddXPosition, AddYPosition);
-
+            VectorImmutable vector = new VectorImmutable(leftPositions[0], leftPositions[1]);
+            
             // Act
-            vector.Add(vectorToAdd);
+            VectorImmutable resultWithValueRight = vector - value;
+            VectorImmutable resultWithValueLeft = value - vector;
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.X);
-            Assert.AreEqual(ExpectedYPosition, vector.Y);
+            Assert.AreEqual(expectedResult, resultWithValueRight.ToString());
+            Assert.AreEqual(expectedResult, resultWithValueLeft.ToString());
         }
-
-        [Test]
-        public void Test_AddDifferent_02_Ok()
+        
+        [TestCase(new double[]{0,0}, new double[]{0,0}, "(0,0)")]
+        [TestCase(new double[]{3,2}, new double[]{2,1}, "(6,2)")]
+        [TestCase(new double[]{4,2}, new double[]{3,5}, "(12,10)")]
+        [TestCase(new double[]{-2,2}, new double[]{3,5}, "(-6,10)")]
+        public void Test_MultiplyWithVector_01_Ok(double[] leftPositions, double[] rightPositions, string expectedResult)
         {
-            // Mocked values
-            const int XPosition = 1,
-                YPosition = 2,
-                AddXPosition = 3,
-                AddYPosition = 5;
-
-            const int ExpectedXPosition = XPosition + AddXPosition;
-            const int ExpectedYPosition = YPosition + AddYPosition;
-
             // Arrange
-            Vector vector = new Vector(XPosition, YPosition);
-            Vector vectorToAdd = new Vector(AddXPosition, AddYPosition);
-
+            VectorImmutable left = new VectorImmutable(leftPositions[0], leftPositions[1]);
+            VectorImmutable right = new VectorImmutable(rightPositions[0], rightPositions[1]);
+            
             // Act
-            vector.Add(vectorToAdd);
+            VectorImmutable result = left * right;
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.X);
-            Assert.AreEqual(ExpectedYPosition, vector.Y);
+            Assert.AreEqual(expectedResult, result.ToString());
         }
-
-        [Test]
-        public void Test_AddSame_03_Ok()
+        
+        [TestCase(new double[]{0,0}, 0, 0, "(0,0)")]
+        [TestCase(new double[]{0,0}, 0, 2, "(0,0)")]
+        [TestCase(new double[]{5,2}, 3, 4, "(15,8)")]
+        [TestCase(new double[]{5,2}, 3, 3, "(15,6)")]
+        [TestCase(new double[]{6,2}, 4, 4, "(24,8)")]
+        public void Test_MultiplyWithValues_01_Ok(double[] leftPositions, double leftValue, double rightValue, string expectedResult)
         {
-            // Mocked values
-            const int XPosition = 2,
-                YPosition = 2,
-                AddXPosition = 2,
-                AddYPosition = 2;
-
-            const int ExpectedXPosition = XPosition + AddXPosition;
-            const int ExpectedYPosition = YPosition + AddYPosition;
-
             // Arrange
-            Vector vector = new Vector(XPosition, YPosition);
-            Vector vectorToAdd = new Vector(AddXPosition, AddYPosition);
-
+            VectorImmutable vector = new VectorImmutable(leftPositions[0], leftPositions[1]);
+            
             // Act
-            vector.Add(vectorToAdd);
+            VectorImmutable resultWithMethod = vector.Multiply(leftValue, rightValue);
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.X);
-            Assert.AreEqual(ExpectedYPosition, vector.Y);
+            Assert.AreEqual(expectedResult, resultWithMethod.ToString());
         }
-
-        [Test]
-        public void Test_AddNegative_04_Ok()
+        
+        [TestCase(new double[]{0,0}, 0, "(0,0)")]
+        [TestCase(new double[]{2,2}, 3, "(6,6)")]
+        [TestCase(new double[]{-2,2}, 4,  "(-8,8)")]
+        public void Test_MultiplyWithValue_01_Ok(double[] leftPositions, double value, string expectedResult)
         {
-            // Mocked values
-            const int XPosition = 2,
-                YPosition = 2,
-                AddXPosition = -3,
-                AddYPosition = 5;
-
-            const int ExpectedXPosition = XPosition + AddXPosition;
-            const int ExpectedYPosition = YPosition + AddYPosition;
-
             // Arrange
-            Vector vector = new Vector(XPosition, YPosition);
-            Vector vectorToAdd = new Vector(AddXPosition, AddYPosition);
-
+            VectorImmutable vector = new VectorImmutable(leftPositions[0], leftPositions[1]);
+            
             // Act
-            vector.Add(vectorToAdd);
+            VectorImmutable resultWithValueRight = vector * value;
+            VectorImmutable resultWithValueLeft = value * vector;
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.X);
-            Assert.AreEqual(ExpectedYPosition, vector.Y);
+            Assert.AreEqual(expectedResult, resultWithValueRight.ToString());
+            Assert.AreEqual(expectedResult, resultWithValueLeft.ToString());
         }
-
-        [Test]
-        public void Test_SubtractEmpty_01_Ok()
+        
+        [TestCase(new double[]{9,18}, 3, "(27,54)")]
+        [TestCase(new double[]{8,4}, 2, "(16,8)")]
+        public void Test_DivideWithValue_01_Ok(double[] leftPositions, double value, string expectedResult)
         {
-            // Mocked values
-            const int XPosition = 0,
-                YPosition = 0,
-                AddXPosition = 0,
-                AddYPosition = 0;
-
-            const int ExpectedXPosition = XPosition + AddXPosition;
-            const int ExpectedYPosition = YPosition + AddYPosition;
-
             // Arrange
-            Vector vector = new Vector(XPosition, YPosition);
-            Vector vectorToSubtract = new Vector(AddXPosition, AddYPosition);
-
+            VectorImmutable vector = new VectorImmutable(leftPositions[0], leftPositions[1]);
+            
             // Act
-            vector.Subtract(vectorToSubtract);
+            VectorImmutable resultWithValueRight = vector * value;
+            VectorImmutable resultWithValueLeft = value * vector;
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.X);
-            Assert.AreEqual(ExpectedYPosition, vector.Y);
+            Assert.AreEqual(expectedResult, resultWithValueRight.ToString());
+            Assert.AreEqual(expectedResult, resultWithValueLeft.ToString());
         }
 
-        [Test]
-        public void Test_SubtractDifferent_02_Ok()
+        [TestCase(0, 0, 0)]
+        [TestCase(0, 0, 3)]
+        [TestCase(0, 4, 3)]
+        [TestCase(5, 4, 0)]
+        public void Test_DivideWithValue_02_ThrowsExceptionOnDivideByZero(double x, double y, double divider)
         {
-            // Mocked values
-            const int XPosition = 1,
-                YPosition = 2,
-                SubtractXPosition = 3,
-                SubtractYPosition = 5;
-
-            const int ExpectedXPosition = XPosition - SubtractXPosition;
-            const int ExpectedYPosition = YPosition - SubtractYPosition;
-
             // Arrange
-            Vector vector = new Vector(XPosition, YPosition);
-            Vector vectorToSubtract = new Vector(SubtractXPosition, SubtractYPosition);
-
-            // Act
-            vector.Subtract(vectorToSubtract);
-
-            // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.X);
-            Assert.AreEqual(ExpectedYPosition, vector.Y);
-        }
-
-        [Test]
-        public void Test_SubtractSame_03_Ok()
-        {
-            // Mocked values
-            const int XPosition = 2,
-                YPosition = 2,
-                SubtractXPosition = 2,
-                SubtractYPosition = 2;
-
-            const int ExpectedXPosition = XPosition - SubtractXPosition;
-            const int ExpectedYPosition = YPosition - SubtractYPosition;
-
-            // Arrange
-            Vector vector = new Vector(XPosition, YPosition);
-            Vector vectorToSubtract = new Vector(SubtractXPosition, SubtractYPosition);
-
-            // Act
-            vector.Subtract(vectorToSubtract);
-
-            // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.X);
-            Assert.AreEqual(ExpectedYPosition, vector.Y);
-        }
-
-        [Test]
-        public void Test_SubtractNegative_04_Ok()
-        {
-            // Mocked values
-            const int EastPosition = 2,
-                NorthPosition = 2,
-                SubtractEastPosition = -3,
-                SubtractNorthPosition = 5;
-
-            const int ExpectedEastPosition = EastPosition - SubtractEastPosition;
-            const int ExpectedNorthPosition = NorthPosition - SubtractNorthPosition;
-
-            // Arrange
-            Vector vector = new Vector(EastPosition, NorthPosition);
-            Vector vectorToSubtract = new Vector(SubtractEastPosition, SubtractNorthPosition);
-
-            // Act
-            vector.Subtract(vectorToSubtract);
-
-            // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.X);
-            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
-        }
-
-        [Test]
-        public void Test_MultiplyEmpty_01_Ok()
-        {
-            // Mocked values
-            const int EastPosition = 0,
-                NorthPosition = 0,
-                MultipleValue = 0;
-
-            const int ExpectedEastPosition = EastPosition * MultipleValue;
-            const int ExpectedNorthPosition = NorthPosition * MultipleValue;
-
-            // Arrange
-            Vector vector = new Vector(EastPosition, NorthPosition);
-
-            // Act
-            vector.Multiply(MultipleValue);
-
-            // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.X);
-            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
-        }
-
-        [Test]
-        public void Test_Multiply_02_Ok()
-        {
-            // Mocked values
-            const int EastPosition = 2,
-                NorthPosition = 1,
-                MultipleValue = 2;
-
-            const int ExpectedEastPosition = EastPosition * MultipleValue;
-            const int ExpectedNorthPosition = NorthPosition * MultipleValue;
-
-            // Arrange
-            Vector vector = new Vector(EastPosition, NorthPosition);
-
-            // Act
-            vector.Multiply(MultipleValue);
-
-            // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.X);
-            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
-        }
-
-        [Test]
-        public void Test_DivideEmpty_01_ThrowsExceptionOnDivideByZero()
-        {
-            // Mocked values
-            const int EastPosition = 0,
-                NorthPosition = 0,
-                DivideValue = 0;
-
-            // Arrange
-            Vector vector = new Vector(EastPosition, NorthPosition);
+            VectorImmutable vector = new VectorImmutable(x, y);
 
             // Act & assert
-            Assert.Throws<ArithmeticException>(() => vector.Divide(DivideValue));
+            Assert.Throws<ArithmeticException>(() =>
+            {
+                VectorImmutable result = vector / divider;
+            });
         }
-
-        [Test]
-        public void Test_DivideEmptyVectorWithNonEmptyDivideValue_02_Ok()
+        
+        [TestCase(new double[]{9,18}, 3, 4, "(3,4.5)")]
+        [TestCase(new double[]{8,4}, 2, 1, "(4,4)")]
+        public void Test_DivideWithValues_01_Ok(double[] leftPositions, double dividerX, double dividerY, string expectedResult)
         {
-            // Mocked values
-            const int EastPosition = 0,
-                NorthPosition = 0,
-                DivideValue = 2;
-
             // Arrange
-            Vector vector = new Vector(EastPosition, NorthPosition);
+            VectorImmutable vector = new VectorImmutable(leftPositions[0], leftPositions[1]);
+            
+            // Act
+            VectorImmutable result = vector.Divide(dividerX, dividerY);
+
+            // Assert
+            Assert.AreEqual(expectedResult, result.ToString());
+        }
+        
+        [TestCase(0, 0, 0, 0)]
+        [TestCase(0, 0, 3, 0)]
+        [TestCase(0, 0, 0, 3)]
+        [TestCase(0, 4, 3, 3)]
+        [TestCase(5, 4, 0, 0)]
+        public void Test_DivideWithValues_02_ThrowsExceptionOnDivideByZero(double x, double y, double dividerX, double dividerY)
+        {
+            // Arrange
+            VectorImmutable vector = new VectorImmutable(x, y);
 
             // Act & assert
-            vector.Divide(DivideValue);
+            Assert.Throws<ArithmeticException>(() => vector.Divide(dividerX, dividerY));
         }
 
-        [Test]
-        public void Test_Divide_02_Ok()
+        [TestCase(0, 0, "(0,0)")]
+        [TestCase(2, 2, "(5.66,5.66)")]
+        public void Test_Normalize_01_Ok(double x, double y, string expectedResult)
         {
-            // Mocked values
-            const int EastPosition = 2,
-                NorthPosition = 1,
-                MultipleValue = 2;
-
-            const int ExpectedEastPosition = EastPosition * MultipleValue;
-            const int ExpectedNorthPosition = NorthPosition * MultipleValue;
-
             // Arrange
-            Vector vector = new Vector(EastPosition, NorthPosition);
+            VectorImmutable vector = new VectorImmutable(x, y);
 
             // Act
-            vector.Multiply(MultipleValue);
+            VectorImmutable result = vector.Normalize();
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.X);
-            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
+            Assert.AreEqual(expectedResult, result.ToString());
         }
-
-        [Test]
-        public void Test_NormalizeEmpty_01_Ok()
+        
+        [TestCase(0, 0, 0, "(0,0)")]
+        [TestCase(2, 2, 1, "(5.66,5.66)")]
+        public void Test_Truncate_01_Ok(double x, double y, double maxValue, string expectedResult)
         {
-            // Mocked values
-            const int EastPosition = 0,
-                NorthPosition = 0,
-                ExpectedEastPosition = 0,
-                ExpectedNorthPosition = 0;
-
             // Arrange
-            Vector vector = new Vector(EastPosition, NorthPosition);
+            VectorImmutable vector = new VectorImmutable(x, y);
 
             // Act
-            vector.Normalize();
+            VectorImmutable result = vector.Truncate(maxValue);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.X);
-            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
+            Assert.AreEqual(expectedResult, result.ToString());
         }
 
         [Test]
-        public void Test_Normalize_02_Ok()
-        {
-            // Mocked values
-            const int EastPosition = 2,
-                NorthPosition = 2;
-            const double ExpectedEastPosition = 0.70710678118654746d,
-                ExpectedNorthPosition = 0.70710678118654746d;
-
-            // Arrange
-            Vector vector = new Vector(EastPosition, NorthPosition);
-
-            // Act
-            vector.Normalize();
-
-            // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.X);
-            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
-        }
-
-        [Test]
-        public void Test_TruncateEmpty_01_Ok()
-        {
-            // Mocked values
-            const int EastPosition = 0,
-                NorthPosition = 0,
-                ExpectedEastPosition = 0,
-                ExpectedNorthPosition = 0;
-
-            // Arrange
-            Vector vector = new Vector(EastPosition, NorthPosition);
-
-            // Act
-            vector.Truncate(0);
-
-            // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.X);
-            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
-        }
-
-        [Test]
-        public void Test_Truncate_01_DoesNotExecuteWhenLengthIsBelowMax()
+        public void Test_Truncate_02_DoesNotExecuteWhenLengthIsBelowMax()
         {
             // Mocked values
             const int EastPosition = 2,
@@ -490,10 +297,10 @@ namespace SteeringCSTests.util
                 ExpectedNorthPosition = 2;
 
             // Arrange
-            Vector vector = new Vector(EastPosition, NorthPosition);
+            VectorImmutable vector = new VectorImmutable(EastPosition, NorthPosition);
 
             // Act
-            double length = vector.Length();
+            double length = vector.Length;
             vector.Truncate(length + 1);
 
             // Assert
@@ -507,49 +314,19 @@ namespace SteeringCSTests.util
             // Mocked values
             const int EastPosition = 2,
                 NorthPosition = 2;
-            const double ExpectedEastPosition = 1.2928932188134525d,
-                ExpectedNorthPosition = 1.2928932188134525d;
+            const double ExpectedEastPosition = 2.0d,
+                ExpectedNorthPosition = 2.0d;
 
             // Arrange
-            Vector vector = new Vector(EastPosition, NorthPosition);
+            VectorImmutable vector = new VectorImmutable(EastPosition, NorthPosition);
 
             // Act
-            double length = vector.Length();
+            double length = vector.Length;
             vector.Truncate(length - 1);
 
             // Assert
             Assert.AreEqual(ExpectedEastPosition, vector.X);
             Assert.AreEqual(ExpectedNorthPosition, vector.Y);
-        }
-
-        [Test]
-        public void Test_Clone_01_Ok()
-        {
-            // Arrange
-            const int ExpectedEastPosition = 0;
-            const int ExpectedNorthPosition = 0;
-
-            // Act
-            Vector vector = new Vector(0, 0);
-            Vector newVector = vector.Clone();
-            newVector.Multiply(2);
-
-            // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.X);
-            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
-        }
-
-        [Test]
-        public void Test_ToString_01_Ok()
-        {
-            // Arrange
-            const string ExpectedString = "(0,0)";
-
-            // Act
-            Vector vector = new Vector(0, 0);
-
-            // Assert
-            Assert.AreEqual(ExpectedString, vector.ToString());
         }
     }
 }
