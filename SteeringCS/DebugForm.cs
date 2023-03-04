@@ -10,7 +10,7 @@ namespace SteeringCS
     public partial class DebugForm : Form
     {
         private const SteeringBehaviorOptions SteeringBehaviorOptionDefault = SteeringBehaviorOptions.IdlingBehavior;
-        WorldForm _worldForm;
+        private readonly WorldForm _worldForm;
 
         public DebugForm(WorldForm worldForm)
         {

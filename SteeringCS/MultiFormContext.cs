@@ -10,10 +10,9 @@ namespace SteeringCS
 {
     public class MultiFormContext : ApplicationContext
     {
-        private int openForms;
         public MultiFormContext(params Form[] forms)
         {
-            openForms = forms.Length;
+            int openForms = forms.Length;
 
             foreach (Form form in forms)
             {
@@ -22,7 +21,9 @@ namespace SteeringCS
                     //When we have closed the last of the "starting" forms, 
                     //end the program.
                     if (Interlocked.Decrement(ref openForms) == 0)
+                    {
                         ExitThread();
+                    }
                 };
 
                 form.Show();

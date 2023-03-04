@@ -1,24 +1,16 @@
-﻿using SteeringCS.entity;
-using SteeringCS.graph;
-using SteeringCS.grid;
+﻿using System.Drawing;
 using SteeringCS.util;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SteeringCS.world
+namespace SteeringCS.grid
 {
     public abstract class GridTile
     {
-        public int _size;
-        public Position Position;
+        public readonly int Size;
+        public readonly Position Position;
 
-        public GridTile(int size, int x, int y)
+        protected GridTile(int size, int x, int y)
         {
-            _size = size;
+            Size = size;
             Position = new Position(x, y);
         }
 

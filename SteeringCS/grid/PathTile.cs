@@ -13,8 +13,8 @@ namespace SteeringCS.grid
 {
     public class PathTile : GridTile
     {
-        public Vertex Vertex;
-        private List<MovingEntity> _entities;
+        public readonly Vertex Vertex;
+        private readonly List<MovingEntity> _entities;
 
         public PathTile(int size, int x, int y) : base(size, x, y)
         {
@@ -39,9 +39,9 @@ namespace SteeringCS.grid
 
         public override void Draw(Graphics graphic)
         {
-            Brush Brush = new SolidBrush(Color.AliceBlue);
-            Rectangle rectangle = new Rectangle(Position.X, Position.Y, _size, _size);
-            graphic.FillRectangle(Brush, rectangle);
+            Brush brush = new SolidBrush(Color.AliceBlue);
+            Rectangle rectangle = new Rectangle(Position.X, Position.Y, Size, Size);
+            graphic.FillRectangle(brush, rectangle);
         }
     }
 }

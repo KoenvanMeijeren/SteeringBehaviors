@@ -12,8 +12,8 @@ namespace SteeringCS
     public partial class WorldForm : Form
     {
         private World _world;
-        private const int _worldHeight = 640;
-        private const int _worldWidth = 640;
+        private const int WorldHeight = 640;
+        private const int WorldWidth = 640;
 
         private bool _renderGrid;
         private bool _renderGraph;
@@ -29,14 +29,14 @@ namespace SteeringCS
 
         private void Initialize()
         {
-            Width = _worldWidth + 116;
-            Height = _worldHeight + 140;
+            Width = WorldWidth + 116;
+            Height = WorldHeight + 140;
 
-            dbPanel.Width = _worldWidth;
-            dbPanel.Height = _worldHeight;
+            dbPanel.Width = WorldWidth;
+            dbPanel.Height = WorldHeight;
             dbPanel.Location = new Point(50, 50);
 
-            _world = new World(width: _worldWidth, height: _worldHeight);
+            _world = new World(width: WorldWidth, height: WorldHeight);
 
             _timer.Elapsed += Timer_Elapsed;
             _timer.Interval = 20;

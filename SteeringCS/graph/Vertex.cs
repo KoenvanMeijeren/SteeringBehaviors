@@ -9,8 +9,8 @@ namespace SteeringCS.graph
 {
     public class Vertex
     {
-        public Position Position;
-        public LinkedList<Edge> Edges;
+        public readonly Position Position;
+        public readonly LinkedList<Edge> Edges;
 
         public Vertex(int x, int y)
         {

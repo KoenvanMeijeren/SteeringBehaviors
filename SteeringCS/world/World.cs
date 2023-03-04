@@ -3,6 +3,7 @@ using System.Drawing;
 using SteeringCS.behavior;
 using SteeringCS.entity;
 using SteeringCS.graph;
+using SteeringCS.grid;
 using SteeringCS.util;
 
 namespace SteeringCS.world
@@ -10,7 +11,7 @@ namespace SteeringCS.world
     public class World
     {
         private readonly List<MovingEntity> _entities = new List<MovingEntity>();
-        public Grid Grid;
+        public Grid _grid;
         public Vehicle Target { get; private set; }
 
         public int Width { get; private set; }
@@ -21,7 +22,7 @@ namespace SteeringCS.world
             Width = width;
             Height = height;
             Populate();
-            Grid = new Grid(width, height, _entities);
+            _grid = new Grid(width, height, _entities);
         }
 
         private void Populate()
@@ -58,7 +59,7 @@ namespace SteeringCS.world
                 Vector2D oldPos = entity.Position.Clone();
                 entity.Update(timeElapsed);
                 Vector2D newPos = entity.Position.Clone();
-                Grid.MoveEntityIfInDifferentTile(oldPos, newPos, entity);
+                _grid.MoveEntityIfInDifferentTile(oldPos, newPos, entity);
             }
         }
 
@@ -70,17 +71,17 @@ namespace SteeringCS.world
 
         public void RenderGrid(Graphics graphics)
         {
-            Grid.Render(graphics);
+            _grid.Render(graphics);
         }
 
         public void RenderGridOutline(Graphics graphics)
         {
-            Grid.RenderOutline(graphics);
+            _grid.RenderOutline(graphics);
         }
 
         public void RenderGraph(Graphics graphics)
         {
-            Grid.RenderGraph(graphics);
+            _grid.RenderGraph(graphics);
         }
     }
 }

@@ -11,16 +11,16 @@ namespace SteeringCS.graph
 {
     public class Graph
     {
-        Vertex[,] _vertices;
+        private readonly Vertex[,] _vertices;
         private readonly Color _renderColor = Color.IndianRed;
 
         public Graph(Vertex[,] vertices)
         {
             _vertices = vertices;
-            initializeEdges();
+            InitializeEdges();
         }
 
-        private void initializeEdges()
+        private void InitializeEdges()
         {
             for (int x = 0; x < _vertices.GetLength(0); x++)
             {
@@ -28,24 +28,24 @@ namespace SteeringCS.graph
                 {
                     if (_vertices[x, y] != null)
                     {
-                        createEdgesWithSurroundingVertices(x, y);
+                        CreateEdgesWithSurroundingVertices(x, y);
                     }
                 }
             }
         }
 
-        private void createEdgesWithSurroundingVertices(int vertexX, int vertexY)
+        private void CreateEdgesWithSurroundingVertices(int vertexX, int vertexY)
         {
             Vertex vertexCurrent = _vertices[vertexX, vertexY];
 
-            Vertex vertexNorth = getVertex(vertexX, vertexY - 1);
-            Vertex vertexNorthEast = getVertex(vertexX + 1, vertexY - 1);
-            Vertex vertexEast = getVertex(vertexX + 1, vertexY);
-            Vertex vertexSouthEast = getVertex(vertexX + 1, vertexY + 1);
-            Vertex vertexSouth = getVertex(vertexX, vertexY + 1);
-            Vertex vertexSouthWest = getVertex(vertexX - 1, vertexY + 1);
-            Vertex vertexWest = getVertex(vertexX - 1, vertexY);
-            Vertex vertexNorthWest = getVertex(vertexX - 1, vertexY - 1);
+            Vertex vertexNorth = GetVertex(vertexX, vertexY - 1);
+            Vertex vertexNorthEast = GetVertex(vertexX + 1, vertexY - 1);
+            Vertex vertexEast = GetVertex(vertexX + 1, vertexY);
+            Vertex vertexSouthEast = GetVertex(vertexX + 1, vertexY + 1);
+            Vertex vertexSouth = GetVertex(vertexX, vertexY + 1);
+            Vertex vertexSouthWest = GetVertex(vertexX - 1, vertexY + 1);
+            Vertex vertexWest = GetVertex(vertexX - 1, vertexY);
+            Vertex vertexNorthWest = GetVertex(vertexX - 1, vertexY - 1);
 
             if (vertexNorth != null)
             {
@@ -96,7 +96,7 @@ namespace SteeringCS.graph
             }
         }
 
-        private Vertex getVertex(int vertexX, int vertexY)
+        private Vertex GetVertex(int vertexX, int vertexY)
         {
             if (vertexX < 0 || vertexY < 0)
             {
@@ -113,10 +113,10 @@ namespace SteeringCS.graph
 
         public void Render(Graphics graphic)
         {
-            int vertexSize = 1;
+            const int VertexSize = 1;
             Pen penVertex = new Pen(_renderColor, 4);
             Pen penEdge = new Pen(_renderColor);
-            Rectangle rectangle = new Rectangle(0, 0, vertexSize, vertexSize);
+            Rectangle rectangle = new Rectangle(0, 0, VertexSize, VertexSize);
 
 
             for (int x = 0; x < _vertices.GetLength(0); x++)
@@ -128,8 +128,8 @@ namespace SteeringCS.graph
                         continue;
                     }
 
-                    rectangle.X = _vertices[x, y].Position.X - (vertexSize / 2);
-                    rectangle.Y = _vertices[x, y].Position.Y - (vertexSize / 2);
+                    rectangle.X = _vertices[x, y].Position.X - (VertexSize / 2);
+                    rectangle.Y = _vertices[x, y].Position.Y - (VertexSize / 2);
                     graphic.DrawEllipse(penVertex, rectangle);
 
                     foreach (Edge edge in _vertices[x, y].Edges)

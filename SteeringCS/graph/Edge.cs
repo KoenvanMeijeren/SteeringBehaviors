@@ -8,8 +8,8 @@ namespace SteeringCS.graph
 {
     public class Edge
     {
-        public Vertex OwnerVertex;
-        public Vertex DestinationVertex;
+        public readonly Vertex OwnerVertex;
+        public readonly Vertex DestinationVertex;
 
         public Edge(Vertex ownerVertex, Vertex destinationVertex)
         {
