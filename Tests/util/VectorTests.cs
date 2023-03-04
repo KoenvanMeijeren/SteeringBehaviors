@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Src.util;
 
-namespace SteeringCSTests.util
+namespace Tests.util
 {
     public class VectorImmutableTests
     {

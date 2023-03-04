@@ -3,10 +3,9 @@ using Src.behavior;
 using Src.entity;
 using Src.util;
 using Src.world;
-using SteeringCS.behavior;
-using SteeringCSTests.fixtures.entity;
+using Tests.fixtures.entity;
 
-namespace SteeringCSTests.fixtures.world
+namespace Tests.fixtures.world
 {
     public class WorldTest : WorldBase
     {
@@ -29,7 +28,7 @@ namespace SteeringCSTests.fixtures.world
         {
             foreach (IMovingEntity entity in Entities)
             {
-                entity.SetSteeringBehavior(SteeringBehaviorVisualizationFactory.CreateFromEnum(selectedOption, entity));
+                entity.SetSteeringBehavior(SteeringBehaviorFactory.CreateFromEnum(selectedOption, entity));
                 entity.Mass = mass;
                 entity.MaxSpeed = maxSpeed;
             }

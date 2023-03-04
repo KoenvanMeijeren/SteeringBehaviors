@@ -1,13 +1,10 @@
 ﻿using NUnit.Framework;
 using Src.behavior;
 using Src.util;
-using SteeringCS.behavior;
-using SteeringCS.entity;
-using SteeringCS.world;
-using SteeringCSTests.fixtures.entity;
-using SteeringCSTests.fixtures.world;
+using Tests.fixtures.entity;
+using Tests.fixtures.world;
 
-namespace SteeringCSTests
+namespace Tests
 {
     public class SeekingBehaviorTests
     {

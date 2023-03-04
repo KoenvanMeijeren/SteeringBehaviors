@@ -45,6 +45,7 @@
         <Compile Include="behavior\MosquitoBehavior.cs" />
         <Compile Include="behavior\SeekingBehavior.cs" />
         <Compile Include="behavior\SteeringBehavior.cs" />
+        <Compile Include="behavior\SteeringBehaviorFactory.cs" />
         <Compile Include="behavior\WanderingBehavior.cs" />
         <Compile Include="entity\BaseGameEntity.cs" />
         <Compile Include="entity\IGameEntity.cs" />

@@ -1,15 +1,12 @@
-﻿using System.Drawing;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Src.behavior;
 using Src.entity;
 using Src.util;
 using Src.world;
-using SteeringCS.entity;
-using SteeringCS.world;
-using SteeringCSTests.fixtures.entity;
-using SteeringCSTests.fixtures.world;
+using Tests.fixtures.entity;
+using Tests.fixtures.world;
 
-namespace SteeringCSTests
+namespace Tests
 {
     public class MovingEntityTests
     {

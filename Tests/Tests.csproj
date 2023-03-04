@@ -5,7 +5,7 @@
 
         <IsPackable>false</IsPackable>
 
-        <RootNamespace>SteeringCSTests</RootNamespace>
+        <RootNamespace>Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -17,7 +17,5 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Src\Src.csproj" />
-      <ProjectReference Include="..\SteeringCS\SteeringCS.csproj" />
     </ItemGroup>
-
 </Project>

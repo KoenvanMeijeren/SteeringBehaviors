@@ -2,7 +2,7 @@
 using Src.util;
 using Src.world;
 
-namespace SteeringCSTests.fixtures.entity
+namespace Tests.fixtures.entity
 {
     public class VehicleTest : MovingEntity
     {
