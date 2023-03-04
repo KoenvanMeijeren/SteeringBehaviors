@@ -13,7 +13,7 @@ namespace Src.behavior
         WanderingBehavior
     }
 
-    public abstract class SteeringBehavior
+    public abstract class SteeringBehavior : ISteeringBehavior
     {
         protected readonly Random Randomizer = new Random();
         protected IMovingEntity MovingEntity { get; }
