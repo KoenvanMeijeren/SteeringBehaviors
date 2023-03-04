@@ -13,7 +13,7 @@ namespace SteeringCS.grid
 
         public override void Draw(Graphics graphic)
         {
-            graphic.DrawImage(_image, Position.X, Position.Y);
+            graphic.DrawImage(_image, (int) Position.X, (int) Position.Y);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using Src.util;
 
 namespace SteeringCS.graph
 {
@@ -121,13 +122,14 @@ namespace SteeringCS.graph
                         continue;
                     }
 
-                    rectangle.X = _vertices[x, y].Position.X - (VertexSize / 2);
-                    rectangle.Y = _vertices[x, y].Position.Y - (VertexSize / 2);
+                    VectorImmutable vector = _vertices[x, y].Position - (VertexSize / 2);
+                    rectangle.X = (int) vector.X;
+                    rectangle.Y = (int) vector.Y;
                     graphic.DrawEllipse(penVertex, rectangle);
 
                     foreach (Edge edge in _vertices[x, y].Edges)
                     {
-                        graphic.DrawLine(penEdge, edge.OwnerVertex.Position.X, edge.OwnerVertex.Position.Y, edge.DestinationVertex.Position.X, edge.DestinationVertex.Position.Y);
+                        graphic.DrawLine(penEdge, (int) edge.OwnerVertex.Position.X, (int) edge.OwnerVertex.Position.Y, (int) edge.DestinationVertex.Position.X, (int) edge.DestinationVertex.Position.Y);
                     }
                 }
             }

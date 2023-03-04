@@ -34,7 +34,7 @@ namespace SteeringCS.grid
         public override void Draw(Graphics graphic)
         {
             Brush brush = new SolidBrush(Color.AliceBlue);
-            Rectangle rectangle = new Rectangle(Position.X, Position.Y, Size, Size);
+            Rectangle rectangle = new Rectangle((int) Position.X, (int) Position.Y, Size, Size);
             graphic.FillRectangle(brush, rectangle);
         }
     }
