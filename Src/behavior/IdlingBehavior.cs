@@ -9,10 +9,6 @@ namespace Src.behavior
         {
         }
 
-        public override Vector Calculate()
-        {
-            Vector vector = new Vector(0, 0);
-            return vector;
-        }
+        public override Vector Calculate() => new Vector(0, 0);
     }
 }
