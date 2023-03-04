@@ -1,26 +1,24 @@
-﻿using System.Drawing;
-using Src.util;
+﻿using Src.util;
 
-namespace SteeringCS.graph
+namespace Src.graph
 {
     public class Graph
     {
-        private readonly Vertex[,] _vertices;
-        private readonly Color _renderColor = Color.IndianRed;
+        public readonly Vertex[,] Vertices;
 
         public Graph(Vertex[,] vertices)
         {
-            _vertices = vertices;
+            Vertices = vertices;
             InitializeEdges();
         }
 
         private void InitializeEdges()
         {
-            for (int x = 0; x < _vertices.GetLength(0); x++)
+            for (int x = 0; x < Vertices.GetLength(0); x++)
             {
-                for (int y = 0; y < _vertices.GetLength(1); y++)
+                for (int y = 0; y < Vertices.GetLength(1); y++)
                 {
-                    if (_vertices[x, y] != null)
+                    if (Vertices[x, y] != null)
                     {
                         CreateEdgesWithSurroundingVertices(x, y);
                     }
@@ -30,7 +28,7 @@ namespace SteeringCS.graph
 
         private void CreateEdgesWithSurroundingVertices(int vertexX, int vertexY)
         {
-            Vertex vertexCurrent = _vertices[vertexX, vertexY];
+            Vertex vertexCurrent = Vertices[vertexX, vertexY];
 
             Vertex vertexNorth = GetVertex(vertexX, vertexY - 1);
             Vertex vertexNorthEast = GetVertex(vertexX + 1, vertexY - 1);
@@ -97,42 +95,12 @@ namespace SteeringCS.graph
                 return null;
             }
 
-            if (vertexX >= _vertices.GetLength(0) || vertexY >= _vertices.GetLength(1))
+            if (vertexX >= Vertices.GetLength(0) || vertexY >= Vertices.GetLength(1))
             {
                 return null;
             }
 
-            return _vertices[vertexX, vertexY]; ;
-        }
-
-        public void Render(Graphics graphic)
-        {
-            const int VertexSize = 1;
-            Pen penVertex = new Pen(_renderColor, 4);
-            Pen penEdge = new Pen(_renderColor);
-            Rectangle rectangle = new Rectangle(0, 0, VertexSize, VertexSize);
-
-
-            for (int x = 0; x < _vertices.GetLength(0); x++)
-            {
-                for (int y = 0; y < _vertices.GetLength(1); y++)
-                {
-                    if (_vertices[x, y] == null)
-                    {
-                        continue;
-                    }
-
-                    VectorImmutable vector = _vertices[x, y].Position - (VertexSize / 2);
-                    rectangle.X = (int) vector.X;
-                    rectangle.Y = (int) vector.Y;
-                    graphic.DrawEllipse(penVertex, rectangle);
-
-                    foreach (Edge edge in _vertices[x, y].Edges)
-                    {
-                        graphic.DrawLine(penEdge, (int) edge.OwnerVertex.Position.X, (int) edge.OwnerVertex.Position.Y, (int) edge.DestinationVertex.Position.X, (int) edge.DestinationVertex.Position.Y);
-                    }
-                }
-            }
+            return Vertices[vertexX, vertexY]; ;
         }
     }
 }

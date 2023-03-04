@@ -18,8 +18,8 @@ namespace SteeringCS.world
         public IGrid Grid { get; }
         public IMovingEntity Target { get; private set; }
 
-        public int Width { get; private set; }
-        public int Height { get; private set; }
+        public int Width { get; }
+        public int Height { get; }
 
         public World(int width, int height)
         {
@@ -81,28 +81,10 @@ namespace SteeringCS.world
             }
         }
 
-        public void RenderGrid(Graphics graphics)
-        {
-            if (Grid is IGridRender gridRender)
-            {
-                gridRender.Render(graphics);
-            }
-        }
+        public void RenderGrid(Graphics graphics) => GridVisualizer.Render(graphics, Grid);
 
-        public void RenderGridOutline(Graphics graphics)
-        {
-            if (Grid is IGridRender gridRender)
-            {
-                gridRender.RenderOutline(graphics);
-            }
-        }
+        public void RenderGridOutline(Graphics graphics) => GridVisualizer.RenderOutline(graphics, Grid);
 
-        public void RenderGraph(Graphics graphics)
-        {
-            if (Grid is IGridRender gridRender)
-            {
-                gridRender.RenderGraph(graphics);
-            }
-        }
+        public void RenderGraph(Graphics graphics) => GridVisualizer.RenderGraph(graphics, Grid);
     }
 }

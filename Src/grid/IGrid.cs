@@ -1,10 +1,17 @@
 ﻿using Src.entity;
+using Src.graph;
 using Src.util;
 
 namespace Src.grid
 {
     public interface IGrid
     {
+        int Width { get; }
+        int Height { get; }
+        int TileSize { get; }
+        GridTile[,] Tiles { get; }
+        Graph Graph { get; }
+        
         void MoveEntityIfInDifferentTile(Vector oldPos, Vector newPos, IMovingEntity entity);
         void AlterVectorToStayOutOfWalls(Vector position, Vector vector);
     }

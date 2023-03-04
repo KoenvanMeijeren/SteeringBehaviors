@@ -1,7 +1,6 @@
-﻿using System.Drawing;
-using Src.util;
+﻿using Src.util;
 
-namespace SteeringCS.grid
+namespace Src.grid
 {
     public abstract class GridTile
     {
@@ -13,7 +12,5 @@ namespace SteeringCS.grid
             Size = size;
             Position = new VectorImmutable(x, y);
         }
-
-        public abstract void Draw(Graphics graphic);
     }
 }

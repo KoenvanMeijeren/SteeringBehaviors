@@ -1,7 +1,7 @@
-﻿using Src.util;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Src.util;
 
-namespace SteeringCS.graph
+namespace Src.graph
 {
     public class Vertex
     {

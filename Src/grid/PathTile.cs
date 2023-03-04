@@ -1,10 +1,8 @@
-﻿using SteeringCS.entity;
-using SteeringCS.graph;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Collections.Generic;
 using Src.entity;
+using Src.graph;
 
-namespace SteeringCS.grid
+namespace Src.grid
 {
     public class PathTile : GridTile
     {
@@ -29,13 +27,6 @@ namespace SteeringCS.grid
         public bool IsEmpty()
         {
             return _entities.Count == 0;
-        }
-
-        public override void Draw(Graphics graphic)
-        {
-            Brush brush = new SolidBrush(Color.AliceBlue);
-            Rectangle rectangle = new Rectangle((int) Position.X, (int) Position.Y, Size, Size);
-            graphic.FillRectangle(brush, rectangle);
         }
     }
 }

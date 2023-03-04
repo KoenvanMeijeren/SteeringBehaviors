@@ -1,27 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using Src.entity;
-using Src.grid;
-using SteeringCS.graph;
+using Src.graph;
 using Src.util;
-using SteeringCS.util;
 
-namespace SteeringCS.grid
+namespace Src.grid
 {
-    public class Grid : IGrid, IGridRender
+    public class Grid : IGrid
     {
-        private readonly int _width;
-        private readonly int _height;
-        private const int GridTileSize = 32;
-        private readonly Color _renderColor = Color.SeaGreen;
-        private GridTile[,] _gridTiles;
-        private Graph _graph;
+        public int Width { get; }
+        public int Height { get; }
+        public int TileSize => 32;
+        public GridTile[,] Tiles { get; private set; }
+        public Graph Graph { get; private set; }
 
         public Grid(int width, int height, List<IMovingEntity> entities)
         {
-            _width = width;
-            _height = height;
+            Width = width;
+            Height = height;
             InitializeGridTilesArray();
             InitializeOutsideWallTiles();
             InitializeMazeWallTiles();
@@ -32,26 +28,26 @@ namespace SteeringCS.grid
 
         private void InitializeGridTilesArray()
         {
-            int amountOfTilesX = GetCoordinateOfTile(_width) + 1;
-            int amountOfTilesY = GetCoordinateOfTile(_height) + 1;
+            int amountOfTilesX = GetCoordinateOfTile(Width) + 1;
+            int amountOfTilesY = GetCoordinateOfTile(Height) + 1;
 
-            _gridTiles = new GridTile[amountOfTilesX, amountOfTilesY];
+            Tiles = new GridTile[amountOfTilesX, amountOfTilesY];
         }
         private void InitializeOutsideWallTiles()
         {
-            int maxX = _gridTiles.GetLength(0);
-            int maxY = _gridTiles.GetLength(1);
+            int maxX = Tiles.GetLength(0);
+            int maxY = Tiles.GetLength(1);
 
             for (int x = 0; x < maxX; x++)
             {
-                _gridTiles[x, 0] = new WallTile(GridTileSize, x * GridTileSize, 0);
-                _gridTiles[x, maxY - 1] = new WallTile(GridTileSize, x * GridTileSize, (maxY - 1) * GridTileSize);
+                Tiles[x, 0] = new WallTile(TileSize, x * TileSize, 0);
+                Tiles[x, maxY - 1] = new WallTile(TileSize, x * TileSize, (maxY - 1) * TileSize);
             }
 
             for (int y = 1; y < maxY - 1; y++)
             {
-                _gridTiles[0, y] = new WallTile(GridTileSize, 0 * GridTileSize, y * GridTileSize);
-                _gridTiles[maxX - 1, y] = new WallTile(GridTileSize, (maxX - 1) * GridTileSize, y * GridTileSize);
+                Tiles[0, y] = new WallTile(TileSize, 0 * TileSize, y * TileSize);
+                Tiles[maxX - 1, y] = new WallTile(TileSize, (maxX - 1) * TileSize, y * TileSize);
             }
         }
 
@@ -59,15 +55,15 @@ namespace SteeringCS.grid
         {
             Random random = new Random();
             //TODO (It's random now)
-            for (int x = 0; x < _gridTiles.GetLength(0); x++)
+            for (int x = 0; x < Tiles.GetLength(0); x++)
             {
-                for (int y = 0; y < _gridTiles.GetLength(1); y++)
+                for (int y = 0; y < Tiles.GetLength(1); y++)
                 {
                     int randomNumber = random.Next(1, 101);
 
                     if (randomNumber <= 20)
                     {
-                        _gridTiles[x, y] = new WallTile(GridTileSize, x * GridTileSize, y * GridTileSize);
+                        Tiles[x, y] = new WallTile(TileSize, x * TileSize, y * TileSize);
                     }
                 }
             }
@@ -75,13 +71,13 @@ namespace SteeringCS.grid
 
         private void InitializePathTiles()
         {
-            for (int x = 0; x < _gridTiles.GetLength(0); x++)
+            for (int x = 0; x < Tiles.GetLength(0); x++)
             {
-                for (int y = 0; y < _gridTiles.GetLength(1); y++)
+                for (int y = 0; y < Tiles.GetLength(1); y++)
                 {
-                    if (_gridTiles[x, y] == null)
+                    if (Tiles[x, y] == null)
                     {
-                        _gridTiles[x, y] = new PathTile(GridTileSize, x * GridTileSize, y * GridTileSize);
+                        Tiles[x, y] = new PathTile(TileSize, x * TileSize, y * TileSize);
                     }
                 }
             }
@@ -89,25 +85,25 @@ namespace SteeringCS.grid
 
         private void InitializeGraph()
         {
-            Vertex[,] vertices = new Vertex[_gridTiles.GetLength(0), _gridTiles.GetLength(1)];
+            Vertex[,] vertices = new Vertex[Tiles.GetLength(0), Tiles.GetLength(1)];
 
-            for (int x = 0; x < _gridTiles.GetLength(0); x++)
+            for (int x = 0; x < Tiles.GetLength(0); x++)
             {
-                for (int y = 0; y < _gridTiles.GetLength(1); y++)
+                for (int y = 0; y < Tiles.GetLength(1); y++)
                 {
-                    if (_gridTiles[x, y] is PathTile pathTile)
+                    if (Tiles[x, y] is PathTile pathTile)
                     {
                         vertices[x, y] = pathTile.Vertex;
                     }
                 }
             }
 
-            _graph = new Graph(vertices);
+            Graph = new Graph(vertices);
         }
 
         private int GetCoordinateOfTile(int length)
         {
-            return (length - 1) / GridTileSize;
+            return (length - 1) / TileSize;
         }
 
         private void AddEntity(IMovingEntity entity, Vector position)
@@ -115,7 +111,7 @@ namespace SteeringCS.grid
             int tileX = GetCoordinateOfTile((int)position.X);
             int tileY = GetCoordinateOfTile((int)position.Y);
 
-            if (_gridTiles[tileX, tileY] is PathTile pathTile)
+            if (Tiles[tileX, tileY] is PathTile pathTile)
             {
                 pathTile.AddEntity(entity);
             }
@@ -126,7 +122,7 @@ namespace SteeringCS.grid
             int tileX = GetCoordinateOfTile((int)position.X);
             int tileY = GetCoordinateOfTile((int)position.Y);
 
-            if (_gridTiles[tileX, tileY] is PathTile pathTile)
+            if (Tiles[tileX, tileY] is PathTile pathTile)
             {
                 pathTile.RemoveEntity(entity);
             }
@@ -162,7 +158,7 @@ namespace SteeringCS.grid
             int tileX = GetCoordinateOfTile((int)targetPosition.X);
             int tileY = GetCoordinateOfTile((int)targetPosition.Y);
 
-            GridTile gridTile = _gridTiles[tileX, tileY];
+            GridTile gridTile = Tiles[tileX, tileY];
 
             if (gridTile == null || !(gridTile is WallTile))
             {
@@ -183,10 +179,10 @@ namespace SteeringCS.grid
             double southDistanceFromWallTileCenter = position.Y - wallTileCenterY + measureBuffer;
             double westDistanceFromWallTileCenter = wallTileCenterX - position.X + measureBuffer;
 
-            GridTile gridTileNorth = _gridTiles[tileX, tileY - 1];
-            GridTile gridTileEast = _gridTiles[tileX + 1, tileY];
-            GridTile gridTileSouth = _gridTiles[tileX, tileY + 1];
-            GridTile gridTileWest = _gridTiles[tileX - 1, tileY];
+            GridTile gridTileNorth = Tiles[tileX, tileY - 1];
+            GridTile gridTileEast = Tiles[tileX + 1, tileY];
+            GridTile gridTileSouth = Tiles[tileX, tileY + 1];
+            GridTile gridTileWest = Tiles[tileX - 1, tileY];
 
             // Handle encountering north east corner
             if (northDistanceFromWallTileCenter > halfWallTileSize && eastDistanceFromWallTileCenter > halfWallTileSize)
@@ -343,49 +339,6 @@ namespace SteeringCS.grid
                 vector.SubtractX(targetPosition.X - gridTile.Position.X);
                 return;
             }
-        }
-
-
-        public void Render(Graphics graphic)
-        {
-            for (int x = 0; x < _gridTiles.GetLength(0); x++)
-            {
-                for (int y = 0; y < _gridTiles.GetLength(1); y++)
-                {
-                    _gridTiles[x, y].Draw(graphic);
-                }
-            }
-        }
-
-        public void RenderOutline(Graphics graphic)
-        {
-            Pen penDefault = new Pen(_renderColor);
-            Pen penActive = new Pen(_renderColor, 3);
-            Rectangle rectangle = new Rectangle(0, 0, GridTileSize, GridTileSize);
-
-            for (int x = 0; x < _gridTiles.GetLength(0); x++)
-            {
-                for (int y = 0; y < _gridTiles.GetLength(1); y++)
-                {
-                    GridTile gridTile = _gridTiles[x, y];
-
-                    rectangle.X = (int) gridTile.Position.X;
-                    rectangle.Y = (int) gridTile.Position.Y;
-
-                    if (gridTile is PathTile pathTile && !pathTile.IsEmpty())
-                    {
-                        graphic.DrawRectangle(penActive, rectangle);
-                        continue;
-                    }
-
-                    graphic.DrawRectangle(penDefault, rectangle);
-                }
-            }
-        }
-
-        public void RenderGraph(Graphics graphic)
-        {
-            _graph.Render(graphic);
         }
     }
 }
