@@ -1,12 +1,11 @@
-﻿using SteeringCS.entity;
+﻿using Src.entity;
 using Src.util;
-using System;
 
-namespace SteeringCS.behavior
+namespace Src.behavior
 {
     public class IdlingBehavior : SteeringBehavior
     {
-        public IdlingBehavior(MovingEntity movingEntity) : base(movingEntity)
+        public IdlingBehavior(IMovingEntity movingEntity) : base(movingEntity)
         {
         }
 

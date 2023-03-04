@@ -1,12 +1,12 @@
-﻿using SteeringCS.entity;
+﻿using Src.entity;
 using Src.util;
 
-namespace SteeringCS.behavior
+namespace Src.behavior
 {
     public class SeekingBehavior : SteeringBehavior
     {
         private const int ArrivalRange = 200;
-        public SeekingBehavior(MovingEntity movingEntity) : base(movingEntity)
+        public SeekingBehavior(IMovingEntity movingEntity) : base(movingEntity)
         {
         }
 

@@ -1,16 +1,11 @@
-﻿using SteeringCS.entity;
+﻿using Src.entity;
 using Src.util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SteeringCS.behavior
+namespace Src.behavior
 {
-    internal class FleeingBehavior : SteeringBehavior
+    public class FleeingBehavior : SteeringBehavior
     {
-        public FleeingBehavior(MovingEntity movingEntity) : base(movingEntity)
+        public FleeingBehavior(IMovingEntity movingEntity) : base(movingEntity)
         {
         }
 

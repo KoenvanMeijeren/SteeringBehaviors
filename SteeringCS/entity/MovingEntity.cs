@@ -1,22 +1,24 @@
-﻿using SteeringCS.behavior;
+﻿using Src.behavior;
+using Src.entity;
+using SteeringCS.behavior;
 using Src.util;
+using Src.world;
 using SteeringCS.world;
 
 namespace SteeringCS.entity
 {
 
-    public abstract class MovingEntity : BaseGameEntity
+    public abstract class MovingEntity : BaseGameEntity, IMovingEntity
     {
-        public const int MassDefault = 30,
-            MaxSpeedDefault = 150;
+        public const int MassDefault = 30, MaxSpeedDefault = 150;
 
-        public Vector Velocity { get; protected set; }
+        public Vector Velocity { get; set; }
         public float Mass { get; set; }
         public float MaxSpeed { get; set; }
 
-        public SteeringBehavior SteeringBehavior { get; private set; }
+        public ISteeringBehaviorVisualizer SteeringBehaviorVisualizer { get; private set; }
 
-        protected MovingEntity(Vector position, World world) : base(position, world)
+        protected MovingEntity(Vector position, IWorld world) : base(position, world)
         {
             Mass = MassDefault;
             MaxSpeed = MaxSpeedDefault;
@@ -25,12 +27,12 @@ namespace SteeringCS.entity
 
         public override void Update(float timeElapsed)
         {
-            if (SteeringBehavior == null)
+            if (SteeringBehaviorVisualizer == null)
             {
                 return;
             }
 
-            Vector steeringForce = SteeringBehavior.Calculate();
+            Vector steeringForce = SteeringBehaviorVisualizer.Calculate();
             Vector acceleration = steeringForce.Divide(Mass);
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
@@ -50,58 +52,58 @@ namespace SteeringCS.entity
             //WrapAround(m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient());
         }
 
-        public void AddSeekingBehavior()
+        public void SetSeekingBehavior()
         {
-            SteeringBehavior = new SeekingBehavior(this);
+            SteeringBehaviorVisualizer = new SeekingBehaviorVisualizer(this);
         }
 
-        public void AddFleeingBehavior()
+        public void SetFleeingBehavior()
         {
-            SteeringBehavior = new FleeingBehavior(this);
+            SteeringBehaviorVisualizer = new FleeingBehaviorVisualizer(this);
         }
 
-        public void AddMosquitoBehavior()
+        public void SetMosquitoBehavior()
         {
-            SteeringBehavior = new MosquitoBehavior(this);
+            SteeringBehaviorVisualizer = new MosquitoBehaviorVisualizer(this);
         }
 
-        public void AddIdlingBehavior()
+        public void SetIdlingBehavior()
         {
-            SteeringBehavior = new IdlingBehavior(this);
+            SteeringBehaviorVisualizer = new IdlingBehaviorVisualizer(this);
         }
 
-        public void AddWanderingBehavior()
+        public void SetWanderingBehavior()
         {
-            SteeringBehavior = new WanderingBehavior(this);
+            SteeringBehaviorVisualizer = new WanderingBehaviorVisualizer(this);
         }
 
-        public void AddSteeringBehavior(SteeringBehaviorOptions steeringBehaviorOption)
+        public void SetSteeringBehavior(SteeringBehaviorOptions steeringBehaviorOption)
         {
             switch (steeringBehaviorOption)
             {
                 case SteeringBehaviorOptions.IdlingBehavior:
                     {
-                        AddIdlingBehavior();
+                        SetIdlingBehavior();
                         break;
                     }
                 case SteeringBehaviorOptions.SeekingBehavior:
                     {
-                        AddSeekingBehavior();
+                        SetSeekingBehavior();
                         break;
                     }
                 case SteeringBehaviorOptions.FleeingBehavior:
                     {
-                        AddFleeingBehavior();
+                        SetFleeingBehavior();
                         break;
                     }
                 case SteeringBehaviorOptions.MosquitoBehavior:
                     {
-                        AddMosquitoBehavior();
+                        SetMosquitoBehavior();
                         break;
                     }
                 case SteeringBehaviorOptions.WanderingBehavior:
                     {
-                        AddWanderingBehavior();
+                        SetWanderingBehavior();
                         break;
                     }
                 default: break;

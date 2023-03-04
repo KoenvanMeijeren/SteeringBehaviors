@@ -1,11 +1,11 @@
-﻿using SteeringCS.entity;
+﻿using Src.entity;
 using Src.util;
 
-namespace SteeringCS.behavior
+namespace Src.behavior
 {
     public class ArrivingBehavior : SteeringBehavior
     {
-        public ArrivingBehavior(MovingEntity movingEntity) : base(movingEntity)
+        public ArrivingBehavior(IMovingEntity movingEntity) : base(movingEntity)
         {
         }
 
@@ -14,7 +14,7 @@ namespace SteeringCS.behavior
             return new Vector(0, 0);
         }
 
-        public static Vector Calculate(MovingEntity movingEntity, Vector targetPosition)
+        public static Vector Calculate(IMovingEntity movingEntity, Vector targetPosition)
         {
             Vector desiredVelocity = targetPosition.Clone().Subtract(movingEntity.Position);
             Vector actualVelocity = desiredVelocity.Subtract(movingEntity.Velocity);

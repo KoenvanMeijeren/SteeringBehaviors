@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Drawing;
-using SteeringCS.entity;
+using Src.entity;
 using Src.util;
 
-namespace SteeringCS.behavior
+namespace Src.behavior
 {
     public enum SteeringBehaviorOptions
     {
@@ -17,10 +16,10 @@ namespace SteeringCS.behavior
     public abstract class SteeringBehavior
     {
         protected readonly Random Randomizer = new Random();
-        protected MovingEntity MovingEntity { get; }
+        protected IMovingEntity MovingEntity { get; }
         public abstract Vector Calculate();
 
-        protected SteeringBehavior(MovingEntity movingEntity)
+        protected SteeringBehavior(IMovingEntity movingEntity)
         {
             MovingEntity = movingEntity;
         }
@@ -33,14 +32,6 @@ namespace SteeringCS.behavior
         protected double GetRandomNumber(double minimum, double maximum)
         {
             return Randomizer.NextDouble() * (maximum - minimum) + minimum;
-        }
-
-        /// <summary>
-        /// Used for displaying debug-information on every moving entity.
-        /// </summary>
-        public virtual void Render(Graphics graphic)
-        {
-
         }
     }
 }

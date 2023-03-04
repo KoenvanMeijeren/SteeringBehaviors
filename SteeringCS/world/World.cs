@@ -1,17 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using Src.behavior;
+using Src.entity;
+using Src.grid;
 using Src.util;
-using SteeringCS.behavior;
+using Src.world;
 using SteeringCS.entity;
 using SteeringCS.grid;
+using SteeringCS.util;
 
 namespace SteeringCS.world
 {
-    public class World
+    public class World : IWorld
     {
-        private readonly List<MovingEntity> _entities = new List<MovingEntity>();
-        public readonly Grid Grid;
-        public Vehicle Target { get; private set; }
+        private readonly List<IMovingEntity> _entities = new List<IMovingEntity>();
+        public IGrid Grid { get; }
+        public IMovingEntity Target { get; private set; }
 
         public int Width { get; private set; }
         public int Height { get; private set; }
@@ -31,7 +35,7 @@ namespace SteeringCS.world
                 Color = Color.Blue,
             };
 
-            vehicle.AddSeekingBehavior();
+            vehicle.SetSeekingBehavior();
             _entities.Add(vehicle);
 
             Target = new Vehicle(new Vector(100, 60), this)
@@ -43,9 +47,9 @@ namespace SteeringCS.world
 
         public void EditPopulation(SteeringBehaviorOptions steeringBehaviorOption, int mass, int maxSpeed)
         {
-            foreach (MovingEntity entity in _entities)
+            foreach (IMovingEntity entity in _entities)
             {
-                entity.AddSteeringBehavior(steeringBehaviorOption);
+                entity.SetSteeringBehavior(steeringBehaviorOption);
                 entity.Mass = mass;
                 entity.MaxSpeed = maxSpeed;
             }
@@ -53,7 +57,7 @@ namespace SteeringCS.world
 
         public void Update(float timeElapsed)
         {
-            foreach (MovingEntity entity in _entities)
+            foreach (IMovingEntity entity in _entities)
             {
                 Vector oldPos = entity.Position.Clone();
                 entity.Update(timeElapsed);
@@ -64,23 +68,42 @@ namespace SteeringCS.world
 
         public void Render(Graphics graphics)
         {
-            _entities.ForEach(entity => entity.Render(graphics));
-            Target.Render(graphics);
+            _entities.ForEach(entity =>
+            {
+                if (entity is IRender render)
+                {
+                    render.Render(graphics);
+                }
+            });
+
+            if (Target is IRender targetRender)
+            {
+                targetRender.Render(graphics);
+            }
         }
 
         public void RenderGrid(Graphics graphics)
         {
-            Grid.Render(graphics);
+            if (Grid is IGridRender gridRender)
+            {
+                gridRender.Render(graphics);
+            }
         }
 
         public void RenderGridOutline(Graphics graphics)
         {
-            Grid.RenderOutline(graphics);
+            if (Grid is IGridRender gridRender)
+            {
+                gridRender.RenderOutline(graphics);
+            }
         }
 
         public void RenderGraph(Graphics graphics)
         {
-            Grid.RenderGraph(graphics);
+            if (Grid is IGridRender gridRender)
+            {
+                gridRender.RenderGraph(graphics);
+            }
         }
     }
 }

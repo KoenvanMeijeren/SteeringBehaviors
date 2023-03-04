@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using SteeringCS.entity;
+using Src.entity;
+using Src.grid;
 using SteeringCS.graph;
 using Src.util;
+using SteeringCS.util;
 
 namespace SteeringCS.grid
 {
-    public class Grid
+    public class Grid : IGrid, IGridRender
     {
         private readonly int _width;
         private readonly int _height;
@@ -16,7 +18,7 @@ namespace SteeringCS.grid
         private GridTile[,] _gridTiles;
         private Graph _graph;
 
-        public Grid(int width, int height, List<MovingEntity> entities)
+        public Grid(int width, int height, List<IMovingEntity> entities)
         {
             _width = width;
             _height = height;
@@ -108,7 +110,7 @@ namespace SteeringCS.grid
             return (length - 1) / GridTileSize;
         }
 
-        private void AddEntity(MovingEntity entity, Vector position)
+        private void AddEntity(IMovingEntity entity, Vector position)
         {
             int tileX = GetCoordinateOfTile((int)position.X);
             int tileY = GetCoordinateOfTile((int)position.Y);
@@ -119,7 +121,7 @@ namespace SteeringCS.grid
             }
         }
 
-        private void RemoveEntity(MovingEntity entity, Vector position)
+        private void RemoveEntity(IMovingEntity entity, Vector position)
         {
             int tileX = GetCoordinateOfTile((int)position.X);
             int tileY = GetCoordinateOfTile((int)position.Y);
@@ -130,15 +132,15 @@ namespace SteeringCS.grid
             }
         }
 
-        private void AddEntities(List<MovingEntity> entities)
+        private void AddEntities(List<IMovingEntity> entities)
         {
-            foreach (MovingEntity entity in entities)
+            foreach (IMovingEntity entity in entities)
             {
                 AddEntity(entity, entity.Position);
             }
         }
 
-        public void MoveEntityIfInDifferentTile(Vector oldPos, Vector newPos, MovingEntity entity)
+        public void MoveEntityIfInDifferentTile(Vector oldPos, Vector newPos, IMovingEntity entity)
         {
             int oldTileX = GetCoordinateOfTile((int)oldPos.X);
             int oldTileY = GetCoordinateOfTile((int)oldPos.Y);

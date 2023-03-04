@@ -51,13 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="behavior\ArrivingBehavior.cs" />
-    <Compile Include="behavior\FleeingBehavior.cs" />
-    <Compile Include="behavior\IdlingBehavior.cs" />
-    <Compile Include="behavior\MosquitoBehavior.cs" />
-    <Compile Include="behavior\WanderingBehavior.cs" />
+    <Compile Include="behavior\ArrivingBehaviorVisualizer.cs" />
+    <Compile Include="behavior\FleeingBehaviorVisualizer.cs" />
+    <Compile Include="behavior\IdlingBehaviorVisualizer.cs" />
+    <Compile Include="behavior\ISteeringBehaviorVisualizer.cs" />
+    <Compile Include="behavior\MosquitoBehaviorVisualizer.cs" />
+    <Compile Include="behavior\WanderingBehaviorVisualizer.cs" />
     <Compile Include="entity\BaseGameEntity.cs" />
-    <Compile Include="behavior\SeekingBehavior.cs" />
+    <Compile Include="behavior\SeekingBehaviorVisualizer.cs" />
     <Compile Include="DBPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -72,9 +73,11 @@
     <Compile Include="graph\Edge.cs" />
     <Compile Include="graph\Graph.cs" />
     <Compile Include="graph\Vertex.cs" />
+    <Compile Include="grid\IGridRender.cs" />
     <Compile Include="grid\PathTile.cs" />
     <Compile Include="grid\WallTile.cs" />
     <Compile Include="MultiFormContext.cs" />
+    <Compile Include="util\IRender.cs" />
     <Compile Include="WorldForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,7 +86,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="behavior\SteeringBehavior.cs" />
     <Compile Include="grid\Grid.cs" />
     <Compile Include="grid\GridTile.cs" />
     <Compile Include="world\World.cs" />

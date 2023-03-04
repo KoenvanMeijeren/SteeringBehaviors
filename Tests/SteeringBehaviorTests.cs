@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Src.behavior;
 using Src.util;
 using SteeringCS.behavior;
 using SteeringCS.entity;
@@ -16,13 +17,13 @@ namespace SteeringCSTests
             const double ExpectedXPosition = 98.0d, ExpectedYPosition = 37.0d;
 
             // Arrange
-            Vector position = new Vector(XPosition, YPosition);
-            World world = new World(WorldWidth, WorldHeight);
-            Vehicle vehicle = new Vehicle(position, world);
-            SeekingBehavior behavior = new SeekingBehavior(vehicle);
+            Vector position = new(XPosition, YPosition);
+            World world = new(WorldWidth, WorldHeight);
+            Vehicle vehicle = new(position, world);
+            SeekingBehavior behaviorVisualizer = new(vehicle);
 
             // Act
-            Vector velocity = behavior.Calculate();
+            Vector velocity = behaviorVisualizer.Calculate();
 
             // Assert
             Assert.AreEqual(ExpectedXPosition, velocity.X);
@@ -39,10 +40,10 @@ namespace SteeringCSTests
             Vector position = new Vector(XPosition, YPosition);
             World world = new World(WorldWidth, WorldHeight);
             Vehicle vehicle = new Vehicle(position, world);
-            SeekingBehavior behavior = new SeekingBehavior(vehicle);
+            SeekingBehavior behaviorVisualizer = new SeekingBehavior(vehicle);
 
             // Act
-            Vector velocity = behavior.Calculate();
+            Vector velocity = behaviorVisualizer.Calculate();
 
             // Assert
             Assert.AreNotEqual(position, velocity);
