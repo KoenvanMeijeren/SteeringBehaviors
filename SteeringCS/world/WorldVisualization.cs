@@ -2,7 +2,6 @@
 using System.Drawing;
 using Src.behavior;
 using Src.entity;
-using Src.grid;
 using Src.util;
 using Src.world;
 using SteeringCS.behavior;
@@ -12,41 +11,33 @@ using SteeringCS.util;
 
 namespace SteeringCS.world
 {
-    public class World : IWorld
+    public class WorldVisualization : WorldBase
     {
-        private readonly List<IMovingEntity> _entities = new List<IMovingEntity>();
-        public IGrid Grid { get; }
-        public IMovingEntity Target { get; private set; }
-
-        public int Width { get; }
-        public int Height { get; }
-
-        public World(int width, int height)
+        public WorldVisualization(int width, int height): base(width, height)
         {
-            Width = width;
-            Height = height;
-            Populate();
-            Grid = new Grid(width, height, _entities);
         }
 
-        private void Populate()
+        protected override List<IMovingEntity> GetPopulation()
         {
+            List<IMovingEntity> entities = new List<IMovingEntity>();
             Vehicle vehicle = new Vehicle(new Vector(Width / 2, Height / 2), this)
             {
                 Color = Color.Blue,
             };
-            _entities.Add(vehicle);
+            entities.Add(vehicle);
 
             Target = new Vehicle(new Vector(100, 60), this)
             {
                 Color = Color.DarkRed,
                 Position = new Vector(100, 40)
             };
+
+            return entities;
         }
 
         public void EditPopulation(SteeringBehaviorOptions selectedOption, int mass, int maxSpeed)
         {
-            foreach (IMovingEntity entity in _entities)
+            foreach (IMovingEntity entity in Entities)
             {
                 entity.SetSteeringBehavior(SteeringBehaviorVisualizationFactory.CreateFromEnum(selectedOption, entity));
                 entity.Mass = mass;
@@ -54,20 +45,9 @@ namespace SteeringCS.world
             }
         }
 
-        public void Update(float timeElapsed)
-        {
-            foreach (IMovingEntity entity in _entities)
-            {
-                Vector oldPos = entity.Position.Clone();
-                entity.Update(timeElapsed);
-                Vector newPos = entity.Position.Clone();
-                Grid.MoveEntityIfInDifferentTile(oldPos, newPos, entity);
-            }
-        }
-
         public void Render(Graphics graphics)
         {
-            _entities.ForEach(entity =>
+            Entities.ForEach(entity =>
             {
                 if (entity is IRender render)
                 {

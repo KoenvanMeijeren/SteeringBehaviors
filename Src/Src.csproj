@@ -62,6 +62,7 @@
         <Compile Include="util\Vector.cs" />
         <Compile Include="util\VectorImmutable.cs" />
         <Compile Include="world\IWorld.cs" />
+        <Compile Include="world\WorldBase.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

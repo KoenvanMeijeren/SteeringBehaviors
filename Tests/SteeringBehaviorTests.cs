@@ -18,7 +18,7 @@ namespace SteeringCSTests
 
             // Arrange
             Vector position = new(XPosition, YPosition);
-            World world = new(WorldWidth, WorldHeight);
+            WorldVisualization world = new(WorldWidth, WorldHeight);
             Vehicle vehicle = new(position, world);
             SeekingBehavior behaviorVisualizer = new(vehicle);
 
@@ -38,7 +38,7 @@ namespace SteeringCSTests
 
             // Arrange
             Vector position = new Vector(XPosition, YPosition);
-            World world = new World(WorldWidth, WorldHeight);
+            WorldVisualization world = new WorldVisualization(WorldWidth, WorldHeight);
             Vehicle vehicle = new Vehicle(position, world);
             SeekingBehavior behaviorVisualizer = new SeekingBehavior(vehicle);
 

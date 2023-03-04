@@ -21,7 +21,7 @@ namespace SteeringCSTests
 
             // Arrange
             Vector position = new Vector(XPosition, YPosition);
-            World world = new World(WorldWidth, WorldHeight);
+            WorldVisualization world = new WorldVisualization(WorldWidth, WorldHeight);
 
             // Act
             MovingEntityImplementation movingEntity = new MovingEntityImplementation(position, world);
@@ -50,7 +50,7 @@ namespace SteeringCSTests
 
             // Arrange
             Vector position = new Vector(XPosition, YPosition);
-            World world = new World(WorldWidth, WorldHeight);
+            WorldVisualization world = new WorldVisualization(WorldWidth, WorldHeight);
 
             // Act
             MovingEntityImplementation movingEntity = new MovingEntityImplementation(position, world);
@@ -77,7 +77,7 @@ namespace SteeringCSTests
 
             // Arrange
             Vector position = new Vector(XPosition, YPosition);
-            World world = new World(WorldWidth, WorldHeight);
+            WorldVisualization world = new WorldVisualization(WorldWidth, WorldHeight);
 
             // Act
             MovingEntityImplementation movingEntity = new MovingEntityImplementation(position, world);
@@ -106,7 +106,7 @@ namespace SteeringCSTests
 
             // Arrange
             Vector position = new Vector(XPosition, YPosition);
-            World world = new World(WorldWidth, WorldHeight);
+            WorldVisualization world = new WorldVisualization(WorldWidth, WorldHeight);
 
             // Act
             MovingEntityImplementation movingEntity = new MovingEntityImplementation(position, world);
@@ -132,7 +132,7 @@ namespace SteeringCSTests
 
             // Arrange
             Vector position = new Vector(XPosition, YPosition);
-            World world = new World(WorldWidth, WorldHeight);
+            WorldVisualization world = new WorldVisualization(WorldWidth, WorldHeight);
 
             // Act
             Vehicle movingEntity = new Vehicle(position, world);
@@ -146,7 +146,7 @@ namespace SteeringCSTests
 
     public class MovingEntityImplementation : MovingEntity
     {
-        public MovingEntityImplementation(Vector position, World world) : base(position, world)
+        public MovingEntityImplementation(Vector position, WorldVisualization world) : base(position, world)
         {
         }
     }

@@ -10,7 +10,7 @@ namespace SteeringCS
 {
     public partial class WorldForm : Form
     {
-        private World _world;
+        private WorldVisualization _world;
         private const int WorldHeight = 640;
         private const int WorldWidth = 640;
 
@@ -35,7 +35,7 @@ namespace SteeringCS
             dbPanel.Height = WorldHeight;
             dbPanel.Location = new Point(50, 50);
 
-            _world = new World(width: WorldWidth, height: WorldHeight);
+            _world = new WorldVisualization(width: WorldWidth, height: WorldHeight);
 
             _timer.Elapsed += Timer_Elapsed;
             _timer.Interval = 20;
