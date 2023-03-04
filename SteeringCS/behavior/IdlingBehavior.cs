@@ -1,5 +1,5 @@
 ﻿using SteeringCS.entity;
-using SteeringCS.util;
+using Src.util;
 using System;
 
 namespace SteeringCS.behavior
@@ -10,9 +10,9 @@ namespace SteeringCS.behavior
         {
         }
 
-        public override Vector2D Calculate()
+        public override Vector Calculate()
         {
-            Vector2D vector = new Vector2D(0, 0);
+            Vector vector = new Vector(0, 0);
             return vector;
         }
     }

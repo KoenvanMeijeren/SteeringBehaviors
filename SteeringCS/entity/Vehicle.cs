@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using SteeringCS.util;
+using Src.util;
 using SteeringCS.world;
 
 namespace SteeringCS.entity
@@ -9,22 +9,22 @@ namespace SteeringCS.entity
         public const int DefaultScale = 5;
         public Color Color { get; set; }
 
-        public Vehicle(Vector2D position, World world) : base(position, world)
+        public Vehicle(Vector position, World world) : base(position, world)
         {
-            Velocity = new Vector2D();
+            Velocity = new Vector(0, 0);
             Scale = DefaultScale;
             Color = Color.Black;
         }
 
         public override void Render(Graphics graphic)
         {
-            double leftCorner = Position.XPosition - Scale;
-            double rightCorner = Position.YPosition - Scale;
+            double leftCorner = Position.X - Scale;
+            double rightCorner = Position.Y - Scale;
             float size = Scale * 2;
 
             Pen pen = new Pen(Color, 2);
             graphic.DrawEllipse(pen, new Rectangle((int)leftCorner, (int)rightCorner, (int)size, (int)size));
-            graphic.DrawLine(pen, (int)Position.XPosition, (int)Position.YPosition, (int)Position.XPosition + (int)(Velocity.XPosition * 2), (int)Position.YPosition + (int)(Velocity.YPosition * 2));
+            graphic.DrawLine(pen, (int)Position.X, (int)Position.Y, (int)Position.X + (int)(Velocity.X * 2), (int)Position.Y + (int)(Velocity.Y * 2));
             SteeringBehavior?.Render(graphic);
         }
     }

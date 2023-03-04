@@ -1,6 +1,5 @@
-﻿using System;
-using SteeringCS.behavior;
-using SteeringCS.util;
+﻿using SteeringCS.behavior;
+using Src.util;
 using SteeringCS.world;
 
 namespace SteeringCS.entity
@@ -11,17 +10,17 @@ namespace SteeringCS.entity
         public const int MassDefault = 30,
             MaxSpeedDefault = 150;
 
-        public Vector2D Velocity { get; protected set; }
+        public Vector Velocity { get; protected set; }
         public float Mass { get; set; }
         public float MaxSpeed { get; set; }
 
         public SteeringBehavior SteeringBehavior { get; private set; }
 
-        protected MovingEntity(Vector2D position, World world) : base(position, world)
+        protected MovingEntity(Vector position, World world) : base(position, world)
         {
             Mass = MassDefault;
             MaxSpeed = MaxSpeedDefault;
-            Velocity = new Vector2D();
+            Velocity = new Vector(0, 0);
         }
 
         public override void Update(float timeElapsed)
@@ -31,8 +30,8 @@ namespace SteeringCS.entity
                 return;
             }
 
-            Vector2D steeringForce = SteeringBehavior.Calculate();
-            Vector2D acceleration = steeringForce.Divide(Mass);
+            Vector steeringForce = SteeringBehavior.Calculate();
+            Vector acceleration = steeringForce.Divide(Mass);
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
             AlterVectorToStayInsideOfWorld(Velocity);
@@ -109,40 +108,40 @@ namespace SteeringCS.entity
             }
         }
 
-        public void AlterVectorToStayInsideOfWorld(Vector2D vector)
+        public void AlterVectorToStayInsideOfWorld(Vector vector)
         {
-            Vector2D position = Position.Clone();
-            Vector2D targetPosition = position.Add(vector);
+            Vector position = Position.Clone();
+            Vector targetPosition = position.Add(vector);
 
             int maxY = World.Height;
             int maxX = World.Width;
 
-            if (targetPosition.YPosition < 0)
+            if (targetPosition.Y < 0)
             {
-                vector.SubtractY(targetPosition.YPosition);
+                vector.SubtractY(targetPosition.Y);
             }
 
-            if (targetPosition.XPosition < 0)
+            if (targetPosition.X < 0)
             {
-                vector.SubtractX(targetPosition.XPosition);
+                vector.SubtractX(targetPosition.X);
             }
 
-            if (targetPosition.YPosition > maxY)
+            if (targetPosition.Y > maxY)
             {
-                vector.SubtractY(targetPosition.YPosition - maxY);
+                vector.SubtractY(targetPosition.Y - maxY);
             }
 
-            if (targetPosition.XPosition > maxX)
+            if (targetPosition.X > maxX)
             {
-                vector.SubtractX(targetPosition.XPosition - maxX);
+                vector.SubtractX(targetPosition.X - maxX);
             }
         }
 
-        public void AlterVectorToStayOutOfWalls(Vector2D vector)
+        public void AlterVectorToStayOutOfWalls(Vector vector)
         {
-            Vector2D position = Position.Clone();
+            Vector position = Position.Clone();
 
-            World._grid.AlterVectorToStayOutOfWalls(position, vector);
+            World.Grid.AlterVectorToStayOutOfWalls(position, vector);
         }
 
         public override string ToString()

@@ -75,7 +75,6 @@
     <Compile Include="grid\PathTile.cs" />
     <Compile Include="grid\WallTile.cs" />
     <Compile Include="MultiFormContext.cs" />
-    <Compile Include="util\Position.cs" />
     <Compile Include="WorldForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,7 +84,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="behavior\SteeringBehavior.cs" />
-    <Compile Include="util\Vector2D.cs" />
     <Compile Include="grid\Grid.cs" />
     <Compile Include="grid\GridTile.cs" />
     <Compile Include="world\World.cs" />
@@ -122,6 +120,12 @@
     <Content Include="grid\wall.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Src\Src.csproj">
+      <Project>{ae3bec73-aef9-4222-a255-3033e543960f}</Project>
+      <Name>Src</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

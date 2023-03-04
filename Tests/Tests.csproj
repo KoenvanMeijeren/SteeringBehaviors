@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Src\Src.csproj" />
       <ProjectReference Include="..\SteeringCS\SteeringCS.csproj" />
     </ItemGroup>
 

@@ -1,10 +1,10 @@
 ﻿using System;
 using NUnit.Framework;
-using SteeringCS.util;
+using Src.util;
 
-namespace SteeringCSTests
+namespace SteeringCSTests.util
 {
-    public class Tests
+    public class VectorTests
     {
         [Test]
         public void Test_CreateEmpty_01_Ok()
@@ -14,11 +14,11 @@ namespace SteeringCSTests
             const int ExpectedYPosition = 0;
 
             // Act
-            Vector2D vector = new Vector2D();
+            Vector vector = new Vector(0, 0);
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.X);
+            Assert.AreEqual(ExpectedYPosition, vector.Y);
         }
 
         [Test]
@@ -29,11 +29,11 @@ namespace SteeringCSTests
             const int ExpectedYPosition = 5;
 
             // Act
-            Vector2D vector = new Vector2D(ExpectedXPosition, ExpectedYPosition);
+            Vector vector = new Vector(ExpectedXPosition, ExpectedYPosition);
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.X);
+            Assert.AreEqual(ExpectedYPosition, vector.Y);
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace SteeringCSTests
             const int ExpectedLength = 0;
 
             // Act
-            Vector2D vector = new Vector2D(XPosition, YPosition);
+            Vector vector = new Vector(XPosition, YPosition);
 
             // Assert
             Assert.AreEqual(ExpectedLength, vector.Length());
@@ -62,7 +62,7 @@ namespace SteeringCSTests
             double expectedLength = Math.Sqrt((XPosition * XPosition) + (YPosition * YPosition));
 
             // Act
-            Vector2D vector = new Vector2D(XPosition, YPosition);
+            Vector vector = new Vector(XPosition, YPosition);
 
             // Assert
             Assert.AreEqual(expectedLength, vector.Length());
@@ -78,7 +78,7 @@ namespace SteeringCSTests
             double expectedLength = Math.Sqrt((XPosition * XPosition) + (YPosition * YPosition));
 
             // Act
-            Vector2D vector = new Vector2D(XPosition, YPosition);
+            Vector vector = new Vector(XPosition, YPosition);
 
             // Assert
             Assert.AreEqual(expectedLength, vector.Length());
@@ -94,7 +94,7 @@ namespace SteeringCSTests
             const double ExpectedLength = (XPosition * XPosition) + (YPosition * YPosition);
 
             // Act
-            Vector2D vector = new Vector2D(XPosition, YPosition);
+            Vector vector = new Vector(XPosition, YPosition);
 
             // Assert
             Assert.AreEqual(ExpectedLength, vector.LengthSquared());
@@ -110,7 +110,7 @@ namespace SteeringCSTests
             const double ExpectedLength = (XPosition * XPosition) + (YPosition * YPosition);
 
             // Act
-            Vector2D vector = new Vector2D(XPosition, YPosition);
+            Vector vector = new Vector(XPosition, YPosition);
 
             // Assert
             Assert.AreEqual(ExpectedLength, vector.LengthSquared());
@@ -126,7 +126,7 @@ namespace SteeringCSTests
             const double ExpectedLength = (XPosition * XPosition) + (YPosition * YPosition);
 
             // Act
-            Vector2D vector = new Vector2D(XPosition, YPosition);
+            Vector vector = new Vector(XPosition, YPosition);
 
             // Assert
             Assert.AreEqual(ExpectedLength, vector.LengthSquared());
@@ -145,15 +145,15 @@ namespace SteeringCSTests
             const int ExpectedYPosition = YPosition + AddYPosition;
 
             // Arrange
-            Vector2D vector = new Vector2D(XPosition, YPosition);
-            Vector2D vectorToAdd = new Vector2D(AddXPosition, AddYPosition);
+            Vector vector = new Vector(XPosition, YPosition);
+            Vector vectorToAdd = new Vector(AddXPosition, AddYPosition);
 
             // Act
             vector.Add(vectorToAdd);
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.X);
+            Assert.AreEqual(ExpectedYPosition, vector.Y);
         }
 
         [Test]
@@ -169,15 +169,15 @@ namespace SteeringCSTests
             const int ExpectedYPosition = YPosition + AddYPosition;
 
             // Arrange
-            Vector2D vector = new Vector2D(XPosition, YPosition);
-            Vector2D vectorToAdd = new Vector2D(AddXPosition, AddYPosition);
+            Vector vector = new Vector(XPosition, YPosition);
+            Vector vectorToAdd = new Vector(AddXPosition, AddYPosition);
 
             // Act
             vector.Add(vectorToAdd);
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.X);
+            Assert.AreEqual(ExpectedYPosition, vector.Y);
         }
 
         [Test]
@@ -193,15 +193,15 @@ namespace SteeringCSTests
             const int ExpectedYPosition = YPosition + AddYPosition;
 
             // Arrange
-            Vector2D vector = new Vector2D(XPosition, YPosition);
-            Vector2D vectorToAdd = new Vector2D(AddXPosition, AddYPosition);
+            Vector vector = new Vector(XPosition, YPosition);
+            Vector vectorToAdd = new Vector(AddXPosition, AddYPosition);
 
             // Act
             vector.Add(vectorToAdd);
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.X);
+            Assert.AreEqual(ExpectedYPosition, vector.Y);
         }
 
         [Test]
@@ -217,15 +217,15 @@ namespace SteeringCSTests
             const int ExpectedYPosition = YPosition + AddYPosition;
 
             // Arrange
-            Vector2D vector = new Vector2D(XPosition, YPosition);
-            Vector2D vectorToAdd = new Vector2D(AddXPosition, AddYPosition);
+            Vector vector = new Vector(XPosition, YPosition);
+            Vector vectorToAdd = new Vector(AddXPosition, AddYPosition);
 
             // Act
             vector.Add(vectorToAdd);
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.X);
+            Assert.AreEqual(ExpectedYPosition, vector.Y);
         }
 
         [Test]
@@ -241,15 +241,15 @@ namespace SteeringCSTests
             const int ExpectedYPosition = YPosition + AddYPosition;
 
             // Arrange
-            Vector2D vector = new Vector2D(XPosition, YPosition);
-            Vector2D vectorToSubtract = new Vector2D(AddXPosition, AddYPosition);
+            Vector vector = new Vector(XPosition, YPosition);
+            Vector vectorToSubtract = new Vector(AddXPosition, AddYPosition);
 
             // Act
             vector.Subtract(vectorToSubtract);
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.X);
+            Assert.AreEqual(ExpectedYPosition, vector.Y);
         }
 
         [Test]
@@ -265,15 +265,15 @@ namespace SteeringCSTests
             const int ExpectedYPosition = YPosition - SubtractYPosition;
 
             // Arrange
-            Vector2D vector = new Vector2D(XPosition, YPosition);
-            Vector2D vectorToSubtract = new Vector2D(SubtractXPosition, SubtractYPosition);
+            Vector vector = new Vector(XPosition, YPosition);
+            Vector vectorToSubtract = new Vector(SubtractXPosition, SubtractYPosition);
 
             // Act
             vector.Subtract(vectorToSubtract);
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.X);
+            Assert.AreEqual(ExpectedYPosition, vector.Y);
         }
 
         [Test]
@@ -289,15 +289,15 @@ namespace SteeringCSTests
             const int ExpectedYPosition = YPosition - SubtractYPosition;
 
             // Arrange
-            Vector2D vector = new Vector2D(XPosition, YPosition);
-            Vector2D vectorToSubtract = new Vector2D(SubtractXPosition, SubtractYPosition);
+            Vector vector = new Vector(XPosition, YPosition);
+            Vector vectorToSubtract = new Vector(SubtractXPosition, SubtractYPosition);
 
             // Act
             vector.Subtract(vectorToSubtract);
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedYPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedXPosition, vector.X);
+            Assert.AreEqual(ExpectedYPosition, vector.Y);
         }
 
         [Test]
@@ -313,15 +313,15 @@ namespace SteeringCSTests
             const int ExpectedNorthPosition = NorthPosition - SubtractNorthPosition;
 
             // Arrange
-            Vector2D vector = new Vector2D(EastPosition, NorthPosition);
-            Vector2D vectorToSubtract = new Vector2D(SubtractEastPosition, SubtractNorthPosition);
+            Vector vector = new Vector(EastPosition, NorthPosition);
+            Vector vectorToSubtract = new Vector(SubtractEastPosition, SubtractNorthPosition);
 
             // Act
             vector.Subtract(vectorToSubtract);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.X);
+            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
         }
 
         [Test]
@@ -336,14 +336,14 @@ namespace SteeringCSTests
             const int ExpectedNorthPosition = NorthPosition * MultipleValue;
 
             // Arrange
-            Vector2D vector = new Vector2D(EastPosition, NorthPosition);
+            Vector vector = new Vector(EastPosition, NorthPosition);
 
             // Act
             vector.Multiply(MultipleValue);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.X);
+            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
         }
 
         [Test]
@@ -358,14 +358,14 @@ namespace SteeringCSTests
             const int ExpectedNorthPosition = NorthPosition * MultipleValue;
 
             // Arrange
-            Vector2D vector = new Vector2D(EastPosition, NorthPosition);
+            Vector vector = new Vector(EastPosition, NorthPosition);
 
             // Act
             vector.Multiply(MultipleValue);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.X);
+            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
         }
 
         [Test]
@@ -377,7 +377,7 @@ namespace SteeringCSTests
                 DivideValue = 0;
 
             // Arrange
-            Vector2D vector = new Vector2D(EastPosition, NorthPosition);
+            Vector vector = new Vector(EastPosition, NorthPosition);
 
             // Act & assert
             Assert.Throws<ArithmeticException>(() => vector.Divide(DivideValue));
@@ -392,7 +392,7 @@ namespace SteeringCSTests
                 DivideValue = 2;
 
             // Arrange
-            Vector2D vector = new Vector2D(EastPosition, NorthPosition);
+            Vector vector = new Vector(EastPosition, NorthPosition);
 
             // Act & assert
             vector.Divide(DivideValue);
@@ -410,14 +410,14 @@ namespace SteeringCSTests
             const int ExpectedNorthPosition = NorthPosition * MultipleValue;
 
             // Arrange
-            Vector2D vector = new Vector2D(EastPosition, NorthPosition);
+            Vector vector = new Vector(EastPosition, NorthPosition);
 
             // Act
             vector.Multiply(MultipleValue);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.X);
+            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
         }
 
         [Test]
@@ -430,14 +430,14 @@ namespace SteeringCSTests
                 ExpectedNorthPosition = 0;
 
             // Arrange
-            Vector2D vector = new Vector2D(EastPosition, NorthPosition);
+            Vector vector = new Vector(EastPosition, NorthPosition);
 
             // Act
             vector.Normalize();
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.X);
+            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
         }
 
         [Test]
@@ -450,14 +450,14 @@ namespace SteeringCSTests
                 ExpectedNorthPosition = 0.70710678118654746d;
 
             // Arrange
-            Vector2D vector = new Vector2D(EastPosition, NorthPosition);
+            Vector vector = new Vector(EastPosition, NorthPosition);
 
             // Act
             vector.Normalize();
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.X);
+            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
         }
 
         [Test]
@@ -470,14 +470,14 @@ namespace SteeringCSTests
                 ExpectedNorthPosition = 0;
 
             // Arrange
-            Vector2D vector = new Vector2D(EastPosition, NorthPosition);
+            Vector vector = new Vector(EastPosition, NorthPosition);
 
             // Act
             vector.Truncate(0);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.X);
+            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
         }
 
         [Test]
@@ -490,15 +490,15 @@ namespace SteeringCSTests
                 ExpectedNorthPosition = 2;
 
             // Arrange
-            Vector2D vector = new Vector2D(EastPosition, NorthPosition);
+            Vector vector = new Vector(EastPosition, NorthPosition);
 
             // Act
             double length = vector.Length();
             vector.Truncate(length + 1);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.X);
+            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
         }
 
         [Test]
@@ -511,15 +511,15 @@ namespace SteeringCSTests
                 ExpectedNorthPosition = 1.2928932188134525d;
 
             // Arrange
-            Vector2D vector = new Vector2D(EastPosition, NorthPosition);
+            Vector vector = new Vector(EastPosition, NorthPosition);
 
             // Act
             double length = vector.Length();
             vector.Truncate(length - 1);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.X);
+            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
         }
 
         [Test]
@@ -530,13 +530,13 @@ namespace SteeringCSTests
             const int ExpectedNorthPosition = 0;
 
             // Act
-            Vector2D vector = new Vector2D();
-            Vector2D newVector = vector.Clone();
+            Vector vector = new Vector(0, 0);
+            Vector newVector = vector.Clone();
             newVector.Multiply(2);
 
             // Assert
-            Assert.AreEqual(ExpectedEastPosition, vector.XPosition);
-            Assert.AreEqual(ExpectedNorthPosition, vector.YPosition);
+            Assert.AreEqual(ExpectedEastPosition, vector.X);
+            Assert.AreEqual(ExpectedNorthPosition, vector.Y);
         }
 
         [Test]
@@ -546,7 +546,7 @@ namespace SteeringCSTests
             const string ExpectedString = "(0,0)";
 
             // Act
-            Vector2D vector = new Vector2D();
+            Vector vector = new Vector(0, 0);
 
             // Assert
             Assert.AreEqual(ExpectedString, vector.ToString());

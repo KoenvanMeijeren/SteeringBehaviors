@@ -1,5 +1,5 @@
 ﻿using SteeringCS.entity;
-using SteeringCS.util;
+using Src.util;
 
 namespace SteeringCS.behavior
 {
@@ -9,15 +9,15 @@ namespace SteeringCS.behavior
         {
         }
 
-        public override Vector2D Calculate()
+        public override Vector Calculate()
         {
-            return new Vector2D();
+            return new Vector(0, 0);
         }
 
-        public static Vector2D Calculate(MovingEntity movingEntity, Vector2D targetPosition)
+        public static Vector Calculate(MovingEntity movingEntity, Vector targetPosition)
         {
-            Vector2D desiredVelocity = targetPosition.Clone().Subtract(movingEntity.Position);
-            Vector2D actualVelocity = desiredVelocity.Subtract(movingEntity.Velocity);
+            Vector desiredVelocity = targetPosition.Clone().Subtract(movingEntity.Position);
+            Vector actualVelocity = desiredVelocity.Subtract(movingEntity.Velocity);
 
             return actualVelocity;
         }

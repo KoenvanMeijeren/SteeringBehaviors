@@ -1,5 +1,5 @@
 ﻿using SteeringCS.entity;
-using SteeringCS.util;
+using Src.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +14,9 @@ namespace SteeringCS.behavior
         {
         }
 
-        public override Vector2D Calculate()
+        public override Vector Calculate()
         {
-            return new Vector2D(Randomizer.Next(-1000, 1000), Randomizer.Next(-1000, 1000));
+            return new Vector(Randomizer.Next(-1000, 1000), Randomizer.Next(-1000, 1000));
         }
     }
 }

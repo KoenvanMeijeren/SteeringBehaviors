@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using SteeringCS.entity;
 using SteeringCS.graph;
-using SteeringCS.util;
+using Src.util;
 
 namespace SteeringCS.grid
 {
@@ -108,10 +108,10 @@ namespace SteeringCS.grid
             return (length - 1) / GridTileSize;
         }
 
-        private void AddEntity(MovingEntity entity, Vector2D position)
+        private void AddEntity(MovingEntity entity, Vector position)
         {
-            int tileX = GetCoordinateOfTile((int)position.XPosition);
-            int tileY = GetCoordinateOfTile((int)position.YPosition);
+            int tileX = GetCoordinateOfTile((int)position.X);
+            int tileY = GetCoordinateOfTile((int)position.Y);
 
             if (_gridTiles[tileX, tileY] is PathTile pathTile)
             {
@@ -119,10 +119,10 @@ namespace SteeringCS.grid
             }
         }
 
-        private void RemoveEntity(MovingEntity entity, Vector2D position)
+        private void RemoveEntity(MovingEntity entity, Vector position)
         {
-            int tileX = GetCoordinateOfTile((int)position.XPosition);
-            int tileY = GetCoordinateOfTile((int)position.YPosition);
+            int tileX = GetCoordinateOfTile((int)position.X);
+            int tileY = GetCoordinateOfTile((int)position.Y);
 
             if (_gridTiles[tileX, tileY] is PathTile pathTile)
             {
@@ -138,13 +138,13 @@ namespace SteeringCS.grid
             }
         }
 
-        public void MoveEntityIfInDifferentTile(Vector2D oldPos, Vector2D newPos, MovingEntity entity)
+        public void MoveEntityIfInDifferentTile(Vector oldPos, Vector newPos, MovingEntity entity)
         {
-            int oldTileX = GetCoordinateOfTile((int)oldPos.XPosition);
-            int oldTileY = GetCoordinateOfTile((int)oldPos.YPosition);
+            int oldTileX = GetCoordinateOfTile((int)oldPos.X);
+            int oldTileY = GetCoordinateOfTile((int)oldPos.Y);
 
-            int newTileX = GetCoordinateOfTile((int)newPos.XPosition);
-            int newTileY = GetCoordinateOfTile((int)newPos.YPosition);
+            int newTileX = GetCoordinateOfTile((int)newPos.X);
+            int newTileY = GetCoordinateOfTile((int)newPos.Y);
 
             if (oldTileX != newTileX || oldTileY != newTileY)
             {
@@ -152,13 +152,13 @@ namespace SteeringCS.grid
                 AddEntity(entity, newPos);
             }
         }
-        public void AlterVectorToStayOutOfWalls(Vector2D position, Vector2D vector)
+        public void AlterVectorToStayOutOfWalls(Vector position, Vector vector)
         {
             // Check if target position is in a wall tile
-            Vector2D targetPosition = position.Clone().Add(vector);
+            Vector targetPosition = position.Clone().Add(vector);
 
-            int tileX = GetCoordinateOfTile((int)targetPosition.XPosition);
-            int tileY = GetCoordinateOfTile((int)targetPosition.YPosition);
+            int tileX = GetCoordinateOfTile((int)targetPosition.X);
+            int tileY = GetCoordinateOfTile((int)targetPosition.Y);
 
             GridTile gridTile = _gridTiles[tileX, tileY];
 
@@ -176,10 +176,10 @@ namespace SteeringCS.grid
             int wallTileCenterX = wallTile.Position.X + halfWallTileSize;
             int wallTileCenterY = wallTile.Position.Y + halfWallTileSize;
 
-            double northDistanceFromWallTileCenter = wallTileCenterY - position.YPosition + measureBuffer;
-            double eastDistanceFromWallTileCenter = position.XPosition - wallTileCenterX + measureBuffer;
-            double southDistanceFromWallTileCenter = position.YPosition - wallTileCenterY + measureBuffer;
-            double westDistanceFromWallTileCenter = wallTileCenterX - position.XPosition + measureBuffer;
+            double northDistanceFromWallTileCenter = wallTileCenterY - position.Y + measureBuffer;
+            double eastDistanceFromWallTileCenter = position.X - wallTileCenterX + measureBuffer;
+            double southDistanceFromWallTileCenter = position.Y - wallTileCenterY + measureBuffer;
+            double westDistanceFromWallTileCenter = wallTileCenterX - position.X + measureBuffer;
 
             GridTile gridTileNorth = _gridTiles[tileX, tileY - 1];
             GridTile gridTileEast = _gridTiles[tileX + 1, tileY];
@@ -191,30 +191,30 @@ namespace SteeringCS.grid
             {
                 if (gridTileNorth is WallTile && gridTileEast is WallTile)
                 {
-                    vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile.Size + 1));
-                    vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                    vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                    vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
                     return;
                 }
 
                 if (gridTileNorth is WallTile)
                 {
-                    vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile.Size + 1));
+                    vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
                     return;
                 }
 
                 if (gridTileEast is WallTile)
                 {
-                    vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                    vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
                     return;
                 }
 
                 if (northDistanceFromWallTileCenter > eastDistanceFromWallTileCenter)
                 {
-                    vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                    vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
                     return;
                 }
 
-                vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile.Size + 1));
+                vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
                 return;
             }
 
@@ -223,30 +223,30 @@ namespace SteeringCS.grid
             {
                 if (gridTileSouth is WallTile && gridTileEast is WallTile)
                 {
-                    vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile.Size + 1));
-                    vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile.Size + 1));
+                    vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                    vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
                     return;
                 }
 
                 if (gridTileSouth is WallTile)
                 {
-                    vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile.Size + 1));
+                    vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
                     return;
                 }
 
                 if (gridTileEast is WallTile)
                 {
-                    vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile.Size + 1));
+                    vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
                     return;
                 }
 
                 if (southDistanceFromWallTileCenter > eastDistanceFromWallTileCenter)
                 {
-                    vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile.Size + 1));
+                    vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
                     return;
                 }
 
-                vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile.Size + 1));
+                vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
                 return;
             }
 
@@ -255,30 +255,30 @@ namespace SteeringCS.grid
             {
                 if (gridTileSouth is WallTile && gridTileWest is WallTile)
                 {
-                    vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
-                    vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile.Size + 1));
+                    vector.SubtractX(targetPosition.X - gridTile.Position.X);
+                    vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
                     return;
                 }
 
                 if (gridTileSouth is WallTile)
                 {
-                    vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
+                    vector.SubtractX(targetPosition.X - gridTile.Position.X);
                     return;
                 }
 
                 if (gridTileWest is WallTile)
                 {
-                    vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile.Size + 1));
+                    vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
                     return;
                 }
 
                 if (southDistanceFromWallTileCenter > westDistanceFromWallTileCenter)
                 {
-                    vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile.Size + 1));
+                    vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
                     return;
                 }
 
-                vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
+                vector.SubtractX(targetPosition.X - gridTile.Position.X);
                 return;
             }
 
@@ -287,58 +287,58 @@ namespace SteeringCS.grid
             {
                 if (gridTileNorth is WallTile && gridTileWest is WallTile)
                 {
-                    vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
-                    vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                    vector.SubtractX(targetPosition.X - gridTile.Position.X);
+                    vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
                     return;
                 }
 
                 if (gridTileNorth is WallTile)
                 {
-                    vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
+                    vector.SubtractX(targetPosition.X - gridTile.Position.X);
                     return;
                 }
 
                 if (gridTileWest is WallTile)
                 {
-                    vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                    vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
                     return;
                 }
 
                 if (northDistanceFromWallTileCenter > westDistanceFromWallTileCenter)
                 {
-                    vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                    vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
                     return;
                 }
 
-                vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
+                vector.SubtractX(targetPosition.X - gridTile.Position.X);
                 return;
             }
 
             // Handle encountering north wall
             if (northDistanceFromWallTileCenter > halfWallTileSize)
             {
-                vector.SubtractY(targetPosition.YPosition - gridTile.Position.Y);
+                vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
                 return;
             }
 
             // Handle encountering east wall
             if (eastDistanceFromWallTileCenter > halfWallTileSize)
             {
-                vector.SubtractX(targetPosition.XPosition - (gridTile.Position.X + gridTile.Size + 1));
+                vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
                 return;
             }
 
             // Handle encountering south wall
             if (southDistanceFromWallTileCenter > halfWallTileSize)
             {
-                vector.SubtractY(targetPosition.YPosition - (gridTile.Position.Y + gridTile.Size + 1));
+                vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
                 return;
             }
 
             // Handle encountering west wall
             if (westDistanceFromWallTileCenter > halfWallTileSize)
             {
-                vector.SubtractX(targetPosition.XPosition - gridTile.Position.X);
+                vector.SubtractX(targetPosition.X - gridTile.Position.X);
                 return;
             }
         }

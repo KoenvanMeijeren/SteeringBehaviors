@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
+using Src.util;
 using SteeringCS.behavior;
 using SteeringCS.entity;
-using SteeringCS.util;
 using SteeringCS.world;
 
 namespace SteeringCSTests
@@ -16,17 +16,17 @@ namespace SteeringCSTests
             const double ExpectedXPosition = 98.0d, ExpectedYPosition = 37.0d;
 
             // Arrange
-            Vector2D position = new Vector2D(XPosition, YPosition);
+            Vector position = new Vector(XPosition, YPosition);
             World world = new World(WorldWidth, WorldHeight);
             Vehicle vehicle = new Vehicle(position, world);
             SeekingBehavior behavior = new SeekingBehavior(vehicle);
 
             // Act
-            Vector2D velocity = behavior.Calculate();
+            Vector velocity = behavior.Calculate();
 
             // Assert
-            Assert.AreEqual(ExpectedXPosition, velocity.XPosition);
-            Assert.AreEqual(ExpectedYPosition, velocity.YPosition);
+            Assert.AreEqual(ExpectedXPosition, velocity.X);
+            Assert.AreEqual(ExpectedYPosition, velocity.Y);
         }
 
         [Test]
@@ -36,18 +36,18 @@ namespace SteeringCSTests
             const int XPosition = 2, YPosition = 3, WorldWidth = 20, WorldHeight = 20;
 
             // Arrange
-            Vector2D position = new Vector2D(XPosition, YPosition);
+            Vector position = new Vector(XPosition, YPosition);
             World world = new World(WorldWidth, WorldHeight);
             Vehicle vehicle = new Vehicle(position, world);
             SeekingBehavior behavior = new SeekingBehavior(vehicle);
 
             // Act
-            Vector2D velocity = behavior.Calculate();
+            Vector velocity = behavior.Calculate();
 
             // Assert
             Assert.AreNotEqual(position, velocity);
-            Assert.AreNotEqual(XPosition, velocity.XPosition);
-            Assert.AreNotEqual(YPosition, velocity.YPosition);
+            Assert.AreNotEqual(XPosition, velocity.X);
+            Assert.AreNotEqual(YPosition, velocity.Y);
         }
     }
 }

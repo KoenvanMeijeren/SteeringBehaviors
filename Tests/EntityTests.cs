@@ -1,8 +1,7 @@
 ﻿using System.Drawing;
 using NUnit.Framework;
-using SteeringCS.behavior;
+using Src.util;
 using SteeringCS.entity;
-using SteeringCS.util;
 using SteeringCS.world;
 
 namespace SteeringCSTests
@@ -20,7 +19,7 @@ namespace SteeringCSTests
             const string ExpectedString = "(0,0)";
 
             // Arrange
-            Vector2D position = new Vector2D(XPosition, YPosition);
+            Vector position = new Vector(XPosition, YPosition);
             World world = new World(WorldWidth, WorldHeight);
 
             // Act
@@ -29,8 +28,8 @@ namespace SteeringCSTests
             // Assert
             Assert.AreEqual(MovingEntity.MassDefault, movingEntity.Mass);
             Assert.AreEqual(MovingEntity.MaxSpeedDefault, movingEntity.MaxSpeed);
-            Assert.AreEqual(XPosition, movingEntity.Velocity.XPosition);
-            Assert.AreEqual(YPosition, movingEntity.Velocity.YPosition);
+            Assert.AreEqual(XPosition, movingEntity.Velocity.X);
+            Assert.AreEqual(YPosition, movingEntity.Velocity.Y);
             Assert.IsNull(movingEntity.SteeringBehavior);
             Assert.AreEqual(ExpectedString, movingEntity.ToString());
         }
@@ -49,13 +48,13 @@ namespace SteeringCSTests
                 ExpectedPosition = "(200,133.33)";
 
             // Arrange
-            Vector2D position = new Vector2D(XPosition, YPosition);
+            Vector position = new Vector(XPosition, YPosition);
             World world = new World(WorldWidth, WorldHeight);
 
             // Act
             MovingEntityImplementation movingEntity = new MovingEntityImplementation(position, world);
-            Vector2D previousVelocity = movingEntity.Velocity.Clone();
-            Vector2D previousPosition = movingEntity.Position.Clone();
+            Vector previousVelocity = movingEntity.Velocity.Clone();
+            Vector previousPosition = movingEntity.Position.Clone();
             movingEntity.AddSeekingBehavior();
             movingEntity.Update(TimeElapsed);
 
@@ -77,13 +76,13 @@ namespace SteeringCSTests
                 TimeElapsed = 10;
 
             // Arrange
-            Vector2D position = new Vector2D(XPosition, YPosition);
+            Vector position = new Vector(XPosition, YPosition);
             World world = new World(WorldWidth, WorldHeight);
 
             // Act
             MovingEntityImplementation movingEntity = new MovingEntityImplementation(position, world);
-            Vector2D previousVelocity = movingEntity.Velocity.Clone();
-            Vector2D previousPosition = movingEntity.Position.Clone();
+            Vector previousVelocity = movingEntity.Velocity.Clone();
+            Vector previousPosition = movingEntity.Position.Clone();
             movingEntity.Update(TimeElapsed);
 
             // Assert
@@ -106,7 +105,7 @@ namespace SteeringCSTests
             const float ExpectedScale = 0;
 
             // Arrange
-            Vector2D position = new Vector2D(XPosition, YPosition);
+            Vector position = new Vector(XPosition, YPosition);
             World world = new World(WorldWidth, WorldHeight);
 
             // Act
@@ -132,7 +131,7 @@ namespace SteeringCSTests
             const float ExpectedScale = Vehicle.DefaultScale;
 
             // Arrange
-            Vector2D position = new Vector2D(XPosition, YPosition);
+            Vector position = new Vector(XPosition, YPosition);
             World world = new World(WorldWidth, WorldHeight);
 
             // Act
@@ -147,7 +146,7 @@ namespace SteeringCSTests
 
     public class MovingEntityImplementation : MovingEntity
     {
-        public MovingEntityImplementation(Vector2D position, World world) : base(position, world)
+        public MovingEntityImplementation(Vector position, World world) : base(position, world)
         {
         }
     }

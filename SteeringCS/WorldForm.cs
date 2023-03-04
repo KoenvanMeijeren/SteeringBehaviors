@@ -1,9 +1,7 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
+using Src.util;
 using SteeringCS.behavior;
-using SteeringCS.entity;
-using SteeringCS.util;
 using SteeringCS.world;
 using Timer = System.Timers.Timer;
 
@@ -68,7 +66,7 @@ namespace SteeringCS
 
         private void dbPanel1_MouseClick(object sender, MouseEventArgs eventArgs)
         {
-            _world.Target.Position = new Vector2D(eventArgs.X, eventArgs.Y);
+            _world.Target.Position = new Vector(eventArgs.X, eventArgs.Y);
             _world.Update(TimeDelta);
             dbPanel.Invalidate();
         }

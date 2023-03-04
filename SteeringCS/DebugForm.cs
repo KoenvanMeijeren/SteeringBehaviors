@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using SteeringCS.behavior;
-using SteeringCS.util;
-using SteeringCS.world;
-using Timer = System.Timers.Timer;
 
 namespace SteeringCS
 {

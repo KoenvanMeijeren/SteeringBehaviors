@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using SteeringCS.entity;
-using SteeringCS.util;
+using Src.util;
 
 namespace SteeringCS.behavior
 {
@@ -18,7 +18,7 @@ namespace SteeringCS.behavior
     {
         protected readonly Random Randomizer = new Random();
         protected MovingEntity MovingEntity { get; }
-        public abstract Vector2D Calculate();
+        public abstract Vector Calculate();
 
         protected SteeringBehavior(MovingEntity movingEntity)
         {
