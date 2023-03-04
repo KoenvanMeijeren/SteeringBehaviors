@@ -26,13 +26,13 @@ namespace SteeringCS.graph
                     }
 
                     VectorImmutable vector = graph.Vertices[x, y].Position - (VertexSize / 2);
-                    rectangle.X = (int) vector.X;
-                    rectangle.Y = (int) vector.Y;
+                    rectangle.X = (int)vector.X;
+                    rectangle.Y = (int)vector.Y;
                     graphic.DrawEllipse(penVertex, rectangle);
 
                     foreach (Edge edge in graph.Vertices[x, y].Edges)
                     {
-                        graphic.DrawLine(penEdge, (int) edge.OwnerVertex.Position.X, (int) edge.OwnerVertex.Position.Y, (int) edge.DestinationVertex.Position.X, (int) edge.DestinationVertex.Position.Y);
+                        graphic.DrawLine(penEdge, (int)edge.OwnerVertex.Position.X, (int)edge.OwnerVertex.Position.Y, (int)edge.DestinationVertex.Position.X, (int)edge.DestinationVertex.Position.Y);
                     }
                 }
             }

@@ -13,7 +13,7 @@ namespace SteeringCS.world
 {
     public class WorldVisualization : WorldBase
     {
-        public WorldVisualization(int width, int height): base(width, height)
+        public WorldVisualization(int width, int height) : base(width, height)
         {
         }
 

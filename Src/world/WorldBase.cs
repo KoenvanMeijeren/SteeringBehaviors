@@ -23,7 +23,7 @@ namespace Src.world
         }
 
         protected abstract List<IMovingEntity> GetPopulation();
-        
+
         public void Update(float timeElapsed)
         {
             foreach (IMovingEntity entity in Entities)

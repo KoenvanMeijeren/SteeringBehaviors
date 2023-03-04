@@ -21,7 +21,7 @@ namespace Src.util
         public static VectorImmutable operator +(VectorImmutable left, double value) => new VectorImmutable(left.X + value, left.Y + value);
         public static VectorImmutable operator +(double value, VectorImmutable vector) => vector + value;
         public VectorImmutable Add(double x, double y) => new VectorImmutable(X + x, Y + y);
-        
+
         public static VectorImmutable operator -(VectorImmutable vector, VectorImmutable right) => new VectorImmutable(vector.X - right.X, vector.Y - right.Y);
         public static VectorImmutable operator -(VectorImmutable vector, double value) => new VectorImmutable(vector.X - value, vector.Y - value);
         public static VectorImmutable operator -(double value, VectorImmutable vector) => vector - value;
@@ -38,7 +38,7 @@ namespace Src.util
             {
                 throw new ArithmeticException("Cannot divide vector by zero!");
             }
-            
+
             return new VectorImmutable(vector.X / value, vector.Y / value);
         }
 
@@ -48,7 +48,7 @@ namespace Src.util
             {
                 throw new ArithmeticException("Cannot divide vector by zero!");
             }
-            
+
             return new VectorImmutable(X / x, Y / y);
         }
 

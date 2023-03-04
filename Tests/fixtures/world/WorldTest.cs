@@ -10,7 +10,7 @@ namespace SteeringCSTests.fixtures.world
 {
     public class WorldTest : WorldBase
     {
-        public WorldTest(int width, int height): base(width, height)
+        public WorldTest(int width, int height) : base(width, height)
         {
         }
 

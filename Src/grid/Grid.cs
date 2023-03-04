@@ -171,8 +171,8 @@ namespace Src.grid
             int halfWallTileSize = wallTile.Size / 2;
             int measureBuffer = 1;
 
-            int wallTileCenterX = (int) wallTile.Position.X + halfWallTileSize;
-            int wallTileCenterY = (int) wallTile.Position.Y + halfWallTileSize;
+            int wallTileCenterX = (int)wallTile.Position.X + halfWallTileSize;
+            int wallTileCenterY = (int)wallTile.Position.Y + halfWallTileSize;
 
             double northDistanceFromWallTileCenter = wallTileCenterY - position.Y + measureBuffer;
             double eastDistanceFromWallTileCenter = position.X - wallTileCenterX + measureBuffer;

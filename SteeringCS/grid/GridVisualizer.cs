@@ -41,8 +41,8 @@ namespace SteeringCS.grid
                 {
                     GridTile gridTile = grid.Tiles[x, y];
 
-                    rectangle.X = (int) gridTile.Position.X;
-                    rectangle.Y = (int) gridTile.Position.Y;
+                    rectangle.X = (int)gridTile.Position.X;
+                    rectangle.Y = (int)gridTile.Position.Y;
 
                     if (gridTile is PathTile pathTile && !pathTile.IsEmpty())
                     {

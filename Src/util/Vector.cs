@@ -51,7 +51,7 @@ namespace Src.util
             X -= amount;
             return this;
         }
-        
+
         public Vector SubtractY(double amount)
         {
             Y -= amount;

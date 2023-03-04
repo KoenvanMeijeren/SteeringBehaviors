@@ -22,7 +22,7 @@ namespace SteeringCS.behavior
 
         public void Render(Graphics graphic)
         {
-            
+
         }
     }
 }
