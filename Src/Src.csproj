@@ -41,12 +41,15 @@
         <Compile Include="behavior\ArrivingBehavior.cs" />
         <Compile Include="behavior\FleeingBehavior.cs" />
         <Compile Include="behavior\IdlingBehavior.cs" />
+        <Compile Include="behavior\ISteeringBehavior.cs" />
         <Compile Include="behavior\MosquitoBehavior.cs" />
         <Compile Include="behavior\SeekingBehavior.cs" />
         <Compile Include="behavior\SteeringBehavior.cs" />
         <Compile Include="behavior\WanderingBehavior.cs" />
+        <Compile Include="entity\BaseGameEntity.cs" />
         <Compile Include="entity\IGameEntity.cs" />
         <Compile Include="entity\IMovingEntity.cs" />
+        <Compile Include="entity\MovingEntity.cs" />
         <Compile Include="grid\IGrid.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="util\Vector.cs" />

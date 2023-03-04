@@ -1,10 +1,7 @@
-﻿using System.Drawing;
-using Src.entity;
-using Src.util;
+﻿using Src.util;
 using Src.world;
-using SteeringCS.util;
 
-namespace SteeringCS.entity
+namespace Src.entity
 {
     public abstract class BaseGameEntity : IGameEntity
     {

@@ -56,13 +56,12 @@
     <Compile Include="behavior\IdlingBehaviorVisualizer.cs" />
     <Compile Include="behavior\ISteeringBehaviorVisualizer.cs" />
     <Compile Include="behavior\MosquitoBehaviorVisualizer.cs" />
+    <Compile Include="behavior\SteeringBehaviorVisualizationFactory.cs" />
     <Compile Include="behavior\WanderingBehaviorVisualizer.cs" />
-    <Compile Include="entity\BaseGameEntity.cs" />
     <Compile Include="behavior\SeekingBehaviorVisualizer.cs" />
     <Compile Include="DBPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="entity\MovingEntity.cs" />
     <Compile Include="entity\Vehicle.cs" />
     <Compile Include="DebugForm.cs">
       <SubType>Form</SubType>

@@ -1,11 +1,8 @@
 ﻿using Src.behavior;
-using Src.entity;
-using SteeringCS.behavior;
 using Src.util;
 using Src.world;
-using SteeringCS.world;
 
-namespace SteeringCS.entity
+namespace Src.entity
 {
 
     public abstract class MovingEntity : BaseGameEntity, IMovingEntity
@@ -16,7 +13,7 @@ namespace SteeringCS.entity
         public float Mass { get; set; }
         public float MaxSpeed { get; set; }
 
-        public ISteeringBehaviorVisualizer SteeringBehaviorVisualizer { get; private set; }
+        public ISteeringBehavior SteeringBehavior { get; private set; }
 
         protected MovingEntity(Vector position, IWorld world) : base(position, world)
         {
@@ -25,14 +22,19 @@ namespace SteeringCS.entity
             Velocity = new Vector(0, 0);
         }
 
+        public void SetSteeringBehavior(ISteeringBehavior steeringBehavior)
+        {
+            SteeringBehavior = steeringBehavior;
+        }
+
         public override void Update(float timeElapsed)
         {
-            if (SteeringBehaviorVisualizer == null)
+            if (SteeringBehavior == null)
             {
                 return;
             }
 
-            Vector steeringForce = SteeringBehaviorVisualizer.Calculate();
+            Vector steeringForce = SteeringBehavior.Calculate();
             Vector acceleration = steeringForce.Divide(Mass);
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
@@ -50,64 +52,6 @@ namespace SteeringCS.entity
 
             //treat the screen as a toroid
             //WrapAround(m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient());
-        }
-
-        public void SetSeekingBehavior()
-        {
-            SteeringBehaviorVisualizer = new SeekingBehaviorVisualizer(this);
-        }
-
-        public void SetFleeingBehavior()
-        {
-            SteeringBehaviorVisualizer = new FleeingBehaviorVisualizer(this);
-        }
-
-        public void SetMosquitoBehavior()
-        {
-            SteeringBehaviorVisualizer = new MosquitoBehaviorVisualizer(this);
-        }
-
-        public void SetIdlingBehavior()
-        {
-            SteeringBehaviorVisualizer = new IdlingBehaviorVisualizer(this);
-        }
-
-        public void SetWanderingBehavior()
-        {
-            SteeringBehaviorVisualizer = new WanderingBehaviorVisualizer(this);
-        }
-
-        public void SetSteeringBehavior(SteeringBehaviorOptions steeringBehaviorOption)
-        {
-            switch (steeringBehaviorOption)
-            {
-                case SteeringBehaviorOptions.IdlingBehavior:
-                    {
-                        SetIdlingBehavior();
-                        break;
-                    }
-                case SteeringBehaviorOptions.SeekingBehavior:
-                    {
-                        SetSeekingBehavior();
-                        break;
-                    }
-                case SteeringBehaviorOptions.FleeingBehavior:
-                    {
-                        SetFleeingBehavior();
-                        break;
-                    }
-                case SteeringBehaviorOptions.MosquitoBehavior:
-                    {
-                        SetMosquitoBehavior();
-                        break;
-                    }
-                case SteeringBehaviorOptions.WanderingBehavior:
-                    {
-                        SetWanderingBehavior();
-                        break;
-                    }
-                default: break;
-            }
         }
 
         public void AlterVectorToStayInsideOfWorld(Vector vector)

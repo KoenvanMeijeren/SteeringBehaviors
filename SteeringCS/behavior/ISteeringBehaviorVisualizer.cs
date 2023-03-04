@@ -1,12 +1,11 @@
 ﻿using System.Drawing;
+using Src.behavior;
 using Src.util;
 
 namespace SteeringCS.behavior
 {
-    public interface ISteeringBehaviorVisualizer
+    public interface ISteeringBehaviorVisualizer : ISteeringBehavior
     {
-        Vector Calculate();
-        
         /// <summary>
         /// Used for displaying debug-information on every moving entity.
         /// </summary>

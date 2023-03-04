@@ -1,7 +1,9 @@
 ﻿using System.Drawing;
+using Src.entity;
 using Src.util;
+using Src.world;
+using SteeringCS.behavior;
 using SteeringCS.util;
-using SteeringCS.world;
 
 namespace SteeringCS.entity
 {
@@ -10,7 +12,7 @@ namespace SteeringCS.entity
         public const int DefaultScale = 5;
         public Color Color { get; set; }
 
-        public Vehicle(Vector position, World world) : base(position, world)
+        public Vehicle(Vector position, IWorld world) : base(position, world)
         {
             Velocity = new Vector(0, 0);
             Scale = DefaultScale;
@@ -26,7 +28,11 @@ namespace SteeringCS.entity
             Pen pen = new Pen(Color, 2);
             graphic.DrawEllipse(pen, new Rectangle((int)leftCorner, (int)rightCorner, (int)size, (int)size));
             graphic.DrawLine(pen, (int)Position.X, (int)Position.Y, (int)Position.X + (int)(Velocity.X * 2), (int)Position.Y + (int)(Velocity.Y * 2));
-            SteeringBehaviorVisualizer?.Render(graphic);
+
+            if (SteeringBehavior is ISteeringBehaviorVisualizer visualizer)
+            {
+                visualizer.Render(graphic);
+            }
         }
     }
 }

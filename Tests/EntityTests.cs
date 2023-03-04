@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using NUnit.Framework;
+using Src.entity;
 using Src.util;
 using SteeringCS.entity;
 using SteeringCS.world;
@@ -30,7 +31,7 @@ namespace SteeringCSTests
             Assert.AreEqual(MovingEntity.MaxSpeedDefault, movingEntity.MaxSpeed);
             Assert.AreEqual(XPosition, movingEntity.Velocity.X);
             Assert.AreEqual(YPosition, movingEntity.Velocity.Y);
-            Assert.IsNull(movingEntity.SteeringBehaviorVisualizer);
+            Assert.IsNull(movingEntity.SteeringBehavior);
             Assert.AreEqual(ExpectedString, movingEntity.ToString());
         }
 
@@ -55,7 +56,6 @@ namespace SteeringCSTests
             MovingEntityImplementation movingEntity = new MovingEntityImplementation(position, world);
             Vector previousVelocity = movingEntity.Velocity.Clone();
             Vector previousPosition = movingEntity.Position.Clone();
-            movingEntity.SetSeekingBehavior();
             movingEntity.Update(TimeElapsed);
 
             // Assert

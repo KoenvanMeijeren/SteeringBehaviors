@@ -5,6 +5,7 @@ using Src.entity;
 using Src.grid;
 using Src.util;
 using Src.world;
+using SteeringCS.behavior;
 using SteeringCS.entity;
 using SteeringCS.grid;
 using SteeringCS.util;
@@ -34,8 +35,6 @@ namespace SteeringCS.world
             {
                 Color = Color.Blue,
             };
-
-            vehicle.SetSeekingBehavior();
             _entities.Add(vehicle);
 
             Target = new Vehicle(new Vector(100, 60), this)
@@ -45,11 +44,11 @@ namespace SteeringCS.world
             };
         }
 
-        public void EditPopulation(SteeringBehaviorOptions steeringBehaviorOption, int mass, int maxSpeed)
+        public void EditPopulation(SteeringBehaviorOptions selectedOption, int mass, int maxSpeed)
         {
             foreach (IMovingEntity entity in _entities)
             {
-                entity.SetSteeringBehavior(steeringBehaviorOption);
+                entity.SetSteeringBehavior(SteeringBehaviorVisualizationFactory.CreateFromEnum(selectedOption, entity));
                 entity.Mass = mass;
                 entity.MaxSpeed = maxSpeed;
             }
