@@ -4,6 +4,8 @@ using Src.util;
 using SteeringCS.behavior;
 using SteeringCS.entity;
 using SteeringCS.world;
+using SteeringCSTests.fixtures.entity;
+using SteeringCSTests.fixtures.world;
 
 namespace SteeringCSTests
 {
@@ -14,13 +16,13 @@ namespace SteeringCSTests
         {
             // Mocked values
             const int XPosition = 2, YPosition = 3, WorldWidth = 20, WorldHeight = 20;
-            const double ExpectedXPosition = 98.0d, ExpectedYPosition = 37.0d;
+            const double ExpectedXPosition = 38.0d, ExpectedYPosition = 57.0d;
 
             // Arrange
             Vector position = new(XPosition, YPosition);
-            WorldVisualization world = new(WorldWidth, WorldHeight);
-            Vehicle vehicle = new(position, world);
-            SeekingBehavior behaviorVisualizer = new(vehicle);
+            WorldTest world = new(WorldWidth, WorldHeight);
+            VehicleTest vehicleTest = new(position, world);
+            SeekingBehavior behaviorVisualizer = new(vehicleTest);
 
             // Act
             Vector velocity = behaviorVisualizer.Calculate();
@@ -38,9 +40,9 @@ namespace SteeringCSTests
 
             // Arrange
             Vector position = new Vector(XPosition, YPosition);
-            WorldVisualization world = new WorldVisualization(WorldWidth, WorldHeight);
-            Vehicle vehicle = new Vehicle(position, world);
-            SeekingBehavior behaviorVisualizer = new SeekingBehavior(vehicle);
+            WorldTest world = new WorldTest(WorldWidth, WorldHeight);
+            VehicleTest vehicleTest = new VehicleTest(position, world);
+            SeekingBehavior behaviorVisualizer = new SeekingBehavior(vehicleTest);
 
             // Act
             Vector velocity = behaviorVisualizer.Calculate();
