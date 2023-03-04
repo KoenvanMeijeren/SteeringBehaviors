@@ -39,7 +39,7 @@ namespace Src.util
                 throw new ArithmeticException("Cannot divide vector by zero!");
             }
             
-            return new VectorImmutable(vector.X * value, vector.Y * value);
+            return new VectorImmutable(vector.X / value, vector.Y / value);
         }
 
         public VectorImmutable Divide(double x, double y)

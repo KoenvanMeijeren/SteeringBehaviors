@@ -6,24 +6,17 @@ namespace Src.util
 
     public class Vector
     {
-        public double X { get; private set; }
-        public double Y { get; private set; }
-
-        public Vector(double x, double y)
+        public double X { get; set; }
+        public double Y { get; set; }
+        public Vector(double xPosition, double yPosition)
         {
-            X = x;
-            Y = y;
+            X = xPosition;
+            Y = yPosition;
         }
 
-        public double Length()
-        {
-            return Math.Sqrt(LengthSquared());
-        }
+        public double Length() => Math.Sqrt(LengthSquared());
 
-        public double LengthSquared()
-        {
-            return (X * X) + (Y * Y);
-        }
+        public double LengthSquared() => (X * X) + (Y * Y);
 
         public Vector Add(Vector vector)
         {
@@ -53,15 +46,15 @@ namespace Src.util
             return this;
         }
 
-        public Vector SubtractY(double amount)
-        {
-            Y -= amount;
-            return this;
-        }
-
         public Vector SubtractX(double amount)
         {
             X -= amount;
+            return this;
+        }
+        
+        public Vector SubtractY(double amount)
+        {
+            Y -= amount;
             return this;
         }
 
@@ -74,7 +67,7 @@ namespace Src.util
 
         public Vector Divide(double value)
         {
-            if (value == 0 || value == 0.0)
+            if (X == 0.0 || Y == 0.0 || value == 0.0)
             {
                 throw new ArithmeticException("Cannot divide vector by zero!");
             }
@@ -82,16 +75,6 @@ namespace Src.util
             X /= value;
             Y /= value;
             return this;
-        }
-
-        public void SetXPosition(double x)
-        {
-            X = x;
-        }
-
-        public void SetYPosition(double y)
-        {
-            Y = y;
         }
 
         public Vector Normalize()
@@ -112,14 +95,9 @@ namespace Src.util
             return this;
         }
 
-        public Vector Clone()
-        {
-            return new Vector(X, Y);
-        }
+        public Vector Clone() => new Vector(X, Y);
 
-        public override string ToString()
-        {
-            return $"({Math.Round(X, 2).ToString(CultureInfo.InvariantCulture)},{Math.Round(Y, 2).ToString(CultureInfo.InvariantCulture)})";
-        }
+        public override string ToString() => $"({Math.Round(X, 2).ToString(CultureInfo.InvariantCulture)}," +
+                                             $"{Math.Round(Y, 2).ToString(CultureInfo.InvariantCulture)})";
     }
 }
