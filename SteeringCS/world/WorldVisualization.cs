@@ -26,10 +26,9 @@ namespace SteeringCS.world
             };
             entities.Add(vehicle);
 
-            Target = new Vehicle(new Vector(100, 60), this)
+            Target = new Vehicle(new Vector(100, 40), this)
             {
                 Color = Color.DarkRed,
-                Position = new Vector(100, 40)
             };
 
             return entities;
