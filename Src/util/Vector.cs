@@ -67,7 +67,7 @@ namespace Src.util
 
         public Vector Divide(double value)
         {
-            if (X == 0.0 || Y == 0.0 || value == 0.0)
+            if (value == 0.0)
             {
                 throw new ArithmeticException("Cannot divide vector by zero!");
             }

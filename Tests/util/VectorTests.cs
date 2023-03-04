@@ -468,6 +468,9 @@ namespace SteeringCSTests.util
             Assert.AreEqual(expectedResult, vector.ToString());
         }
         
+        [TestCase(new double[]{0,0}, 3, "(0,0)")]
+        [TestCase(new double[]{0,3}, 3, "(0,1)")]
+        [TestCase(new double[]{4,0}, 3, "(1.33,0)")]
         [TestCase(new double[]{3,2}, 3, "(1,0.67)")]
         [TestCase(new double[]{4,2}, 3, "(1.33,0.67)")]
         [TestCase(new double[]{-2,2}, 3, "(-0.67,0.67)")]
@@ -484,8 +487,6 @@ namespace SteeringCSTests.util
         }
         
         [TestCase(new double[]{0,0}, 0)]
-        [TestCase(new double[]{0,2}, 3)]
-        [TestCase(new double[]{-2,0}, 3)]
         public void Test_DivideWithValue_01_ThrowsOnDivideByZero(double[] positions, double divider)
         {
             // Arrange
