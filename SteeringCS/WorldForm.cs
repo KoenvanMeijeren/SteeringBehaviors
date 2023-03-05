@@ -1,9 +1,8 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
+using Src.behavior;
+using Src.util;
 using SteeringCS.behavior;
-using SteeringCS.entity;
-using SteeringCS.util;
 using SteeringCS.world;
 using Timer = System.Timers.Timer;
 
@@ -11,9 +10,9 @@ namespace SteeringCS
 {
     public partial class WorldForm : Form
     {
-        private World _world;
-        private const int _worldHeight = 640;
-        private const int _worldWidth = 640;
+        private WorldVisualization _world;
+        private const int WorldHeight = 640;
+        private const int WorldWidth = 640;
 
         private bool _renderGrid;
         private bool _renderGraph;
@@ -29,14 +28,14 @@ namespace SteeringCS
 
         private void Initialize()
         {
-            Width = _worldWidth + 116;
-            Height = _worldHeight + 140;
+            Width = WorldWidth + 116;
+            Height = WorldHeight + 140;
 
-            dbPanel.Width = _worldWidth;
-            dbPanel.Height = _worldHeight;
+            dbPanel.Width = WorldWidth;
+            dbPanel.Height = WorldHeight;
             dbPanel.Location = new Point(50, 50);
 
-            _world = new World(width: _worldWidth, height: _worldHeight);
+            _world = new WorldVisualization(width: WorldWidth, height: WorldHeight);
 
             _timer.Elapsed += Timer_Elapsed;
             _timer.Interval = 20;
@@ -68,7 +67,7 @@ namespace SteeringCS
 
         private void dbPanel1_MouseClick(object sender, MouseEventArgs eventArgs)
         {
-            _world.Target.Position = new Vector2D(eventArgs.X, eventArgs.Y);
+            _world.Target.Position = new Vector(eventArgs.X, eventArgs.Y);
             _world.Update(TimeDelta);
             dbPanel.Invalidate();
         }

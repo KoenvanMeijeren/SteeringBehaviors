@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
+using Src.behavior;
 using SteeringCS.behavior;
-using SteeringCS.util;
-using SteeringCS.world;
-using Timer = System.Timers.Timer;
 
 namespace SteeringCS
 {
     public partial class DebugForm : Form
     {
         private const SteeringBehaviorOptions SteeringBehaviorOptionDefault = SteeringBehaviorOptions.IdlingBehavior;
-        WorldForm _worldForm;
+        private readonly WorldForm _worldForm;
 
         public DebugForm(WorldForm worldForm)
         {

@@ -1,31 +1,38 @@
 ﻿using System.Drawing;
+using Src.entity;
+using Src.util;
+using Src.world;
+using SteeringCS.behavior;
 using SteeringCS.util;
-using SteeringCS.world;
 
 namespace SteeringCS.entity
 {
-    public class Vehicle : MovingEntity
+    public class Vehicle : MovingEntity, IRender
     {
         public const int DefaultScale = 5;
         public Color Color { get; set; }
 
-        public Vehicle(Vector2D position, World world) : base(position, world)
+        public Vehicle(Vector position, IWorld world) : base(position, world)
         {
-            Velocity = new Vector2D();
+            Velocity = new Vector(0, 0);
             Scale = DefaultScale;
             Color = Color.Black;
         }
 
-        public override void Render(Graphics graphic)
+        public void Render(Graphics graphic)
         {
-            double leftCorner = Position.XPosition - Scale;
-            double rightCorner = Position.YPosition - Scale;
+            double leftCorner = Position.X - Scale;
+            double rightCorner = Position.Y - Scale;
             float size = Scale * 2;
 
             Pen pen = new Pen(Color, 2);
             graphic.DrawEllipse(pen, new Rectangle((int)leftCorner, (int)rightCorner, (int)size, (int)size));
-            graphic.DrawLine(pen, (int)Position.XPosition, (int)Position.YPosition, (int)Position.XPosition + (int)(Velocity.XPosition * 2), (int)Position.YPosition + (int)(Velocity.YPosition * 2));
-            SteeringBehavior?.Render(graphic);
+            graphic.DrawLine(pen, (int)Position.X, (int)Position.Y, (int)Position.X + (int)(Velocity.X * 2), (int)Position.Y + (int)(Velocity.Y * 2));
+
+            if (SteeringBehavior is ISteeringBehaviorVisualizer visualizer)
+            {
+                visualizer.Render(graphic);
+            }
         }
     }
 }

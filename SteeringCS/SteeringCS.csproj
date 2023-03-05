@@ -51,17 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="behavior\ArrivingBehavior.cs" />
-    <Compile Include="behavior\FleeingBehavior.cs" />
-    <Compile Include="behavior\IdlingBehavior.cs" />
-    <Compile Include="behavior\MosquitoBehavior.cs" />
-    <Compile Include="behavior\WanderingBehavior.cs" />
-    <Compile Include="entity\BaseGameEntity.cs" />
-    <Compile Include="behavior\SeekingBehavior.cs" />
+    <Compile Include="behavior\ArrivingBehaviorVisualizer.cs" />
+    <Compile Include="behavior\FleeingBehaviorVisualizer.cs" />
+    <Compile Include="behavior\IdlingBehaviorVisualizer.cs" />
+    <Compile Include="behavior\ISteeringBehaviorVisualizer.cs" />
+    <Compile Include="behavior\MosquitoBehaviorVisualizer.cs" />
+    <Compile Include="behavior\SteeringBehaviorVisualizationFactory.cs" />
+    <Compile Include="behavior\WanderingBehaviorVisualizer.cs" />
+    <Compile Include="behavior\SeekingBehaviorVisualizer.cs" />
     <Compile Include="DBPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="entity\MovingEntity.cs" />
     <Compile Include="entity\Vehicle.cs" />
     <Compile Include="DebugForm.cs">
       <SubType>Form</SubType>
@@ -69,13 +69,11 @@
     <Compile Include="DebugForm.Designer.cs">
       <DependentUpon>DebugForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="graph\Edge.cs" />
-    <Compile Include="graph\Graph.cs" />
-    <Compile Include="graph\Vertex.cs" />
-    <Compile Include="grid\PathTile.cs" />
-    <Compile Include="grid\WallTile.cs" />
+    <Compile Include="graph\GraphVisualizer.cs" />
+    <Compile Include="grid\PathTileVisualizer.cs" />
+    <Compile Include="grid\WallTileVisualizer.cs" />
     <Compile Include="MultiFormContext.cs" />
-    <Compile Include="util\Position.cs" />
+    <Compile Include="util\IRender.cs" />
     <Compile Include="WorldForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,11 +82,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="behavior\SteeringBehavior.cs" />
-    <Compile Include="util\Vector2D.cs" />
-    <Compile Include="grid\Grid.cs" />
-    <Compile Include="grid\GridTile.cs" />
-    <Compile Include="world\World.cs" />
+    <Compile Include="grid\GridVisualizer.cs" />
+    <Compile Include="world\WorldVisualization.cs" />
     <EmbeddedResource Include="DebugForm.resx">
       <DependentUpon>DebugForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +117,12 @@
     <Content Include="grid\wall.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Src\Src.csproj">
+      <Project>{ae3bec73-aef9-4222-a255-3033e543960f}</Project>
+      <Name>Src</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
