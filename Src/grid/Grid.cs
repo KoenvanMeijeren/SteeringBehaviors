@@ -179,14 +179,12 @@ namespace Src.grid
             double southDistanceFromWallTileCenter = position.Y - wallTileCenterY + measureBuffer;
             double westDistanceFromWallTileCenter = wallTileCenterX - position.X + measureBuffer;
 
-            GridTile gridTileNorth = Tiles[tileX, tileY - 1];
-            GridTile gridTileEast = Tiles[tileX + 1, tileY];
-            GridTile gridTileSouth = Tiles[tileX, tileY + 1];
-            GridTile gridTileWest = Tiles[tileX - 1, tileY];
-
             // Handle encountering north east corner
             if (northDistanceFromWallTileCenter > halfWallTileSize && eastDistanceFromWallTileCenter > halfWallTileSize)
             {
+                GridTile gridTileNorth = Tiles[tileX, tileY - 1];
+                GridTile gridTileEast = Tiles[tileX + 1, tileY];
+
                 if (gridTileNorth is WallTile && gridTileEast is WallTile)
                 {
                     vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
@@ -219,6 +217,9 @@ namespace Src.grid
             // Handle encountering south east corner
             if (southDistanceFromWallTileCenter > halfWallTileSize && eastDistanceFromWallTileCenter > halfWallTileSize)
             {
+                GridTile gridTileEast = Tiles[tileX + 1, tileY];
+                GridTile gridTileSouth = Tiles[tileX, tileY + 1];
+
                 if (gridTileSouth is WallTile && gridTileEast is WallTile)
                 {
                     vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
@@ -251,6 +252,9 @@ namespace Src.grid
             // Handle encountering south west corner
             if (southDistanceFromWallTileCenter > halfWallTileSize && westDistanceFromWallTileCenter > halfWallTileSize)
             {
+                GridTile gridTileSouth = Tiles[tileX, tileY + 1];
+                GridTile gridTileWest = Tiles[tileX - 1, tileY];
+
                 if (gridTileSouth is WallTile && gridTileWest is WallTile)
                 {
                     vector.SubtractX(targetPosition.X - gridTile.Position.X);
@@ -283,6 +287,9 @@ namespace Src.grid
             // Handle encountering north west corner
             if (northDistanceFromWallTileCenter > halfWallTileSize && westDistanceFromWallTileCenter > halfWallTileSize)
             {
+                GridTile gridTileNorth = Tiles[tileX, tileY - 1];
+                GridTile gridTileWest = Tiles[tileX - 1, tileY];
+
                 if (gridTileNorth is WallTile && gridTileWest is WallTile)
                 {
                     vector.SubtractX(targetPosition.X - gridTile.Position.X);
