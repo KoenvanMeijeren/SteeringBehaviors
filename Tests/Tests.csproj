@@ -6,6 +6,7 @@
         <IsPackable>false</IsPackable>
 
         <RootNamespace>Tests</RootNamespace>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     </PropertyGroup>
 
     <ItemGroup>

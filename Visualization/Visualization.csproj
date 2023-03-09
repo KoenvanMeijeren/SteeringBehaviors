@@ -7,6 +7,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{BD179484-1369-4437-BD3B-4AECFB627286}</ProjectGuid>
