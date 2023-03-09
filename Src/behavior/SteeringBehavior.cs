@@ -10,7 +10,8 @@ namespace Src.behavior
         SeekingBehavior,
         FleeingBehavior,
         MosquitoBehavior,
-        WanderingBehavior
+        WanderingBehavior,
+        PathfindingBehavior
     }
 
     public abstract class SteeringBehavior : ISteeringBehavior

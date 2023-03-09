@@ -8,6 +8,10 @@ namespace Src.graph
         public readonly VectorImmutable Position;
         public readonly LinkedList<Edge> Edges;
 
+        public Vertex Parent;
+        public float Cost;
+        public int DistanceFromTarget;
+
         public Vertex(int x, int y)
         {
             Edges = new LinkedList<Edge>();

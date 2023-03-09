@@ -14,5 +14,6 @@ namespace Src.grid
 
         void MoveEntityIfInDifferentTile(Vector oldPos, Vector newPos, IMovingEntity entity);
         void AlterVectorToStayOutOfWalls(Vector position, Vector vector);
+        int GetCoordinateOfTile(int length);
     }
 }

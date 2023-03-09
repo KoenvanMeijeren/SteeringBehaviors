@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using Src.graph;
 using Src.util;
 
@@ -14,7 +15,6 @@ namespace SteeringCS.graph
             Pen penVertex = new Pen(s_renderColor, 4);
             Pen penEdge = new Pen(s_renderColor);
             Rectangle rectangle = new Rectangle(0, 0, VertexSize, VertexSize);
-
 
             for (int x = 0; x < graph.Vertices.GetLength(0); x++)
             {
