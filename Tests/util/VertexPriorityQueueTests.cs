@@ -13,7 +13,7 @@ namespace Tests.util
             // Arrange
             const int ExpectedCount = 0;
             const bool ExpectedIsEmpty = true;
-            
+
             // Act
             VertexPriorityQueue queue = new VertexPriorityQueue();
 
@@ -21,18 +21,18 @@ namespace Tests.util
             Assert.That(queue.IsEmpty, Is.EqualTo(ExpectedIsEmpty));
             Assert.That(queue.Count, Is.EqualTo(ExpectedCount));
         }
-        
+
         [Test]
         public void Enqueue_01_SingleOk()
         {
             // Mocked values
             const int Priority = 0;
-            
+
             // Arrange
             const int ExpectedCount = 1;
             const bool ExpectedIsEmpty = false;
             Vertex vertex = new Vertex(3, 4);
-            
+
             // Act
             VertexPriorityQueue queue = new VertexPriorityQueue();
             queue.Enqueue(vertex, Priority);
@@ -41,7 +41,7 @@ namespace Tests.util
             Assert.That(queue.IsEmpty, Is.EqualTo(ExpectedIsEmpty));
             Assert.That(queue.Count, Is.EqualTo(ExpectedCount));
         }
-        
+
         [Test]
         public void Enqueue_02_MultipleOk()
         {
@@ -51,7 +51,7 @@ namespace Tests.util
             Vertex vertex1 = new Vertex(3, 4);
             Vertex vertex2 = new Vertex(4, 4);
             Vertex vertex3 = new Vertex(5, 4);
-            
+
             // Act
             VertexPriorityQueue queue = new VertexPriorityQueue();
             queue.Enqueue(vertex1, 0);
@@ -62,18 +62,18 @@ namespace Tests.util
             Assert.That(queue.IsEmpty, Is.EqualTo(ExpectedIsEmpty));
             Assert.That(queue.Count, Is.EqualTo(ExpectedCount));
         }
-        
+
         [Test]
         public void Dequeue_01_SingleOk()
         {
             // Mocked values
             const int Priority = 0;
-            
+
             // Arrange
             const int ExpectedCount = 0;
             const bool ExpectedIsEmpty = true;
             Vertex vertex = new Vertex(3, 4);
-            
+
             // Act
             VertexPriorityQueue queue = new VertexPriorityQueue();
             queue.Enqueue(vertex, Priority);
@@ -84,7 +84,7 @@ namespace Tests.util
             Assert.That(queue.IsEmpty, Is.EqualTo(ExpectedIsEmpty));
             Assert.That(queue.Count, Is.EqualTo(ExpectedCount));
         }
-        
+
         [Test]
         public void Dequeue_02_OneOfMultipleOk()
         {
@@ -94,7 +94,7 @@ namespace Tests.util
             Vertex vertex1 = new Vertex(3, 4);
             Vertex vertex2 = new Vertex(4, 4);
             Vertex vertex3 = new Vertex(5, 4);
-            
+
             // Act
             VertexPriorityQueue queue = new VertexPriorityQueue();
             queue.Enqueue(vertex1, 0);
@@ -107,7 +107,7 @@ namespace Tests.util
             Assert.That(queue.IsEmpty, Is.EqualTo(ExpectedIsEmpty));
             Assert.That(queue.Count, Is.EqualTo(ExpectedCount));
         }
-        
+
         [Test]
         public void Dequeue_03_AllOfMultipleOk()
         {
@@ -117,7 +117,7 @@ namespace Tests.util
             Vertex vertex1 = new Vertex(3, 4);
             Vertex vertex2 = new Vertex(4, 4);
             Vertex vertex3 = new Vertex(5, 4);
-            
+
             // Act
             VertexPriorityQueue queue = new VertexPriorityQueue();
             queue.Enqueue(vertex1, 0);
@@ -134,7 +134,7 @@ namespace Tests.util
             Assert.That(queue.IsEmpty, Is.EqualTo(ExpectedIsEmpty));
             Assert.That(queue.Count, Is.EqualTo(ExpectedCount));
         }
-        
+
         [Test]
         public void Dequeue_04_ThrowsOnEmptyQueue()
         {
@@ -150,7 +150,7 @@ namespace Tests.util
             Vertex vertex1 = new Vertex(3, 4);
             Vertex vertex2 = new Vertex(4, 4);
             Vertex vertex3 = new Vertex(5, 4);
-            
+
             // Act
             VertexPriorityQueue queue = new VertexPriorityQueue();
             queue.Enqueue(vertex1, 0);
@@ -162,7 +162,7 @@ namespace Tests.util
             Assert.That(queue.Contains(vertex2), Is.True);
             Assert.That(queue.Contains(vertex3), Is.True);
         }
-        
+
         [Test]
         public void Contains_02_NotOk()
         {
@@ -171,7 +171,7 @@ namespace Tests.util
             Vertex vertex2 = new Vertex(4, 4);
             Vertex vertex3 = new Vertex(5, 4);
             Vertex vertex4 = new Vertex(5, 4);
-            
+
             // Act
             VertexPriorityQueue queue = new VertexPriorityQueue();
             queue.Enqueue(vertex1, 0);
@@ -181,7 +181,7 @@ namespace Tests.util
             // Assert
             Assert.That(queue.Contains(vertex4), Is.False);
         }
-        
+
         [Test]
         public void Clear_01_AllOfMultipleOk()
         {
@@ -191,7 +191,7 @@ namespace Tests.util
             Vertex vertex1 = new Vertex(3, 4);
             Vertex vertex2 = new Vertex(4, 4);
             Vertex vertex3 = new Vertex(5, 4);
-            
+
             // Act
             VertexPriorityQueue queue = new VertexPriorityQueue();
             queue.Enqueue(vertex1, 0);
