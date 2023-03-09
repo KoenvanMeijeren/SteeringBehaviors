@@ -29,6 +29,10 @@ namespace Src.behavior
                     {
                         return new WanderingBehavior(movingEntity);
                     }
+                case SteeringBehaviorOptions.PathfindingBehavior:
+                    {
+                        return new PathfindingBehavior(movingEntity);
+                    }
                 default: throw new InvalidEnumArgumentException("Could not create steering behavior for the selected option.");
             }
         }
