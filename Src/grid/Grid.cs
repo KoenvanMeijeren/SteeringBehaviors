@@ -67,19 +67,6 @@ namespace Src.grid
                     }
                 }
             }
-
-            /*            Tiles[5, 7] = new WallTile(TileSize, 5 * TileSize, 7 * TileSize);
-                        Tiles[4, 7] = new WallTile(TileSize, 4 * TileSize, 7 * TileSize);
-                        Tiles[5 ,8] = new WallTile(TileSize, 5 * TileSize, 8 * TileSize);
-                        Tiles[4, 8] = new WallTile(TileSize, 4 * TileSize, 8 * TileSize);
-
-                        Tiles[9, 8] = new WallTile(TileSize, 9 * TileSize, 8 * TileSize);
-                        Tiles[10, 8] = new WallTile(TileSize, 10 * TileSize, 8 * TileSize);
-
-                        Tiles[14, 7] = new WallTile(TileSize, 14 * TileSize, 7 * TileSize);
-                        Tiles[15, 7] = new WallTile(TileSize, 15 * TileSize, 7 * TileSize);
-                        Tiles[14, 8] = new WallTile(TileSize, 14 * TileSize, 8 * TileSize);
-                        Tiles[15, 8] = new WallTile(TileSize, 15 * TileSize, 8 * TileSize);*/
         }
 
         private void InitializePathTiles()

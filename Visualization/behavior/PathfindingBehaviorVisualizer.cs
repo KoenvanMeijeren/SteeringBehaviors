@@ -15,22 +15,22 @@ namespace SteeringCS.behavior
 {
     public class PathfindingBehaviorVisualizer : ISteeringBehaviorVisualizer
     {
-        public PathfindingBehavior PathfindingBehavior { get; private set; }
+        private readonly PathfindingBehavior _pathfindingBehavior;
         private static readonly Color s_renderColor = Color.Orange;
 
         public PathfindingBehaviorVisualizer(IMovingEntity movingEntity)
         {
-            PathfindingBehavior = new PathfindingBehavior(movingEntity);
+            _pathfindingBehavior = new PathfindingBehavior(movingEntity);
         }
 
         public Vector Calculate()
         {
-            return PathfindingBehavior.Calculate();
+            return _pathfindingBehavior.Calculate();
         }
 
         public void Render(Graphics graphic)
         {
-            if (PathfindingBehavior.Path == null)
+            if (_pathfindingBehavior.Path == null)
             {
                 return;
             }
@@ -42,7 +42,7 @@ namespace SteeringCS.behavior
 
             Vertex prevVertex = null;
 
-            foreach (Vertex vertex in PathfindingBehavior.Path)
+            foreach (Vertex vertex in _pathfindingBehavior.Path)
             {
                 VectorImmutable vector = vertex.Position - (VertexSize / 2);
                 rectangle.X = (int)vector.X;

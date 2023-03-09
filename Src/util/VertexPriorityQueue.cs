@@ -1,68 +1,61 @@
-﻿using Src.graph;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Src.graph;
 
-public class VertexPriorityQueue
+namespace Src.util
 {
-    private SortedDictionary<float, Queue<Vertex>> priorityQueue;
-
-    public VertexPriorityQueue()
+    public class VertexPriorityQueue
     {
-        priorityQueue = new SortedDictionary<float, Queue<Vertex>>();
-    }
+        private readonly SortedDictionary<float, Queue<Vertex>> _priorityQueue;
 
-    public bool IsEmpty => priorityQueue.Count == 0;
-
-    public int Count => priorityQueue.Count;
-
-    public void Enqueue(Vertex vertex, float priority)
-    {
-        Queue<Vertex> vertexQueue;
-
-        if (!priorityQueue.TryGetValue(priority, out vertexQueue))
+        public VertexPriorityQueue()
         {
-            vertexQueue = new Queue<Vertex>();
-            priorityQueue.Add(priority, vertexQueue);
+            _priorityQueue = new SortedDictionary<float, Queue<Vertex>>();
         }
 
-        vertexQueue.Enqueue(vertex);
-    }
+        public bool IsEmpty => _priorityQueue.Count == 0;
 
-    public Vertex Dequeue()
-    {
-        if (IsEmpty)
+        public int Count => _priorityQueue.Count;
+
+        public void Enqueue(Vertex vertex, float priority)
         {
-            throw new InvalidOperationException("Priority queue is empty");
-        }
-
-        float priority = priorityQueue.Keys.First();
-        Queue<Vertex> vertexQueue = priorityQueue[priority];
-        Vertex vertex = vertexQueue.Dequeue();
-
-        if (vertexQueue.Count == 0)
-        {
-            priorityQueue.Remove(priority);
-        }
-
-        return vertex;
-    }
-
-    public bool Contains(Vertex vertex)
-    {
-        foreach (Queue<Vertex> vertexQueue in priorityQueue.Values)
-        {
-            if (vertexQueue.Contains(vertex))
+            if (!_priorityQueue.TryGetValue(priority, out Queue<Vertex> vertexQueue))
             {
-                return true;
+                vertexQueue = new Queue<Vertex>();
+                _priorityQueue.Add(priority, vertexQueue);
             }
+
+            vertexQueue.Enqueue(vertex);
         }
 
-        return false;
-    }
+        public Vertex Dequeue()
+        {
+            if (IsEmpty)
+            {
+                throw new InvalidOperationException("Priority queue is empty");
+            }
 
-    public void Clear()
-    {
-        priorityQueue.Clear();
+            float priority = _priorityQueue.Keys.First();
+            Queue<Vertex> vertexQueue = _priorityQueue[priority];
+            Vertex vertex = vertexQueue.Dequeue();
+
+            if (vertexQueue.Count == 0)
+            {
+                _priorityQueue.Remove(priority);
+            }
+
+            return vertex;
+        }
+
+        public bool Contains(Vertex vertex)
+        {
+            return _priorityQueue.Values.Any(vertexQueue => vertexQueue.Contains(vertex));
+        }
+
+        public void Clear()
+        {
+            _priorityQueue.Clear();
+        }
     }
 }

@@ -11,9 +11,9 @@ namespace Src.behavior
 {
     public class PathfindingBehavior : SteeringBehavior
     {
-        private Vertex ClosestVertex;
-        private Vertex TargetVertex;
-        public Stack<Vertex> Path;
+        private Vertex _closestVertex;
+        private Vertex _targetVertex;
+        public Stack<Vertex> Path { get; private set; }
 
         public PathfindingBehavior(IMovingEntity movingEntity) : base(movingEntity)
         {
@@ -36,7 +36,7 @@ namespace Src.behavior
             return actualVelocity;
         }
 
-        public void UpdatePathIfNecessary()
+        private void UpdatePathIfNecessary()
         {
             int vectorX = MovingEntity.World.Grid.GetCoordinateOfTile((int)MovingEntity.Position.X);
             int vectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)MovingEntity.Position.Y);
@@ -47,12 +47,14 @@ namespace Src.behavior
             int targetVectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)targetPosition.Y);
             Vertex newTargetVertex = MovingEntity.World.Grid.Graph.GetVertex(targetVectorX, targetVectorY);
 
-            if (ClosestVertex != newClosestVertex || TargetVertex != newTargetVertex)
+            if (_closestVertex == newClosestVertex && _targetVertex == newTargetVertex)
             {
-                ClosestVertex = newClosestVertex;
-                TargetVertex = newTargetVertex;
-                Path = MovingEntity.World.Grid.Graph.getShortestPath(ClosestVertex, TargetVertex);
+                return;
             }
+
+            _closestVertex = newClosestVertex;
+            _targetVertex = newTargetVertex;
+            Path = MovingEntity.World.Grid.Graph.GetShortestPath(_closestVertex, _targetVertex);
         }
     }
 }
