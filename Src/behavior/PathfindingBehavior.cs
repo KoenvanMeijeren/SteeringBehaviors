@@ -25,7 +25,7 @@ namespace Src.behavior
 
             if (Path == null || Path.Count < 1)
             {
-                return new Vector(0,0);
+                return new Vector(0, 0);
             }
 
             VectorImmutable targetPositionImmutable = Path.First().Position;

@@ -49,7 +49,7 @@ namespace SteeringCS.behavior
                 rectangle.Y = (int)vector.Y;
                 graphic.DrawEllipse(penVertex, rectangle);
 
-                if(prevVertex != null)
+                if (prevVertex != null)
                 {
                     graphic.DrawLine(penEdge, (int)prevVertex.Position.X, (int)prevVertex.Position.Y, (int)vertex.Position.X, (int)vertex.Position.Y);
                 }

@@ -95,7 +95,8 @@ namespace Src.graph
 
         public Stack<Vertex> getShortestPath(Vertex startVertex, Vertex targetVertex)
         {
-            if (startVertex == null || targetVertex == null) {
+            if (startVertex == null || targetVertex == null)
+            {
                 return null;
             }
 
@@ -124,9 +125,9 @@ namespace Src.graph
                             vertex.Parent = current;
                             vertex.DistanceFromTarget = (int)(Math.Abs(vertex.Position.X - targetVertex.Position.X) + Math.Abs(vertex.Position.Y - targetVertex.Position.Y));
                             int distanceFromParent = (int)(Math.Abs(vertex.Position.X - vertex.Parent.Position.X) + Math.Abs(vertex.Position.Y - vertex.Parent.Position.Y));
-                         
-                            
-                            vertex.Cost = (distanceFromParent*2) + vertex.Parent.Cost;
+
+
+                            vertex.Cost = (distanceFromParent * 2) + vertex.Parent.Cost;
                             OpenList.Enqueue(vertex, vertex.Cost + vertex.DistanceFromTarget);
                         }
                     }
@@ -140,7 +141,7 @@ namespace Src.graph
 
             Vertex temp = ClosedList[ClosedList.IndexOf(current)];
 
-            if (temp == null) 
+            if (temp == null)
             {
                 return null;
             }
