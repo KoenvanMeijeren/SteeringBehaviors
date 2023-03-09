@@ -12,7 +12,7 @@ namespace Src.behavior
     public class PathfindingBehavior : SteeringBehavior
     {
         private Vertex _closestVertex;
-        private Vertex _targetVertex;
+        Vertex _targetVertex;
         public Stack<Vertex> Path { get; private set; }
 
         public PathfindingBehavior(IMovingEntity movingEntity) : base(movingEntity)
