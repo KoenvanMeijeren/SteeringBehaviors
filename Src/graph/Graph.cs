@@ -22,7 +22,7 @@ namespace Src.graph
         {
             for (int x = 0; x < Vertices.GetLength(0); x++)
             {
-                for (int y = 0; y < Vertices.GetLength(1); y++)
+                for (var y = 0; y < Vertices.GetLength(1); y++)
                 {
                     if (Vertices[x, y] != null)
                     {
