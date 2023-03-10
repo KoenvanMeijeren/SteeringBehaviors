@@ -1,18 +1,15 @@
 ﻿using Src.entity;
 using Src.graph;
 using Src.util;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Src.behavior
 {
     public class PathfindingBehavior : SteeringBehavior
     {
         private Vertex _closestVertex;
-        Vertex _targetVertex;
+        private Vertex _targetVertex;
         public Stack<Vertex> Path { get; private set; }
 
         public PathfindingBehavior(IMovingEntity movingEntity) : base(movingEntity)
