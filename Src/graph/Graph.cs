@@ -1,9 +1,6 @@
 ﻿using Src.util;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
 
 namespace Src.graph
@@ -121,7 +118,6 @@ namespace Src.graph
                     vertex.Parent = current;
                     vertex.DistanceFromTarget = (int)(Math.Abs(vertex.Position.X - targetVertex.Position.X) + Math.Abs(vertex.Position.Y - targetVertex.Position.Y));
                     int distanceFromParent = (int)(Math.Abs(vertex.Position.X - vertex.Parent.Position.X) + Math.Abs(vertex.Position.Y - vertex.Parent.Position.Y));
-
 
                     vertex.Cost = (distanceFromParent * 2) + vertex.Parent.Cost;
                     openList.Enqueue(vertex, vertex.Cost + vertex.DistanceFromTarget);

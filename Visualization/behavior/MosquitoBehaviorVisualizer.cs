@@ -1,11 +1,5 @@
-﻿using SteeringCS.entity;
-using Src.util;
-using System;
-using System.Collections.Generic;
+﻿using Src.util;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Src.behavior;
 using Src.entity;
 

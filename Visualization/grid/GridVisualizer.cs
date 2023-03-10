@@ -8,7 +8,6 @@ namespace SteeringCS.grid
     {
         private static readonly Color s_renderColor = Color.SeaGreen;
 
-
         public static void Render(Graphics graphic, IGrid grid)
         {
             for (int x = 0; x < grid.Tiles.GetLength(0); x++)

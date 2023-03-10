@@ -1,6 +1,4 @@
-﻿using SteeringCS.entity;
-using Src.util;
-using System;
+﻿using Src.util;
 using System.Drawing;
 using Src.behavior;
 using Src.entity;
