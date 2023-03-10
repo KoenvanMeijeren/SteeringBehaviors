@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 
 namespace Src.graph
 {
@@ -93,7 +94,7 @@ namespace Src.graph
             }
         }
 
-        public Stack<Vertex> getShortestPath(Vertex startVertex, Vertex targetVertex)
+        public Stack<Vertex> GetShortestPath(Vertex startVertex, Vertex targetVertex)
         {
             if (startVertex == null || targetVertex == null)
             {
@@ -101,45 +102,38 @@ namespace Src.graph
             }
 
             Stack<Vertex> path = new Stack<Vertex>();
-            VertexPriorityQueue OpenList = new VertexPriorityQueue();
-            List<Vertex> ClosedList = new List<Vertex>();
-            List<Vertex> adjacencies;
+            VertexPriorityQueue openList = new VertexPriorityQueue();
+            List<Vertex> closedList = new List<Vertex>();
             Vertex current = startVertex;
 
-            OpenList.Enqueue(startVertex, 0);
+            openList.Enqueue(startVertex, 0);
 
-            while (OpenList.Count != 0 && !ClosedList.Exists(x => x == targetVertex))
+            while (openList.Count != 0 && !closedList.Exists(x => x == targetVertex))
             {
-                current = OpenList.Dequeue();
-                ClosedList.Add(current);
-                adjacencies = getAdjacentVertexes(current);
+                current = openList.Dequeue();
+                closedList.Add(current);
+                IEnumerable<Vertex> adjacentVertexes = GetAdjacentVertexes(current);
 
-                foreach (Vertex vertex in adjacencies)
+                foreach (Vertex vertex in adjacentVertexes
+                             .Where(vertex => !closedList.Contains(vertex))
+                             .Where(vertex => !openList.Contains(vertex)))
                 {
-                    if (!ClosedList.Contains(vertex))
-                    {
-                        bool isFound = false;
-
-                        if (!OpenList.Contains(vertex))
-                        {
-                            vertex.Parent = current;
-                            vertex.DistanceFromTarget = (int)(Math.Abs(vertex.Position.X - targetVertex.Position.X) + Math.Abs(vertex.Position.Y - targetVertex.Position.Y));
-                            int distanceFromParent = (int)(Math.Abs(vertex.Position.X - vertex.Parent.Position.X) + Math.Abs(vertex.Position.Y - vertex.Parent.Position.Y));
+                    vertex.Parent = current;
+                    vertex.DistanceFromTarget = (int)(Math.Abs(vertex.Position.X - targetVertex.Position.X) + Math.Abs(vertex.Position.Y - targetVertex.Position.Y));
+                    int distanceFromParent = (int)(Math.Abs(vertex.Position.X - vertex.Parent.Position.X) + Math.Abs(vertex.Position.Y - vertex.Parent.Position.Y));
 
 
-                            vertex.Cost = (distanceFromParent * 2) + vertex.Parent.Cost;
-                            OpenList.Enqueue(vertex, vertex.Cost + vertex.DistanceFromTarget);
-                        }
-                    }
+                    vertex.Cost = (distanceFromParent * 2) + vertex.Parent.Cost;
+                    openList.Enqueue(vertex, vertex.Cost + vertex.DistanceFromTarget);
                 }
             }
 
-            if (!ClosedList.Exists(x => x == targetVertex))
+            if (!closedList.Exists(x => x == targetVertex))
             {
                 return null;
             }
 
-            Vertex temp = ClosedList[ClosedList.IndexOf(current)];
+            Vertex temp = closedList[closedList.IndexOf(current)];
 
             if (temp == null)
             {
@@ -170,16 +164,9 @@ namespace Src.graph
             return Vertices[vertexX, vertexY];
         }
 
-        public List<Vertex> getAdjacentVertexes(Vertex vertex)
+        private static IEnumerable<Vertex> GetAdjacentVertexes(Vertex vertex)
         {
-            List<Vertex> AdjacentVertexes = new List<Vertex>();
-
-            foreach (Edge edge in vertex.Edges)
-            {
-                AdjacentVertexes.Add(edge.DestinationVertex);
-            }
-
-            return AdjacentVertexes;
+            return vertex.Edges.Select(edge => edge.DestinationVertex).ToList();
         }
     }
 }

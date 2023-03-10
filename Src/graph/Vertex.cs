@@ -8,9 +8,9 @@ namespace Src.graph
         public readonly VectorImmutable Position;
         public readonly LinkedList<Edge> Edges;
 
-        public Vertex Parent;
-        public float Cost;
-        public int DistanceFromTarget;
+        public Vertex Parent { get; set; }
+        public float Cost { get; set; }
+        public int DistanceFromTarget { get; set; }
 
         public Vertex(int x, int y)
         {
