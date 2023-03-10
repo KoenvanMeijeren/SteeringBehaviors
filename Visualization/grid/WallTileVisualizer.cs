@@ -5,7 +5,7 @@ namespace SteeringCS.grid
 {
     public static class WallTileVisualizer
     {
-        private static readonly Image s_image = Image.FromFile("grid/wall.png");
+        private static readonly Image s_image = Image.FromFile("graphics/wall.png");
 
         public static void Render(Graphics graphic, WallTile wallTile)
         {
