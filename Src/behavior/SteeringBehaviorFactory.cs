@@ -36,7 +36,7 @@ namespace Src.behavior
                 case SteeringBehaviorOptions.PathfindingBehavior:
                     {
                         return new PathfindingBehavior(movingEntity);
-                    } 
+                    }
                 case SteeringBehaviorOptions.NotImplementedBehavior:
                 default: throw new InvalidEnumArgumentException("Could not create steering behavior for the selected option.");
             }

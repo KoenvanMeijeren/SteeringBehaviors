@@ -11,7 +11,7 @@ namespace Tests.fixtures.world
     public class WorldTest : WorldBase
     {
         public readonly IMovingEntity SeekingEntity;
-        
+
         public WorldTest(int width, int height, Vector seekingEntityPosition, Vector targetEntityPosition) : base(width, height)
         {
             SeekingEntity = new VehicleTest(seekingEntityPosition, this);

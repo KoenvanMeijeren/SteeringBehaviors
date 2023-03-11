@@ -14,10 +14,10 @@ namespace Tests.behavior
         public void CreateFromEnum_01_Ok()
         {
             // Arrange
-            IMovingEntity movingEntity = new VehicleTest(new Vector(0, 0), 
+            IMovingEntity movingEntity = new VehicleTest(new Vector(0, 0),
                 new WorldTest(0, 0, new Vector(0, 0), new Vector(0, 0))
             );
-            
+
             // Act & Assert
             Assert.IsInstanceOf<IdlingBehavior>(SteeringBehaviorFactory.CreateFromEnum(SteeringBehaviorOptions.IdlingBehavior, movingEntity));
             Assert.IsInstanceOf<FleeingBehavior>(SteeringBehaviorFactory.CreateFromEnum(SteeringBehaviorOptions.FleeingBehavior, movingEntity));
@@ -27,15 +27,15 @@ namespace Tests.behavior
             Assert.IsInstanceOf<SeekingBehavior>(SteeringBehaviorFactory.CreateFromEnum(SteeringBehaviorOptions.SeekingBehavior, movingEntity));
             Assert.IsInstanceOf<WanderingBehavior>(SteeringBehaviorFactory.CreateFromEnum(SteeringBehaviorOptions.WanderingBehavior, movingEntity));
         }
-        
+
         [Test]
         public void CreateFromEnum_02_ThrowsOnNotImplementedBehavior()
         {
             // Arrange
-            IMovingEntity movingEntity = new VehicleTest(new Vector(0, 0), 
+            IMovingEntity movingEntity = new VehicleTest(new Vector(0, 0),
                 new WorldTest(0, 0, new Vector(0, 0), new Vector(0, 0))
             );
-            
+
             // Act & Assert
             Assert.Throws<InvalidEnumArgumentException>(() =>
             {

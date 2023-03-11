@@ -26,7 +26,7 @@ namespace Src.behavior
 
             VectorImmutable targetPositionImmutable = Path.First().Position;
             Vector targetPosition = new Vector(targetPositionImmutable.X, targetPositionImmutable.Y);
-   
+
             return SeekingBehavior.Calculate(MovingEntity, targetPosition);
         }
 

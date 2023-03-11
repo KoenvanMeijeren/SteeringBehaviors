@@ -25,7 +25,7 @@ namespace Tests.behavior
             // Assert
             Assert.AreEqual(expectedResult, velocity.ToString());
         }
-        
+
         [TestCase(10, 10, new float[] { 5, 5 }, new float[] { 450, 450 }, "(0,0)")]
         public void Calculate_01_OkOnPositionOutOfWorld(int width, int height, float[] seekingPositions, float[] targetPositions, string expectedResult)
         {
@@ -37,7 +37,7 @@ namespace Tests.behavior
 
             // Act
             Vector velocity = steeringBehavior.Calculate();
-            
+
             // Assert
             Assert.AreEqual(expectedResult, velocity.ToString());
         }
