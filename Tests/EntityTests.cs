@@ -104,7 +104,8 @@ namespace Tests
                 WorldWidth = 20,
                 WorldHeight = 25;
 
-            const float ExpectedScale = 0;
+            const float ExpectedHeight = 0;
+            const float ExpectedWidth = 0;
 
             // Arrange
             Vector position = new Vector(XPosition, YPosition);
@@ -114,7 +115,8 @@ namespace Tests
             MovingEntityImplementation movingEntity = new MovingEntityImplementation(position, world);
 
             // Assert
-            Assert.AreEqual(ExpectedScale, movingEntity.Scale);
+            Assert.AreEqual(ExpectedHeight, movingEntity.Height);
+            Assert.AreEqual(ExpectedWidth, movingEntity.Width);
             Assert.AreEqual(world, movingEntity.World);
         }
     }
@@ -130,7 +132,8 @@ namespace Tests
                 WorldWidth = 20,
                 WorldHeight = 25;
 
-            const float ExpectedScale = VehicleTest.DefaultScale;
+            const float ExpectedHeight = VehicleTest.DefaultHeight;
+            const float ExpectedWidth = VehicleTest.DefaultWidth;
 
             // Arrange
             Vector position = new Vector(XPosition, YPosition);
@@ -140,14 +143,15 @@ namespace Tests
             VehicleTest movingEntity = new VehicleTest(position, world);
 
             // Assert
-            Assert.AreEqual(ExpectedScale, movingEntity.Scale);
+            Assert.AreEqual(ExpectedHeight, movingEntity.Height);
+            Assert.AreEqual(ExpectedWidth, movingEntity.Width);
             Assert.AreEqual(world, movingEntity.World);
         }
     }
 
     public class MovingEntityImplementation : MovingEntity
     {
-        public MovingEntityImplementation(Vector position, IWorld world) : base(position, world)
+        public MovingEntityImplementation(Vector position, IWorld world) : base(position, world, 0, 0)
         {
         }
     }
