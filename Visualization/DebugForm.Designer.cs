@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.ShowHitboxCheckbox = new System.Windows.Forms.CheckBox();
+            this.ShowGraphCheckbox = new System.Windows.Forms.CheckBox();
             this.ShowGridCheckbox = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,7 +45,7 @@
             this.pauseButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.UpdateIntervalSelector = new System.Windows.Forms.NumericUpDown();
-            this.ShowGraphCheckbox = new System.Windows.Forms.CheckBox();
+            this.ShowBehaviorCheckbox = new System.Windows.Forms.CheckBox();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxSpeedSelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MassSelector)).BeginInit();
@@ -52,6 +54,8 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.ShowBehaviorCheckbox);
+            this.mainPanel.Controls.Add(this.ShowHitboxCheckbox);
             this.mainPanel.Controls.Add(this.ShowGraphCheckbox);
             this.mainPanel.Controls.Add(this.ShowGridCheckbox);
             this.mainPanel.Controls.Add(this.label6);
@@ -69,13 +73,35 @@
             this.mainPanel.Controls.Add(this.UpdateIntervalSelector);
             this.mainPanel.Location = new System.Drawing.Point(12, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(260, 317);
+            this.mainPanel.Size = new System.Drawing.Size(260, 355);
             this.mainPanel.TabIndex = 1;
+            // 
+            // ShowHitboxCheckbox
+            // 
+            this.ShowHitboxCheckbox.AutoSize = true;
+            this.ShowHitboxCheckbox.Location = new System.Drawing.Point(0, 222);
+            this.ShowHitboxCheckbox.Name = "ShowHitboxCheckbox";
+            this.ShowHitboxCheckbox.Size = new System.Drawing.Size(100, 20);
+            this.ShowHitboxCheckbox.TabIndex = 16;
+            this.ShowHitboxCheckbox.Text = "Show hitbox";
+            this.ShowHitboxCheckbox.UseVisualStyleBackColor = true;
+            this.ShowHitboxCheckbox.CheckedChanged += new System.EventHandler(this.ShowHitboxCheckbox_CheckedChanged);
+            // 
+            // ShowGraphCheckbox
+            // 
+            this.ShowGraphCheckbox.AutoSize = true;
+            this.ShowGraphCheckbox.Location = new System.Drawing.Point(117, 284);
+            this.ShowGraphCheckbox.Name = "ShowGraphCheckbox";
+            this.ShowGraphCheckbox.Size = new System.Drawing.Size(100, 20);
+            this.ShowGraphCheckbox.TabIndex = 15;
+            this.ShowGraphCheckbox.Text = "Show graph";
+            this.ShowGraphCheckbox.UseVisualStyleBackColor = true;
+            this.ShowGraphCheckbox.CheckedChanged += new System.EventHandler(this.ShowGraphCheckbox_CheckedChanged);
             // 
             // ShowGridCheckbox
             // 
             this.ShowGridCheckbox.AutoSize = true;
-            this.ShowGridCheckbox.Location = new System.Drawing.Point(0, 256);
+            this.ShowGridCheckbox.Location = new System.Drawing.Point(0, 284);
             this.ShowGridCheckbox.Name = "ShowGridCheckbox";
             this.ShowGridCheckbox.Size = new System.Drawing.Size(88, 20);
             this.ShowGridCheckbox.TabIndex = 14;
@@ -87,7 +113,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(-3, 232);
+            this.label6.Location = new System.Drawing.Point(-3, 260);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 16);
             this.label6.TabIndex = 13;
@@ -96,7 +122,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(0, 189);
+            this.label5.Location = new System.Drawing.Point(-2, 189);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(117, 16);
             this.label5.TabIndex = 12;
@@ -251,22 +277,22 @@
             0});
             this.UpdateIntervalSelector.ValueChanged += new System.EventHandler(this.updateIntervalSelector_ValueChanged);
             // 
-            // ShowGraphCheckbox
+            // ShowBehaviorCheckbox
             // 
-            this.ShowGraphCheckbox.AutoSize = true;
-            this.ShowGraphCheckbox.Location = new System.Drawing.Point(117, 256);
-            this.ShowGraphCheckbox.Name = "ShowGraphCheckbox";
-            this.ShowGraphCheckbox.Size = new System.Drawing.Size(100, 20);
-            this.ShowGraphCheckbox.TabIndex = 15;
-            this.ShowGraphCheckbox.Text = "Show graph";
-            this.ShowGraphCheckbox.UseVisualStyleBackColor = true;
-            this.ShowGraphCheckbox.CheckedChanged += new System.EventHandler(this.ShowGraphCheckbox_CheckedChanged);
+            this.ShowBehaviorCheckbox.AutoSize = true;
+            this.ShowBehaviorCheckbox.Location = new System.Drawing.Point(117, 222);
+            this.ShowBehaviorCheckbox.Name = "ShowBehaviorCheckbox";
+            this.ShowBehaviorCheckbox.Size = new System.Drawing.Size(118, 20);
+            this.ShowBehaviorCheckbox.TabIndex = 17;
+            this.ShowBehaviorCheckbox.Text = "Show behavior";
+            this.ShowBehaviorCheckbox.UseVisualStyleBackColor = true;
+            this.ShowBehaviorCheckbox.CheckedChanged += new System.EventHandler(this.ShowBehaviorCheckbox_CheckedChanged);
             // 
             // DebugForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 329);
+            this.ClientSize = new System.Drawing.Size(286, 367);
             this.Controls.Add(this.mainPanel);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DebugForm";
@@ -297,6 +323,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox ShowGridCheckbox;
         private System.Windows.Forms.CheckBox ShowGraphCheckbox;
+        private System.Windows.Forms.CheckBox ShowHitboxCheckbox;
+        private System.Windows.Forms.CheckBox ShowBehaviorCheckbox;
     }
 }
 
