@@ -39,10 +39,10 @@ namespace Src.entity
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
             Velocity = CollisionHandler.AlterVectorToStayInsideOfWorld(Position, Velocity, World);
-            Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Hitbox.UpperLeftCorner, Velocity, World.Grid);
-            Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Hitbox.UpperRightCorner, Velocity, World.Grid);
-            Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Hitbox.LowerLeftCorner, Velocity, World.Grid);
-            Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Hitbox.LowerRightCorner, Velocity, World.Grid);
+            Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, Hitbox.UpperLeftCorner, Velocity, World.Grid);
+            Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, Hitbox.UpperRightCorner, Velocity, World.Grid);
+            Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, Hitbox.LowerLeftCorner, Velocity, World.Grid);
+            Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, Hitbox.LowerRightCorner, Velocity, World.Grid);
             Position.Add(Velocity.Multiply(timeElapsed));
         }
 

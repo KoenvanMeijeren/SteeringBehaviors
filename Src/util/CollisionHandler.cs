@@ -36,7 +36,7 @@ namespace Src.util
             return alteredVector;
         }
 
-        public static Vector AlterVectorToStayOutOfWalls(Vector position, Vector vector, IGrid grid)
+        public static Vector AlterVectorToStayOutOfWalls(Vector centerPosition, Vector position, Vector vector, IGrid grid)
         {
             Vector alteredVector = vector.Clone();
 
@@ -62,10 +62,10 @@ namespace Src.util
             int wallTileCenterX = (int)wallTile.Position.X + halfWallTileSize;
             int wallTileCenterY = (int)wallTile.Position.Y + halfWallTileSize;
 
-            double northDistanceFromWallTileCenter = wallTileCenterY - position.Y + measureBuffer;
-            double eastDistanceFromWallTileCenter = position.X - wallTileCenterX + measureBuffer;
-            double southDistanceFromWallTileCenter = position.Y - wallTileCenterY + measureBuffer;
-            double westDistanceFromWallTileCenter = wallTileCenterX - position.X + measureBuffer;
+            double northDistanceFromWallTileCenter = wallTileCenterY - centerPosition.Y + measureBuffer;
+            double eastDistanceFromWallTileCenter = centerPosition.X - wallTileCenterX + measureBuffer;
+            double southDistanceFromWallTileCenter = centerPosition.Y - wallTileCenterY + measureBuffer;
+            double westDistanceFromWallTileCenter = wallTileCenterX - centerPosition.X + measureBuffer;
 
             GridTile gridTileNorth = grid.GetTile(tileX, tileY - 1);
             GridTile gridTileEast = grid.GetTile(tileX + 1, tileY);
