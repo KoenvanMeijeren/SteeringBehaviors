@@ -9,6 +9,10 @@ namespace Src.behavior
         {
             switch (selectedOption)
             {
+                case SteeringBehaviorOptions.ArrivingBehavior:
+                    {
+                        return new ArrivingBehavior(movingEntity);
+                    }
                 case SteeringBehaviorOptions.IdlingBehavior:
                     {
                         return new IdlingBehavior(movingEntity);
@@ -32,7 +36,8 @@ namespace Src.behavior
                 case SteeringBehaviorOptions.PathfindingBehavior:
                     {
                         return new PathfindingBehavior(movingEntity);
-                    }
+                    } 
+                case SteeringBehaviorOptions.NotImplementedBehavior:
                 default: throw new InvalidEnumArgumentException("Could not create steering behavior for the selected option.");
             }
         }

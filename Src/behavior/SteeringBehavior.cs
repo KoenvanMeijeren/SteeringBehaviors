@@ -6,12 +6,14 @@ namespace Src.behavior
 {
     public enum SteeringBehaviorOptions
     {
+        ArrivingBehavior,
         IdlingBehavior,
         SeekingBehavior,
         FleeingBehavior,
         MosquitoBehavior,
         WanderingBehavior,
-        PathfindingBehavior
+        PathfindingBehavior,
+        NotImplementedBehavior
     }
 
     public abstract class SteeringBehavior : ISteeringBehavior

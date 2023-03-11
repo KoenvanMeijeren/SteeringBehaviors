@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Src.behavior;
 using Src.entity;
+using Src.grid;
 using Src.util;
 using Src.world;
 using Tests.fixtures.entity;
@@ -9,19 +10,19 @@ namespace Tests.fixtures.world
 {
     public class WorldTest : WorldBase
     {
-        public WorldTest(int width, int height) : base(width, height)
+        public readonly IMovingEntity SeekingEntity;
+        
+        public WorldTest(int width, int height, Vector seekingEntityPosition, Vector targetEntityPosition) : base(width, height)
         {
+            SeekingEntity = new VehicleTest(seekingEntityPosition, this);
+            Target = new VehicleTest(targetEntityPosition, this);
+            Entities.Add(SeekingEntity);
+            Grid = new Grid(width, height, Entities);
         }
 
         protected override List<IMovingEntity> GetPopulation()
         {
-            List<IMovingEntity> entities = new List<IMovingEntity>();
-            VehicleTest vehicleTest = new VehicleTest(new Vector(Width / 2, Height / 2), this);
-            entities.Add(vehicleTest);
-
-            Target = new VehicleTest(new Vector(40, 60), this);
-
-            return entities;
+            return new List<IMovingEntity>();
         }
 
         public void EditPopulation(SteeringBehaviorOptions selectedOption, int mass, int maxSpeed)

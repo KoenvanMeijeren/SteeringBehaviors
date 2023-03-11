@@ -19,7 +19,6 @@ namespace Src.behavior
         public override Vector Calculate()
         {
             UpdatePathIfNecessary();
-
             if (Path == null || Path.Count < 1)
             {
                 return new Vector(0, 0);
@@ -27,10 +26,8 @@ namespace Src.behavior
 
             VectorImmutable targetPositionImmutable = Path.First().Position;
             Vector targetPosition = new Vector(targetPositionImmutable.X, targetPositionImmutable.Y);
-            Vector desiredVelocity = targetPosition.Subtract(MovingEntity.Position);
-
-            Vector actualVelocity = desiredVelocity.Subtract(MovingEntity.Velocity);
-            return actualVelocity;
+   
+            return SeekingBehavior.Calculate(MovingEntity, targetPosition);
         }
 
         private void UpdatePathIfNecessary()
@@ -51,7 +48,7 @@ namespace Src.behavior
 
             _closestVertex = newClosestVertex;
             _targetVertex = newTargetVertex;
-            Path = MovingEntity.World.Grid.Graph.GetShortestPath(_closestVertex, _targetVertex);
+            Path = Graph.GetShortestPath(_closestVertex, _targetVertex);
         }
     }
 }

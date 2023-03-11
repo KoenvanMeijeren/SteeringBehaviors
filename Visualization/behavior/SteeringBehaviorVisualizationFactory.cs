@@ -10,9 +10,14 @@ namespace SteeringCS.behavior
         {
             switch (selectedOption)
             {
+                case SteeringBehaviorOptions.NotImplementedBehavior:
                 case SteeringBehaviorOptions.IdlingBehavior:
                     {
                         return new IdlingBehaviorVisualizer(movingEntity);
+                    }
+                case SteeringBehaviorOptions.ArrivingBehavior:
+                    {
+                        return new ArrivingBehaviorVisualizer(movingEntity);
                     }
                 case SteeringBehaviorOptions.SeekingBehavior:
                     {

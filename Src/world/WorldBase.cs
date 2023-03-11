@@ -8,7 +8,7 @@ namespace Src.world
     public abstract class WorldBase : IWorld
     {
         protected readonly List<IMovingEntity> Entities;
-        public IGrid Grid { get; }
+        public IGrid Grid { get; protected set; }
         public IMovingEntity Target { get; protected set; }
 
         public int Width { get; }

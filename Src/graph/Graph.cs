@@ -91,7 +91,7 @@ namespace Src.graph
             }
         }
 
-        public Stack<Vertex> GetShortestPath(Vertex startVertex, Vertex targetVertex)
+        public static Stack<Vertex> GetShortestPath(Vertex startVertex, Vertex targetVertex)
         {
             if (startVertex == null || targetVertex == null)
             {
