@@ -6,24 +6,26 @@ using System.Drawing;
 
 namespace SteeringCS.behavior
 {
-    public class PathfindingBehaviorVisualizer : ISteeringBehaviorVisualizer
+    public class PathfindingBehaviorVisualizer : SteeringBehaviorVisualizer
     {
-        private readonly PathfindingBehavior _pathfindingBehavior;
+        public PathfindingBehavior SteeringBehavior;
         private static readonly Color s_renderColor = Color.Orange;
 
         public PathfindingBehaviorVisualizer(IMovingEntity movingEntity)
         {
-            _pathfindingBehavior = new PathfindingBehavior(movingEntity);
+            SteeringBehavior = new PathfindingBehavior(movingEntity);
         }
 
-        public Vector Calculate()
+        public override Vector Calculate()
         {
-            return _pathfindingBehavior.Calculate();
+            return SteeringBehavior.Calculate();
         }
 
-        public void Render(Graphics graphic)
+        public override void Render(Graphics graphic)
         {
-            if (_pathfindingBehavior.Path == null)
+            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityTargetPosition());
+
+            if (SteeringBehavior.Path == null)
             {
                 return;
             }
@@ -35,7 +37,7 @@ namespace SteeringCS.behavior
 
             Vertex prevVertex = null;
 
-            foreach (Vertex vertex in _pathfindingBehavior.Path)
+            foreach (Vertex vertex in SteeringBehavior.Path)
             {
                 VectorImmutable vector = vertex.Position - (VertexSize / 2);
                 rectangle.X = (int)vector.X;

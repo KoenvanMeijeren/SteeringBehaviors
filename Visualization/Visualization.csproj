@@ -59,6 +59,7 @@
     <Compile Include="behavior\ISteeringBehaviorVisualizer.cs" />
     <Compile Include="behavior\MosquitoBehaviorVisualizer.cs" />
     <Compile Include="behavior\PathfindingBehaviorVisualizer.cs" />
+    <Compile Include="behavior\SteeringBehaviorVisualizer.cs" />
     <Compile Include="behavior\SteeringBehaviorVisualizationFactory.cs" />
     <Compile Include="behavior\WanderingBehaviorVisualizer.cs" />
     <Compile Include="behavior\SeekingBehaviorVisualizer.cs" />

@@ -5,7 +5,7 @@ using Src.util;
 
 namespace SteeringCS.behavior
 {
-    public class IdlingBehaviorVisualizer : ISteeringBehaviorVisualizer
+    public class IdlingBehaviorVisualizer : SteeringBehaviorVisualizer
     {
         public IdlingBehavior SteeringBehavior { get; private set; }
 
@@ -14,14 +14,14 @@ namespace SteeringCS.behavior
             SteeringBehavior = new IdlingBehavior(movingEntity);
         }
 
-        public Vector Calculate()
+        public override Vector Calculate()
         {
             return SteeringBehavior.Calculate();
         }
 
-        public void Render(Graphics graphic)
+        public override void Render(Graphics graphic)
         {
-
+            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityTargetPosition());
         }
     }
 }

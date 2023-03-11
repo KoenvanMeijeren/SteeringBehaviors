@@ -26,7 +26,6 @@ namespace SteeringCS.entity
 
             Pen pen = new Pen(Color, 2);
             graphic.DrawEllipse(pen, new Rectangle((int)upperLeftCornerX, (int)upperLeftCornerY, (int)Width, (int)Height));
-            graphic.DrawLine(pen, (int)Position.X, (int)Position.Y, (int)Position.X + (int)(Velocity.X * 2), (int)Position.Y + (int)(Velocity.Y * 2));
 
             if (SteeringBehavior is ISteeringBehaviorVisualizer visualizer)
             {
