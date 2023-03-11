@@ -38,8 +38,8 @@ namespace Src.entity
             Vector acceleration = steeringForce.Divide(Mass);
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
-            AlterVectorToStayInsideOfWorld(Velocity);
-            AlterVectorToStayOutOfWalls(Velocity);
+            CollisionHandler.AlterVectorToStayInsideOfWorld(Position, Velocity, World);
+            CollisionHandler.AlterVectorToStayOutOfWalls(Position, Velocity, World.Grid);
             Position.Add(Velocity.Multiply(timeElapsed));
 
             // ToDo: Find out what the purpose is of this code.
@@ -52,35 +52,6 @@ namespace Src.entity
 
             //treat the screen as a toroid
             //WrapAround(m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient());
-        }
-
-        public void AlterVectorToStayInsideOfWorld(Vector vector)
-        {
-            Vector position = Position.Clone();
-            Vector targetPosition = position.Add(vector);
-
-            int maxY = World.Height;
-            int maxX = World.Width;
-
-            if (targetPosition.Y < 0)
-            {
-                vector.SubtractY(targetPosition.Y);
-            }
-
-            if (targetPosition.X < 0)
-            {
-                vector.SubtractX(targetPosition.X);
-            }
-
-            if (targetPosition.Y > maxY)
-            {
-                vector.SubtractY(targetPosition.Y - maxY);
-            }
-
-            if (targetPosition.X > maxX)
-            {
-                vector.SubtractX(targetPosition.X - maxX);
-            }
         }
 
         public void AlterVectorToStayOutOfWalls(Vector vector)

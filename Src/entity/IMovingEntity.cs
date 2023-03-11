@@ -9,7 +9,6 @@ namespace Src.entity
         float Mass { get; set; }
         float MaxSpeed { get; set; }
         void SetSteeringBehavior(ISteeringBehavior steeringBehavior);
-        void AlterVectorToStayInsideOfWorld(Vector vector);
         void AlterVectorToStayOutOfWalls(Vector vector);
     }
 }
