@@ -76,6 +76,7 @@
     <Compile Include="grid\PathTileVisualizer.cs" />
     <Compile Include="grid\WallTileVisualizer.cs" />
     <Compile Include="MultiFormContext.cs" />
+    <Compile Include="util\HitboxVisualizer.cs" />
     <Compile Include="util\IRender.cs" />
     <Compile Include="WorldForm.cs">
       <SubType>Form</SubType>

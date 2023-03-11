@@ -44,10 +44,15 @@ namespace SteeringCS.world
             }
         }
 
-        public void Render(Graphics graphics)
+        public void Render(Graphics graphics, bool renderHitbox)
         {
             Entities.ForEach(entity =>
             {
+                if (renderHitbox)
+                {
+                    HitboxVisualizer.Render(graphics, entity.Hitbox);
+                }
+
                 if (entity is IRender render)
                 {
                     render.Render(graphics);
@@ -56,6 +61,11 @@ namespace SteeringCS.world
 
             if (Target is IRender targetRender)
             {
+                if (renderHitbox)
+                {
+                    HitboxVisualizer.Render(graphics, Target.Hitbox);
+                }
+
                 targetRender.Render(graphics);
             }
         }

@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +52,7 @@
     <Compile Include="behavior\SteeringBehaviorFactory.cs" />
     <Compile Include="behavior\WanderingBehavior.cs" />
     <Compile Include="entity\BaseGameEntity.cs" />
+    <Compile Include="util\Hitbox.cs" />
     <Compile Include="entity\IGameEntity.cs" />
     <Compile Include="entity\IMovingEntity.cs" />
     <Compile Include="entity\MovingEntity.cs" />

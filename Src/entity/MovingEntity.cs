@@ -15,7 +15,7 @@ namespace Src.entity
 
         public ISteeringBehavior SteeringBehavior { get; private set; }
 
-        protected MovingEntity(Vector position, IWorld world) : base(position, world)
+        protected MovingEntity(Vector position, IWorld world, float height, float width) : base(position, world, height, width)
         {
             Mass = MassDefault;
             MaxSpeed = MaxSpeedDefault;
@@ -52,13 +52,6 @@ namespace Src.entity
 
             //treat the screen as a toroid
             //WrapAround(m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient());
-        }
-
-        public void AlterVectorToStayOutOfWalls(Vector vector)
-        {
-            Vector position = Position.Clone();
-
-            World.Grid.AlterVectorToStayOutOfWalls(position, vector);
         }
 
         public override string ToString()

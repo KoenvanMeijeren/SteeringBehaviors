@@ -13,7 +13,6 @@ namespace Src.grid
         Graph Graph { get; }
 
         void MoveEntityIfInDifferentTile(Vector oldPos, Vector newPos, IMovingEntity entity);
-        void AlterVectorToStayOutOfWalls(Vector position, Vector vector);
         int GetCoordinateOfTile(int length);
         GridTile GetTile(int x, int y);
     }

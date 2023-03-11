@@ -117,7 +117,7 @@ namespace Src.grid
             {
                 return null;
             }
-            
+
             return Tiles[x, y];
         }
 
