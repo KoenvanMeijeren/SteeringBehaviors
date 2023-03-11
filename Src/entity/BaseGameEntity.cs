@@ -8,7 +8,7 @@ namespace Src.entity
         public Vector Position { get; set; }
         public float Height { get; protected set; }
         public float Width { get; protected set; }
-        public Hitbox Hitbox { get; protected set; }
+        public HitBox HitBox { get; protected set; }
         public IWorld World { get; }
 
         protected BaseGameEntity(Vector position, IWorld world, float height, float width)
@@ -18,7 +18,7 @@ namespace Src.entity
             Height = height;
             Width = width;
 
-            Hitbox = new Hitbox(this);
+            HitBox = new HitBox(this);
         }
 
         public abstract void Update(float timeElapsed);

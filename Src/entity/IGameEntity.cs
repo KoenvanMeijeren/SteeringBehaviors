@@ -8,7 +8,7 @@ namespace Src.entity
         Vector Position { get; set; }
         float Height { get; }
         float Width { get; }
-        Hitbox Hitbox { get; }
+        HitBox HitBox { get; }
         IWorld World { get; }
 
         void Update(float timeElapsed);

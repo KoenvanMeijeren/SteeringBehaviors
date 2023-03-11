@@ -64,10 +64,10 @@ namespace SteeringCS.world
         {
             Entities.ForEach(entity =>
             {
-                HitboxVisualizer.Render(graphics, entity.Hitbox);
+                HitBoxVisualizer.Render(graphics, entity.HitBox);
             });
 
-            HitboxVisualizer.Render(graphics, Target.Hitbox);
+            HitBoxVisualizer.Render(graphics, Target.HitBox);
         }
 
         public void RenderSteeringBehavior(Graphics graphics)
