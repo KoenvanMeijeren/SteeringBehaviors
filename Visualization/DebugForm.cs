@@ -118,5 +118,16 @@ namespace SteeringCS
 
             _worldForm.DisableHitboxRender();
         }
+
+        private void ShowBehaviorCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ShowBehaviorCheckbox.Checked)
+            {
+                _worldForm.EnableSteeringBehaviorRender();
+                return;
+            }
+
+            _worldForm.DisableSteeringBehaviorRender();
+        }
     }
 }

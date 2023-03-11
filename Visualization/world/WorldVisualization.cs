@@ -2,6 +2,7 @@
 using System.Drawing;
 using Src.behavior;
 using Src.entity;
+using Src.graph;
 using Src.util;
 using Src.world;
 using SteeringCS.behavior;
@@ -44,29 +45,51 @@ namespace SteeringCS.world
             }
         }
 
-        public void Render(Graphics graphics, bool renderHitbox)
+        public void Render(Graphics graphics)
         {
             Entities.ForEach(entity =>
             {
-                if (renderHitbox)
+                if (entity is IRender entityRender)
                 {
-                    HitboxVisualizer.Render(graphics, entity.Hitbox);
-                }
-
-                if (entity is IRender render)
-                {
-                    render.Render(graphics);
+                    entityRender.Render(graphics);
                 }
             });
 
             if (Target is IRender targetRender)
             {
-                if (renderHitbox)
-                {
-                    HitboxVisualizer.Render(graphics, Target.Hitbox);
-                }
-
                 targetRender.Render(graphics);
+            }
+        }
+
+        public void RenderHitbox(Graphics graphics)
+        {
+            Entities.ForEach(entity =>
+            {
+                HitboxVisualizer.Render(graphics, entity.Hitbox);
+            });
+
+            HitboxVisualizer.Render(graphics, Target.Hitbox);
+        }
+
+        public void RenderSteeringBehavior(Graphics graphics)
+        {
+            Entities.ForEach(entity =>
+            {
+                if (entity is MovingEntity enitityRender)
+                {
+                    if (enitityRender.SteeringBehavior is ISteeringBehaviorVisualizer entityVisualizer)
+                    {
+                        entityVisualizer.Render(graphics);
+                    }
+                }
+            });
+
+            if (Target is MovingEntity targetRender)
+            {
+                if (targetRender.SteeringBehavior is ISteeringBehaviorVisualizer targetVisualizer)
+                {
+                    targetVisualizer.Render(graphics);
+                }
             }
         }
 

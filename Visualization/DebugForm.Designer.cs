@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.ShowHitboxCheckbox = new System.Windows.Forms.CheckBox();
             this.ShowGraphCheckbox = new System.Windows.Forms.CheckBox();
             this.ShowGridCheckbox = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,7 +45,7 @@
             this.pauseButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.UpdateIntervalSelector = new System.Windows.Forms.NumericUpDown();
-            this.ShowHitboxCheckbox = new System.Windows.Forms.CheckBox();
+            this.ShowBehaviorCheckbox = new System.Windows.Forms.CheckBox();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxSpeedSelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MassSelector)).BeginInit();
@@ -53,6 +54,7 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.ShowBehaviorCheckbox);
             this.mainPanel.Controls.Add(this.ShowHitboxCheckbox);
             this.mainPanel.Controls.Add(this.ShowGraphCheckbox);
             this.mainPanel.Controls.Add(this.ShowGridCheckbox);
@@ -73,6 +75,17 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(260, 355);
             this.mainPanel.TabIndex = 1;
+            // 
+            // ShowHitboxCheckbox
+            // 
+            this.ShowHitboxCheckbox.AutoSize = true;
+            this.ShowHitboxCheckbox.Location = new System.Drawing.Point(0, 222);
+            this.ShowHitboxCheckbox.Name = "ShowHitboxCheckbox";
+            this.ShowHitboxCheckbox.Size = new System.Drawing.Size(100, 20);
+            this.ShowHitboxCheckbox.TabIndex = 16;
+            this.ShowHitboxCheckbox.Text = "Show hitbox";
+            this.ShowHitboxCheckbox.UseVisualStyleBackColor = true;
+            this.ShowHitboxCheckbox.CheckedChanged += new System.EventHandler(this.ShowHitboxCheckbox_CheckedChanged);
             // 
             // ShowGraphCheckbox
             // 
@@ -264,16 +277,16 @@
             0});
             this.UpdateIntervalSelector.ValueChanged += new System.EventHandler(this.updateIntervalSelector_ValueChanged);
             // 
-            // ShowHitboxCheckbox
+            // ShowBehaviorCheckbox
             // 
-            this.ShowHitboxCheckbox.AutoSize = true;
-            this.ShowHitboxCheckbox.Location = new System.Drawing.Point(0, 222);
-            this.ShowHitboxCheckbox.Name = "ShowHitboxCheckbox";
-            this.ShowHitboxCheckbox.Size = new System.Drawing.Size(100, 20);
-            this.ShowHitboxCheckbox.TabIndex = 16;
-            this.ShowHitboxCheckbox.Text = "Show hitbox";
-            this.ShowHitboxCheckbox.UseVisualStyleBackColor = true;
-            this.ShowHitboxCheckbox.CheckedChanged += new System.EventHandler(this.ShowHitboxCheckbox_CheckedChanged);
+            this.ShowBehaviorCheckbox.AutoSize = true;
+            this.ShowBehaviorCheckbox.Location = new System.Drawing.Point(117, 222);
+            this.ShowBehaviorCheckbox.Name = "ShowBehaviorCheckbox";
+            this.ShowBehaviorCheckbox.Size = new System.Drawing.Size(118, 20);
+            this.ShowBehaviorCheckbox.TabIndex = 17;
+            this.ShowBehaviorCheckbox.Text = "Show behavior";
+            this.ShowBehaviorCheckbox.UseVisualStyleBackColor = true;
+            this.ShowBehaviorCheckbox.CheckedChanged += new System.EventHandler(this.ShowBehaviorCheckbox_CheckedChanged);
             // 
             // DebugForm
             // 
@@ -311,6 +324,7 @@
         private System.Windows.Forms.CheckBox ShowGridCheckbox;
         private System.Windows.Forms.CheckBox ShowGraphCheckbox;
         private System.Windows.Forms.CheckBox ShowHitboxCheckbox;
+        private System.Windows.Forms.CheckBox ShowBehaviorCheckbox;
     }
 }
 
