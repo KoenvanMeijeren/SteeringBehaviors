@@ -51,6 +51,7 @@
     <Compile Include="behavior\SteeringBehaviorFactory.cs" />
     <Compile Include="behavior\WanderingBehavior.cs" />
     <Compile Include="entity\BaseGameEntity.cs" />
+    <Compile Include="util\HitBox.cs" />
     <Compile Include="entity\IGameEntity.cs" />
     <Compile Include="entity\IMovingEntity.cs" />
     <Compile Include="entity\MovingEntity.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="grid\PathTile.cs" />
     <Compile Include="grid\WallTile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="util\CollisionHandler.cs" />
     <Compile Include="util\VertexPriorityQueue.cs" />
     <Compile Include="util\Vector.cs" />
     <Compile Include="util\VectorImmutable.cs" />

@@ -48,15 +48,47 @@ namespace SteeringCS.world
         {
             Entities.ForEach(entity =>
             {
-                if (entity is IRender render)
+                if (entity is IRender entityRender)
                 {
-                    render.Render(graphics);
+                    entityRender.Render(graphics);
                 }
             });
 
             if (Target is IRender targetRender)
             {
                 targetRender.Render(graphics);
+            }
+        }
+
+        public void RenderHitbox(Graphics graphics)
+        {
+            Entities.ForEach(entity =>
+            {
+                HitBoxVisualizer.Render(graphics, entity.HitBox);
+            });
+
+            HitBoxVisualizer.Render(graphics, Target.HitBox);
+        }
+
+        public void RenderSteeringBehavior(Graphics graphics)
+        {
+            Entities.ForEach(entity =>
+            {
+                if (entity is MovingEntity enitityRender)
+                {
+                    if (enitityRender.SteeringBehavior is ISteeringBehaviorVisualizer entityVisualizer)
+                    {
+                        entityVisualizer.Render(graphics);
+                    }
+                }
+            });
+
+            if (Target is MovingEntity targetRender)
+            {
+                if (targetRender.SteeringBehavior is ISteeringBehaviorVisualizer targetVisualizer)
+                {
+                    targetVisualizer.Render(graphics);
+                }
             }
         }
 

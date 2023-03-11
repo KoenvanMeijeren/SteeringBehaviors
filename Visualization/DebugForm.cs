@@ -107,5 +107,27 @@ namespace SteeringCS
 
             _worldForm.DisableGraphRender();
         }
+
+        private void ShowHitboxCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ShowHitboxCheckbox.Checked)
+            {
+                _worldForm.EnableHitboxRender();
+                return;
+            }
+
+            _worldForm.DisableHitboxRender();
+        }
+
+        private void ShowBehaviorCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ShowBehaviorCheckbox.Checked)
+            {
+                _worldForm.EnableSteeringBehaviorRender();
+                return;
+            }
+
+            _worldForm.DisableSteeringBehaviorRender();
+        }
     }
 }

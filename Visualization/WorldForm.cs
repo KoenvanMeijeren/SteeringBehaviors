@@ -15,6 +15,8 @@ namespace SteeringCS
 
         private bool _renderGrid;
         private bool _renderGraph;
+        private bool _renderHitbox;
+        private bool _renderSteeringBehavior;
 
         private const float TimeDelta = 0.8f;
         private readonly Timer _timer = new Timer();
@@ -59,6 +61,16 @@ namespace SteeringCS
             if (_renderGraph)
             {
                 _world.RenderGraph(eventArgs.Graphics);
+            }
+
+            if (_renderHitbox)
+            {
+                _world.RenderHitbox(eventArgs.Graphics);
+            }
+
+            if (_renderSteeringBehavior)
+            {
+                _world.RenderSteeringBehavior(eventArgs.Graphics);
             }
 
             _world.Render(eventArgs.Graphics);
@@ -120,6 +132,26 @@ namespace SteeringCS
         public void EnableGraphRender()
         {
             _renderGraph = true;
+        }
+
+        public void DisableHitboxRender()
+        {
+            _renderHitbox = false;
+        }
+
+        public void EnableHitboxRender()
+        {
+            _renderHitbox = true;
+        }
+
+        public void DisableSteeringBehaviorRender()
+        {
+            _renderSteeringBehavior = false;
+        }
+
+        public void EnableSteeringBehaviorRender()
+        {
+            _renderSteeringBehavior = true;
         }
     }
 }

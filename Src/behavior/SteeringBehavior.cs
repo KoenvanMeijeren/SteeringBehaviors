@@ -36,5 +36,15 @@ namespace Src.behavior
         {
             return Randomizer.NextDouble() * (maximum - minimum) + minimum;
         }
+
+        public Vector GetEntityPosition()
+        {
+            return MovingEntity.Position;
+        }
+
+        public Vector GetEntityTargetPosition()
+        {
+            return MovingEntity.Position.Clone().Add(MovingEntity.Velocity);
+        }
     }
 }

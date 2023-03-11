@@ -5,7 +5,7 @@ using Src.entity;
 
 namespace SteeringCS.behavior
 {
-    public class WanderingBehaviorVisualizer : ISteeringBehaviorVisualizer
+    public class WanderingBehaviorVisualizer : SteeringBehaviorVisualizer
     {
         public WanderingBehavior SteeringBehavior { get; private set; }
 
@@ -14,13 +14,15 @@ namespace SteeringCS.behavior
             SteeringBehavior = new WanderingBehavior(movingEntity);
         }
 
-        public Vector Calculate()
+        public override Vector Calculate()
         {
             return SteeringBehavior.Calculate();
         }
 
-        public void Render(Graphics graphic)
+        public override void Render(Graphics graphic)
         {
+            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityTargetPosition());
+
             Vector targetCircle = SteeringBehavior.TargetCircle;
             Vector selectedPoint = SteeringBehavior.SelectedPoint;
             if (targetCircle == null)
