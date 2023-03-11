@@ -5,8 +5,9 @@ namespace Src.util
 {
     public static class CollisionHandler
     {
-        public static void AlterVectorToStayInsideOfWorld(Vector position, Vector vector, IWorld world)
+        public static Vector AlterVectorToStayInsideOfWorld(Vector position, Vector vector, IWorld world)
         {
+            Vector alteredVector = vector.Clone();
             Vector targetPosition = position.Clone().Add(vector);
 
             int maxY = world.Height;
@@ -14,27 +15,31 @@ namespace Src.util
 
             if (targetPosition.Y < 0)
             {
-                vector.SubtractY(targetPosition.Y);
+                alteredVector.SubtractY(targetPosition.Y);
             }
 
             if (targetPosition.X < 0)
             {
-                vector.SubtractX(targetPosition.X);
+                alteredVector.SubtractX(targetPosition.X);
             }
 
             if (targetPosition.Y > maxY)
             {
-                vector.SubtractY(targetPosition.Y - maxY);
+                alteredVector.SubtractY(targetPosition.Y - maxY);
             }
 
             if (targetPosition.X > maxX)
             {
-                vector.SubtractX(targetPosition.X - maxX);
+                alteredVector.SubtractX(targetPosition.X - maxX);
             }
+
+            return alteredVector;
         }
 
-        public static void AlterVectorToStayOutOfWalls(Vector position, Vector vector, IGrid grid)
+        public static Vector AlterVectorToStayOutOfWalls(Vector position, Vector vector, IGrid grid)
         {
+            Vector alteredVector = vector.Clone();
+
             // Check if target position is in a wall tile
             Vector targetPosition = position.Clone().Add(vector);
 
@@ -45,7 +50,7 @@ namespace Src.util
 
             if (gridTile == null || !(gridTile is WallTile))
             {
-                return;
+                return alteredVector;
             }
 
             WallTile wallTile = (WallTile)gridTile;
@@ -72,31 +77,31 @@ namespace Src.util
             {
                 if (gridTileNorth is WallTile && gridTileEast is WallTile)
                 {
-                    vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
-                    vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
-                    return;
+                    alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                    alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                    return alteredVector;
                 }
 
                 if (gridTileNorth is WallTile)
                 {
-                    vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
-                    return;
+                    alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                    return alteredVector;
                 }
 
                 if (gridTileEast is WallTile)
                 {
-                    vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
-                    return;
+                    alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                    return alteredVector;
                 }
 
                 if (northDistanceFromWallTileCenter > eastDistanceFromWallTileCenter)
                 {
-                    vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
-                    return;
+                    alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                    return alteredVector;
                 }
 
-                vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
-                return;
+                alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                return alteredVector;
             }
 
             // Handle encountering south east corner
@@ -104,31 +109,31 @@ namespace Src.util
             {
                 if (gridTileSouth is WallTile && gridTileEast is WallTile)
                 {
-                    vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
-                    vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
-                    return;
+                    alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                    alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                    return alteredVector;
                 }
 
                 if (gridTileSouth is WallTile)
                 {
-                    vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
-                    return;
+                    alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                    return alteredVector;
                 }
 
                 if (gridTileEast is WallTile)
                 {
-                    vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
-                    return;
+                    alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                    return alteredVector;
                 }
 
                 if (southDistanceFromWallTileCenter > eastDistanceFromWallTileCenter)
                 {
-                    vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
-                    return;
+                    alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                    return alteredVector;
                 }
 
-                vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
-                return;
+                alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                return alteredVector;
             }
 
             // Handle encountering south west corner
@@ -136,31 +141,31 @@ namespace Src.util
             {
                 if (gridTileSouth is WallTile && gridTileWest is WallTile)
                 {
-                    vector.SubtractX(targetPosition.X - gridTile.Position.X);
-                    vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
-                    return;
+                    alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
+                    alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                    return alteredVector;
                 }
 
                 if (gridTileSouth is WallTile)
                 {
-                    vector.SubtractX(targetPosition.X - gridTile.Position.X);
-                    return;
+                    alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
+                    return alteredVector;
                 }
 
                 if (gridTileWest is WallTile)
                 {
-                    vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
-                    return;
+                    alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                    return alteredVector;
                 }
 
                 if (southDistanceFromWallTileCenter > westDistanceFromWallTileCenter)
                 {
-                    vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
-                    return;
+                    alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                    return alteredVector;
                 }
 
-                vector.SubtractX(targetPosition.X - gridTile.Position.X);
-                return;
+                alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
+                return alteredVector;
             }
 
             // Handle encountering north west corner
@@ -168,60 +173,62 @@ namespace Src.util
             {
                 if (gridTileNorth is WallTile && gridTileWest is WallTile)
                 {
-                    vector.SubtractX(targetPosition.X - gridTile.Position.X);
-                    vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
-                    return;
+                    alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
+                    alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                    return alteredVector;
                 }
 
                 if (gridTileNorth is WallTile)
                 {
-                    vector.SubtractX(targetPosition.X - gridTile.Position.X);
-                    return;
+                    alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
+                    return alteredVector;
                 }
 
                 if (gridTileWest is WallTile)
                 {
-                    vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
-                    return;
+                    alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                    return alteredVector;
                 }
 
                 if (northDistanceFromWallTileCenter > westDistanceFromWallTileCenter)
                 {
-                    vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
-                    return;
+                    alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                    return alteredVector;
                 }
 
-                vector.SubtractX(targetPosition.X - gridTile.Position.X);
-                return;
+                alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
+                return alteredVector;
             }
 
             // Handle encountering north wall
             if (northDistanceFromWallTileCenter > halfWallTileSize)
             {
-                vector.SubtractY(targetPosition.Y - gridTile.Position.Y);
-                return;
+                alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                return alteredVector;
             }
 
             // Handle encountering east wall
             if (eastDistanceFromWallTileCenter > halfWallTileSize)
             {
-                vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
-                return;
+                alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                return alteredVector;
             }
 
             // Handle encountering south wall
             if (southDistanceFromWallTileCenter > halfWallTileSize)
             {
-                vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
-                return;
+                alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                return alteredVector;
             }
 
             // Handle encountering west wall
             if (westDistanceFromWallTileCenter > halfWallTileSize)
             {
-                vector.SubtractX(targetPosition.X - gridTile.Position.X);
-                return;
+                alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
+                return alteredVector;
             }
+
+            return alteredVector;
         }
     }
 }

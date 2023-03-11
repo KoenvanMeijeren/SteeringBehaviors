@@ -2,15 +2,14 @@
 using Src.entity;
 using Src.util;
 using Src.world;
-using SteeringCS.behavior;
 using SteeringCS.util;
 
 namespace SteeringCS.entity
 {
     public class Vehicle : MovingEntity, IRender
     {
-        public const int DefaultHeight = 50;
-        public const int DefaultWidth = 50;
+        public const int DefaultHeight = 25;
+        public const int DefaultWidth = 25;
         public Color Color { get; set; }
 
         public Vehicle(Vector position, IWorld world) : base(position, world, DefaultHeight, DefaultWidth)

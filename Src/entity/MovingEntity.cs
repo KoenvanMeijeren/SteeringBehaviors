@@ -38,20 +38,12 @@ namespace Src.entity
             Vector acceleration = steeringForce.Divide(Mass);
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
-            CollisionHandler.AlterVectorToStayInsideOfWorld(Position, Velocity, World);
-            CollisionHandler.AlterVectorToStayOutOfWalls(Position, Velocity, World.Grid);
+            Velocity = CollisionHandler.AlterVectorToStayInsideOfWorld(Position, Velocity, World);
+            Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Hitbox.UpperLeftCorner, Velocity, World.Grid);
+            Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Hitbox.UpperRightCorner, Velocity, World.Grid);
+            Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Hitbox.LowerLeftCorner, Velocity, World.Grid);
+            Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Hitbox.LowerRightCorner, Velocity, World.Grid);
             Position.Add(Velocity.Multiply(timeElapsed));
-
-            // ToDo: Find out what the purpose is of this code.
-            //update the heading if the vehicle has a velocity greater than a very small value
-            //if (m_vVelocity.LengthSq() > 0.00000001)
-            //{
-            //    m_vHeading = Vec2DNormalize(m_vVelocity);
-            //    m_vSide = m_vHeading.Perp();
-            //} 
-
-            //treat the screen as a toroid
-            //WrapAround(m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient());
         }
 
         public override string ToString()
