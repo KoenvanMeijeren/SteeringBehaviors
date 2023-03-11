@@ -6,7 +6,7 @@ namespace Src.entity
     {
         public IGameEntity Entity;
 
-        public Vector UpperLeftCorner => Entity.Position.Clone().Add(-Entity.Width/2, -Entity.Height/2);
+        public Vector UpperLeftCorner => Entity.Position.Clone().Add(-Entity.Width / 2, -Entity.Height / 2);
         public Vector UpperRightCorner => Entity.Position.Clone().Add(Entity.Width / 2, -Entity.Height / 2);
         public Vector LowerLeftCorner => Entity.Position.Clone().Add(-Entity.Width / 2, Entity.Height / 2);
         public Vector LowerRightCorner => Entity.Position.Clone().Add(Entity.Width / 2, Entity.Height / 2);
