@@ -26,6 +26,8 @@ namespace Src.world
 
         public void Update(float timeElapsed)
         {
+            Target.Update(timeElapsed);
+
             foreach (IMovingEntity entity in Entities)
             {
                 Vector oldPos = entity.Position.Clone();

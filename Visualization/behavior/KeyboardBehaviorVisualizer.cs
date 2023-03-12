@@ -1,17 +1,16 @@
-﻿using System.Drawing;
-using Src.behavior;
+﻿using Src.behavior;
 using Src.entity;
 using Src.util;
+using System.Drawing;
 
 namespace SteeringCS.behavior
 {
-    public class IdlingBehaviorVisualizer : SteeringBehaviorVisualizer
+    public class KeyboardBehaviorVisualizer : SteeringBehaviorVisualizer
     {
-        public IdlingBehavior SteeringBehavior { get; private set; }
-
-        public IdlingBehaviorVisualizer(IMovingEntity movingEntity)
+        public KeyboardBehavior SteeringBehavior { get; private set; }
+        public KeyboardBehaviorVisualizer(IMovingEntity movingEntity)
         {
-            SteeringBehavior = new IdlingBehavior(movingEntity);
+            SteeringBehavior = new KeyboardBehavior(movingEntity);
         }
 
         public override Vector Calculate()

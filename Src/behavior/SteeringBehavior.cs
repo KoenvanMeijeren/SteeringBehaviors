@@ -4,16 +4,6 @@ using Src.util;
 
 namespace Src.behavior
 {
-    public enum SteeringBehaviorOptions
-    {
-        IdlingBehavior,
-        SeekingBehavior,
-        FleeingBehavior,
-        MosquitoBehavior,
-        WanderingBehavior,
-        PathfindingBehavior
-    }
-
     public abstract class SteeringBehavior : ISteeringBehavior
     {
         protected readonly Random Randomizer = new Random();
@@ -40,9 +30,9 @@ namespace Src.behavior
             return MovingEntity.Position;
         }
 
-        public Vector GetEntityTargetPosition()
+        public Vector GetEntityVelocity()
         {
-            return MovingEntity.Position.Clone().Add(MovingEntity.Velocity);
+            return MovingEntity.Velocity;
         }
     }
 }

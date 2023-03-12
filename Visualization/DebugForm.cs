@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Src.behavior;
+using static Src.behavior.SteeringBehaviorFactory;
 
 namespace SteeringCS
 {
@@ -128,6 +128,15 @@ namespace SteeringCS
             }
 
             _worldForm.DisableSteeringBehaviorRender();
+        }
+
+        private void DebugForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+                _worldForm.Close();
+            }
         }
     }
 }

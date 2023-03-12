@@ -1,8 +1,9 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
-using Src.behavior;
 using Src.util;
 using SteeringCS.world;
+using static Src.behavior.SteeringBehaviorFactory;
 using Timer = System.Timers.Timer;
 
 namespace SteeringCS
@@ -152,6 +153,21 @@ namespace SteeringCS
         public void EnableSteeringBehaviorRender()
         {
             _renderSteeringBehavior = true;
+        }
+
+        private void WorldForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            KeyHandler.RegisterPressedKeys(e);
+
+            if (e.KeyCode  == Keys.Escape) 
+            { 
+                Close();
+            }
+        }
+
+        private void WorldForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            KeyHandler.RegisterUnpressedKeys(e);
         }
     }
 }

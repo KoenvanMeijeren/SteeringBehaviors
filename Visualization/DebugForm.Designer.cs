@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.ShowBehaviorCheckbox = new System.Windows.Forms.CheckBox();
             this.ShowHitboxCheckbox = new System.Windows.Forms.CheckBox();
             this.ShowGraphCheckbox = new System.Windows.Forms.CheckBox();
             this.ShowGridCheckbox = new System.Windows.Forms.CheckBox();
@@ -45,7 +46,6 @@
             this.pauseButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.UpdateIntervalSelector = new System.Windows.Forms.NumericUpDown();
-            this.ShowBehaviorCheckbox = new System.Windows.Forms.CheckBox();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxSpeedSelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MassSelector)).BeginInit();
@@ -75,6 +75,17 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(260, 355);
             this.mainPanel.TabIndex = 1;
+            // 
+            // ShowBehaviorCheckbox
+            // 
+            this.ShowBehaviorCheckbox.AutoSize = true;
+            this.ShowBehaviorCheckbox.Location = new System.Drawing.Point(117, 222);
+            this.ShowBehaviorCheckbox.Name = "ShowBehaviorCheckbox";
+            this.ShowBehaviorCheckbox.Size = new System.Drawing.Size(118, 20);
+            this.ShowBehaviorCheckbox.TabIndex = 17;
+            this.ShowBehaviorCheckbox.Text = "Show behavior";
+            this.ShowBehaviorCheckbox.UseVisualStyleBackColor = true;
+            this.ShowBehaviorCheckbox.CheckedChanged += new System.EventHandler(this.ShowBehaviorCheckbox_CheckedChanged);
             // 
             // ShowHitboxCheckbox
             // 
@@ -277,26 +288,17 @@
             0});
             this.UpdateIntervalSelector.ValueChanged += new System.EventHandler(this.updateIntervalSelector_ValueChanged);
             // 
-            // ShowBehaviorCheckbox
-            // 
-            this.ShowBehaviorCheckbox.AutoSize = true;
-            this.ShowBehaviorCheckbox.Location = new System.Drawing.Point(117, 222);
-            this.ShowBehaviorCheckbox.Name = "ShowBehaviorCheckbox";
-            this.ShowBehaviorCheckbox.Size = new System.Drawing.Size(118, 20);
-            this.ShowBehaviorCheckbox.TabIndex = 17;
-            this.ShowBehaviorCheckbox.Text = "Show behavior";
-            this.ShowBehaviorCheckbox.UseVisualStyleBackColor = true;
-            this.ShowBehaviorCheckbox.CheckedChanged += new System.EventHandler(this.ShowBehaviorCheckbox_CheckedChanged);
-            // 
             // DebugForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(286, 367);
             this.Controls.Add(this.mainPanel);
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DebugForm";
             this.Text = "DebugForm";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DebugForm_KeyDown);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxSpeedSelector)).EndInit();

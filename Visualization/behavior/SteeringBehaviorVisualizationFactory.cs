@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
-using Src.behavior;
 using Src.entity;
+using static Src.behavior.SteeringBehaviorFactory;
 
 namespace SteeringCS.behavior
 {
@@ -33,6 +33,10 @@ namespace SteeringCS.behavior
                 case SteeringBehaviorOptions.PathfindingBehavior:
                     {
                         return new PathfindingBehaviorVisualizer(movingEntity);
+                    }
+                case SteeringBehaviorOptions.KeyboardBehavior:
+                    {
+                        return new KeyboardBehaviorVisualizer(movingEntity);
                     }
                 default: throw new InvalidEnumArgumentException("Could not create steering behavior for the selected option.");
             }

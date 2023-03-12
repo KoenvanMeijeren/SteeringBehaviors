@@ -8,6 +8,7 @@ using SteeringCS.behavior;
 using SteeringCS.entity;
 using SteeringCS.grid;
 using SteeringCS.util;
+using static Src.behavior.SteeringBehaviorFactory;
 
 namespace SteeringCS.world
 {
@@ -26,10 +27,13 @@ namespace SteeringCS.world
             };
             entities.Add(vehicle);
 
-            Target = new Vehicle(new Vector(100, 40), this)
+            /*Target = new Vehicle(new Vector(100, 40), this)
             {
                 Color = Color.DarkRed,
-            };
+            };*/
+
+            Target = new Player(new Vector(100, 40), this);
+            Target.SetSteeringBehavior(SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, Target));
 
             return entities;
         }

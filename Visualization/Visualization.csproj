@@ -57,6 +57,7 @@
     <Compile Include="behavior\FleeingBehaviorVisualizer.cs" />
     <Compile Include="behavior\IdlingBehaviorVisualizer.cs" />
     <Compile Include="behavior\ISteeringBehaviorVisualizer.cs" />
+    <Compile Include="behavior\KeyboardBehaviorVisualizer.cs" />
     <Compile Include="behavior\MosquitoBehaviorVisualizer.cs" />
     <Compile Include="behavior\PathfindingBehaviorVisualizer.cs" />
     <Compile Include="behavior\SteeringBehaviorVisualizer.cs" />
@@ -120,6 +121,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="graphics\mario\mario.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="graphics\mario\mario-left-walk-2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

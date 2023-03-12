@@ -21,7 +21,7 @@ namespace SteeringCS.behavior
 
         public override void Render(Graphics graphic)
         {
-            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityTargetPosition());
+            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityVelocity());
 
             Vector targetCircle = SteeringBehavior.TargetCircle;
             Vector selectedPoint = SteeringBehavior.SelectedPoint;
