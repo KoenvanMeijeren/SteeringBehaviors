@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,6 +58,8 @@
     <Compile Include="behavior\IdlingBehaviorVisualizer.cs" />
     <Compile Include="behavior\ISteeringBehaviorVisualizer.cs" />
     <Compile Include="behavior\MosquitoBehaviorVisualizer.cs" />
+    <Compile Include="behavior\PathfindingBehaviorVisualizer.cs" />
+    <Compile Include="behavior\SteeringBehaviorVisualizer.cs" />
     <Compile Include="behavior\SteeringBehaviorVisualizationFactory.cs" />
     <Compile Include="behavior\WanderingBehaviorVisualizer.cs" />
     <Compile Include="behavior\SeekingBehaviorVisualizer.cs" />
@@ -74,6 +78,7 @@
     <Compile Include="grid\PathTileVisualizer.cs" />
     <Compile Include="grid\WallTileVisualizer.cs" />
     <Compile Include="MultiFormContext.cs" />
+    <Compile Include="util\HitBoxVisualizer.cs" />
     <Compile Include="util\IRender.cs" />
     <Compile Include="WorldForm.cs">
       <SubType>Form</SubType>

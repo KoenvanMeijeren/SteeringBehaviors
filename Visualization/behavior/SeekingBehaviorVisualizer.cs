@@ -1,12 +1,11 @@
 ﻿using System.Drawing;
 using Src.behavior;
 using Src.entity;
-using SteeringCS.entity;
 using Src.util;
 
 namespace SteeringCS.behavior
 {
-    public class SeekingBehaviorVisualizer : ISteeringBehaviorVisualizer
+    public class SeekingBehaviorVisualizer : SteeringBehaviorVisualizer
     {
         public SeekingBehavior SteeringBehavior { get; private set; }
 
@@ -15,14 +14,14 @@ namespace SteeringCS.behavior
             SteeringBehavior = new SeekingBehavior(movingEntity);
         }
 
-        public Vector Calculate()
+        public override Vector Calculate()
         {
             return SteeringBehavior.Calculate();
         }
 
-        public void Render(Graphics graphic)
+        public override void Render(Graphics graphic)
         {
-
+            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityTargetPosition());
         }
     }
 }

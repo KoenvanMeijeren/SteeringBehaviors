@@ -15,7 +15,6 @@ namespace SteeringCS.graph
             Pen penEdge = new Pen(s_renderColor);
             Rectangle rectangle = new Rectangle(0, 0, VertexSize, VertexSize);
 
-
             for (int x = 0; x < graph.Vertices.GetLength(0); x++)
             {
                 for (int y = 0; y < graph.Vertices.GetLength(1); y++)

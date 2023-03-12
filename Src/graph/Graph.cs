@@ -1,4 +1,7 @@
 ﻿using Src.util;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Src.graph
 {
@@ -78,7 +81,7 @@ namespace Src.graph
             if (vertexWest != null)
             {
                 Edge edge = new Edge(vertexCurrent, vertexWest);
-                vertexWest.AddEdge(edge);
+                vertexCurrent.AddEdge(edge);
             }
 
             if (vertexNorthWest != null && vertexNorth != null && vertexWest != null)
@@ -88,7 +91,61 @@ namespace Src.graph
             }
         }
 
-        private Vertex GetVertex(int vertexX, int vertexY)
+        public Stack<Vertex> GetShortestPath(Vertex startVertex, Vertex targetVertex)
+        {
+            if (startVertex == null || targetVertex == null)
+            {
+                return null;
+            }
+
+            Stack<Vertex> path = new Stack<Vertex>();
+            VertexPriorityQueue openList = new VertexPriorityQueue();
+            List<Vertex> closedList = new List<Vertex>();
+            Vertex current = startVertex;
+
+            openList.Enqueue(startVertex, 0);
+
+            while (openList.Count != 0 && !closedList.Exists(x => x == targetVertex))
+            {
+                current = openList.Dequeue();
+                closedList.Add(current);
+                IEnumerable<Vertex> adjacentVertexes = GetAdjacentVertexes(current);
+
+                foreach (Vertex vertex in adjacentVertexes
+                             .Where(vertex => !closedList.Contains(vertex))
+                             .Where(vertex => !openList.Contains(vertex)))
+                {
+                    vertex.Parent = current;
+                    vertex.DistanceFromTarget = (int)(Math.Abs(vertex.Position.X - targetVertex.Position.X) + Math.Abs(vertex.Position.Y - targetVertex.Position.Y));
+                    int distanceFromParent = (int)(Math.Abs(vertex.Position.X - vertex.Parent.Position.X) + Math.Abs(vertex.Position.Y - vertex.Parent.Position.Y));
+
+                    vertex.Cost = (distanceFromParent * 2) + vertex.Parent.Cost;
+                    openList.Enqueue(vertex, vertex.Cost + vertex.DistanceFromTarget);
+                }
+            }
+
+            if (!closedList.Exists(x => x == targetVertex))
+            {
+                return null;
+            }
+
+            Vertex temp = closedList[closedList.IndexOf(current)];
+
+            if (temp == null)
+            {
+                return null;
+            }
+
+            while (temp != startVertex && temp != null)
+            {
+                path.Push(temp);
+                temp = temp.Parent;
+            }
+
+            return path;
+        }
+
+        public Vertex GetVertex(int vertexX, int vertexY)
         {
             if (vertexX < 0 || vertexY < 0)
             {
@@ -100,7 +157,12 @@ namespace Src.graph
                 return null;
             }
 
-            return Vertices[vertexX, vertexY]; ;
+            return Vertices[vertexX, vertexY];
+        }
+
+        private static IEnumerable<Vertex> GetAdjacentVertexes(Vertex vertex)
+        {
+            return vertex.Edges.Select(edge => edge.DestinationVertex).ToList();
         }
     }
 }

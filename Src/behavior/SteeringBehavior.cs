@@ -10,7 +10,8 @@ namespace Src.behavior
         SeekingBehavior,
         FleeingBehavior,
         MosquitoBehavior,
-        WanderingBehavior
+        WanderingBehavior,
+        PathfindingBehavior
     }
 
     public abstract class SteeringBehavior : ISteeringBehavior
@@ -32,6 +33,16 @@ namespace Src.behavior
         protected double GetRandomNumber(double minimum, double maximum)
         {
             return Randomizer.NextDouble() * (maximum - minimum) + minimum;
+        }
+
+        public Vector GetEntityPosition()
+        {
+            return MovingEntity.Position;
+        }
+
+        public Vector GetEntityTargetPosition()
+        {
+            return MovingEntity.Position.Clone().Add(MovingEntity.Velocity);
         }
     }
 }

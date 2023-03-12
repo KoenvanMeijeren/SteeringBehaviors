@@ -30,6 +30,10 @@ namespace SteeringCS.behavior
                     {
                         return new WanderingBehaviorVisualizer(movingEntity);
                     }
+                case SteeringBehaviorOptions.PathfindingBehavior:
+                    {
+                        return new PathfindingBehaviorVisualizer(movingEntity);
+                    }
                 default: throw new InvalidEnumArgumentException("Could not create steering behavior for the selected option.");
             }
         }

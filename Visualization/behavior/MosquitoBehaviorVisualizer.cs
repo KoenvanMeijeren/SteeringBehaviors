@@ -1,17 +1,11 @@
-﻿using SteeringCS.entity;
-using Src.util;
-using System;
-using System.Collections.Generic;
+﻿using Src.util;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Src.behavior;
 using Src.entity;
 
 namespace SteeringCS.behavior
 {
-    public class MosquitoBehaviorVisualizer : ISteeringBehaviorVisualizer
+    public class MosquitoBehaviorVisualizer : SteeringBehaviorVisualizer
     {
         public MosquitoBehavior SteeringBehavior { get; private set; }
 
@@ -20,14 +14,14 @@ namespace SteeringCS.behavior
             SteeringBehavior = new MosquitoBehavior(movingEntity);
         }
 
-        public Vector Calculate()
+        public override Vector Calculate()
         {
             return SteeringBehavior.Calculate();
         }
 
-        public void Render(Graphics graphic)
+        public override void Render(Graphics graphic)
         {
-
+            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityTargetPosition());
         }
     }
 }
