@@ -48,22 +48,6 @@ namespace SteeringCS.world
             }
         }
 
-        public void Render(Graphics graphics)
-        {
-            Entities.ForEach(entity =>
-            {
-                if (entity is IRender entityRender)
-                {
-                    entityRender.Render(graphics);
-                }
-            });
-
-            if (Target is IRender targetRender)
-            {
-                targetRender.Render(graphics);
-            }
-        }
-
         public void RenderHitbox(Graphics graphics)
         {
             Entities.ForEach(entity =>
@@ -96,7 +80,7 @@ namespace SteeringCS.world
             }
         }
 
-        public void RenderGrid(Graphics graphics) => GridVisualizer.Render(graphics, Grid);
+        public void Render(Graphics graphics) => GridVisualizer.Render(graphics, Grid);
 
         public void RenderGridOutline(Graphics graphics) => GridVisualizer.RenderOutline(graphics, Grid);
 

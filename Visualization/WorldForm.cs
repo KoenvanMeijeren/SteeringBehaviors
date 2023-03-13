@@ -52,7 +52,7 @@ namespace SteeringCS
 
         private void dbPanel1_Paint(object sender, PaintEventArgs eventArgs)
         {
-            _world.RenderGrid(eventArgs.Graphics);
+            _world.Render(eventArgs.Graphics);
 
             if (_renderGrid)
             {
@@ -73,8 +73,6 @@ namespace SteeringCS
             {
                 _world.RenderSteeringBehavior(eventArgs.Graphics);
             }
-
-            _world.Render(eventArgs.Graphics);
         }
 
         private void dbPanel1_MouseClick(object sender, MouseEventArgs eventArgs)

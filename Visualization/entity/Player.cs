@@ -4,6 +4,7 @@ using Src.world;
 using SteeringCS.util;
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace SteeringCS.entity
 {
@@ -24,7 +25,7 @@ namespace SteeringCS.entity
         private static readonly Image _playerGraphicsLeftWalk1 = Image.FromFile("graphics/mario/mario-left-walk-1.png");
         private static readonly Image _playerGraphicsLeftWalk2 = Image.FromFile("graphics/mario/mario-left-walk-2.png");
 
-        public Player(Vector position, IWorld world) : base(position, world, _playerGraphicsRight.Height, _playerGraphicsRight.Width)
+        public Player(Vector position, IWorld world) : base(position, world, _playerGraphicsRight.Height/2, _playerGraphicsRight.Width)
         {
             Velocity = new Vector(0, 0);
         }
@@ -130,7 +131,10 @@ namespace SteeringCS.entity
 
         public void RenderCurrentGraphic(Graphics graphic)
         {
-            graphic.DrawImage(_currentGraphics, (int)Position.X - Width / 2, (int)Position.Y - Height / 2);
+            Brush brush = new SolidBrush(Color.DarkGray);
+            graphic.FillEllipse(brush, (int)Position.X - Width / 2, (int)Position.Y + Height/5, Width, Height/2);
+
+            graphic.DrawImage(_currentGraphics, (int)Position.X - Width / 2, (int)Position.Y - (int)(Height * 1.5));
         }
     }
 }

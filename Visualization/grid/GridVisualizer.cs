@@ -10,19 +10,38 @@ namespace SteeringCS.grid
 
         public static void Render(Graphics graphic, IGrid grid)
         {
-            for (int x = 0; x < grid.Tiles.GetLength(0); x++)
+            for (int y = 0; y < grid.Tiles.GetLength(0); y++)
             {
-                for (int y = 0; y < grid.Tiles.GetLength(1); y++)
+                for (int x = 0; x < grid.Tiles.GetLength(1); x++)
                 {
                     GridTile gridTile = grid.Tiles[x, y];
-                    switch (gridTile)
+
+                    if (gridTile is PathTile pathTile)
                     {
-                        case PathTile pathTile:
-                            PathTileVisualizer.Render(graphic, pathTile);
-                            break;
-                        case WallTile wallTile:
-                            WallTileVisualizer.Render(graphic, wallTile);
-                            break;
+                        PathTileVisualizer.Render(graphic, pathTile);
+                    }
+                }
+            }
+
+            for (int y = 0; y < grid.Tiles.GetLength(0); y++)
+            {
+                for (int x = 0; x < grid.Tiles.GetLength(1); x++)
+                {
+                    GridTile gridTile = grid.Tiles[x, y];
+
+                    if (gridTile is WallTile wallTile)
+                    {
+                        WallTileVisualizer.Render(graphic, wallTile);
+                    }
+                }
+
+                for (int x = 0; x < grid.Tiles.GetLength(1); x++)
+                {
+                    GridTile gridTile = grid.Tiles[x, y];
+
+                    if (gridTile is PathTile pathTile)
+                    {
+                        PathTileVisualizer.RenderEntities(graphic, pathTile);
                     }
                 }
             }
