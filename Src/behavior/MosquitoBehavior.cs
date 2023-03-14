@@ -11,7 +11,7 @@ namespace Src.behavior
 
         public override Vector Calculate()
         {
-            return new Vector(Randomizer.Next(-1000, 1000), Randomizer.Next(-1000, 1000));
+            return new Vector(Randomizer.GetRandomNumber(-1000, -1000), Randomizer.GetRandomNumber(-1000, -1000));
         }
     }
 }
