@@ -4,18 +4,18 @@ using Src.world;
 using SteeringCS.util;
 using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 
 namespace SteeringCS.entity
 {
-    public class Player : MovingEntity, IRender
+    public class Mario : MovingEntity, IRender
     {
+        private readonly Color _shadowColor = Color.FromArgb(100, Color.Black);
         private const double _movementMargin = 0.1;
         private int _graphicIterator = 0;
         private const int _graphicIteratorLimit = 3;
         private bool _directionIsRight;
 
-        private static Image _currentGraphics;
+        private Image _currentGraphics;
 
         private static readonly Image _playerGraphicsRight = Image.FromFile("graphics/mario/mario-right.png");
         private static readonly Image _playerGraphicsRightWalk1 = Image.FromFile("graphics/mario/mario-right-walk-1.png");
@@ -25,7 +25,7 @@ namespace SteeringCS.entity
         private static readonly Image _playerGraphicsLeftWalk1 = Image.FromFile("graphics/mario/mario-left-walk-1.png");
         private static readonly Image _playerGraphicsLeftWalk2 = Image.FromFile("graphics/mario/mario-left-walk-2.png");
 
-        public Player(Vector position, IWorld world) : base(position, world, _playerGraphicsRight.Height/2, _playerGraphicsRight.Width)
+        public Mario(Vector position, IWorld world) : base(position, world, _playerGraphicsRight.Height/2, _playerGraphicsRight.Width)
         {
             Velocity = new Vector(0, 0);
         }
@@ -131,7 +131,7 @@ namespace SteeringCS.entity
 
         public void RenderCurrentGraphic(Graphics graphic)
         {
-            Brush brush = new SolidBrush(Color.DarkGray);
+            Brush brush = new SolidBrush(_shadowColor);
             graphic.FillEllipse(brush, (int)Position.X - Width / 2, (int)Position.Y + Height/5, Width, Height/2);
 
             graphic.DrawImage(_currentGraphics, (int)Position.X - Width / 2, (int)Position.Y - (int)(Height * 1.5));

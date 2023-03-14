@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using Src.behavior;
 using Src.entity;
 using Src.util;
 using Src.world;
@@ -25,14 +24,20 @@ namespace SteeringCS.world
             {
                 Color = Color.Blue,
             };
+
+            Vehicle vehicle2 = new Vehicle(new Vector(Width / 2, Height / 3), this)
+            {
+                Color = Color.Yellow,
+            };
             entities.Add(vehicle);
+            entities.Add(vehicle2);
 
             /*Target = new Vehicle(new Vector(100, 40), this)
             {
                 Color = Color.DarkRed,
             };*/
 
-            Target = new Player(new Vector(100, 40), this);
+            Target = new Mario(new Vector(100, 40), this);
             Target.SetSteeringBehavior(SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, Target));
 
             return entities;

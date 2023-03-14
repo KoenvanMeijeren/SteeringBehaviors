@@ -67,7 +67,7 @@
     <Compile Include="DBPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="entity\Player.cs" />
+    <Compile Include="entity\Mario.cs" />
     <Compile Include="entity\Vehicle.cs" />
     <Compile Include="DebugForm.cs">
       <SubType>Form</SubType>
@@ -140,6 +140,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="graphics\mario\mario-right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\path.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\wall3d.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="graphics\wall.png">
