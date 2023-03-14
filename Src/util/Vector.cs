@@ -6,8 +6,8 @@ namespace Src.util
 
     public class Vector
     {
-        public double X { get; set; }
-        public double Y { get; set; }
+        public double X { get; private set; }
+        public double Y { get; private set; }
         public Vector(double xPosition, double yPosition)
         {
             X = xPosition;

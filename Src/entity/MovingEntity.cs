@@ -7,7 +7,7 @@ namespace Src.entity
 
     public abstract class MovingEntity : BaseGameEntity, IMovingEntity
     {
-        public const int MassDefault = 30, MaxSpeedDefault = 150;
+        private const int MassDefault = 30, MaxSpeedDefault = 150;
 
         public Vector Velocity { get; set; }
         public float Mass { get; set; }
