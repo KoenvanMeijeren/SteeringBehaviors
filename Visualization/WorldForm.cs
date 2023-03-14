@@ -134,12 +134,12 @@ namespace SteeringCS
             _renderGraph = true;
         }
 
-        public void DisableHitboxRender()
+        public void DisableHitBoxRender()
         {
             _renderHitBox = false;
         }
 
-        public void EnableHitboxRender()
+        public void EnableHitBoxRender()
         {
             _renderHitBox = true;
         }

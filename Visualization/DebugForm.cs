@@ -112,11 +112,11 @@ namespace SteeringCS
         {
             if (ShowHitboxCheckbox.Checked)
             {
-                _worldForm.EnableHitboxRender();
+                _worldForm.EnableHitBoxRender();
                 return;
             }
 
-            _worldForm.DisableHitboxRender();
+            _worldForm.DisableHitBoxRender();
         }
 
         private void ShowBehaviorCheckbox_CheckedChanged(object sender, EventArgs e)
