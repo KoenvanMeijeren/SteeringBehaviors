@@ -1,5 +1,4 @@
-﻿using System;
-using Src.entity;
+﻿using Src.entity;
 using Src.util;
 
 namespace Src.behavior
