@@ -147,6 +147,22 @@ namespace Tests.util
             Assert.AreEqual(expectedResult, resultWithValueRight.ToString());
             Assert.AreEqual(expectedResult, resultWithValueLeft.ToString());
         }
+        
+        [TestCase(new double[] { 0, 0 }, 0, "(0,0)")]
+        [TestCase(new double[] { 6, 2 }, 3, "(3,-1)")]
+        [TestCase(new double[] { -2, 2 }, 4, "(-6,-2)")]
+        public void Test_SubtractXAndY_01_Ok(double[] leftPositions, double value, string expectedResult)
+        {
+            // Arrange
+            VectorImmutable vector = new VectorImmutable(leftPositions[0], leftPositions[1]);
+
+            // Act
+            VectorImmutable result = vector.SubtractX(value).SubtractY(value);
+
+            // Assert
+            Assert.AreEqual(expectedResult, result.ToString());
+            Assert.AreEqual(expectedResult, result.ToString());
+        }
 
         [TestCase(new double[] { 0, 0 }, new double[] { 0, 0 }, "(0,0)")]
         [TestCase(new double[] { 3, 2 }, new double[] { 2, 1 }, "(6,2)")]

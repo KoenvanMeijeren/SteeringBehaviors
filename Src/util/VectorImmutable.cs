@@ -26,6 +26,8 @@ namespace Src.util
         public static VectorImmutable operator -(VectorImmutable vector, double value) => new VectorImmutable(vector.X - value, vector.Y - value);
         public static VectorImmutable operator -(double value, VectorImmutable vector) => vector - value;
         public VectorImmutable Subtract(double x, double y) => new VectorImmutable(X - x, Y - y);
+        public VectorImmutable SubtractX(double amount) => new VectorImmutable(X - amount, Y);
+        public VectorImmutable SubtractY(double amount) => new VectorImmutable(X, Y - amount);
 
         public static VectorImmutable operator *(VectorImmutable left, VectorImmutable right) => new VectorImmutable(left.X * right.X, left.Y * right.Y);
         public static VectorImmutable operator *(VectorImmutable left, double value) => new VectorImmutable(left.X * value, left.Y * value);
