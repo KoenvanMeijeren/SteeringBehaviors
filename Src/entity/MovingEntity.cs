@@ -7,7 +7,7 @@ namespace Src.entity
 
     public abstract class MovingEntity : BaseGameEntity, IMovingEntity
     {
-        private const int MassDefault = 30, MaxSpeedDefault = 150;
+        public const int MassDefault = 30, MaxSpeedDefault = 150;
 
         public Vector Velocity { get; set; }
         public float Mass { get; set; }
@@ -35,11 +35,6 @@ namespace Src.entity
             }
 
             Vector steeringForce = SteeringBehavior.Calculate();
-            if (steeringForce.ToString() == "(0,0)")
-            {
-                return;
-            }
-
             Vector acceleration = steeringForce.Divide(Mass);
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
