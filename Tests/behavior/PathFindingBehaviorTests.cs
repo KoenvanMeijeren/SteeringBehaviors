@@ -8,7 +8,9 @@ namespace Tests.behavior
     public class PathFindingBehaviorTests
     {
         [TestCase(20, 20, new float[] { 1, 1 }, new float[] { 18, 18 }, "(0,0)")]
-        public void Calculate_01_EmptyOk(int width, int height, float[] seekingPositions, float[] targetPositions, string expectedResult)
+        [TestCase(100, 100, new float[] { 35, 35 }, new float[] { 75, 75 }, "(45,45)")]
+        [TestCase(250, 250, new float[] { 50, 50 }, new float[] { 200, 200 }, "(30,30)")]
+        public void Calculate_01_Ok(int width, int height, float[] seekingPositions, float[] targetPositions, string expectedResult)
         {
             // Arrange
             Vector seekingEntityPosition = new Vector(seekingPositions[0], seekingPositions[1]);

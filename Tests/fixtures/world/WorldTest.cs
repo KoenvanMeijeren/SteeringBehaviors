@@ -17,7 +17,7 @@ namespace Tests.fixtures.world
             SeekingEntity = new VehicleTest(seekingEntityPosition, this);
             Target = new VehicleTest(targetEntityPosition, this);
             Entities.Add(SeekingEntity);
-            Grid = new Grid(width, height, Entities);
+            Grid = new Grid(width, height, Entities, false);
         }
 
         protected override List<IMovingEntity> GetPopulation()
