@@ -7,21 +7,21 @@ namespace SteeringCS.behavior
 {
     public class MosquitoBehaviorVisualizer : SteeringBehaviorVisualizer
     {
-        public MosquitoBehavior SteeringBehavior { get; private set; }
+        private readonly MosquitoBehavior _steeringBehavior;
 
         public MosquitoBehaviorVisualizer(IMovingEntity movingEntity)
         {
-            SteeringBehavior = new MosquitoBehavior(movingEntity);
+            _steeringBehavior = new MosquitoBehavior(movingEntity);
         }
 
         public override Vector Calculate()
         {
-            return SteeringBehavior.Calculate();
+            return _steeringBehavior.Calculate();
         }
 
         public override void Render(Graphics graphic)
         {
-            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityTargetPosition());
+            RenderVelocity(graphic, _steeringBehavior.GetEntityPosition(), _steeringBehavior.GetEntityTargetPosition());
         }
     }
 }

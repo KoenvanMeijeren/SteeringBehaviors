@@ -7,21 +7,21 @@ namespace SteeringCS.behavior
 {
     public class FleeingBehaviorVisualizer : SteeringBehaviorVisualizer
     {
-        public FleeingBehavior SteeringBehavior { get; private set; }
+        private readonly FleeingBehavior _steeringBehavior;
 
         public FleeingBehaviorVisualizer(IMovingEntity movingEntity)
         {
-            SteeringBehavior = new FleeingBehavior(movingEntity);
+            _steeringBehavior = new FleeingBehavior(movingEntity);
         }
 
         public override Vector Calculate()
         {
-            return SteeringBehavior.Calculate();
+            return _steeringBehavior.Calculate();
         }
 
         public override void Render(Graphics graphic)
         {
-            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityTargetPosition());
+            RenderVelocity(graphic, _steeringBehavior.GetEntityPosition(), _steeringBehavior.GetEntityTargetPosition());
         }
     }
 }

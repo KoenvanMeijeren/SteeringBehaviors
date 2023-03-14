@@ -8,8 +8,8 @@ namespace SteeringCS.entity
 {
     public class Vehicle : MovingEntity, IRender
     {
-        public const int DefaultHeight = 25;
-        public const int DefaultWidth = 25;
+        private const int DefaultHeight = 25;
+        private const int DefaultWidth = 25;
         public Color Color { get; set; }
 
         public Vehicle(Vector position, IWorld world) : base(position, world, DefaultHeight, DefaultWidth)

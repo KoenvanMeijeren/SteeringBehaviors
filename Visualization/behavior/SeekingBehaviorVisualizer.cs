@@ -7,26 +7,26 @@ namespace SteeringCS.behavior
 {
     public class SeekingBehaviorVisualizer : SteeringBehaviorVisualizer
     {
-        public SeekingBehavior SteeringBehavior { get; private set; }
+        private readonly SeekingBehavior _steeringBehavior;
 
         public SeekingBehaviorVisualizer(IMovingEntity movingEntity)
         {
-            SteeringBehavior = new SeekingBehavior(movingEntity);
+            _steeringBehavior = new SeekingBehavior(movingEntity);
         }
 
         public override Vector Calculate()
         {
-            return SteeringBehavior.Calculate();
+            return _steeringBehavior.Calculate();
         }
 
         public override void Render(Graphics graphic)
         {
-            Vector position = SteeringBehavior.GetEntityPosition();
+            Vector position = _steeringBehavior.GetEntityPosition();
             SolidBrush brush = new SolidBrush(Color.Red);
             Font font = new Font("Arial", 14, FontStyle.Bold);
             PointF pointF = new PointF((int)position.X, (int)position.Y);
             
-            RenderVelocity(graphic, position, SteeringBehavior.GetEntityTargetPosition());
+            RenderVelocity(graphic, position, _steeringBehavior.GetEntityTargetPosition());
             graphic.DrawString(Calculate().ToString(), font, brush, pointF);
         }
     }
