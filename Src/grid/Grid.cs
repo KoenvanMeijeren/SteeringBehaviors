@@ -134,7 +134,7 @@ namespace Src.grid
             int tileX = GetCoordinateOfTile((int)position.X);
             int tileY = GetCoordinateOfTile((int)position.Y);
 
-            if (Tiles[tileX, tileY] is PathTile pathTile)
+            if (IsPositionWithInBounds(tileX, tileY, Tiles) && Tiles[tileX, tileY] is PathTile pathTile)
             {
                 pathTile.AddEntity(entity);
             }
@@ -145,7 +145,7 @@ namespace Src.grid
             int tileX = GetCoordinateOfTile((int)position.X);
             int tileY = GetCoordinateOfTile((int)position.Y);
 
-            if (Tiles[tileX, tileY] is PathTile pathTile)
+            if (IsPositionWithInBounds(tileX, tileY, Tiles) && Tiles[tileX, tileY] is PathTile pathTile)
             {
                 pathTile.RemoveEntity(entity);
             }
@@ -174,6 +174,11 @@ namespace Src.grid
 
             RemoveEntity(entity, oldPos);
             AddEntity(entity, newPos);
+        }
+
+        private bool IsPositionWithInBounds(int x, int y, GridTile[,] gridTiles)
+        {
+            return x >= 0 && y >= 0 && x <= gridTiles.GetLength(0) && y <= gridTiles.GetLength(1);
         }
     }
 }
