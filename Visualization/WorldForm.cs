@@ -76,7 +76,7 @@ namespace SteeringCS
             _world.Render(eventArgs.Graphics);
         }
 
-        private void dbPanel1_MouseClick(object sender, MouseEventArgs eventArgs)
+        private void targetEntityPosition_MouseClick(object sender, MouseEventArgs eventArgs)
         {
             _world.Target.Position = new Vector(eventArgs.X, eventArgs.Y);
             _world.Update(TimeDelta);
