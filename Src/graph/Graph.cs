@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Src.graph
 {
@@ -150,6 +151,43 @@ namespace Src.graph
             return IsPositionWithInBounds(row, column, Vertices) ? Vertices[row, column] : null;
         }
 
+        //----------------------------------------------------------------------
+        // ToString that has to be implemented for exam
+        //----------------------------------------------------------------------
+
+        /// <summary>
+        ///    Converts this instance of Graph to its string representation.
+        ///    It will call the ToString method of each Vertex. The output is
+        ///    ascending on vertex name.
+        /// </summary>
+        /// <returns>The string representation of this Graph instance</returns>
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int row = 0; row < Vertices.GetLength(0); row++)
+            {
+                string delimiter = "";
+                for (int column = 0; column < Vertices.GetLength(1); column++)
+                {
+                    string appendString = "(0,0)";
+                    Vertex vertex = Vertices[row, column];
+                    if (vertex != null)
+                    {
+                        appendString = vertex.ToString();
+                    }
+
+                    stringBuilder.Append(delimiter);
+                    stringBuilder.Append(appendString);
+                    delimiter = ",";
+                }
+
+                stringBuilder.AppendLine();
+            }
+
+            return stringBuilder.ToString();
+        }
+        
         private static IEnumerable<Vertex> GetAdjacentVertexes(Vertex vertex)
         {
             return vertex.Edges.Select(edge => edge.DestinationVertex).ToList();
