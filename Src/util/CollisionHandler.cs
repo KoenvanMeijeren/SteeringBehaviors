@@ -48,24 +48,22 @@ namespace Src.util
 
             GridTile gridTile = grid.GetTile(tileX, tileY);
 
-            if (gridTile == null || !(gridTile is WallTile))
+            if (!(gridTile is WallTile wallTile))
             {
                 return alteredVector;
             }
 
-            WallTile wallTile = (WallTile)gridTile;
-
             // Calculate distance of every direction from center of encountering block
             int halfWallTileSize = wallTile.Size / 2;
-            int measureBuffer = 1;
+            const int MeasureBuffer = 1;
 
             int wallTileCenterX = (int)wallTile.Position.X + halfWallTileSize;
             int wallTileCenterY = (int)wallTile.Position.Y + halfWallTileSize;
 
-            double northDistanceFromWallTileCenter = wallTileCenterY - centerPosition.Y + measureBuffer;
-            double eastDistanceFromWallTileCenter = centerPosition.X - wallTileCenterX + measureBuffer;
-            double southDistanceFromWallTileCenter = centerPosition.Y - wallTileCenterY + measureBuffer;
-            double westDistanceFromWallTileCenter = wallTileCenterX - centerPosition.X + measureBuffer;
+            double northDistanceFromWallTileCenter = wallTileCenterY - centerPosition.Y + MeasureBuffer;
+            double eastDistanceFromWallTileCenter = centerPosition.X - wallTileCenterX + MeasureBuffer;
+            double southDistanceFromWallTileCenter = centerPosition.Y - wallTileCenterY + MeasureBuffer;
+            double westDistanceFromWallTileCenter = wallTileCenterX - centerPosition.X + MeasureBuffer;
 
             GridTile gridTileNorth = grid.GetTile(tileX, tileY - 1);
             GridTile gridTileEast = grid.GetTile(tileX + 1, tileY);
@@ -77,30 +75,30 @@ namespace Src.util
             {
                 if (gridTileNorth is WallTile && gridTileEast is WallTile)
                 {
-                    alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
-                    alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                    alteredVector.SubtractX(targetPosition.X - (wallTile.Position.X + wallTile.Size + 1));
+                    alteredVector.SubtractY(targetPosition.Y - wallTile.Position.Y);
                     return alteredVector;
                 }
 
                 if (gridTileNorth is WallTile)
                 {
-                    alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                    alteredVector.SubtractX(targetPosition.X - (wallTile.Position.X + wallTile.Size + 1));
                     return alteredVector;
                 }
 
                 if (gridTileEast is WallTile)
                 {
-                    alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                    alteredVector.SubtractY(targetPosition.Y - wallTile.Position.Y);
                     return alteredVector;
                 }
 
                 if (northDistanceFromWallTileCenter > eastDistanceFromWallTileCenter)
                 {
-                    alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                    alteredVector.SubtractY(targetPosition.Y - wallTile.Position.Y);
                     return alteredVector;
                 }
 
-                alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                alteredVector.SubtractX(targetPosition.X - (wallTile.Position.X + wallTile.Size + 1));
                 return alteredVector;
             }
 
@@ -109,30 +107,30 @@ namespace Src.util
             {
                 if (gridTileSouth is WallTile && gridTileEast is WallTile)
                 {
-                    alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
-                    alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                    alteredVector.SubtractX(targetPosition.X - (wallTile.Position.X + wallTile.Size + 1));
+                    alteredVector.SubtractY(targetPosition.Y - (wallTile.Position.Y + wallTile.Size + 1));
                     return alteredVector;
                 }
 
                 if (gridTileSouth is WallTile)
                 {
-                    alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                    alteredVector.SubtractX(targetPosition.X - (wallTile.Position.X + wallTile.Size + 1));
                     return alteredVector;
                 }
 
                 if (gridTileEast is WallTile)
                 {
-                    alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                    alteredVector.SubtractY(targetPosition.Y - (wallTile.Position.Y + wallTile.Size + 1));
                     return alteredVector;
                 }
 
                 if (southDistanceFromWallTileCenter > eastDistanceFromWallTileCenter)
                 {
-                    alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                    alteredVector.SubtractY(targetPosition.Y - (wallTile.Position.Y + wallTile.Size + 1));
                     return alteredVector;
                 }
 
-                alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                alteredVector.SubtractX(targetPosition.X - (wallTile.Position.X + wallTile.Size + 1));
                 return alteredVector;
             }
 
@@ -141,30 +139,30 @@ namespace Src.util
             {
                 if (gridTileSouth is WallTile && gridTileWest is WallTile)
                 {
-                    alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
-                    alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                    alteredVector.SubtractX(targetPosition.X - wallTile.Position.X);
+                    alteredVector.SubtractY(targetPosition.Y - (wallTile.Position.Y + wallTile.Size + 1));
                     return alteredVector;
                 }
 
                 if (gridTileSouth is WallTile)
                 {
-                    alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
+                    alteredVector.SubtractX(targetPosition.X - wallTile.Position.X);
                     return alteredVector;
                 }
 
                 if (gridTileWest is WallTile)
                 {
-                    alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                    alteredVector.SubtractY(targetPosition.Y - (wallTile.Position.Y + wallTile.Size + 1));
                     return alteredVector;
                 }
 
                 if (southDistanceFromWallTileCenter > westDistanceFromWallTileCenter)
                 {
-                    alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                    alteredVector.SubtractY(targetPosition.Y - (wallTile.Position.Y + wallTile.Size + 1));
                     return alteredVector;
                 }
 
-                alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
+                alteredVector.SubtractX(targetPosition.X - wallTile.Position.X);
                 return alteredVector;
             }
 
@@ -173,58 +171,58 @@ namespace Src.util
             {
                 if (gridTileNorth is WallTile && gridTileWest is WallTile)
                 {
-                    alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
-                    alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                    alteredVector.SubtractX(targetPosition.X - wallTile.Position.X);
+                    alteredVector.SubtractY(targetPosition.Y - wallTile.Position.Y);
                     return alteredVector;
                 }
 
                 if (gridTileNorth is WallTile)
                 {
-                    alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
+                    alteredVector.SubtractX(targetPosition.X - wallTile.Position.X);
                     return alteredVector;
                 }
 
                 if (gridTileWest is WallTile)
                 {
-                    alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                    alteredVector.SubtractY(targetPosition.Y - wallTile.Position.Y);
                     return alteredVector;
                 }
 
                 if (northDistanceFromWallTileCenter > westDistanceFromWallTileCenter)
                 {
-                    alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                    alteredVector.SubtractY(targetPosition.Y - wallTile.Position.Y);
                     return alteredVector;
                 }
 
-                alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
+                alteredVector.SubtractX(targetPosition.X - wallTile.Position.X);
                 return alteredVector;
             }
 
             // Handle encountering north wall
             if (northDistanceFromWallTileCenter > halfWallTileSize)
             {
-                alteredVector.SubtractY(targetPosition.Y - gridTile.Position.Y);
+                alteredVector.SubtractY(targetPosition.Y - wallTile.Position.Y);
                 return alteredVector;
             }
 
             // Handle encountering east wall
             if (eastDistanceFromWallTileCenter > halfWallTileSize)
             {
-                alteredVector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
+                alteredVector.SubtractX(targetPosition.X - (wallTile.Position.X + wallTile.Size + 1));
                 return alteredVector;
             }
 
             // Handle encountering south wall
             if (southDistanceFromWallTileCenter > halfWallTileSize)
             {
-                alteredVector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
+                alteredVector.SubtractY(targetPosition.Y - (wallTile.Position.Y + wallTile.Size + 1));
                 return alteredVector;
             }
 
             // Handle encountering west wall
             if (westDistanceFromWallTileCenter > halfWallTileSize)
             {
-                alteredVector.SubtractX(targetPosition.X - gridTile.Position.X);
+                alteredVector.SubtractX(targetPosition.X - wallTile.Position.X);
                 return alteredVector;
             }
 
