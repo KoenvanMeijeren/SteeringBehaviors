@@ -59,12 +59,12 @@ namespace Tests.behavior
             movingEntity.SetSteeringBehavior(steeringBehavior);
 
             // Act & assert
-            Assert.AreEqual("(35,35)", world.SeekingEntity.Position.ToString());
-            Assert.AreEqual("(0,0)", world.SeekingEntity.Velocity.ToString());
+            Assert.AreEqual("(35,35)", movingEntity.Position.ToString());
+            Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
 
             world.Update(TimeElapsed);
-            Assert.AreEqual("(39.57,39.57)", world.SeekingEntity.Position.ToString());
-            Assert.AreEqual("(4.57,4.57)", world.SeekingEntity.Velocity.ToString());
+            Assert.AreEqual("(39.57,39.57)", movingEntity.Position.ToString());
+            Assert.AreEqual("(4.57,4.57)", movingEntity.Velocity.ToString());
 
             for (int index = 0; index < 10; index++)
             {
@@ -72,16 +72,16 @@ namespace Tests.behavior
             }
 
             world.Update(TimeElapsed);
-            Assert.AreEqual("(179.32,179.32)", world.SeekingEntity.Position.ToString());
-            Assert.AreEqual("(11.17,11.17)", world.SeekingEntity.Velocity.ToString());
+            Assert.AreEqual("(179.32,179.32)", movingEntity.Position.ToString());
+            Assert.AreEqual("(11.17,11.17)", movingEntity.Velocity.ToString());
 
             for (int index = 0; index < 20; index++)
             {
                 world.Update(TimeElapsed);
             }
 
-            Assert.AreEqual("(219.45,219.45)", world.SeekingEntity.Position.ToString());
-            Assert.AreEqual("(0.36,0.36)", world.SeekingEntity.Velocity.ToString());
+            Assert.AreEqual("(219.45,219.45)", movingEntity.Position.ToString());
+            Assert.AreEqual("(0.36,0.36)", movingEntity.Velocity.ToString());
         }
 
         [Test]
@@ -97,8 +97,8 @@ namespace Tests.behavior
             movingEntity.SetSteeringBehavior(steeringBehavior);
 
             // Act & assert
-            Assert.AreEqual("(35,35)", world.SeekingEntity.Position.ToString());
-            Assert.AreEqual("(0,0)", world.SeekingEntity.Velocity.ToString());
+            Assert.AreEqual("(35,35)", movingEntity.Position.ToString());
+            Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
             AssertMovingEntityWithSeekingBehavior(
                 movingEntity,
                 steeringBehavior,
@@ -133,8 +133,8 @@ namespace Tests.behavior
                 "(38.52,38.52)"
             );
             world.Update(TimeElapsed);
-            Assert.AreEqual("(38.52,38.52)", world.SeekingEntity.Position.ToString());
-            Assert.AreEqual("(3.52,3.52)", world.SeekingEntity.Velocity.ToString());
+            Assert.AreEqual("(38.52,38.52)", movingEntity.Position.ToString());
+            Assert.AreEqual("(3.52,3.52)", movingEntity.Velocity.ToString());
 
             AssertMovingEntityWithSeekingBehavior(
                 movingEntity,
@@ -153,8 +153,8 @@ namespace Tests.behavior
                 "(44.78,44.78)"
             );
             world.Update(TimeElapsed);
-            Assert.AreEqual("(44.78,44.78)", world.SeekingEntity.Position.ToString());
-            Assert.AreEqual("(6.26,6.26)", world.SeekingEntity.Velocity.ToString());
+            Assert.AreEqual("(44.78,44.78)", movingEntity.Position.ToString());
+            Assert.AreEqual("(6.26,6.26)", movingEntity.Velocity.ToString());
 
             for (int index = 0; index < 10; index++)
             {
@@ -178,8 +178,8 @@ namespace Tests.behavior
                 "(152.07,152.07)"
             );
             world.Update(TimeElapsed);
-            Assert.AreEqual("(152.07,152.07)", world.SeekingEntity.Position.ToString());
-            Assert.AreEqual("(7.87,7.87)", world.SeekingEntity.Velocity.ToString());
+            Assert.AreEqual("(152.07,152.07)", movingEntity.Position.ToString());
+            Assert.AreEqual("(7.87,7.87)", movingEntity.Velocity.ToString());
 
             for (int index = 0; index < 10; index++)
             {
@@ -203,8 +203,8 @@ namespace Tests.behavior
                 "(197.14,197.14)"
             );
             world.Update(TimeElapsed);
-            Assert.AreEqual("(197.14,197.14)", world.SeekingEntity.Position.ToString());
-            Assert.AreEqual("(1.67,1.67)", world.SeekingEntity.Velocity.ToString());
+            Assert.AreEqual("(197.14,197.14)", movingEntity.Position.ToString());
+            Assert.AreEqual("(1.67,1.67)", movingEntity.Velocity.ToString());
 
             for (int index = 0; index < 10; index++)
             {
@@ -228,8 +228,8 @@ namespace Tests.behavior
                 "(202.3,202.3)"
             );
             world.Update(TimeElapsed);
-            Assert.AreEqual("(202.3,202.3)", world.SeekingEntity.Position.ToString());
-            Assert.AreEqual("(-0.06,-0.06)", world.SeekingEntity.Velocity.ToString());
+            Assert.AreEqual("(202.3,202.3)", movingEntity.Position.ToString());
+            Assert.AreEqual("(-0.06,-0.06)", movingEntity.Velocity.ToString());
 
             for (int index = 0; index < 43; index++)
             {
@@ -252,8 +252,8 @@ namespace Tests.behavior
                 "(0,0)",
                 "(199.99,199.99)"
             );
-            Assert.AreEqual("(199.99,199.99)", world.SeekingEntity.Position.ToString());
-            Assert.AreEqual("(0,0)", world.SeekingEntity.Velocity.ToString());
+            Assert.AreEqual("(199.99,199.99)", movingEntity.Position.ToString());
+            Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
         }
 
         private static void AssertMovingEntityWithSeekingBehavior(
