@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Src.entity;
 using Src.graph;
 using Src.util;
@@ -53,13 +52,11 @@ namespace Src.grid
 
         private void InitializeMazeWallTiles()
         {
-            Random random = new Random();
-            //TODO (It's random now)
             for (int x = 0; x < Tiles.GetLength(0); x++)
             {
                 for (int y = 0; y < Tiles.GetLength(1); y++)
                 {
-                    int randomNumber = random.Next(1, 101);
+                    int randomNumber = Randomizer.GetRandomNumber(1, 101);
 
                     if (randomNumber <= 20)
                     {
