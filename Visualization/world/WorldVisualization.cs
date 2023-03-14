@@ -60,7 +60,7 @@ namespace SteeringCS.world
             }
         }
 
-        public void RenderHitbox(Graphics graphics)
+        public void RenderHitBox(Graphics graphics)
         {
             Entities.ForEach(entity =>
             {
@@ -74,21 +74,25 @@ namespace SteeringCS.world
         {
             Entities.ForEach(entity =>
             {
-                if (entity is MovingEntity enitityRender)
+                if (!(entity is MovingEntity entityRender))
                 {
-                    if (enitityRender.SteeringBehavior is ISteeringBehaviorVisualizer entityVisualizer)
-                    {
-                        entityVisualizer.Render(graphics);
-                    }
+                    return;
+                }
+
+                if (entityRender.SteeringBehavior is ISteeringBehaviorVisualizer entityVisualizer)
+                {
+                    entityVisualizer.Render(graphics);
                 }
             });
 
-            if (Target is MovingEntity targetRender)
+            if (!(Target is MovingEntity targetRender))
             {
-                if (targetRender.SteeringBehavior is ISteeringBehaviorVisualizer targetVisualizer)
-                {
-                    targetVisualizer.Render(graphics);
-                }
+                return;
+            }
+
+            if (targetRender.SteeringBehavior is ISteeringBehaviorVisualizer targetVisualizer)
+            {
+                targetVisualizer.Render(graphics);
             }
         }
 
