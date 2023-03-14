@@ -15,21 +15,21 @@ namespace SteeringCS.graph
             Pen penEdge = new Pen(s_renderColor);
             Rectangle rectangle = new Rectangle(0, 0, VertexSize, VertexSize);
 
-            for (int x = 0; x < graph.Vertices.GetLength(0); x++)
+            for (int row = 0; row < graph.Vertices.GetLength(0); row++)
             {
-                for (int y = 0; y < graph.Vertices.GetLength(1); y++)
+                for (int column = 0; column < graph.Vertices.GetLength(1); column++)
                 {
-                    if (graph.Vertices[x, y] == null)
+                    if (graph.Vertices[row, column] == null)
                     {
                         continue;
                     }
 
-                    VectorImmutable vector = graph.Vertices[x, y].Position - (VertexSize / 2);
+                    VectorImmutable vector = graph.Vertices[row, column].Position - (VertexSize / 2);
                     rectangle.X = (int)vector.X;
                     rectangle.Y = (int)vector.Y;
                     graphic.DrawEllipse(penVertex, rectangle);
 
-                    foreach (Edge edge in graph.Vertices[x, y].Edges)
+                    foreach (Edge edge in graph.Vertices[row, column].Edges)
                     {
                         graphic.DrawLine(penEdge, (int)edge.OwnerVertex.Position.X, (int)edge.OwnerVertex.Position.Y, (int)edge.DestinationVertex.Position.X, (int)edge.DestinationVertex.Position.Y);
                     }

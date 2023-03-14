@@ -17,30 +17,30 @@ namespace Src.graph
 
         private void InitializeEdges()
         {
-            for (int x = 0; x < Vertices.GetLength(0); x++)
+            for (int row = 0; row < Vertices.GetLength(0); row++)
             {
-                for (int y = 0; y < Vertices.GetLength(1); y++)
+                for (int column = 0; column < Vertices.GetLength(1); column++)
                 {
-                    if (Vertices[x, y] != null)
+                    if (Vertices[row, column] != null)
                     {
-                        CreateEdgesWithSurroundingVertices(x, y);
+                        CreateEdgesWithSurroundingVertices(row, column);
                     }
                 }
             }
         }
 
-        private void CreateEdgesWithSurroundingVertices(int vertexX, int vertexY)
+        private void CreateEdgesWithSurroundingVertices(int row, int column)
         {
-            Vertex vertexCurrent = Vertices[vertexX, vertexY];
+            Vertex vertexCurrent = Vertices[row, column];
 
-            Vertex vertexNorth = GetVertex(vertexX, vertexY - 1);
-            Vertex vertexNorthEast = GetVertex(vertexX + 1, vertexY - 1);
-            Vertex vertexEast = GetVertex(vertexX + 1, vertexY);
-            Vertex vertexSouthEast = GetVertex(vertexX + 1, vertexY + 1);
-            Vertex vertexSouth = GetVertex(vertexX, vertexY + 1);
-            Vertex vertexSouthWest = GetVertex(vertexX - 1, vertexY + 1);
-            Vertex vertexWest = GetVertex(vertexX - 1, vertexY);
-            Vertex vertexNorthWest = GetVertex(vertexX - 1, vertexY - 1);
+            Vertex vertexNorth = GetVertex(row, column - 1);
+            Vertex vertexNorthEast = GetVertex(row + 1, column - 1);
+            Vertex vertexEast = GetVertex(row + 1, column);
+            Vertex vertexSouthEast = GetVertex(row + 1, column + 1);
+            Vertex vertexSouth = GetVertex(row, column + 1);
+            Vertex vertexSouthWest = GetVertex(row - 1, column + 1);
+            Vertex vertexWest = GetVertex(row - 1, column);
+            Vertex vertexNorthWest = GetVertex(row - 1, column - 1);
 
             if (vertexNorth != null)
             {
@@ -124,7 +124,7 @@ namespace Src.graph
                 }
             }
 
-            if (!closedList.Exists(x => x == targetVertex))
+            if (!closedList.Exists(vertex => vertex == targetVertex))
             {
                 return null;
             }
@@ -145,24 +145,24 @@ namespace Src.graph
             return path;
         }
 
-        public Vertex GetVertex(int vertexX, int vertexY)
+        public Vertex GetVertex(int row, int column)
         {
-            if (vertexX < 0 || vertexY < 0)
-            {
-                return null;
-            }
-
-            if (vertexX >= Vertices.GetLength(0) || vertexY >= Vertices.GetLength(1))
-            {
-                return null;
-            }
-
-            return Vertices[vertexX, vertexY];
+            return IsPositionWithInBounds(row, column, Vertices) ? Vertices[row, column] : null;
         }
 
         private static IEnumerable<Vertex> GetAdjacentVertexes(Vertex vertex)
         {
             return vertex.Edges.Select(edge => edge.DestinationVertex).ToList();
+        }
+        
+        private static bool IsPositionWithInBounds(int row, int column, Vertex[,] vertices)
+        {
+            if (row < 0 || row >= vertices.GetLength(0))
+            {
+                return false;
+            }
+
+            return column >= 0 && column < vertices.GetLength(1);
         }
     }
 }

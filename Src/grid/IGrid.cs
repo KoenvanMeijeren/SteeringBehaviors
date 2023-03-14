@@ -12,8 +12,8 @@ namespace Src.grid
         GridTile[,] Tiles { get; }
         Graph Graph { get; }
 
-        void MoveEntityIfInDifferentTile(Vector oldPos, Vector newPos, IMovingEntity entity);
+        void MoveEntityIfInDifferentTile(Vector currentPosition, Vector newPosition, IMovingEntity entity);
         int GetCoordinateOfTile(int length);
-        GridTile GetTile(int x, int y);
+        GridTile GetTile(int row, int column);
     }
 }
