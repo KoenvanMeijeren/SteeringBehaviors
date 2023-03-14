@@ -21,7 +21,13 @@ namespace SteeringCS.behavior
 
         public override void Render(Graphics graphic)
         {
-            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityTargetPosition());
+            Vector position = SteeringBehavior.GetEntityPosition();
+            SolidBrush brush = new SolidBrush(Color.Red);
+            Font font = new Font("Arial", 14, FontStyle.Bold);
+            PointF pointF = new PointF((int)position.X, (int)position.Y);
+            
+            RenderVelocity(graphic, position, SteeringBehavior.GetEntityTargetPosition());
+            graphic.DrawString(Calculate().ToString(), font, brush, pointF);
         }
     }
 }
