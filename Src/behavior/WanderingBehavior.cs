@@ -20,8 +20,8 @@ namespace Src.behavior
 
         public WanderingBehavior(IMovingEntity movingEntity) : base(movingEntity)
         {
-            _randomClampedXPosition = RandomClamped();
-            _randomClampedYPosition = RandomClamped();
+            _randomClampedXPosition = Randomizer.RandomClamped();
+            _randomClampedYPosition = Randomizer.RandomClamped();
         }
 
         public override Vector Calculate()
@@ -32,7 +32,7 @@ namespace Src.behavior
 
             double xPosition = CircleRadius * Math.Cos(_wanderTheta);
             double yPosition = CircleRadius * Math.Sin(_wanderTheta);
-            _wanderTheta += GetRandomNumber(-WanderDistance, WanderDistance);
+            _wanderTheta += Randomizer.GetRandomNumber(-WanderDistance, WanderDistance);
             SelectedPoint.Add(xPosition, yPosition);
 
             return ArrivingBehavior.Calculate(MovingEntity, SelectedPoint);

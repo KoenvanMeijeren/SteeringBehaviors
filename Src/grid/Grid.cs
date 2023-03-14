@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Src.entity;
 using Src.graph;
 using Src.util;
@@ -61,13 +60,11 @@ namespace Src.grid
                 return;
             }
 
-            Random random = new Random();
-            //TODO (It's random now)
             for (int row = 0; row < Tiles.GetLength(0); row++)
             {
                 for (int column = 0; column < Tiles.GetLength(1); column++)
                 {
-                    int randomNumber = random.Next(1, 101);
+                    int randomNumber = Randomizer.GetRandomNumber(1, 101);
 
                     if (randomNumber <= 20)
                     {
