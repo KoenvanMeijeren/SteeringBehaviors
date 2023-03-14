@@ -187,7 +187,7 @@ namespace Src.graph
 
             return stringBuilder.ToString();
         }
-        
+
         private static IEnumerable<Vertex> GetAdjacentVertexes(Vertex vertex)
         {
             return vertex.Edges.Select(edge => edge.DestinationVertex).ToList();

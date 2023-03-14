@@ -44,7 +44,7 @@ namespace Tests.behavior
             Assert.AreEqual(expectedResult, velocity.ToString());
         }
     }
-    
+
     public class MovingEntityWithArrivingBehaviorTests
     {
         [Test]

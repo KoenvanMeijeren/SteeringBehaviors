@@ -12,7 +12,7 @@ namespace Src.util
             {
                 return vector;
             }
-            
+
             Vector alteredVector = vector.Clone();
             Vector targetPosition = position.Clone().Add(vector);
 
@@ -49,7 +49,7 @@ namespace Src.util
             {
                 return vector;
             }
-            
+
             Vector alteredVector = vector.Clone();
 
             // Check if target position is in a wall tile

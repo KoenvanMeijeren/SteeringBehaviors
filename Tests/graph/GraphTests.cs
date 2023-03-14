@@ -10,7 +10,7 @@ namespace Tests.graph
         public void Create_01_NullGraph_Ok()
         {
             // Arrange
-            
+
             // Act
             Graph graph = GraphBuilder.CreateNullGraph();
 

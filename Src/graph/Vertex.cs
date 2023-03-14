@@ -8,7 +8,7 @@ namespace Src.graph
     public class Vertex
     {
         private const float Infinity = float.MaxValue;
-        
+
         public readonly VectorImmutable Position;
         public readonly LinkedList<Edge> Edges;
 
@@ -27,7 +27,7 @@ namespace Src.graph
         {
             Edges.AddLast(edge);
         }
-        
+
         //----------------------------------------------------------------------
         // ToString that has to be implemented for exam
         //----------------------------------------------------------------------
@@ -59,7 +59,7 @@ namespace Src.graph
 
             return stringBuilder.ToString();
         }
-        
+
         private bool HasCalculatedDistance()
         {
             return Math.Abs(Cost - Infinity) > 0;

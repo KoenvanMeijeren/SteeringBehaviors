@@ -34,7 +34,7 @@ namespace Tests.entity
             Assert.AreEqual(MovingEntity.MassDefault, movingEntity.Mass);
             Assert.AreEqual(MovingEntity.MaxSpeedDefault, movingEntity.MaxSpeed);
         }
-        
+
         [Test]
         public void Update_01_Ok_ChangesVelocityAndPositionAfterUpdate()
         {
@@ -49,12 +49,12 @@ namespace Tests.entity
 
             // Act
             movingEntity.Update(TimeElapsed);
-            
+
             // Assert
             Assert.AreEqual("(39.57,39.57)", movingEntity.Position.ToString());
             Assert.AreEqual("(4.57,4.57)", movingEntity.Velocity.ToString());
         }
-        
+
         [Test]
         public void Update_02_Ok_DoesNotCrashWithoutSteeringBehavior()
         {
