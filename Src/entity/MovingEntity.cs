@@ -35,6 +35,11 @@ namespace Src.entity
             }
 
             Vector steeringForce = SteeringBehavior.Calculate();
+            if (steeringForce.ToString() == "(0,0)")
+            {
+                return;
+            }
+
             Vector acceleration = steeringForce.Divide(Mass);
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);
