@@ -10,5 +10,10 @@
             OwnerVertex = ownerVertex;
             DestinationVertex = destinationVertex;
         }
+
+        public override string ToString()
+        {
+            return DestinationVertex.Position.ToString();
+        }
     }
 }
