@@ -14,10 +14,13 @@ namespace Src.grid
         public GridTile[,] Tiles { get; private set; }
         public Graph Graph { get; private set; }
 
-        public Grid(int width, int height, List<IMovingEntity> entities)
+        private readonly bool _fillWithRandomTiles;
+
+        public Grid(int width, int height, List<IMovingEntity> entities, bool fillWithRandomTiles = true)
         {
             Width = width;
             Height = height;
+            _fillWithRandomTiles = fillWithRandomTiles;
             InitializeGridTilesArray();
             InitializeOutsideWallTiles();
             InitializeMazeWallTiles();
@@ -53,6 +56,11 @@ namespace Src.grid
 
         private void InitializeMazeWallTiles()
         {
+            if (!_fillWithRandomTiles)
+            {
+                return;
+            }
+            
             Random random = new Random();
             //TODO (It's random now)
             for (int x = 0; x < Tiles.GetLength(0); x++)
@@ -159,11 +167,13 @@ namespace Src.grid
             int newTileX = GetCoordinateOfTile((int)newPos.X);
             int newTileY = GetCoordinateOfTile((int)newPos.Y);
 
-            if (oldTileX != newTileX || oldTileY != newTileY)
+            if (oldTileX == newTileX && oldTileY == newTileY)
             {
-                RemoveEntity(entity, oldPos);
-                AddEntity(entity, newPos);
+                return;
             }
+
+            RemoveEntity(entity, oldPos);
+            AddEntity(entity, newPos);
         }
     }
 }
