@@ -25,7 +25,7 @@ namespace SteeringCS.behavior
             SolidBrush brush = new SolidBrush(Color.Red);
             Font font = new Font("Arial", 14, FontStyle.Bold);
             PointF pointF = new PointF((int)position.X, (int)position.Y);
-            
+
             RenderVelocity(graphic, position, _steeringBehavior.GetEntityTargetPosition());
             graphic.DrawString(Calculate().ToString(), font, brush, pointF);
         }

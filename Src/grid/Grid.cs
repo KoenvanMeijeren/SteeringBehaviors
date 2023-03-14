@@ -60,7 +60,7 @@ namespace Src.grid
             {
                 return;
             }
-            
+
             Random random = new Random();
             //TODO (It's random now)
             for (int row = 0; row < Tiles.GetLength(0); row++)

@@ -154,7 +154,7 @@ namespace Src.graph
         {
             return vertex.Edges.Select(edge => edge.DestinationVertex).ToList();
         }
-        
+
         private static bool IsPositionWithInBounds(int row, int column, Vertex[,] vertices)
         {
             if (row < 0 || row >= vertices.GetLength(0))

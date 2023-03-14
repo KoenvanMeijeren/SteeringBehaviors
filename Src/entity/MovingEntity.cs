@@ -39,7 +39,7 @@ namespace Src.entity
             {
                 return;
             }
-            
+
             Vector acceleration = steeringForce.Divide(Mass);
             Velocity.Add(acceleration.Multiply(timeElapsed));
             Velocity.Truncate(MaxSpeed);

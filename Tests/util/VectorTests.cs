@@ -147,7 +147,7 @@ namespace Tests.util
             Assert.AreEqual(expectedResult, resultWithValueRight.ToString());
             Assert.AreEqual(expectedResult, resultWithValueLeft.ToString());
         }
-        
+
         [TestCase(new double[] { 0, 0 }, 0, "(0,0)")]
         [TestCase(new double[] { 6, 2 }, 3, "(3,-1)")]
         [TestCase(new double[] { -2, 2 }, 4, "(-6,-2)")]

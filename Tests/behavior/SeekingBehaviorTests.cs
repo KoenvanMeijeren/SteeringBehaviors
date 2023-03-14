@@ -47,7 +47,7 @@ namespace Tests.behavior
     public class MovingEntityWithSeekingBehaviorTests
     {
         [Test]
-        public void TestWorldUpdate_01_CloseToWallOk() 
+        public void TestWorldUpdate_01_CloseToWallOk()
         {
             // Arrange
             const float TimeElapsed = 0.800000012f;
@@ -61,7 +61,7 @@ namespace Tests.behavior
             // Act & assert
             Assert.AreEqual("(35,35)", world.SeekingEntity.Position.ToString());
             Assert.AreEqual("(0,0)", world.SeekingEntity.Velocity.ToString());
-            
+
             world.Update(TimeElapsed);
             Assert.AreEqual("(39.57,39.57)", world.SeekingEntity.Position.ToString());
             Assert.AreEqual("(4.57,4.57)", world.SeekingEntity.Velocity.ToString());
@@ -83,9 +83,9 @@ namespace Tests.behavior
             Assert.AreEqual("(219.45,219.45)", world.SeekingEntity.Position.ToString());
             Assert.AreEqual("(0.36,0.36)", world.SeekingEntity.Velocity.ToString());
         }
-        
+
         [Test]
-        public void TestWorldUpdate_02_ThoroughlyOk() 
+        public void TestWorldUpdate_02_ThoroughlyOk()
         {
             // Arrange
             const float TimeElapsed = 0.800000012f;
@@ -100,36 +100,36 @@ namespace Tests.behavior
             Assert.AreEqual("(35,35)", world.SeekingEntity.Position.ToString());
             Assert.AreEqual("(0,0)", world.SeekingEntity.Velocity.ToString());
             AssertMovingEntityWithSeekingBehavior(
-                movingEntity, 
+                movingEntity,
                 steeringBehavior,
-                0f, 
+                0f,
                 "(35,35)",
-                "(165,165)", 
+                "(165,165)",
                 "(5.5,5.5)",
-                "(0,0)", 
-                "(0,0)", 
-                "(0,0)", 
-                "(3,3)", 
-                "(3,3)", 
-                "(3,3)", 
-                "(3,3)", 
+                "(0,0)",
+                "(0,0)",
+                "(0,0)",
+                "(3,3)",
+                "(3,3)",
+                "(3,3)",
+                "(3,3)",
                 "(35,35)"
             );
 
             AssertMovingEntityWithSeekingBehavior(
-                movingEntity, 
+                movingEntity,
                 steeringBehavior,
-                TimeElapsed, 
+                TimeElapsed,
                 "(35,35)",
-                "(165,165)", 
+                "(165,165)",
                 "(5.5,5.5)",
-                "(4.4,4.4)", 
-                "(4.4,4.4)", 
-                "(4.4,4.4)", 
-                "(4.4,4.4)", 
-                "(4.4,4.4)", 
-                "(4.4,4.4)", 
-                "(4.4,4.4)", 
+                "(4.4,4.4)",
+                "(4.4,4.4)",
+                "(4.4,4.4)",
+                "(4.4,4.4)",
+                "(4.4,4.4)",
+                "(4.4,4.4)",
+                "(4.4,4.4)",
                 "(38.52,38.52)"
             );
             world.Update(TimeElapsed);
@@ -137,19 +137,19 @@ namespace Tests.behavior
             Assert.AreEqual("(3.52,3.52)", world.SeekingEntity.Velocity.ToString());
 
             AssertMovingEntityWithSeekingBehavior(
-                movingEntity, 
+                movingEntity,
                 steeringBehavior,
-                TimeElapsed, 
+                TimeElapsed,
                 "(38.52,38.52)",
-                "(161.48,161.48)", 
+                "(161.48,161.48)",
                 "(5.38,5.38)",
-                "(7.83,7.83)", 
-                "(7.83,7.83)", 
-                "(7.83,7.83)", 
-                "(7.83,7.83)", 
-                "(7.83,7.83)", 
-                "(7.83,7.83)", 
-                "(7.83,7.83)", 
+                "(7.83,7.83)",
+                "(7.83,7.83)",
+                "(7.83,7.83)",
+                "(7.83,7.83)",
+                "(7.83,7.83)",
+                "(7.83,7.83)",
+                "(7.83,7.83)",
                 "(44.78,44.78)"
             );
             world.Update(TimeElapsed);
@@ -160,96 +160,96 @@ namespace Tests.behavior
             {
                 world.Update(TimeElapsed);
             }
-            
+
             AssertMovingEntityWithSeekingBehavior(
-                movingEntity, 
+                movingEntity,
                 steeringBehavior,
-                TimeElapsed, 
+                TimeElapsed,
                 "(144.19,144.19)",
-                "(47.22,47.22)", 
+                "(47.22,47.22)",
                 "(1.57,1.57)",
-                "(9.84,9.84)", 
-                "(9.84,9.84)", 
-                "(9.84,9.84)", 
-                "(9.84,9.84)", 
-                "(9.84,9.84)", 
-                "(9.84,9.84)", 
-                "(9.84,9.84)", 
+                "(9.84,9.84)",
+                "(9.84,9.84)",
+                "(9.84,9.84)",
+                "(9.84,9.84)",
+                "(9.84,9.84)",
+                "(9.84,9.84)",
+                "(9.84,9.84)",
                 "(152.07,152.07)"
             );
             world.Update(TimeElapsed);
             Assert.AreEqual("(152.07,152.07)", world.SeekingEntity.Position.ToString());
             Assert.AreEqual("(7.87,7.87)", world.SeekingEntity.Velocity.ToString());
-            
+
             for (int index = 0; index < 10; index++)
             {
                 world.Update(TimeElapsed);
             }
-            
+
             AssertMovingEntityWithSeekingBehavior(
-                movingEntity, 
+                movingEntity,
                 steeringBehavior,
-                TimeElapsed, 
+                TimeElapsed,
                 "(195.47,195.47)",
-                "(2.51,2.51)", 
+                "(2.51,2.51)",
                 "(0.08,0.08)",
-                "(2.09,2.09)", 
-                "(2.09,2.09)", 
-                "(2.09,2.09)", 
-                "(2.09,2.09)", 
-                "(2.09,2.09)", 
-                "(2.09,2.09)", 
-                "(2.09,2.09)", 
+                "(2.09,2.09)",
+                "(2.09,2.09)",
+                "(2.09,2.09)",
+                "(2.09,2.09)",
+                "(2.09,2.09)",
+                "(2.09,2.09)",
+                "(2.09,2.09)",
                 "(197.14,197.14)"
             );
             world.Update(TimeElapsed);
             Assert.AreEqual("(197.14,197.14)", world.SeekingEntity.Position.ToString());
             Assert.AreEqual("(1.67,1.67)", world.SeekingEntity.Velocity.ToString());
-            
+
             for (int index = 0; index < 10; index++)
             {
                 world.Update(TimeElapsed);
             }
-            
+
             AssertMovingEntityWithSeekingBehavior(
-                movingEntity, 
+                movingEntity,
                 steeringBehavior,
-                TimeElapsed, 
+                TimeElapsed,
                 "(202.35,202.35)",
-                "(-2.35,-2.35)", 
+                "(-2.35,-2.35)",
                 "(-0.08,-0.08)",
-                "(-0.07,-0.07)", 
-                "(-0.07,-0.07)", 
-                "(-0.07,-0.07)", 
-                "(-0.07,-0.07)", 
-                "(-0.07,-0.07)", 
-                "(-0.07,-0.07)", 
-                "(-0.07,-0.07)", 
+                "(-0.07,-0.07)",
+                "(-0.07,-0.07)",
+                "(-0.07,-0.07)",
+                "(-0.07,-0.07)",
+                "(-0.07,-0.07)",
+                "(-0.07,-0.07)",
+                "(-0.07,-0.07)",
                 "(202.3,202.3)"
             );
             world.Update(TimeElapsed);
             Assert.AreEqual("(202.3,202.3)", world.SeekingEntity.Position.ToString());
             Assert.AreEqual("(-0.06,-0.06)", world.SeekingEntity.Velocity.ToString());
-            
+
             for (int index = 0; index < 43; index++)
             {
                 world.Update(TimeElapsed);
             }
-            
+
             AssertMovingEntityWithSeekingBehavior(
-                movingEntity, 
+                movingEntity,
                 steeringBehavior,
-                TimeElapsed, 
+                TimeElapsed,
                 "(199.99,199.99)",
-                "(0.01,0.01)", 
+                "(0.01,0.01)",
                 "(0,0)",
-                "(0,0)", 
-                "(0,0)", 
-                "(0,0)", 
-                "(0,0)", 
-                "(0,0)", 
-                "(0,0)", 
-                "(0,0)", 
+                "(0,0)",
+                "(0,0)",
+                "(0,0)",
+                "(0,0)",
+                "(0,0)",
+                "(0,0)",
+                "(0,0)",
                 "(199.99,199.99)"
             );
             Assert.AreEqual("(199.99,199.99)", world.SeekingEntity.Position.ToString());
@@ -276,34 +276,34 @@ namespace Tests.behavior
             Vector position = movingEntity.Position.Clone();
             Vector velocity = movingEntity.Velocity.Clone();
             Assert.AreEqual(expectedPositionBeforeVelocityAddition, position.ToString());
-            
+
             Vector steeringForce = steeringBehavior.Calculate();
             Assert.AreEqual(expectedSteeringForce, steeringForce.ToString());
-            
+
             Vector acceleration = steeringForce.Divide(movingEntity.Mass);
             Assert.AreEqual(expectedAcceleration, acceleration.ToString());
-            
+
             velocity.Add(acceleration.Multiply(timeElapsed));
             Assert.AreEqual(expectedVelocityAfterAccelerationAddition, velocity.ToString());
-            
+
             velocity.Truncate(movingEntity.MaxSpeed);
             Assert.AreEqual(expectedVelocityAfterTruncate, velocity.ToString());
-            
+
             velocity = CollisionHandler.AlterVectorToStayInsideOfWorld(position, velocity, movingEntity.World);
             Assert.AreEqual(expectedVelocityAfterKeepVectorInWorldAlter, velocity.ToString());
-            
+
             velocity = CollisionHandler.AlterVectorToStayOutOfWalls(position, movingEntity.HitBox.UpperLeftCorner, velocity, movingEntity.World.Grid);
             Assert.AreEqual(expectedVelocityAfterAlterVectorToStayOutOfWallsUpperLeftCorner, velocity.ToString());
-            
+
             velocity = CollisionHandler.AlterVectorToStayOutOfWalls(position, movingEntity.HitBox.UpperRightCorner, velocity, movingEntity.World.Grid);
             Assert.AreEqual(expectedVelocityAfterAlterVectorToStayOutOfWallsUpperRightCorner, velocity.ToString());
-            
+
             velocity = CollisionHandler.AlterVectorToStayOutOfWalls(position, movingEntity.HitBox.LowerLeftCorner, velocity, movingEntity.World.Grid);
             Assert.AreEqual(expectedVelocityAfterAlterVectorToStayOutOfWallsLowerLeftCorner, velocity.ToString());
-            
+
             velocity = CollisionHandler.AlterVectorToStayOutOfWalls(position, movingEntity.HitBox.LowerRightCorner, velocity, movingEntity.World.Grid);
             Assert.AreEqual(expectedVelocityAfterAlterVectorToStayOutOfWallsLowerRightCorner, velocity.ToString());
-            
+
             position.Add(velocity.Multiply(timeElapsed));
             Assert.AreEqual(expectedPositionAfterVelocityAddition, position.ToString());
         }
