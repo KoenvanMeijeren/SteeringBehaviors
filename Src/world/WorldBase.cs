@@ -35,5 +35,17 @@ namespace Src.world
                 Grid.AddOrMoveEntity(entity);
             }
         }
+        
+        public void UpdateImmutable(float timeElapsed)
+        {
+            Target.UpdateImmutable(timeElapsed);
+            Grid.AddOrMoveEntity(Target);
+
+            foreach (IMovingEntity entity in Entities)
+            {
+                entity.UpdateImmutable(timeElapsed);
+                Grid.AddOrMoveEntity(entity);
+            }
+        }
     }
 }

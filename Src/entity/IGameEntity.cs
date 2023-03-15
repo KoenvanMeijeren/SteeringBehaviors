@@ -13,5 +13,6 @@ namespace Src.entity
         IWorld World { get; }
 
         void Update(float timeElapsed);
+        void UpdateImmutable(float timeElapsed);
     }
 }
