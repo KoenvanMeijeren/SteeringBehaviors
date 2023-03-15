@@ -12,11 +12,14 @@ namespace Src.grid
         public int TileSize => 32;
         public GridTile[,] Tiles { get; private set; }
         public Graph Graph { get; private set; }
+        private readonly Dictionary<IMovingEntity, PathTile> _entities;
 
         public Grid(int width, int height, List<IMovingEntity> entities)
         {
             Width = width;
             Height = height;
+            _entities = new Dictionary<IMovingEntity, PathTile>();
+
             InitializeGridTilesArray();
             InitializeOutsideWallTiles();
             InitializeMazeWallTiles();
@@ -118,48 +121,43 @@ namespace Src.grid
             return Tiles[x, y];
         }
 
-        private void AddEntity(IMovingEntity entity, Vector position)
+        public void AddOrMoveEntity(IMovingEntity entity)
         {
+            Vector position = entity.Position.Clone();
             int tileX = GetCoordinateOfTile((int)position.X);
             int tileY = GetCoordinateOfTile((int)position.Y);
 
-            if (Tiles[tileX, tileY] is PathTile pathTile)
-            {
-                pathTile.AddEntity(entity);
-            }
-        }
+            GridTile gridTile = GetTile(tileX, tileY);
 
-        private void RemoveEntity(IMovingEntity entity, Vector position)
-        {
-            int tileX = GetCoordinateOfTile((int)position.X);
-            int tileY = GetCoordinateOfTile((int)position.Y);
-
-            if (Tiles[tileX, tileY] is PathTile pathTile)
+            if (!(gridTile is PathTile newPathTile)) 
             {
-                pathTile.RemoveEntity(entity);
+                return;
             }
+
+            if (!_entities.ContainsKey(entity))
+            {
+                newPathTile.AddEntity(entity);
+                _entities.Add(entity, newPathTile);
+                return;
+            }
+
+            PathTile oldPathTile = _entities[entity];
+
+            if (newPathTile == oldPathTile)
+            {
+                return;
+            }
+
+            oldPathTile.RemoveEntity(entity);
+            newPathTile.AddEntity(entity);
+            _entities[entity] = newPathTile;
         }
 
         private void AddEntities(List<IMovingEntity> entities)
         {
             foreach (IMovingEntity entity in entities)
             {
-                AddEntity(entity, entity.Position);
-            }
-        }
-
-        public void MoveEntityIfInDifferentTile(Vector oldPos, Vector newPos, IMovingEntity entity)
-        {
-            int oldTileX = GetCoordinateOfTile((int)oldPos.X);
-            int oldTileY = GetCoordinateOfTile((int)oldPos.Y);
-
-            int newTileX = GetCoordinateOfTile((int)newPos.X);
-            int newTileY = GetCoordinateOfTile((int)newPos.Y);
-
-            if (oldTileX != newTileX || oldTileY != newTileY)
-            {
-                RemoveEntity(entity, oldPos);
-                AddEntity(entity, newPos);
+                AddOrMoveEntity(entity);
             }
         }
     }

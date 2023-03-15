@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Src.entity;
 using Src.grid;
-using Src.util;
 
 namespace Src.world
 {
@@ -20,18 +19,20 @@ namespace Src.world
             Height = height;
             Entities = GetPopulation();
             Grid = new Grid(width, height, Entities);
+            Grid.AddOrMoveEntity(Target);
         }
 
         protected abstract List<IMovingEntity> GetPopulation();
 
         public void Update(float timeElapsed)
         {
+            Target.Update(timeElapsed);
+            Grid.AddOrMoveEntity(Target);
+
             foreach (IMovingEntity entity in Entities)
             {
-                Vector oldPos = entity.Position.Clone();
                 entity.Update(timeElapsed);
-                Vector newPos = entity.Position.Clone();
-                Grid.MoveEntityIfInDifferentTile(oldPos, newPos, entity);
+                Grid.AddOrMoveEntity(entity);
             }
         }
     }

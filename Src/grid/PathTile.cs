@@ -7,7 +7,7 @@ namespace Src.grid
     public class PathTile : GridTile
     {
         public readonly Vertex Vertex;
-        private readonly List<IMovingEntity> _entities = new List<IMovingEntity>();
+        public readonly List<IMovingEntity> Entities = new List<IMovingEntity>();
 
         public PathTile(int size, int x, int y) : base(size, x, y)
         {
@@ -16,17 +16,17 @@ namespace Src.grid
 
         public void AddEntity(IMovingEntity entity)
         {
-            _entities.Add(entity);
+            Entities.Add(entity);
         }
 
         public void RemoveEntity(IMovingEntity entity)
         {
-            _entities.Remove(entity);
+            Entities.Remove(entity);
         }
 
         public bool IsEmpty()
         {
-            return _entities.Count == 0;
+            return Entities.Count == 0;
         }
     }
 }

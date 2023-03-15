@@ -4,6 +4,7 @@ using Src.entity;
 using Src.util;
 using Src.world;
 using Tests.fixtures.entity;
+using static Src.behavior.SteeringBehaviorFactory;
 
 namespace Tests.fixtures.world
 {

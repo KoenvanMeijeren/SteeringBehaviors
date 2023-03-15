@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-using Src.behavior;
 using Src.util;
 using SteeringCS.world;
+using static Src.behavior.SteeringBehaviorFactory;
 using Timer = System.Timers.Timer;
 
 namespace SteeringCS
@@ -51,7 +51,7 @@ namespace SteeringCS
 
         private void dbPanel1_Paint(object sender, PaintEventArgs eventArgs)
         {
-            _world.RenderGrid(eventArgs.Graphics);
+            _world.Render(eventArgs.Graphics);
 
             if (_renderGrid)
             {
@@ -72,8 +72,6 @@ namespace SteeringCS
             {
                 _world.RenderSteeringBehavior(eventArgs.Graphics);
             }
-
-            _world.Render(eventArgs.Graphics);
         }
 
         private void dbPanel1_MouseClick(object sender, MouseEventArgs eventArgs)
@@ -152,6 +150,21 @@ namespace SteeringCS
         public void EnableSteeringBehaviorRender()
         {
             _renderSteeringBehavior = true;
+        }
+
+        private void WorldForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            KeyHandler.RegisterPressedKeys(e);
+
+            if (e.KeyCode  == Keys.Escape) 
+            { 
+                Close();
+            }
+        }
+
+        private void WorldForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            KeyHandler.RegisterUnpressedKeys(e);
         }
     }
 }

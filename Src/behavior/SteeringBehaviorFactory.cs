@@ -5,6 +5,17 @@ namespace Src.behavior
 {
     public static class SteeringBehaviorFactory
     {
+        public enum SteeringBehaviorOptions
+        {
+            IdlingBehavior,
+            SeekingBehavior,
+            FleeingBehavior,
+            MosquitoBehavior,
+            WanderingBehavior,
+            PathfindingBehavior,
+            KeyboardBehavior
+        }
+
         public static ISteeringBehavior CreateFromEnum(SteeringBehaviorOptions selectedOption, IMovingEntity movingEntity)
         {
             switch (selectedOption)
@@ -32,6 +43,10 @@ namespace Src.behavior
                 case SteeringBehaviorOptions.PathfindingBehavior:
                     {
                         return new PathfindingBehavior(movingEntity);
+                    }
+                case SteeringBehaviorOptions.KeyboardBehavior:
+                    {
+                        return new KeyboardBehavior(movingEntity);
                     }
                 default: throw new InvalidEnumArgumentException("Could not create steering behavior for the selected option.");
             }
