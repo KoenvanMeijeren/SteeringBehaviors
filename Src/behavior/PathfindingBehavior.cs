@@ -19,14 +19,14 @@ namespace Src.behavior
         public override Vector Calculate()
         {
             UpdatePathIfNecessary();
+            Vector targetPosition = MovingEntity.World.Target.Position.Clone();
 
-            if (Path == null || Path.Count < 1)
+            if (Path != null && Path.Count > 0)
             {
-                return new Vector(0, 0);
+                VectorImmutable targetPositionImmutable = Path.First().Position;
+                targetPosition = new Vector(targetPositionImmutable.X, targetPositionImmutable.Y);
             }
 
-            VectorImmutable targetPositionImmutable = Path.First().Position;
-            Vector targetPosition = new Vector(targetPositionImmutable.X, targetPositionImmutable.Y);
             Vector desiredVelocity = targetPosition.Subtract(MovingEntity.Position);
             Vector actualVelocity = desiredVelocity.Subtract(MovingEntity.Velocity);
 
