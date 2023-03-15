@@ -18,6 +18,11 @@ namespace SteeringCS.behavior
             return _steeringBehavior.Calculate();
         }
 
+        public override VectorImmutable CalculateImmutable()
+        {
+            return _steeringBehavior.CalculateImmutable();
+        }
+
         public override void Render(Graphics graphic)
         {
             RenderVelocity(graphic, _steeringBehavior.GetEntityPosition(), _steeringBehavior.GetEntityVelocity());

@@ -33,6 +33,23 @@ namespace Src.behavior
             return actualVelocity;
         }
 
+        public override VectorImmutable CalculateImmutable()
+        {
+            UpdatePathIfNecessary();
+            VectorImmutable targetPosition = MovingEntity.World.Target.PositionImmutable;
+
+            if (Path != null && Path.Count > 0)
+            {
+                VectorImmutable targetPositionImmutable = Path.First().Position;
+                targetPosition = new VectorImmutable(targetPositionImmutable.X, targetPositionImmutable.Y);
+            }
+
+            VectorImmutable desiredVelocity = targetPosition - MovingEntity.PositionImmutable;
+            VectorImmutable actualVelocity = desiredVelocity - MovingEntity.VelocityImmutable;
+
+            return actualVelocity;
+        }
+
         private void UpdatePathIfNecessary()
         {
             int vectorX = MovingEntity.World.Grid.GetCoordinateOfTile((int)MovingEntity.Position.X);

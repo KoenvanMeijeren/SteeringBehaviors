@@ -11,7 +11,11 @@ namespace Src.behavior
 
         public override Vector Calculate()
         {
-            return KeyHandler.GetKeysDirection();
+            VectorImmutable vectorImmutable = KeyHandler.GetKeysDirection();
+
+            return new Vector(vectorImmutable.X, vectorImmutable.Y);
         }
+
+        public override VectorImmutable CalculateImmutable() => KeyHandler.GetKeysDirection();
     }
 }

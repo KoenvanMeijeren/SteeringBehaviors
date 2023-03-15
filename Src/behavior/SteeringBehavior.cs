@@ -7,6 +7,7 @@ namespace Src.behavior
     {
         protected IMovingEntity MovingEntity { get; }
         public abstract Vector Calculate();
+        public abstract VectorImmutable CalculateImmutable();
 
         protected SteeringBehavior(IMovingEntity movingEntity)
         {

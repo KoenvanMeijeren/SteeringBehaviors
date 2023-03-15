@@ -53,6 +53,7 @@
     <Compile Include="behavior\SteeringBehaviorFactory.cs" />
     <Compile Include="behavior\WanderingBehavior.cs" />
     <Compile Include="entity\BaseGameEntity.cs" />
+    <Compile Include="util\CollisionHandlerImmutable.cs" />
     <Compile Include="util\HitBox.cs" />
     <Compile Include="entity\IGameEntity.cs" />
     <Compile Include="entity\IMovingEntity.cs" />

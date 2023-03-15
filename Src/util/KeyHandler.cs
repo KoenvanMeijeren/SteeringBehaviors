@@ -49,7 +49,7 @@ namespace Src.util
             }
         }
 
-        public static Vector GetKeysDirection()
+        public static VectorImmutable GetKeysDirection()
         {
             int x = 0;
             int y = 0;
@@ -74,7 +74,7 @@ namespace Src.util
                 x += _speed;
             }
 
-            return new Vector(x, y);
+            return new VectorImmutable(x, y);
         }
     }
 }

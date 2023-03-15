@@ -6,6 +6,7 @@ namespace Src.entity
     public abstract class BaseGameEntity : IGameEntity
     {
         public Vector Position { get; set; }
+        public VectorImmutable PositionImmutable { get; set; }
         public float Height { get; protected set; }
         public float Width { get; protected set; }
         public HitBox HitBox { get; protected set; }
@@ -14,6 +15,7 @@ namespace Src.entity
         protected BaseGameEntity(Vector position, IWorld world, float height, float width)
         {
             Position = position;
+            PositionImmutable = new VectorImmutable(position.X, position.Y);
             World = world;
             Height = height;
             Width = width;
@@ -21,5 +23,6 @@ namespace Src.entity
         }
 
         public abstract void Update(float timeElapsed);
+        public abstract void UpdateImmutable(float timeElapsed);
     }
 }

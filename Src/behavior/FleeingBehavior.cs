@@ -19,5 +19,16 @@ namespace Src.behavior
 
             return actualVelocity;
         }
+
+        public override VectorImmutable CalculateImmutable()
+        {
+            VectorImmutable targetPosition = MovingEntity.World.Target.PositionImmutable;
+            VectorImmutable myPosition = MovingEntity.PositionImmutable;
+
+            VectorImmutable desiredVelocity = myPosition - targetPosition;
+            VectorImmutable actualVelocity = desiredVelocity - MovingEntity.VelocityImmutable;
+
+            return actualVelocity;
+        }
     }
 }

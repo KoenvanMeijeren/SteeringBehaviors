@@ -8,6 +8,7 @@ namespace SteeringCS.behavior
         private static readonly Color s_renderColor = Color.Gray;
         private static readonly Color s_secondaryRenderColor = Color.LightGray;
         public abstract Vector Calculate();
+        public abstract VectorImmutable CalculateImmutable();
         public abstract void Render(Graphics graphic);
 
         protected static void RenderVelocity(Graphics graphic, Vector position, Vector velocity)

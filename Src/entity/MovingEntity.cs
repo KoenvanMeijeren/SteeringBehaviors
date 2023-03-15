@@ -10,6 +10,7 @@ namespace Src.entity
         public const int MassDefault = 30, MaxSpeedDefault = 150;
 
         public Vector Velocity { get; set; }
+        public VectorImmutable VelocityImmutable { get; set; }
         public float Mass { get; set; }
         public float MaxSpeed { get; set; }
 
@@ -44,6 +45,25 @@ namespace Src.entity
             Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, HitBox.LowerLeftCorner, Velocity, World.Grid);
             Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, HitBox.LowerRightCorner, Velocity, World.Grid);
             Position.Add(Velocity.Multiply(timeElapsed));
+        }
+
+        public override void UpdateImmutable(float timeElapsed)
+        {
+            if (SteeringBehavior == null)
+            {
+                return;
+            }
+
+            VectorImmutable steeringForce = SteeringBehavior.CalculateImmutable();
+            VectorImmutable acceleration = steeringForce / Mass;
+            VelocityImmutable += acceleration * timeElapsed;
+            VelocityImmutable.Truncate(MaxSpeed);
+            VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayInsideOfWorld(PositionImmutable, VelocityImmutable, World);
+            VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayOutOfWalls(PositionImmutable, HitBox.UpperLeftCornerImmutable, VelocityImmutable, World.Grid);
+            VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayOutOfWalls(PositionImmutable, HitBox.UpperRightCornerImmutable, VelocityImmutable, World.Grid);
+            VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayOutOfWalls(PositionImmutable, HitBox.LowerLeftCornerImmutable, VelocityImmutable, World.Grid);
+            VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayOutOfWalls(PositionImmutable, HitBox.LowerRightCornerImmutable, VelocityImmutable, World.Grid);
+            PositionImmutable += VelocityImmutable * timeElapsed;
         }
 
         public override string ToString()
