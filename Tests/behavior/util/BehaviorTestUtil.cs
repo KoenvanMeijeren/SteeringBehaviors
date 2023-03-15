@@ -7,7 +7,7 @@ namespace Tests.behavior.util
 {
     public static class BehaviorTestUtil
     {
-        public static void AssertMovingEntityWithSeekingBehavior(
+        public static void AssertMovingEntityWithSteeringBehavior(
             IMovingEntity movingEntity,
             ISteeringBehavior steeringBehavior,
             float timeElapsed,

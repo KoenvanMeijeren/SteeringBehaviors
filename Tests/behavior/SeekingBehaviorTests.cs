@@ -100,7 +100,7 @@ namespace Tests.behavior
             // Act & assert
             Assert.AreEqual("(35,35)", movingEntity.Position.ToString());
             Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 0f,
@@ -117,7 +117,7 @@ namespace Tests.behavior
                 "(35,35)"
             );
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -137,7 +137,7 @@ namespace Tests.behavior
             Assert.AreEqual("(38.52,38.52)", movingEntity.Position.ToString());
             Assert.AreEqual("(3.52,3.52)", movingEntity.Velocity.ToString());
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -162,7 +162,7 @@ namespace Tests.behavior
                 world.Update(TimeElapsed);
             }
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -187,7 +187,7 @@ namespace Tests.behavior
                 world.Update(TimeElapsed);
             }
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -212,7 +212,7 @@ namespace Tests.behavior
                 world.Update(TimeElapsed);
             }
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -232,17 +232,16 @@ namespace Tests.behavior
             Assert.AreEqual("(202.3,202.3)", movingEntity.Position.ToString());
             Assert.AreEqual("(-0.06,-0.06)", movingEntity.Velocity.ToString());
 
-            for (int index = 0; index < 43; index++)
+            for (int index = 0; index < 50; index++)
             {
                 world.Update(TimeElapsed);
             }
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
-                "(199.99,199.99)",
-                "(0.01,0.01)",
+                "(200,200)",
                 "(0,0)",
                 "(0,0)",
                 "(0,0)",
@@ -251,9 +250,10 @@ namespace Tests.behavior
                 "(0,0)",
                 "(0,0)",
                 "(0,0)",
-                "(199.99,199.99)"
+                "(0,0)",
+                "(200,200)"
             );
-            Assert.AreEqual("(199.99,199.99)", movingEntity.Position.ToString());
+            Assert.AreEqual("(200,200)", movingEntity.Position.ToString());
             Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
         }
     }
