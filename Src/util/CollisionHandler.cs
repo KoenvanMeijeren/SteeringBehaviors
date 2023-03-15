@@ -7,6 +7,11 @@ namespace Src.util
     {
         public static Vector AlterVectorToStayInsideOfWorld(Vector position, Vector vector, IWorld world)
         {
+            if (vector.ToString() == "(0,0)")
+            {
+                return vector;
+            }
+
             Vector alteredVector = vector.Clone();
             Vector targetPosition = position.Clone().Add(vector);
 
@@ -38,6 +43,11 @@ namespace Src.util
 
         public static Vector AlterVectorToStayOutOfWalls(Vector centerPosition, Vector position, Vector vector, IGrid grid)
         {
+            if (vector.ToString() == "(0,0)")
+            {
+                return vector;
+            }
+
             Vector alteredVector = vector.Clone();
 
             // Check if target position is in a wall tile
