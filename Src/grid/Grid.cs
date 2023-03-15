@@ -21,7 +21,7 @@ namespace Src.grid
             Height = height;
             _entities = new Dictionary<IMovingEntity, PathTile>();
             _fillWithRandomTiles = fillWithRandomTiles;
-            
+
             InitializeGridTilesArray();
             InitializeOutsideWallTiles();
             InitializeMazeWallTiles();
@@ -61,7 +61,7 @@ namespace Src.grid
             {
                 return;
             }
-            
+
             for (int row = 0; row < Tiles.GetLength(0); row++)
             {
                 for (int column = 0; column < Tiles.GetLength(1); column++)
@@ -124,7 +124,7 @@ namespace Src.grid
             {
                 return;
             }
-            
+
             Vector position = entity.Position.Clone();
             int tileRow = GetCoordinateOfTile((int)position.X);
             int tileColumn = GetCoordinateOfTile((int)position.Y);
