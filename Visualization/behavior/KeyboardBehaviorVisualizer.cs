@@ -7,20 +7,20 @@ namespace SteeringCS.behavior
 {
     public class KeyboardBehaviorVisualizer : SteeringBehaviorVisualizer
     {
-        public KeyboardBehavior SteeringBehavior { get; private set; }
+        private readonly KeyboardBehavior _steeringBehavior;
         public KeyboardBehaviorVisualizer(IMovingEntity movingEntity)
         {
-            SteeringBehavior = new KeyboardBehavior(movingEntity);
+            _steeringBehavior = new KeyboardBehavior(movingEntity);
         }
 
         public override Vector Calculate()
         {
-            return SteeringBehavior.Calculate();
+            return _steeringBehavior.Calculate();
         }
 
         public override void Render(Graphics graphic)
         {
-            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityVelocity());
+            RenderVelocity(graphic, _steeringBehavior.GetEntityPosition(), _steeringBehavior.GetEntityVelocity());
         }
     }
 }

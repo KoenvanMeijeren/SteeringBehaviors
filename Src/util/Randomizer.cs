@@ -4,21 +4,21 @@ namespace Src.util
 {
     public static class Randomizer
     {
-        public static Random RandomizerObject = new Random();
+        private static readonly Random s_randomizerObject = new Random();
 
         public static int GetRandomNumber(int minimum, int maximum)
         {
-            return RandomizerObject.Next(minimum, maximum);
+            return s_randomizerObject.Next(minimum, maximum);
         }
 
         public static double GetRandomNumber(double minimum, double maximum)
         {
-            return RandomizerObject.NextDouble() * (maximum - minimum) + minimum;
+            return s_randomizerObject.NextDouble() * (maximum - minimum) + minimum;
         }
 
         public static int RandomClamped()
         {
-            return RandomizerObject.NextDouble() >= 0.5 ? -1 : 1;
+            return s_randomizerObject.NextDouble() >= 0.5 ? -1 : 1;
         }
     }
 }

@@ -17,7 +17,6 @@ namespace Src.entity
             World = world;
             Height = height;
             Width = width;
-
             HitBox = new HitBox(this);
         }
 

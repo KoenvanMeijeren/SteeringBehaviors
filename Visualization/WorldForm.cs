@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using Src.behavior;
 using Src.util;
 using SteeringCS.world;
-using static Src.behavior.SteeringBehaviorFactory;
 using Timer = System.Timers.Timer;
 
 namespace SteeringCS
@@ -15,7 +15,7 @@ namespace SteeringCS
 
         private bool _renderGrid;
         private bool _renderGraph;
-        private bool _renderHitbox;
+        private bool _renderHitBox;
         private bool _renderSteeringBehavior;
 
         private const float TimeDelta = 0.8f;
@@ -49,7 +49,7 @@ namespace SteeringCS
             dbPanel.Invalidate();
         }
 
-        private void dbPanel1_Paint(object sender, PaintEventArgs eventArgs)
+        private void Render(object sender, PaintEventArgs eventArgs)
         {
             _world.Render(eventArgs.Graphics);
 
@@ -63,9 +63,9 @@ namespace SteeringCS
                 _world.RenderGraph(eventArgs.Graphics);
             }
 
-            if (_renderHitbox)
+            if (_renderHitBox)
             {
-                _world.RenderHitbox(eventArgs.Graphics);
+                _world.RenderHitBox(eventArgs.Graphics);
             }
 
             if (_renderSteeringBehavior)
@@ -74,7 +74,7 @@ namespace SteeringCS
             }
         }
 
-        private void dbPanel1_MouseClick(object sender, MouseEventArgs eventArgs)
+        private void targetEntityPosition_MouseClick(object sender, MouseEventArgs eventArgs)
         {
             _world.Target.Position = new Vector(eventArgs.X, eventArgs.Y);
             _world.Update(TimeDelta);
@@ -132,14 +132,14 @@ namespace SteeringCS
             _renderGraph = true;
         }
 
-        public void DisableHitboxRender()
+        public void DisableHitBoxRender()
         {
-            _renderHitbox = false;
+            _renderHitBox = false;
         }
 
-        public void EnableHitboxRender()
+        public void EnableHitBoxRender()
         {
-            _renderHitbox = true;
+            _renderHitBox = true;
         }
 
         public void DisableSteeringBehaviorRender()
@@ -156,8 +156,8 @@ namespace SteeringCS
         {
             KeyHandler.RegisterPressedKeys(e);
 
-            if (e.KeyCode  == Keys.Escape) 
-            { 
+            if (e.KeyCode == Keys.Escape)
+            {
                 Close();
             }
         }

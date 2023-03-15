@@ -11,7 +11,7 @@ namespace SteeringCS.grid
         {
             int surplusY = 0;
 
-            if (wallTile.Size < s_image.Height) 
+            if (wallTile.Size < s_image.Height)
             {
                 surplusY = s_image.Height - wallTile.Size;
             }

@@ -96,7 +96,7 @@
             this.ShowHitboxCheckbox.TabIndex = 16;
             this.ShowHitboxCheckbox.Text = "Show hitbox";
             this.ShowHitboxCheckbox.UseVisualStyleBackColor = true;
-            this.ShowHitboxCheckbox.CheckedChanged += new System.EventHandler(this.ShowHitboxCheckbox_CheckedChanged);
+            this.ShowHitboxCheckbox.CheckedChanged += new System.EventHandler(this.ShowHitBoxCheckbox_CheckedChanged);
             // 
             // ShowGraphCheckbox
             // 
@@ -243,7 +243,7 @@
             this.nextButton.TabIndex = 4;
             this.nextButton.Text = "Next";
             this.nextButton.UseVisualStyleBackColor = true;
-            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            this.nextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
             // pauseButton
             // 
@@ -253,7 +253,7 @@
             this.pauseButton.TabIndex = 3;
             this.pauseButton.Text = "Pause";
             this.pauseButton.UseVisualStyleBackColor = true;
-            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
+            this.pauseButton.Click += new System.EventHandler(this.PauseButtonClick);
             // 
             // label1
             // 
@@ -286,7 +286,7 @@
             0,
             0,
             0});
-            this.UpdateIntervalSelector.ValueChanged += new System.EventHandler(this.updateIntervalSelector_ValueChanged);
+            this.UpdateIntervalSelector.ValueChanged += new System.EventHandler(this.UpdateIntervalSelectorValueChangedChanged);
             // 
             // DebugForm
             // 

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
+using Src.behavior;
 using Src.entity;
-using static Src.behavior.SteeringBehaviorFactory;
 
 namespace SteeringCS.behavior
 {
@@ -10,9 +10,14 @@ namespace SteeringCS.behavior
         {
             switch (selectedOption)
             {
+                case SteeringBehaviorOptions.NotImplementedBehavior:
                 case SteeringBehaviorOptions.IdlingBehavior:
                     {
                         return new IdlingBehaviorVisualizer(movingEntity);
+                    }
+                case SteeringBehaviorOptions.ArrivingBehavior:
+                    {
+                        return new ArrivingBehaviorVisualizer(movingEntity);
                     }
                 case SteeringBehaviorOptions.SeekingBehavior:
                     {

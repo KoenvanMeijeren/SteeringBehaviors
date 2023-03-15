@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using Src.behavior;
 using Src.entity;
 using Src.util;
 using Src.world;
@@ -7,7 +8,6 @@ using SteeringCS.behavior;
 using SteeringCS.entity;
 using SteeringCS.grid;
 using SteeringCS.util;
-using static Src.behavior.SteeringBehaviorFactory;
 
 namespace SteeringCS.world
 {
@@ -40,7 +40,7 @@ namespace SteeringCS.world
             }
         }
 
-        public void RenderHitbox(Graphics graphics)
+        public void RenderHitBox(Graphics graphics)
         {
             Entities.ForEach(entity =>
             {
@@ -54,21 +54,25 @@ namespace SteeringCS.world
         {
             Entities.ForEach(entity =>
             {
-                if (entity is MovingEntity enitityRender)
+                if (!(entity is MovingEntity entityRender))
                 {
-                    if (enitityRender.SteeringBehavior is ISteeringBehaviorVisualizer entityVisualizer)
-                    {
-                        entityVisualizer.Render(graphics);
-                    }
+                    return;
+                }
+
+                if (entityRender.SteeringBehavior is ISteeringBehaviorVisualizer entityVisualizer)
+                {
+                    entityVisualizer.Render(graphics);
                 }
             });
 
-            if (Target is MovingEntity targetRender)
+            if (!(Target is MovingEntity targetRender))
             {
-                if (targetRender.SteeringBehavior is ISteeringBehaviorVisualizer targetVisualizer)
-                {
-                    targetVisualizer.Render(graphics);
-                }
+                return;
+            }
+
+            if (targetRender.SteeringBehavior is ISteeringBehaviorVisualizer targetVisualizer)
+            {
+                targetVisualizer.Render(graphics);
             }
         }
 
