@@ -7,24 +7,24 @@ namespace SteeringCS.behavior
 {
     public class WanderingBehaviorVisualizer : SteeringBehaviorVisualizer
     {
-        public WanderingBehavior SteeringBehavior { get; private set; }
+        private readonly WanderingBehavior _steeringBehavior;
 
         public WanderingBehaviorVisualizer(IMovingEntity movingEntity)
         {
-            SteeringBehavior = new WanderingBehavior(movingEntity);
+            _steeringBehavior = new WanderingBehavior(movingEntity);
         }
 
         public override Vector Calculate()
         {
-            return SteeringBehavior.Calculate();
+            return _steeringBehavior.Calculate();
         }
 
         public override void Render(Graphics graphic)
         {
-            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityVelocity());
+            RenderVelocity(graphic, _steeringBehavior.GetEntityPosition(), _steeringBehavior.GetEntityVelocity());
 
-            Vector targetCircle = SteeringBehavior.TargetCircle;
-            Vector selectedPoint = SteeringBehavior.SelectedPoint;
+            Vector targetCircle = _steeringBehavior.TargetCircle;
+            Vector selectedPoint = _steeringBehavior.SelectedPoint;
             if (targetCircle == null)
             {
                 return;

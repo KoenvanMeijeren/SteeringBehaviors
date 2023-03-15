@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using static Src.behavior.SteeringBehaviorFactory;
+using Src.behavior;
 
 namespace SteeringCS
 {
@@ -27,12 +27,12 @@ namespace SteeringCS
             SteeringBehaviorSelector.SelectedItem = SteeringBehaviorOptionDefault;
         }
 
-        private void updateIntervalSelector_ValueChanged(object sender, EventArgs e)
+        private void UpdateIntervalSelectorValueChangedChanged(object sender, EventArgs e)
         {
             _worldForm.UpdateTimerInterval((int)UpdateIntervalSelector.Value);
         }
 
-        private void pauseButton_Click(object sender, EventArgs e)
+        private void PauseButtonClick(object sender, EventArgs e)
         {
             if (_worldForm.IsTimerEnabled())
             {
@@ -47,7 +47,7 @@ namespace SteeringCS
             _worldForm.EnableTimer();
         }
 
-        private void nextButton_Click(object sender, EventArgs e)
+        private void NextButton_Click(object sender, EventArgs e)
         {
             _worldForm.UpdateWorld();
         }
@@ -108,15 +108,15 @@ namespace SteeringCS
             _worldForm.DisableGraphRender();
         }
 
-        private void ShowHitboxCheckbox_CheckedChanged(object sender, EventArgs e)
+        private void ShowHitBoxCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (ShowHitboxCheckbox.Checked)
             {
-                _worldForm.EnableHitboxRender();
+                _worldForm.EnableHitBoxRender();
                 return;
             }
 
-            _worldForm.DisableHitboxRender();
+            _worldForm.DisableHitBoxRender();
         }
 
         private void ShowBehaviorCheckbox_CheckedChanged(object sender, EventArgs e)
@@ -132,11 +132,13 @@ namespace SteeringCS
 
         private void DebugForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
+            if (e.KeyCode != Keys.Escape)
             {
-                Close();
-                _worldForm.Close();
+                return;
             }
+
+            Close();
+            _worldForm.Close();
         }
     }
 }

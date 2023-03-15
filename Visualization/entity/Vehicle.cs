@@ -8,14 +8,14 @@ namespace SteeringCS.entity
 {
     public class Vehicle : MovingEntity, IRender
     {
-        public const int DefaultHeight = 25;
-        public const int DefaultWidth = 25;
-        public Color Color { get; set; }
+        private const int DefaultHeight = 25;
+        private const int DefaultWidth = 25;
+        private readonly Color _color;
 
         public Vehicle(Vector position, IWorld world) : base(position, world, DefaultHeight, DefaultWidth)
         {
             Velocity = new Vector(0, 0);
-            Color = Color.Black;
+            _color = Color.Black;
         }
 
         public void Render(Graphics graphic)
@@ -23,7 +23,7 @@ namespace SteeringCS.entity
             double upperLeftCornerX = Position.X - Width / 2;
             double upperLeftCornerY = Position.Y - Height / 2;
 
-            Pen pen = new Pen(Color, 2);
+            Pen pen = new Pen(_color, 2);
             graphic.DrawEllipse(pen, new Rectangle((int)upperLeftCornerX, (int)upperLeftCornerY, (int)Width, (int)Height));
         }
     }

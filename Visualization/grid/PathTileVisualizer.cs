@@ -18,9 +18,8 @@ namespace SteeringCS.grid
 
         public static void RenderEntities(Graphics graphic, PathTile pathTile)
         {
-            
 
-            foreach (IMovingEntity entity in pathTile.Entities.OrderBy(x => x.Position.Y))
+            foreach (IMovingEntity entity in pathTile.Entities.OrderBy(entity => entity.Position.Y))
             {
                 if (entity is IRender entityRender)
                 {

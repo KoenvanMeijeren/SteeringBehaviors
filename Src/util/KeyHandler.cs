@@ -4,64 +4,48 @@ namespace Src.util
 {
     public static class KeyHandler
     {
-        private static bool _wKeyPressed;
-        private static bool _aKeyPressed;
-        private static bool _sKeyPressed;
-        private static bool _dKeyPressed;
+        private static bool s_wKeyPressed;
+        private static bool s_aKeyPressed;
+        private static bool s_sKeyPressed;
+        private static bool s_dKeyPressed;
 
         private const int _speed = 20;
 
         public static void RegisterPressedKeys(KeyEventArgs keyEventArgs)
         {
-            if (keyEventArgs.KeyCode == Keys.W)
+            switch (keyEventArgs.KeyCode)
             {
-                _wKeyPressed = true;
-                return;
-            }
-
-            if (keyEventArgs.KeyCode == Keys.A)
-            {
-                _aKeyPressed = true;
-                return;
-            }
-
-            if (keyEventArgs.KeyCode == Keys.S)
-            {
-                _sKeyPressed = true;
-                return;
-            }
-
-            if (keyEventArgs.KeyCode == Keys.D)
-            {
-                _dKeyPressed = true;
-                return;
+                case Keys.W:
+                    s_wKeyPressed = true;
+                    return;
+                case Keys.A:
+                    s_aKeyPressed = true;
+                    return;
+                case Keys.S:
+                    s_sKeyPressed = true;
+                    return;
+                case Keys.D:
+                    s_dKeyPressed = true;
+                    return;
             }
         }
 
         public static void RegisterUnpressedKeys(KeyEventArgs keyEventArgs)
         {
-            if (keyEventArgs.KeyCode == Keys.W)
+            switch (keyEventArgs.KeyCode)
             {
-                _wKeyPressed = false;
-                return;
-            }
-
-            if (keyEventArgs.KeyCode == Keys.A)
-            {
-                _aKeyPressed = false;
-                return;
-            }
-
-            if (keyEventArgs.KeyCode == Keys.S)
-            {
-                _sKeyPressed = false;
-                return;
-            }
-
-            if (keyEventArgs.KeyCode == Keys.D)
-            {
-                _dKeyPressed = false;
-                return;
+                case Keys.W:
+                    s_wKeyPressed = false;
+                    return;
+                case Keys.A:
+                    s_aKeyPressed = false;
+                    return;
+                case Keys.S:
+                    s_sKeyPressed = false;
+                    return;
+                case Keys.D:
+                    s_dKeyPressed = false;
+                    return;
             }
         }
 
@@ -70,22 +54,22 @@ namespace Src.util
             int x = 0;
             int y = 0;
 
-            if (_wKeyPressed)
+            if (s_wKeyPressed)
             {
                 y -= _speed;
             }
 
-            if (_aKeyPressed)
+            if (s_aKeyPressed)
             {
                 x -= _speed;
             }
 
-            if (_sKeyPressed)
+            if (s_sKeyPressed)
             {
                 y += _speed;
             }
 
-            if (_dKeyPressed)
+            if (s_dKeyPressed)
             {
                 x += _speed;
             }

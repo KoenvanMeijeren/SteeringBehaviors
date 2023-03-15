@@ -30,40 +30,40 @@ namespace Src.grid
 
         private void InitializeGridTilesArray()
         {
-            int amountOfTilesX = GetCoordinateOfTile(Width) + 1;
-            int amountOfTilesY = GetCoordinateOfTile(Height) + 1;
+            int rowTilesCount = GetCoordinateOfTile(Width) + 1;
+            int columnTilesCount = GetCoordinateOfTile(Height) + 1;
 
-            Tiles = new GridTile[amountOfTilesX, amountOfTilesY];
+            Tiles = new GridTile[rowTilesCount, columnTilesCount];
         }
         private void InitializeOutsideWallTiles()
         {
-            int maxX = Tiles.GetLength(0);
-            int maxY = Tiles.GetLength(1);
+            int maximumRowLength = Tiles.GetLength(0);
+            int maximumColumnLenght = Tiles.GetLength(1);
 
-            for (int x = 0; x < maxX; x++)
+            for (int x = 0; x < maximumRowLength; x++)
             {
                 Tiles[x, 0] = new WallTile(TileSize, x * TileSize, 0);
-                Tiles[x, maxY - 1] = new WallTile(TileSize, x * TileSize, (maxY - 1) * TileSize);
+                Tiles[x, maximumColumnLenght - 1] = new WallTile(TileSize, x * TileSize, (maximumColumnLenght - 1) * TileSize);
             }
 
-            for (int y = 1; y < maxY - 1; y++)
+            for (int y = 1; y < maximumColumnLenght - 1; y++)
             {
                 Tiles[0, y] = new WallTile(TileSize, 0 * TileSize, y * TileSize);
-                Tiles[maxX - 1, y] = new WallTile(TileSize, (maxX - 1) * TileSize, y * TileSize);
+                Tiles[maximumRowLength - 1, y] = new WallTile(TileSize, (maximumRowLength - 1) * TileSize, y * TileSize);
             }
         }
 
         private void InitializeMazeWallTiles()
         {
-            for (int x = 0; x < Tiles.GetLength(0); x++)
+            for (int row = 0; row < Tiles.GetLength(0); row++)
             {
-                for (int y = 0; y < Tiles.GetLength(1); y++)
+                for (int column = 0; column < Tiles.GetLength(1); column++)
                 {
                     int randomNumber = Randomizer.GetRandomNumber(1, 101);
 
                     if (randomNumber <= 20)
                     {
-                        Tiles[x, y] = new WallTile(TileSize, x * TileSize, y * TileSize);
+                        Tiles[row, column] = new WallTile(TileSize, row * TileSize, column * TileSize);
                     }
                 }
             }
@@ -71,13 +71,13 @@ namespace Src.grid
 
         private void InitializePathTiles()
         {
-            for (int x = 0; x < Tiles.GetLength(0); x++)
+            for (int row = 0; row < Tiles.GetLength(0); row++)
             {
-                for (int y = 0; y < Tiles.GetLength(1); y++)
+                for (int column = 0; column < Tiles.GetLength(1); column++)
                 {
-                    if (Tiles[x, y] == null)
+                    if (Tiles[row, column] == null)
                     {
-                        Tiles[x, y] = new PathTile(TileSize, x * TileSize, y * TileSize);
+                        Tiles[row, column] = new PathTile(TileSize, row * TileSize, column * TileSize);
                     }
                 }
             }
@@ -87,13 +87,13 @@ namespace Src.grid
         {
             Vertex[,] vertices = new Vertex[Tiles.GetLength(0), Tiles.GetLength(1)];
 
-            for (int x = 0; x < Tiles.GetLength(0); x++)
+            for (int row = 0; row < Tiles.GetLength(0); row++)
             {
-                for (int y = 0; y < Tiles.GetLength(1); y++)
+                for (int column = 0; column < Tiles.GetLength(1); column++)
                 {
-                    if (Tiles[x, y] is PathTile pathTile)
+                    if (Tiles[row, column] is PathTile pathTile)
                     {
-                        vertices[x, y] = pathTile.Vertex;
+                        vertices[row, column] = pathTile.Vertex;
                     }
                 }
             }
@@ -106,30 +106,19 @@ namespace Src.grid
             return (length - 1) / TileSize;
         }
 
-        public GridTile GetTile(int x, int y)
+        public GridTile GetTile(int row, int column)
         {
-            if (x < 0 || x >= Tiles.GetLength(0))
-            {
-                return null;
-            }
-
-            if (y < 0 || y >= Tiles.GetLength(1))
-            {
-                return null;
-            }
-
-            return Tiles[x, y];
+            return IsPositionWithInBounds(row, column, Tiles) ? Tiles[row, column] : null;
         }
 
         public void AddOrMoveEntity(IMovingEntity entity)
         {
             Vector position = entity.Position.Clone();
-            int tileX = GetCoordinateOfTile((int)position.X);
-            int tileY = GetCoordinateOfTile((int)position.Y);
+            int tileRow = GetCoordinateOfTile((int)position.X);
+            int tileColumn = GetCoordinateOfTile((int)position.Y);
 
-            GridTile gridTile = GetTile(tileX, tileY);
-
-            if (!(gridTile is PathTile newPathTile)) 
+            GridTile gridTile = GetTile(tileRow, tileColumn);
+            if (!(gridTile is PathTile newPathTile))
             {
                 return;
             }
@@ -141,14 +130,13 @@ namespace Src.grid
                 return;
             }
 
-            PathTile oldPathTile = _entities[entity];
-
-            if (newPathTile == oldPathTile)
+            PathTile currentPathTile = _entities[entity];
+            if (newPathTile == currentPathTile)
             {
                 return;
             }
 
-            oldPathTile.RemoveEntity(entity);
+            currentPathTile.RemoveEntity(entity);
             newPathTile.AddEntity(entity);
             _entities[entity] = newPathTile;
         }
@@ -159,6 +147,16 @@ namespace Src.grid
             {
                 AddOrMoveEntity(entity);
             }
+        }
+
+        private static bool IsPositionWithInBounds(int row, int column, GridTile[,] tiles)
+        {
+            if (row < 0 || row >= tiles.GetLength(0))
+            {
+                return false;
+            }
+
+            return column >= 0 && column < tiles.GetLength(1);
         }
     }
 }

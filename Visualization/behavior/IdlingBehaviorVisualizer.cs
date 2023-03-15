@@ -7,21 +7,21 @@ namespace SteeringCS.behavior
 {
     public class IdlingBehaviorVisualizer : SteeringBehaviorVisualizer
     {
-        public IdlingBehavior SteeringBehavior { get; private set; }
+        private readonly IdlingBehavior _steeringBehavior;
 
         public IdlingBehaviorVisualizer(IMovingEntity movingEntity)
         {
-            SteeringBehavior = new IdlingBehavior(movingEntity);
+            _steeringBehavior = new IdlingBehavior(movingEntity);
         }
 
         public override Vector Calculate()
         {
-            return SteeringBehavior.Calculate();
+            return _steeringBehavior.Calculate();
         }
 
         public override void Render(Graphics graphic)
         {
-            RenderVelocity(graphic, SteeringBehavior.GetEntityPosition(), SteeringBehavior.GetEntityVelocity());
+            RenderVelocity(graphic, _steeringBehavior.GetEntityPosition(), _steeringBehavior.GetEntityVelocity());
         }
     }
 }

@@ -39,8 +39,8 @@
             this.dbPanel.Name = "dbPanel";
             this.dbPanel.Size = new System.Drawing.Size(327, 233);
             this.dbPanel.TabIndex = 0;
-            this.dbPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.dbPanel1_Paint);
-            this.dbPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dbPanel1_MouseClick);
+            this.dbPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Render);
+            this.dbPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.targetEntityPosition_MouseClick);
             // 
             // WorldForm
             // 

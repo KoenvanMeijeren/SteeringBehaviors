@@ -12,7 +12,7 @@ namespace Src.grid
         Graph Graph { get; }
 
         int GetCoordinateOfTile(int length);
-        GridTile GetTile(int x, int y);
+        GridTile GetTile(int row, int column);
         void AddOrMoveEntity(IMovingEntity entity);
     }
 }

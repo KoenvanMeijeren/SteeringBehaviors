@@ -48,12 +48,10 @@ namespace Src.util
 
             GridTile gridTile = grid.GetTile(tileX, tileY);
 
-            if (gridTile == null || !(gridTile is WallTile))
+            if (!(gridTile is WallTile wallTile))
             {
                 return alteredVector;
             }
-
-            WallTile wallTile = (WallTile)gridTile;
 
             // Calculate distance of every direction from center of encountering block
             int halfWallTileSize = wallTile.Size / 2;
@@ -77,30 +75,30 @@ namespace Src.util
             {
                 if (gridTileNorth is WallTile && gridTileEast is WallTile)
                 {
-                    shortenVectorToEastSideOfGridTile(alteredVector, targetPosition, gridTile);
-                    shortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToEastSideOfGridTile(alteredVector, targetPosition, wallTile);
+                    ShortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
                 if (gridTileNorth is WallTile)
                 {
-                    shortenVectorToEastSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToEastSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
                 if (gridTileEast is WallTile)
                 {
-                    shortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
                 if (northDistanceFromWallTileCenter > eastDistanceFromWallTileCenter)
                 {
-                    shortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
-                shortenVectorToEastSideOfGridTile(alteredVector, targetPosition, gridTile);
+                ShortenVectorToEastSideOfGridTile(alteredVector, targetPosition, wallTile);
                 return alteredVector;
             }
 
@@ -109,30 +107,30 @@ namespace Src.util
             {
                 if (gridTileSouth is WallTile && gridTileEast is WallTile)
                 {
-                    shortenVectorToEastSideOfGridTile(alteredVector, targetPosition, gridTile);
-                    shortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToEastSideOfGridTile(alteredVector, targetPosition, wallTile);
+                    ShortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
                 if (gridTileSouth is WallTile)
                 {
-                    shortenVectorToEastSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToEastSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
                 if (gridTileEast is WallTile)
                 {
-                    shortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
                 if (southDistanceFromWallTileCenter > eastDistanceFromWallTileCenter)
                 {
-                    shortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
-                shortenVectorToEastSideOfGridTile(alteredVector, targetPosition, gridTile);
+                ShortenVectorToEastSideOfGridTile(alteredVector, targetPosition, wallTile);
                 return alteredVector;
             }
 
@@ -141,30 +139,30 @@ namespace Src.util
             {
                 if (gridTileSouth is WallTile && gridTileWest is WallTile)
                 {
-                    shortenVectorToWestSideOfGridTile(alteredVector, targetPosition, gridTile);
-                    shortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToWestSideOfGridTile(alteredVector, targetPosition, wallTile);
+                    ShortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
                 if (gridTileSouth is WallTile)
                 {
-                    shortenVectorToWestSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToWestSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
                 if (gridTileWest is WallTile)
                 {
-                    shortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
                 if (southDistanceFromWallTileCenter > westDistanceFromWallTileCenter)
                 {
-                    shortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
-                shortenVectorToWestSideOfGridTile(alteredVector, targetPosition, gridTile);
+                ShortenVectorToWestSideOfGridTile(alteredVector, targetPosition, wallTile);
                 return alteredVector;
             }
 
@@ -173,80 +171,80 @@ namespace Src.util
             {
                 if (gridTileNorth is WallTile && gridTileWest is WallTile)
                 {
-                    shortenVectorToWestSideOfGridTile(alteredVector, targetPosition, gridTile);
-                    shortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToWestSideOfGridTile(alteredVector, targetPosition, wallTile);
+                    ShortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
                 if (gridTileNorth is WallTile)
                 {
-                    shortenVectorToWestSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToWestSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
                 if (gridTileWest is WallTile)
                 {
-                    shortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
                 if (northDistanceFromWallTileCenter > westDistanceFromWallTileCenter)
                 {
-                    shortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                    ShortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, wallTile);
                     return alteredVector;
                 }
 
-                shortenVectorToWestSideOfGridTile(alteredVector, targetPosition, gridTile);
+                ShortenVectorToWestSideOfGridTile(alteredVector, targetPosition, wallTile);
                 return alteredVector;
             }
 
             // Handle encountering wall from north
             if (northDistanceFromWallTileCenter > halfWallTileSize)
             {
-                shortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                ShortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, wallTile);
                 return alteredVector;
             }
 
             // Handle encountering wall from east
             if (eastDistanceFromWallTileCenter > halfWallTileSize)
             {
-                shortenVectorToEastSideOfGridTile(alteredVector, targetPosition, gridTile);
+                ShortenVectorToEastSideOfGridTile(alteredVector, targetPosition, wallTile);
                 return alteredVector;
             }
 
             // Handle encountering wall from south
             if (southDistanceFromWallTileCenter > halfWallTileSize)
             {
-                shortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, gridTile);
+                ShortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, wallTile);
                 return alteredVector;
             }
 
             // Handle encountering wall from west
             if (westDistanceFromWallTileCenter > halfWallTileSize)
             {
-                shortenVectorToWestSideOfGridTile(alteredVector, targetPosition, gridTile);
+                ShortenVectorToWestSideOfGridTile(alteredVector, targetPosition, wallTile);
                 return alteredVector;
             }
 
             return alteredVector;
         }
 
-        private static void shortenVectorToNorthSideOfGridTile(Vector vector, Vector targetPosition, GridTile gridTile)
+        private static void ShortenVectorToNorthSideOfGridTile(Vector vector, Vector targetPosition, GridTile gridTile)
         {
             vector.SubtractY(targetPosition.Y - gridTile.Position.Y - 1);
         }
 
-        private static void shortenVectorToEastSideOfGridTile(Vector vector, Vector targetPosition, GridTile gridTile)
+        private static void ShortenVectorToEastSideOfGridTile(Vector vector, Vector targetPosition, GridTile gridTile)
         {
             vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
         }
 
-        private static void shortenVectorToSouthSideOfGridTile(Vector vector, Vector targetPosition, GridTile gridTile)
+        private static void ShortenVectorToSouthSideOfGridTile(Vector vector, Vector targetPosition, GridTile gridTile)
         {
             vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
         }
 
-        private static void shortenVectorToWestSideOfGridTile(Vector vector, Vector targetPosition, GridTile gridTile)
+        private static void ShortenVectorToWestSideOfGridTile(Vector vector, Vector targetPosition, GridTile gridTile)
         {
             vector.SubtractX(targetPosition.X - gridTile.Position.X - 1);
         }

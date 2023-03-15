@@ -10,11 +10,11 @@ namespace SteeringCS.grid
 
         public static void Render(Graphics graphic, IGrid grid)
         {
-            for (int y = 0; y < grid.Tiles.GetLength(0); y++)
+            for (int column = 0; column < grid.Tiles.GetLength(0); column++)
             {
-                for (int x = 0; x < grid.Tiles.GetLength(1); x++)
+                for (int row = 0; row < grid.Tiles.GetLength(1); row++)
                 {
-                    GridTile gridTile = grid.Tiles[x, y];
+                    GridTile gridTile = grid.Tiles[row, column];
 
                     if (gridTile is PathTile pathTile)
                     {
@@ -23,11 +23,11 @@ namespace SteeringCS.grid
                 }
             }
 
-            for (int y = 0; y < grid.Tiles.GetLength(0); y++)
+            for (int column = 0; column < grid.Tiles.GetLength(0); column++)
             {
-                for (int x = 0; x < grid.Tiles.GetLength(1); x++)
+                for (int row = 0; row < grid.Tiles.GetLength(1); row++)
                 {
-                    GridTile gridTile = grid.Tiles[x, y];
+                    GridTile gridTile = grid.Tiles[row, column];
 
                     if (gridTile is WallTile wallTile)
                     {
@@ -35,9 +35,9 @@ namespace SteeringCS.grid
                     }
                 }
 
-                for (int x = 0; x < grid.Tiles.GetLength(1); x++)
+                for (int row = 0; row < grid.Tiles.GetLength(1); row++)
                 {
-                    GridTile gridTile = grid.Tiles[x, y];
+                    GridTile gridTile = grid.Tiles[row, column];
 
                     if (gridTile is PathTile pathTile)
                     {
@@ -53,11 +53,11 @@ namespace SteeringCS.grid
             Pen penActive = new Pen(s_renderColor, 3);
             Rectangle rectangle = new Rectangle(0, 0, grid.TileSize, grid.TileSize);
 
-            for (int x = 0; x < grid.Tiles.GetLength(0); x++)
+            for (int row = 0; row < grid.Tiles.GetLength(0); row++)
             {
-                for (int y = 0; y < grid.Tiles.GetLength(1); y++)
+                for (int column = 0; column < grid.Tiles.GetLength(1); column++)
                 {
-                    GridTile gridTile = grid.Tiles[x, y];
+                    GridTile gridTile = grid.Tiles[row, column];
 
                     rectangle.X = (int)gridTile.Position.X;
                     rectangle.Y = (int)gridTile.Position.Y;
