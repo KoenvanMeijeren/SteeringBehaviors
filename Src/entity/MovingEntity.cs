@@ -21,6 +21,7 @@ namespace Src.entity
             Mass = MassDefault;
             MaxSpeed = MaxSpeedDefault;
             Velocity = new Vector(0, 0);
+            VelocityImmutable = new VectorImmutable(0, 0);
         }
 
         public void SetSteeringBehavior(ISteeringBehavior steeringBehavior)
