@@ -35,5 +35,10 @@ namespace Tests.fixtures.world
                 entity.MaxSpeed = maxSpeed;
             }
         }
+
+        public List<IMovingEntity> GetEntities()
+        {
+            return Entities;
+        }
     }
 }
