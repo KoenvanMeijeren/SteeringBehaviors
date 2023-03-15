@@ -13,12 +13,14 @@ namespace Src.grid
         public GridTile[,] Tiles { get; private set; }
         public Graph Graph { get; private set; }
         private readonly Dictionary<IMovingEntity, PathTile> _entities;
+        private readonly bool _fillWithRandomTiles;
 
-        public Grid(int width, int height, List<IMovingEntity> entities)
+        public Grid(int width, int height, List<IMovingEntity> entities, bool fillWithRandomTiles = true)
         {
             Width = width;
             Height = height;
             _entities = new Dictionary<IMovingEntity, PathTile>();
+            _fillWithRandomTiles = fillWithRandomTiles;
 
             InitializeGridTilesArray();
             InitializeOutsideWallTiles();
@@ -40,21 +42,26 @@ namespace Src.grid
             int maximumRowLength = Tiles.GetLength(0);
             int maximumColumnLenght = Tiles.GetLength(1);
 
-            for (int x = 0; x < maximumRowLength; x++)
+            for (int row = 0; row < maximumRowLength; row++)
             {
-                Tiles[x, 0] = new WallTile(TileSize, x * TileSize, 0);
-                Tiles[x, maximumColumnLenght - 1] = new WallTile(TileSize, x * TileSize, (maximumColumnLenght - 1) * TileSize);
+                Tiles[row, 0] = new WallTile(TileSize, row * TileSize, 0);
+                Tiles[row, maximumColumnLenght - 1] = new WallTile(TileSize, row * TileSize, (maximumColumnLenght - 1) * TileSize);
             }
 
-            for (int y = 1; y < maximumColumnLenght - 1; y++)
+            for (int column = 1; column < maximumColumnLenght - 1; column++)
             {
-                Tiles[0, y] = new WallTile(TileSize, 0 * TileSize, y * TileSize);
-                Tiles[maximumRowLength - 1, y] = new WallTile(TileSize, (maximumRowLength - 1) * TileSize, y * TileSize);
+                Tiles[0, column] = new WallTile(TileSize, 0 * TileSize, column * TileSize);
+                Tiles[maximumRowLength - 1, column] = new WallTile(TileSize, (maximumRowLength - 1) * TileSize, column * TileSize);
             }
         }
 
         private void InitializeMazeWallTiles()
         {
+            if (!_fillWithRandomTiles)
+            {
+                return;
+            }
+
             for (int row = 0; row < Tiles.GetLength(0); row++)
             {
                 for (int column = 0; column < Tiles.GetLength(1); column++)
@@ -113,6 +120,11 @@ namespace Src.grid
 
         public void AddOrMoveEntity(IMovingEntity entity)
         {
+            if (entity == null)
+            {
+                return;
+            }
+
             Vector position = entity.Position.Clone();
             int tileRow = GetCoordinateOfTile((int)position.X);
             int tileColumn = GetCoordinateOfTile((int)position.Y);
