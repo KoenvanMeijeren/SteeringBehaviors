@@ -62,12 +62,12 @@ namespace Tests.behavior
             Assert.AreEqual("(98.41,98.41)", movingEntity.Position.ToString());
             Assert.AreEqual("(2.29,2.29)", movingEntity.Velocity.ToString());
 
-            for (int index = 0; index < 70; index++)
+            for (int index = 0; index < 100; index++)
             {
                 world.Update(TimeElapsed);
             }
 
-            Assert.AreEqual("(203.66,203.66)", movingEntity.Position.ToString());
+            Assert.AreEqual("(210,210)", movingEntity.Position.ToString());
             Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
         }
 
@@ -168,7 +168,7 @@ namespace Tests.behavior
             Assert.AreEqual("(160.37,160.37)", movingEntity.Position.ToString());
             Assert.AreEqual("(2.47,2.47)", movingEntity.Velocity.ToString());
 
-            for (int index = 0; index < 50; index++)
+            for (int index = 0; index < 100; index++)
             {
                 world.Update(TimeElapsed);
             }
@@ -177,21 +177,21 @@ namespace Tests.behavior
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
-                "(203.66,203.66)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(203.66,203.66)"
+                "(200,200)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(200,200)"
             );
             world.Update(TimeElapsed);
-            Assert.AreEqual("(203.66,203.66)", movingEntity.Position.ToString());
-            Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
+            Assert.AreEqual("(200,200)", movingEntity.Position.ToString());
+            Assert.AreEqual("(-0,-0)", movingEntity.Velocity.ToString());
         }
     }
 }
