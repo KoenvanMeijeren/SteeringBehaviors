@@ -20,22 +20,9 @@ namespace SteeringCS.world
         protected override List<IMovingEntity> GetPopulation()
         {
             List<IMovingEntity> entities = new List<IMovingEntity>();
-            Vehicle vehicle = new Vehicle(new Vector(Width / 2, Height / 2), this)
-            {
-                Color = Color.Blue,
-            };
 
-            Vehicle vehicle2 = new Vehicle(new Vector(Width / 2, Height / 3), this)
-            {
-                Color = Color.Yellow,
-            };
+            Mario vehicle = new Mario(new Vector(Width / 2, Height / 2), this);
             entities.Add(vehicle);
-            entities.Add(vehicle2);
-
-            /*Target = new Vehicle(new Vector(100, 40), this)
-            {
-                Color = Color.DarkRed,
-            };*/
 
             Target = new Mario(new Vector(100, 40), this);
             Target.SetSteeringBehavior(SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, Target));
