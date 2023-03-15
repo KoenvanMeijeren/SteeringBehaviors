@@ -57,15 +57,15 @@ namespace Src.util
 
             // Calculate distance of every direction from center of encountering block
             int halfWallTileSize = wallTile.Size / 2;
-            int measureBuffer = 1;
+            const int MeasureBuffer = 1;
 
             int wallTileCenterX = (int)wallTile.Position.X + halfWallTileSize;
             int wallTileCenterY = (int)wallTile.Position.Y + halfWallTileSize;
 
-            double northDistanceFromWallTileCenter = wallTileCenterY - centerPosition.Y + measureBuffer;
-            double eastDistanceFromWallTileCenter = centerPosition.X - wallTileCenterX + measureBuffer;
-            double southDistanceFromWallTileCenter = centerPosition.Y - wallTileCenterY + measureBuffer;
-            double westDistanceFromWallTileCenter = wallTileCenterX - centerPosition.X + measureBuffer;
+            double northDistanceFromWallTileCenter = wallTileCenterY - centerPosition.Y + MeasureBuffer;
+            double eastDistanceFromWallTileCenter = centerPosition.X - wallTileCenterX + MeasureBuffer;
+            double southDistanceFromWallTileCenter = centerPosition.Y - wallTileCenterY + MeasureBuffer;
+            double westDistanceFromWallTileCenter = wallTileCenterX - centerPosition.X + MeasureBuffer;
 
             GridTile gridTileNorth = grid.GetTile(tileX, tileY - 1);
             GridTile gridTileEast = grid.GetTile(tileX + 1, tileY);
