@@ -26,6 +26,7 @@ namespace Tests.behavior
             Assert.IsInstanceOf<PathfindingBehavior>(SteeringBehaviorFactory.CreateFromEnum(SteeringBehaviorOptions.PathfindingBehavior, movingEntity));
             Assert.IsInstanceOf<SeekingBehavior>(SteeringBehaviorFactory.CreateFromEnum(SteeringBehaviorOptions.SeekingBehavior, movingEntity));
             Assert.IsInstanceOf<WanderingBehavior>(SteeringBehaviorFactory.CreateFromEnum(SteeringBehaviorOptions.WanderingBehavior, movingEntity));
+            Assert.IsInstanceOf<KeyboardBehavior>(SteeringBehaviorFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, movingEntity));
         }
 
         [Test]
