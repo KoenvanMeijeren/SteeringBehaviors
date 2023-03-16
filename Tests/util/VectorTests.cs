@@ -6,15 +6,18 @@ namespace Tests.util
 {
     public class VectorTests
     {
-        [TestCase(0, 0, "(0,0)")]
-        [TestCase(3, 4, "(3,4)")]
-        [TestCase(6, 6, "(6,6)")]
-        public void Test_Create_01_Ok(double x, double y, string expectedResult)
+        [TestCase(0, 0, "(0,0)", true)]
+        [TestCase(0, 4, "(0,4)", false)]
+        [TestCase(4, 0, "(4,0)", false)]
+        [TestCase(3, 4, "(3,4)", false)]
+        [TestCase(6, 6, "(6,6)", false)]
+        public void Test_Create_01_Ok(double x, double y, string expectedResult, bool isEmpty)
         {
             // Act
             Vector vector = new Vector(x, y);
 
             // Assert
+            Assert.AreEqual(isEmpty, vector.IsEmpty());
             Assert.AreEqual(x, vector.X);
             Assert.AreEqual(Math.Round(x, 2), vector.XRounded);
             Assert.AreEqual(y, vector.Y);
