@@ -1,8 +1,10 @@
-﻿using Src.entity;
+﻿using System.Diagnostics.CodeAnalysis;
+using Src.entity;
 using Src.util;
 
 namespace Src.behavior
 {
+    [ExcludeFromCodeCoverage]
     public class MosquitoBehavior : SteeringBehavior
     {
         public MosquitoBehavior(IMovingEntity movingEntity) : base(movingEntity)
