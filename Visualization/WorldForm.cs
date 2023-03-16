@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Src.behavior;
 using Src.util;
+using SteeringCS.util;
 using SteeringCS.world;
 using Timer = System.Timers.Timer;
 
@@ -152,19 +153,19 @@ namespace SteeringCS
             _renderSteeringBehavior = true;
         }
 
-        private void WorldForm_KeyDown(object sender, KeyEventArgs e)
+        private void WorldForm_KeyDown(object sender, KeyEventArgs eventArgs)
         {
-            KeyHandler.RegisterPressedKeys(e);
+            KeyHandler.RegisterPressedKeys(KeyEventArgsConverter.CreateFromEvent(eventArgs));
 
-            if (e.KeyCode == Keys.Escape)
+            if (eventArgs.KeyCode == Keys.Escape)
             {
                 Close();
             }
         }
 
-        private void WorldForm_KeyUp(object sender, KeyEventArgs e)
+        private void WorldForm_KeyUp(object sender, KeyEventArgs eventArgs)
         {
-            KeyHandler.RegisterUnpressedKeys(e);
+            KeyHandler.RegisterUnpressedKeys(KeyEventArgsConverter.CreateFromEvent(eventArgs));
         }
     }
 }

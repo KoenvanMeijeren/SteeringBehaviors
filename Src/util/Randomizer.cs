@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Src.util
 {
+    [ExcludeFromCodeCoverage]
     public static class Randomizer
     {
         private static readonly Random s_randomizerObject = new Random();

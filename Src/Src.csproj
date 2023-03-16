@@ -37,7 +37,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -71,7 +70,6 @@
     <Compile Include="util\Randomizer.cs" />
     <Compile Include="util\VertexPriorityQueue.cs" />
     <Compile Include="util\Vector.cs" />
-    <Compile Include="util\VectorImmutable.cs" />
     <Compile Include="world\IWorld.cs" />
     <Compile Include="world\WorldBase.cs" />
   </ItemGroup>

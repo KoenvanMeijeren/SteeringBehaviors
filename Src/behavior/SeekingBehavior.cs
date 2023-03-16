@@ -12,19 +12,19 @@ namespace Src.behavior
 
         public override Vector Calculate()
         {
-            return Calculate(MovingEntity, MovingEntity.World.Target.Position.Clone());
+            return Calculate(MovingEntity, MovingEntity.World.Target.Position);
         }
 
         private static Vector Calculate(IMovingEntity movingEntity, Vector targetPosition)
         {
-            Vector desiredVelocity = targetPosition.Subtract(movingEntity.Position);
+            Vector desiredVelocity = targetPosition - movingEntity.Position;
 
-            if (desiredVelocity.Length() > ArrivalRange)
+            if (desiredVelocity.Length > ArrivalRange)
             {
                 return desiredVelocity;
             }
 
-            Vector actualVelocity = desiredVelocity.Subtract(movingEntity.Velocity);
+            Vector actualVelocity = desiredVelocity - movingEntity.Velocity;
             return actualVelocity;
         }
     }

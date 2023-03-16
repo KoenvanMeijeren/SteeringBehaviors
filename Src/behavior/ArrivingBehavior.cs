@@ -16,8 +16,8 @@ namespace Src.behavior
 
         public static Vector Calculate(IMovingEntity movingEntity, Vector targetPosition)
         {
-            Vector desiredVelocity = targetPosition.Clone().Subtract(movingEntity.Position);
-            Vector actualVelocity = desiredVelocity.Subtract(movingEntity.Velocity);
+            Vector desiredVelocity = targetPosition - movingEntity.Position;
+            Vector actualVelocity = desiredVelocity - movingEntity.Velocity;
 
             return actualVelocity;
         }

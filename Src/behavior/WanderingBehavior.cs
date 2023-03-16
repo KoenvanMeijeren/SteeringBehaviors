@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Src.entity;
 using Src.util;
 
 namespace Src.behavior
 {
+    [ExcludeFromCodeCoverage]
     public class WanderingBehavior : SteeringBehavior
     {
         public Vector TargetCircle { get; private set; }
@@ -12,8 +14,7 @@ namespace Src.behavior
         private const double WanderDistance = 0.3;
         private const int WanderJitter = 5;
 
-        public const int CircleRadius = 20,
-            CircleSize = CircleRadius * 2;
+        public const int CircleRadius = 20, CircleSize = CircleRadius * 2;
 
         private readonly int _randomClampedXPosition, _randomClampedYPosition;
         private double _wanderTheta = Math.PI / 2;
@@ -27,13 +28,12 @@ namespace Src.behavior
         public override Vector Calculate()
         {
             Vector randomNewPosition = new Vector(_randomClampedXPosition * WanderJitter, _randomClampedYPosition * WanderJitter);
-            TargetCircle = MovingEntity.Position.Clone().Add(randomNewPosition);
-            SelectedPoint = TargetCircle.Clone();
+            TargetCircle = MovingEntity.Position + randomNewPosition;
 
             double xPosition = CircleRadius * Math.Cos(_wanderTheta);
             double yPosition = CircleRadius * Math.Sin(_wanderTheta);
             _wanderTheta += Randomizer.GetRandomNumber(-WanderDistance, WanderDistance);
-            SelectedPoint.Add(xPosition, yPosition);
+            SelectedPoint = TargetCircle.Add(xPosition, yPosition);
 
             return ArrivingBehavior.Calculate(MovingEntity, SelectedPoint);
         }

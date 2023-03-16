@@ -87,11 +87,12 @@ namespace Tests.behavior
             // Act & assert
             Assert.AreEqual("(35,35)", movingEntity.Position.ToString());
             Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
                 "(35,35)",
+                "(0,0)",
                 "(0,0)",
                 "(0,0)",
                 "(0,0)",
@@ -109,11 +110,12 @@ namespace Tests.behavior
                 world.Update(TimeElapsed);
             }
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
                 "(35,35)",
+                "(0,0)",
                 "(0,0)",
                 "(0,0)",
                 "(0,0)",

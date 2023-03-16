@@ -100,7 +100,7 @@ namespace Tests.behavior
             // Act & assert
             Assert.AreEqual("(35,35)", movingEntity.Position.ToString());
             Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 0f,
@@ -114,10 +114,11 @@ namespace Tests.behavior
                 "(0,0)",
                 "(0,0)",
                 "(0,0)",
+                "(0,0)",
                 "(35,35)"
             );
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -131,13 +132,14 @@ namespace Tests.behavior
                 "(4.4,4.4)",
                 "(4.4,4.4)",
                 "(4.4,4.4)",
+                "(3.52,3.52)",
                 "(38.52,38.52)"
             );
             world.Update(TimeElapsed);
             Assert.AreEqual("(38.52,38.52)", movingEntity.Position.ToString());
             Assert.AreEqual("(3.52,3.52)", movingEntity.Velocity.ToString());
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -151,6 +153,7 @@ namespace Tests.behavior
                 "(7.73,7.73)",
                 "(7.73,7.73)",
                 "(7.73,7.73)",
+                "(6.19,6.19)",
                 "(44.71,44.71)"
             );
             world.Update(TimeElapsed);
@@ -162,7 +165,7 @@ namespace Tests.behavior
                 world.Update(TimeElapsed);
             }
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -176,6 +179,7 @@ namespace Tests.behavior
                 "(9.92,9.92)",
                 "(9.92,9.92)",
                 "(9.92,9.92)",
+                "(7.93,7.93)",
                 "(151.03,151.03)"
             );
             world.Update(TimeElapsed);
@@ -187,7 +191,7 @@ namespace Tests.behavior
                 world.Update(TimeElapsed);
             }
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -201,6 +205,7 @@ namespace Tests.behavior
                 "(2.15,2.15)",
                 "(2.15,2.15)",
                 "(2.15,2.15)",
+                "(1.72,1.72)",
                 "(196.86,196.86)"
             );
             world.Update(TimeElapsed);
@@ -212,7 +217,7 @@ namespace Tests.behavior
                 world.Update(TimeElapsed);
             }
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -226,6 +231,7 @@ namespace Tests.behavior
                 "(-0.06,-0.06)",
                 "(-0.06,-0.06)",
                 "(-0.06,-0.06)",
+                "(-0.05,-0.05)",
                 "(202.29,202.29)"
             );
             world.Update(TimeElapsed);
@@ -237,11 +243,12 @@ namespace Tests.behavior
                 world.Update(TimeElapsed);
             }
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
                 "(199.99,199.99)",
+                "(0,0)",
                 "(0,0)",
                 "(0,0)",
                 "(0,0)",

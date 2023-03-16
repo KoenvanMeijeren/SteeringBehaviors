@@ -3,101 +3,63 @@ using System.Globalization;
 
 namespace Src.util
 {
-
     public class Vector
     {
-        public double X { get; private set; }
-        public double Y { get; private set; }
-        public Vector(double xPosition, double yPosition)
+        public readonly double X, Y, Length, LengthSquared;
+        public double XRounded => Math.Round(X, 2);
+        public double YRounded => Math.Round(Y, 2);
+
+        public Vector(double x, double y)
         {
-            X = xPosition;
-            Y = yPosition;
+            X = x;
+            Y = y;
+            LengthSquared = (X * X) + (Y * Y);
+            Length = Math.Sqrt(LengthSquared);
         }
 
-        public double Length() => Math.Sqrt(LengthSquared());
+        public static Vector operator +(Vector left, Vector right) => new Vector(left.X + right.X, left.Y + right.Y);
+        public static Vector operator +(Vector left, double value) => new Vector(left.X + value, left.Y + value);
+        public static Vector operator +(double value, Vector vector) => vector + value;
+        public Vector Add(double x, double y) => new Vector(X + x, Y + y);
 
-        public double LengthSquared() => (X * X) + (Y * Y);
+        public static Vector operator -(Vector vector, Vector right) => new Vector(vector.X - right.X, vector.Y - right.Y);
+        public static Vector operator -(Vector vector, double value) => new Vector(vector.X - value, vector.Y - value);
+        public static Vector operator -(double value, Vector vector) => vector - value;
+        public Vector Subtract(double x, double y) => new Vector(X - x, Y - y);
+        public Vector SubtractX(double amount) => new Vector(X - amount, Y);
+        public Vector SubtractY(double amount) => new Vector(X, Y - amount);
 
-        public Vector Add(Vector vector)
-        {
-            X += vector.X;
-            Y += vector.Y;
-            return this;
-        }
+        public static Vector operator *(Vector left, Vector right) => new Vector(left.X * right.X, left.Y * right.Y);
+        public static Vector operator *(Vector left, double value) => new Vector(left.X * value, left.Y * value);
+        public static Vector operator *(double value, Vector vector) => vector * value;
+        public Vector Multiply(double x, double y) => new Vector(X * x, Y * y);
 
-        public Vector Add(double x, double y)
-        {
-            X += x;
-            Y += y;
-            return this;
-        }
-
-        public Vector Subtract(Vector vector)
-        {
-            X -= vector.X;
-            Y -= vector.Y;
-            return this;
-        }
-
-        public Vector Subtract(double x, double y)
-        {
-            X -= x;
-            Y -= y;
-            return this;
-        }
-
-        public Vector SubtractX(double amount)
-        {
-            X -= amount;
-            return this;
-        }
-
-        public Vector SubtractY(double amount)
-        {
-            Y -= amount;
-            return this;
-        }
-
-        public Vector Multiply(double value)
-        {
-            X *= value;
-            Y *= value;
-            return this;
-        }
-
-        public Vector Divide(double value)
+        public static Vector operator /(Vector vector, double value)
         {
             if (value == 0.0)
             {
                 throw new ArithmeticException("Cannot divide vector by zero!");
             }
 
-            X /= value;
-            Y /= value;
-            return this;
+            return new Vector(vector.X / value, vector.Y / value);
         }
 
-        public Vector Normalize()
+        public Vector Divide(double x, double y)
         {
-            double length = Length();
-            return length == 0 ? this : Divide(length);
-        }
-
-        public Vector Truncate(double max)
-        {
-            if (!(Length() > max))
+            if (x == 0.0 || y == 0.0)
             {
-                return this;
+                throw new ArithmeticException("Cannot divide vector by zero!");
             }
 
-            Normalize();
-            Multiply(max);
-            return this;
+            return new Vector(X / x, Y / y);
         }
 
-        public Vector Clone() => new Vector(X, Y);
+        public Vector Normalize() => Length == 0 ? new Vector(X, Y) : this / Length;
 
-        public override string ToString() => $"({Math.Round(X, 2).ToString(CultureInfo.InvariantCulture)}," +
-                                             $"{Math.Round(Y, 2).ToString(CultureInfo.InvariantCulture)})";
+        public Vector Truncate(double max) => !(Length > max) ? new Vector(X, Y) : Normalize() * max;
+
+        public bool IsEmpty() => X == 0.0 && Y == 0.0;
+
+        public override string ToString() => $"({XRounded.ToString(CultureInfo.InvariantCulture)},{YRounded.ToString(CultureInfo.InvariantCulture)})";
     }
 }

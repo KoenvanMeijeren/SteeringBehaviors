@@ -1,56 +1,86 @@
-﻿using System.Windows.Forms;
-
-namespace Src.util
+﻿namespace Src.util
 {
+    public enum PressedKey
+    {
+        W,
+        A,
+        S,
+        D,
+        DoNothing
+    }
+
     public static class KeyHandler
     {
-        private static bool s_wKeyPressed;
-        private static bool s_aKeyPressed;
-        private static bool s_sKeyPressed;
-        private static bool s_dKeyPressed;
+        private static bool s_wKeyPressed,
+            s_aKeyPressed,
+            s_sKeyPressed,
+            s_dKeyPressed,
+            s_doNothingKeyPressed;
 
         private const int _speed = 20;
 
-        public static void RegisterPressedKeys(KeyEventArgs keyEventArgs)
+        public static void Reset()
         {
-            switch (keyEventArgs.KeyCode)
+            s_wKeyPressed = false;
+            s_aKeyPressed = false;
+            s_sKeyPressed = false;
+            s_dKeyPressed = false;
+            s_doNothingKeyPressed = false;
+        }
+
+        public static void RegisterPressedKeys(PressedKey pressedKey)
+        {
+            switch (pressedKey)
             {
-                case Keys.W:
+                case PressedKey.W:
                     s_wKeyPressed = true;
-                    return;
-                case Keys.A:
+                    break;
+                case PressedKey.A:
                     s_aKeyPressed = true;
-                    return;
-                case Keys.S:
+                    break;
+                case PressedKey.S:
                     s_sKeyPressed = true;
-                    return;
-                case Keys.D:
+                    break;
+                case PressedKey.D:
                     s_dKeyPressed = true;
-                    return;
+                    break;
+                case PressedKey.DoNothing:
+                default:
+                    s_doNothingKeyPressed = true;
+                    break;
             }
         }
 
-        public static void RegisterUnpressedKeys(KeyEventArgs keyEventArgs)
+        public static void RegisterUnpressedKeys(PressedKey pressedKey)
         {
-            switch (keyEventArgs.KeyCode)
+            switch (pressedKey)
             {
-                case Keys.W:
+                case PressedKey.W:
                     s_wKeyPressed = false;
-                    return;
-                case Keys.A:
+                    break;
+                case PressedKey.A:
                     s_aKeyPressed = false;
-                    return;
-                case Keys.S:
+                    break;
+                case PressedKey.S:
                     s_sKeyPressed = false;
-                    return;
-                case Keys.D:
+                    break;
+                case PressedKey.D:
                     s_dKeyPressed = false;
-                    return;
+                    break;
+                case PressedKey.DoNothing:
+                default:
+                    s_doNothingKeyPressed = false;
+                    break;
             }
         }
 
         public static Vector GetKeysDirection()
         {
+            if (s_doNothingKeyPressed)
+            {
+                return new Vector(0, 0);
+            }
+
             int x = 0;
             int y = 0;
 

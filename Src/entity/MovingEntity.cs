@@ -35,15 +35,16 @@ namespace Src.entity
             }
 
             Vector steeringForce = SteeringBehavior.Calculate();
-            Vector acceleration = steeringForce.Divide(Mass);
-            Velocity.Add(acceleration.Multiply(timeElapsed));
+            Vector acceleration = steeringForce / Mass;
+            Velocity += acceleration * timeElapsed;
             Velocity.Truncate(MaxSpeed);
             Velocity = CollisionHandler.AlterVectorToStayInsideOfWorld(Position, Velocity, World);
             Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, HitBox.UpperLeftCorner, Velocity, World.Grid);
             Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, HitBox.UpperRightCorner, Velocity, World.Grid);
             Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, HitBox.LowerLeftCorner, Velocity, World.Grid);
             Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, HitBox.LowerRightCorner, Velocity, World.Grid);
-            Position.Add(Velocity.Multiply(timeElapsed));
+            Velocity *= timeElapsed;
+            Position += Velocity;
         }
 
         public override string ToString()

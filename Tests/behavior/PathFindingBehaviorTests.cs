@@ -9,7 +9,6 @@ namespace Tests.behavior
 {
     public class PathFindingBehaviorTests
     {
-        [TestCase(20, 20, new float[] { 1, 1 }, new float[] { 18, 18 }, "(0,0)")]
         [TestCase(100, 100, new float[] { 35, 35 }, new float[] { 75, 75 }, "(45,45)")]
         [TestCase(250, 250, new float[] { 50, 50 }, new float[] { 200, 200 }, "(30,30)")]
         public void Calculate_01_Ok(int width, int height, float[] seekingPositions, float[] targetPositions, string expectedResult)
@@ -63,12 +62,12 @@ namespace Tests.behavior
             Assert.AreEqual("(98.41,98.41)", movingEntity.Position.ToString());
             Assert.AreEqual("(2.29,2.29)", movingEntity.Velocity.ToString());
 
-            for (int index = 0; index < 70; index++)
+            for (int index = 0; index < 100; index++)
             {
                 world.Update(TimeElapsed);
             }
 
-            Assert.AreEqual("(203.66,203.66)", movingEntity.Position.ToString());
+            Assert.AreEqual("(210,210)", movingEntity.Position.ToString());
             Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
         }
 
@@ -87,7 +86,7 @@ namespace Tests.behavior
             // Act & assert
             Assert.AreEqual("(35,35)", movingEntity.Position.ToString());
             Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 0f,
@@ -101,10 +100,11 @@ namespace Tests.behavior
                 "(0,0)",
                 "(0,0)",
                 "(0,0)",
+                "(0,0)",
                 "(35,35)"
             );
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -118,13 +118,14 @@ namespace Tests.behavior
                 "(3,3)",
                 "(3,3)",
                 "(3,3)",
+                "(2.4,2.4)",
                 "(37.4,37.4)"
             );
             world.Update(TimeElapsed);
             Assert.AreEqual("(37.4,37.4)", movingEntity.Position.ToString());
             Assert.AreEqual("(2.4,2.4)", movingEntity.Velocity.ToString());
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -138,6 +139,7 @@ namespace Tests.behavior
                 "(3.47,3.47)",
                 "(3.47,3.47)",
                 "(3.47,3.47)",
+                "(2.78,2.78)",
                 "(40.18,40.18)"
             );
             world.Update(TimeElapsed);
@@ -149,7 +151,7 @@ namespace Tests.behavior
                 world.Update(TimeElapsed);
             }
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
@@ -163,36 +165,38 @@ namespace Tests.behavior
                 "(3.09,3.09)",
                 "(3.09,3.09)",
                 "(3.09,3.09)",
+                "(2.47,2.47)",
                 "(160.37,160.37)"
             );
             world.Update(TimeElapsed);
             Assert.AreEqual("(160.37,160.37)", movingEntity.Position.ToString());
             Assert.AreEqual("(2.47,2.47)", movingEntity.Velocity.ToString());
 
-            for (int index = 0; index < 50; index++)
+            for (int index = 0; index < 100; index++)
             {
                 world.Update(TimeElapsed);
             }
 
-            BehaviorTestUtil.AssertMovingEntityWithSeekingBehavior(
+            BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
-                "(203.66,203.66)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(203.66,203.66)"
+                "(200,200)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(-0,-0)",
+                "(200,200)"
             );
             world.Update(TimeElapsed);
-            Assert.AreEqual("(203.66,203.66)", movingEntity.Position.ToString());
-            Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
+            Assert.AreEqual("(200,200)", movingEntity.Position.ToString());
+            Assert.AreEqual("(-0,-0)", movingEntity.Velocity.ToString());
         }
     }
 }

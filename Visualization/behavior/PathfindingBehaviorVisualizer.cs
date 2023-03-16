@@ -39,7 +39,7 @@ namespace SteeringCS.behavior
 
             foreach (Vertex vertex in _steeringBehavior.Path)
             {
-                VectorImmutable vector = vertex.Position - (VertexSize / 2);
+                Vector vector = vertex.Position - (VertexSize / 2);
                 rectangle.X = (int)vector.X;
                 rectangle.Y = (int)vector.Y;
                 graphic.DrawEllipse(penVertex, rectangle);
