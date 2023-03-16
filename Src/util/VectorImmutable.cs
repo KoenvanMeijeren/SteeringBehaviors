@@ -36,7 +36,7 @@ namespace Src.util
 
         public static VectorImmutable operator /(VectorImmutable vector, double value)
         {
-            if (vector.X == 0.0 || vector.Y == 0.0 || value == 0.0)
+            if (value == 0.0)
             {
                 throw new ArithmeticException("Cannot divide vector by zero!");
             }
@@ -46,7 +46,7 @@ namespace Src.util
 
         public VectorImmutable Divide(double x, double y)
         {
-            if (X == 0.0 || Y == 0.0 || x == 0.0 || y == 0.0)
+            if (x == 0.0 || y == 0.0)
             {
                 throw new ArithmeticException("Cannot divide vector by zero!");
             }
@@ -57,6 +57,9 @@ namespace Src.util
         public VectorImmutable Normalize() => Length == 0 ? new VectorImmutable(X, Y) : this / Length;
 
         public VectorImmutable Truncate(double max) => !(Length > max) ? new VectorImmutable(X, Y) : Normalize() * max;
+
+        public bool CanDivide() => X != 0.0 && Y != 0.0;
+        public bool IsEmpty() => X == 0.0 && Y == 0.0;
 
         public override string ToString() => $"({XRounded.ToString(CultureInfo.InvariantCulture)},{YRounded.ToString(CultureInfo.InvariantCulture)})";
     }

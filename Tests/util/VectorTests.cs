@@ -230,8 +230,8 @@ namespace Tests.util
         }
 
         [TestCase(0, 0, 0)]
-        [TestCase(0, 0, 3)]
-        [TestCase(0, 4, 3)]
+        [TestCase(0, 0, 0)]
+        [TestCase(0, 4, 0)]
         [TestCase(5, 4, 0)]
         public void Test_DivideWithValue_02_ThrowsExceptionOnDivideByZero(double x, double y, double divider)
         {
@@ -262,7 +262,6 @@ namespace Tests.util
         [TestCase(0, 0, 0, 0)]
         [TestCase(0, 0, 3, 0)]
         [TestCase(0, 0, 0, 3)]
-        [TestCase(0, 4, 3, 3)]
         [TestCase(5, 4, 0, 0)]
         public void Test_DivideWithValues_02_ThrowsExceptionOnDivideByZero(double x, double y, double dividerX, double dividerY)
         {
