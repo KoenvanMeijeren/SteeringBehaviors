@@ -9,6 +9,6 @@ namespace Src.behavior
         {
         }
 
-        public override VectorImmutable Calculate() => KeyHandler.GetKeysDirection();
+        public override Vector Calculate() => KeyHandler.GetKeysDirection();
     }
 }

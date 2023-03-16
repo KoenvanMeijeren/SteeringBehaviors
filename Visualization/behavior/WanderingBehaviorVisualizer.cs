@@ -14,7 +14,7 @@ namespace SteeringCS.behavior
             _steeringBehavior = new WanderingBehavior(movingEntity);
         }
 
-        public override VectorImmutable Calculate()
+        public override Vector Calculate()
         {
             return _steeringBehavior.Calculate();
         }
@@ -23,8 +23,8 @@ namespace SteeringCS.behavior
         {
             RenderVelocity(graphic, _steeringBehavior.GetEntityPosition(), _steeringBehavior.GetEntityVelocity());
 
-            VectorImmutable targetCircle = _steeringBehavior.TargetCircle;
-            VectorImmutable selectedPoint = _steeringBehavior.SelectedPoint;
+            Vector targetCircle = _steeringBehavior.TargetCircle;
+            Vector selectedPoint = _steeringBehavior.SelectedPoint;
             if (targetCircle == null)
             {
                 return;

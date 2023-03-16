@@ -7,13 +7,13 @@ namespace SteeringCS.behavior
     {
         private static readonly Color s_renderColor = Color.Gray;
         private static readonly Color s_secondaryRenderColor = Color.LightGray;
-        public abstract VectorImmutable Calculate();
+        public abstract Vector Calculate();
         public abstract void Render(Graphics graphic);
 
-        protected static void RenderVelocity(Graphics graphic, VectorImmutable position, VectorImmutable velocity)
+        protected static void RenderVelocity(Graphics graphic, Vector position, Vector velocity)
         {
-            VectorImmutable targetPosition = position + velocity;
-            VectorImmutable furtherTargetPosition = position + (velocity * 2);
+            Vector targetPosition = position + velocity;
+            Vector furtherTargetPosition = position + (velocity * 2);
 
             Pen pen = new Pen(s_renderColor, 2);
             Pen secondaryPen = new Pen(s_secondaryRenderColor, 2);

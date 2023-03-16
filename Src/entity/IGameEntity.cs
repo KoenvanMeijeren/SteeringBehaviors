@@ -5,7 +5,7 @@ namespace Src.entity
 {
     public interface IGameEntity
     {
-        VectorImmutable Position { get; set; }
+        Vector Position { get; set; }
         float Height { get; }
         float Width { get; }
         HitBox HitBox { get; }

@@ -16,7 +16,7 @@ namespace SteeringCS.behavior
             _steeringBehavior = new PathfindingBehavior(movingEntity);
         }
 
-        public override VectorImmutable Calculate()
+        public override Vector Calculate()
         {
             return _steeringBehavior.Calculate();
         }
@@ -39,7 +39,7 @@ namespace SteeringCS.behavior
 
             foreach (Vertex vertex in _steeringBehavior.Path)
             {
-                VectorImmutable vector = vertex.Position - (VertexSize / 2);
+                Vector vector = vertex.Position - (VertexSize / 2);
                 rectangle.X = (int)vector.X;
                 rectangle.Y = (int)vector.Y;
                 graphic.DrawEllipse(penVertex, rectangle);

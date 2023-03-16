@@ -6,8 +6,8 @@ namespace Src.behavior
 {
     public class WanderingBehavior : SteeringBehavior
     {
-        public VectorImmutable TargetCircle { get; private set; }
-        public VectorImmutable SelectedPoint { get; private set; }
+        public Vector TargetCircle { get; private set; }
+        public Vector SelectedPoint { get; private set; }
 
         private const double WanderDistance = 0.3;
         private const int WanderJitter = 5;
@@ -23,9 +23,9 @@ namespace Src.behavior
             _randomClampedYPosition = Randomizer.RandomClamped();
         }
 
-        public override VectorImmutable Calculate()
+        public override Vector Calculate()
         {
-            VectorImmutable randomNewPosition = new VectorImmutable(_randomClampedXPosition * WanderJitter, _randomClampedYPosition * WanderJitter);
+            Vector randomNewPosition = new Vector(_randomClampedXPosition * WanderJitter, _randomClampedYPosition * WanderJitter);
             TargetCircle = MovingEntity.Position + randomNewPosition;
 
             double xPosition = CircleRadius * Math.Cos(_wanderTheta);

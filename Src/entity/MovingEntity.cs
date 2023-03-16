@@ -9,17 +9,17 @@ namespace Src.entity
     {
         public const int MassDefault = 30, MaxSpeedDefault = 150;
 
-        public VectorImmutable Velocity { get; set; }
+        public Vector Velocity { get; set; }
         public float Mass { get; set; }
         public float MaxSpeed { get; set; }
 
         public ISteeringBehavior SteeringBehavior { get; private set; }
 
-        protected MovingEntity(VectorImmutable position, IWorld world, float height, float width) : base(position, world, height, width)
+        protected MovingEntity(Vector position, IWorld world, float height, float width) : base(position, world, height, width)
         {
             Mass = MassDefault;
             MaxSpeed = MaxSpeedDefault;
-            Velocity = new VectorImmutable(0, 0);
+            Velocity = new Vector(0, 0);
         }
 
         public void SetSteeringBehavior(ISteeringBehavior steeringBehavior)
@@ -34,8 +34,8 @@ namespace Src.entity
                 return;
             }
 
-            VectorImmutable steeringForce = SteeringBehavior.Calculate();
-            VectorImmutable acceleration = steeringForce / Mass;
+            Vector steeringForce = SteeringBehavior.Calculate();
+            Vector acceleration = steeringForce / Mass;
             Velocity += acceleration * timeElapsed;
             Velocity.Truncate(MaxSpeed);
             Velocity = CollisionHandler.AlterVectorToStayInsideOfWorld(Position, Velocity, World);

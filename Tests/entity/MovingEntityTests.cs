@@ -13,8 +13,8 @@ namespace Tests.entity
         public void Create_01_Ok()
         {
             // Arrange
-            VectorImmutable seekingEntityPosition = new VectorImmutable(35, 35);
-            VectorImmutable targetEntityPosition = new VectorImmutable(249, 249);
+            Vector seekingEntityPosition = new Vector(35, 35);
+            Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             SeekingBehavior steeringBehavior = new SeekingBehavior(world.SeekingEntity);
             IMovingEntity movingEntity = world.SeekingEntity;
@@ -40,8 +40,8 @@ namespace Tests.entity
         {
             // Arrange
             const float TimeElapsed = 0.800000012f;
-            VectorImmutable seekingEntityPosition = new VectorImmutable(35, 35);
-            VectorImmutable targetEntityPosition = new VectorImmutable(249, 249);
+            Vector seekingEntityPosition = new Vector(35, 35);
+            Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             SeekingBehavior steeringBehavior = new SeekingBehavior(world.SeekingEntity);
             IMovingEntity movingEntity = world.SeekingEntity;
@@ -59,8 +59,8 @@ namespace Tests.entity
         public void Update_02_Ok_DoesNotCrashWithoutSteeringBehavior()
         {
             // Arrange
-            VectorImmutable seekingEntityPosition = new VectorImmutable(35, 35);
-            VectorImmutable targetEntityPosition = new VectorImmutable(249, 249);
+            Vector seekingEntityPosition = new Vector(35, 35);
+            Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             IMovingEntity movingEntity = world.SeekingEntity;
 

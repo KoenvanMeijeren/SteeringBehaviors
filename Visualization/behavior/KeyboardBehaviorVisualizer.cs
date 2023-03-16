@@ -13,7 +13,7 @@ namespace SteeringCS.behavior
             _steeringBehavior = new KeyboardBehavior(movingEntity);
         }
 
-        public override VectorImmutable Calculate()
+        public override Vector Calculate()
         {
             return _steeringBehavior.Calculate();
         }

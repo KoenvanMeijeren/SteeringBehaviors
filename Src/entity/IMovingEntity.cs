@@ -5,7 +5,7 @@ namespace Src.entity
 {
     public interface IMovingEntity : IGameEntity
     {
-        VectorImmutable Velocity { get; set; }
+        Vector Velocity { get; set; }
         float Mass { get; set; }
         float MaxSpeed { get; set; }
         void SetSteeringBehavior(ISteeringBehavior steeringBehavior);

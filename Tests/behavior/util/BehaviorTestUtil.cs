@@ -24,14 +24,14 @@ namespace Tests.behavior.util
             string expectedPositionAfterVelocityAddition
         )
         {
-            VectorImmutable position = movingEntity.Position;
-            VectorImmutable velocity = movingEntity.Velocity;
+            Vector position = movingEntity.Position;
+            Vector velocity = movingEntity.Velocity;
             Assert.AreEqual(expectedPositionBeforeVelocityAddition, position.ToString());
 
-            VectorImmutable steeringForce = steeringBehavior.Calculate();
+            Vector steeringForce = steeringBehavior.Calculate();
             Assert.AreEqual(expectedSteeringForce, steeringForce.ToString());
 
-            VectorImmutable acceleration = steeringForce / movingEntity.Mass;
+            Vector acceleration = steeringForce / movingEntity.Mass;
             Assert.AreEqual(expectedAcceleration, acceleration.ToString());
 
             velocity += acceleration * timeElapsed;

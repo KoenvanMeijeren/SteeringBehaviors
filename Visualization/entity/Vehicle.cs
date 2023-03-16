@@ -12,9 +12,9 @@ namespace SteeringCS.entity
         private const int DefaultWidth = 25;
         private readonly Color _color;
 
-        public Vehicle(VectorImmutable position, IWorld world) : base(position, world, DefaultHeight, DefaultWidth)
+        public Vehicle(Vector position, IWorld world) : base(position, world, DefaultHeight, DefaultWidth)
         {
-            Velocity = new VectorImmutable(0, 0);
+            Velocity = new Vector(0, 0);
             _color = Color.Black;
         }
 

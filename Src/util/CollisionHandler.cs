@@ -5,15 +5,15 @@ namespace Src.util
 {
     public static class CollisionHandler
     {
-        public static VectorImmutable AlterVectorToStayInsideOfWorld(VectorImmutable position, VectorImmutable vector, IWorld world)
+        public static Vector AlterVectorToStayInsideOfWorld(Vector position, Vector vector, IWorld world)
         {
             if (vector.ToString() == "(0,0)")
             {
                 return vector;
             }
 
-            VectorImmutable alteredVector = vector;
-            VectorImmutable targetPosition = position + vector;
+            Vector alteredVector = vector;
+            Vector targetPosition = position + vector;
 
             int maxY = world.Height;
             int maxX = world.Width;
@@ -41,17 +41,17 @@ namespace Src.util
             return alteredVector;
         }
 
-        public static VectorImmutable AlterVectorToStayOutOfWalls(VectorImmutable centerPosition, VectorImmutable position, VectorImmutable vector, IGrid grid)
+        public static Vector AlterVectorToStayOutOfWalls(Vector centerPosition, Vector position, Vector vector, IGrid grid)
         {
             if (vector.ToString() == "(0,0)")
             {
                 return vector;
             }
 
-            VectorImmutable alteredVector = vector;
+            Vector alteredVector = vector;
 
             // Check if target position is in a wall tile
-            VectorImmutable targetPosition = position + vector;
+            Vector targetPosition = position + vector;
 
             int tileX = grid.GetCoordinateOfTile((int)targetPosition.X);
             int tileY = grid.GetCoordinateOfTile((int)targetPosition.Y);
@@ -239,22 +239,22 @@ namespace Src.util
             return alteredVector;
         }
 
-        private static VectorImmutable ShortenVectorToNorthSideOfGridTile(VectorImmutable vector, VectorImmutable targetPosition, GridTile gridTile)
+        private static Vector ShortenVectorToNorthSideOfGridTile(Vector vector, Vector targetPosition, GridTile gridTile)
         {
             return vector.SubtractY(targetPosition.Y - gridTile.Position.Y - 1);
         }
 
-        private static VectorImmutable ShortenVectorToEastSideOfGridTile(VectorImmutable vector, VectorImmutable targetPosition, GridTile gridTile)
+        private static Vector ShortenVectorToEastSideOfGridTile(Vector vector, Vector targetPosition, GridTile gridTile)
         {
             return vector.SubtractX(targetPosition.X - (gridTile.Position.X + gridTile.Size + 1));
         }
 
-        private static VectorImmutable ShortenVectorToSouthSideOfGridTile(VectorImmutable vector, VectorImmutable targetPosition, GridTile gridTile)
+        private static Vector ShortenVectorToSouthSideOfGridTile(Vector vector, Vector targetPosition, GridTile gridTile)
         {
             return vector.SubtractY(targetPosition.Y - (gridTile.Position.Y + gridTile.Size + 1));
         }
 
-        private static VectorImmutable ShortenVectorToWestSideOfGridTile(VectorImmutable vector, VectorImmutable targetPosition, GridTile gridTile)
+        private static Vector ShortenVectorToWestSideOfGridTile(Vector vector, Vector targetPosition, GridTile gridTile)
         {
             return vector.SubtractX(targetPosition.X - gridTile.Position.X - 1);
         }

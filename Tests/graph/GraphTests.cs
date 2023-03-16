@@ -86,8 +86,8 @@ namespace Tests.graph
         public void Create_05_WorldGridGraph_Ok()
         {
             // Arrange
-            VectorImmutable seekingEntityPosition = new VectorImmutable(35, 35);
-            VectorImmutable targetEntityPosition = new VectorImmutable(50, 50);
+            Vector seekingEntityPosition = new Vector(35, 35);
+            Vector targetEntityPosition = new Vector(50, 50);
             WorldTest world = new WorldTest(100, 100, seekingEntityPosition, targetEntityPosition);
             Graph graph = world.Grid.Graph;
 
@@ -107,8 +107,8 @@ namespace Tests.graph
         public void GetVertex_01_WorldGridGraph_Ok()
         {
             // Arrange
-            VectorImmutable seekingEntityPosition = new VectorImmutable(35, 35);
-            VectorImmutable targetEntityPosition = new VectorImmutable(50, 50);
+            Vector seekingEntityPosition = new Vector(35, 35);
+            Vector targetEntityPosition = new Vector(50, 50);
             WorldTest world = new WorldTest(100, 100, seekingEntityPosition, targetEntityPosition);
             Graph graph = world.Grid.Graph;
 
@@ -123,8 +123,8 @@ namespace Tests.graph
         public void GetVertex_02_WorldGridGraph_Ok_DoesNotThrowOnNull()
         {
             // Arrange
-            VectorImmutable seekingEntityPosition = new VectorImmutable(35, 35);
-            VectorImmutable targetEntityPosition = new VectorImmutable(50, 50);
+            Vector seekingEntityPosition = new Vector(35, 35);
+            Vector targetEntityPosition = new Vector(50, 50);
             WorldTest world = new WorldTest(100, 100, seekingEntityPosition, targetEntityPosition);
             Graph graph = world.Grid.Graph;
 
@@ -139,8 +139,8 @@ namespace Tests.graph
         public void GetVertex_03_WorldGridGraph_Ok_DoesNotThrowOnPositionsOutOfBound()
         {
             // Arrange
-            VectorImmutable seekingEntityPosition = new VectorImmutable(35, 35);
-            VectorImmutable targetEntityPosition = new VectorImmutable(50, 50);
+            Vector seekingEntityPosition = new Vector(35, 35);
+            Vector targetEntityPosition = new Vector(50, 50);
             WorldTest world = new WorldTest(100, 100, seekingEntityPosition, targetEntityPosition);
             Graph graph = world.Grid.Graph;
 
@@ -155,8 +155,8 @@ namespace Tests.graph
         public void GetShortestPath_01_WorldGridGraph_Ok()
         {
             // Arrange
-            VectorImmutable seekingEntityPosition = new VectorImmutable(35, 35);
-            VectorImmutable targetEntityPosition = new VectorImmutable(75, 75);
+            Vector seekingEntityPosition = new Vector(35, 35);
+            Vector targetEntityPosition = new Vector(75, 75);
             WorldTest world = new WorldTest(150, 150, seekingEntityPosition, targetEntityPosition);
             Graph graph = world.Grid.Graph;
             Vertex startVertex = graph.GetVertex(1, 1);

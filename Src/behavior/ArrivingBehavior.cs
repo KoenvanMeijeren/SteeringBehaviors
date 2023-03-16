@@ -9,15 +9,15 @@ namespace Src.behavior
         {
         }
 
-        public override VectorImmutable Calculate()
+        public override Vector Calculate()
         {
             return Calculate(MovingEntity, MovingEntity.World.Target.Position);
         }
 
-        public static VectorImmutable Calculate(IMovingEntity movingEntity, VectorImmutable targetPosition)
+        public static Vector Calculate(IMovingEntity movingEntity, Vector targetPosition)
         {
-            VectorImmutable desiredVelocity = targetPosition - movingEntity.Position;
-            VectorImmutable actualVelocity = desiredVelocity - movingEntity.Velocity;
+            Vector desiredVelocity = targetPosition - movingEntity.Position;
+            Vector actualVelocity = desiredVelocity - movingEntity.Velocity;
 
             return actualVelocity;
         }

@@ -14,7 +14,7 @@ namespace SteeringCS.behavior
             _steeringBehavior = new FleeingBehavior(movingEntity);
         }
 
-        public override VectorImmutable Calculate()
+        public override Vector Calculate()
         {
             return _steeringBehavior.Calculate();
         }

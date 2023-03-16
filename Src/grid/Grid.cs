@@ -125,7 +125,7 @@ namespace Src.grid
                 return;
             }
 
-            VectorImmutable position = entity.Position;
+            Vector position = entity.Position;
             int tileRow = GetCoordinateOfTile((int)position.X);
             int tileColumn = GetCoordinateOfTile((int)position.Y);
 

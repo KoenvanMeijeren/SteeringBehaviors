@@ -9,7 +9,7 @@ namespace Src.graph
     {
         private const float Infinity = float.MaxValue;
 
-        public readonly VectorImmutable Position;
+        public readonly Vector Position;
         public readonly LinkedList<Edge> Edges;
 
         public Vertex Parent { get; set; }
@@ -19,7 +19,7 @@ namespace Src.graph
         public Vertex(int x, int y, float cost = Infinity)
         {
             Edges = new LinkedList<Edge>();
-            Position = new VectorImmutable(x, y);
+            Position = new Vector(x, y);
             Cost = cost;
         }
 

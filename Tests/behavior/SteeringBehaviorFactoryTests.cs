@@ -14,8 +14,8 @@ namespace Tests.behavior
         public void CreateFromEnum_01_Ok()
         {
             // Arrange
-            IMovingEntity movingEntity = new VehicleTest(new VectorImmutable(0, 0),
-                new WorldTest(0, 0, new VectorImmutable(0, 0), new VectorImmutable(0, 0))
+            IMovingEntity movingEntity = new VehicleTest(new Vector(0, 0),
+                new WorldTest(0, 0, new Vector(0, 0), new Vector(0, 0))
             );
 
             // Act & Assert
@@ -33,8 +33,8 @@ namespace Tests.behavior
         public void CreateFromEnum_02_ThrowsOnNotImplementedBehavior()
         {
             // Arrange
-            IMovingEntity movingEntity = new VehicleTest(new VectorImmutable(0, 0),
-                new WorldTest(0, 0, new VectorImmutable(0, 0), new VectorImmutable(0, 0))
+            IMovingEntity movingEntity = new VehicleTest(new Vector(0, 0),
+                new WorldTest(0, 0, new Vector(0, 0), new Vector(0, 0))
             );
 
             // Act & Assert

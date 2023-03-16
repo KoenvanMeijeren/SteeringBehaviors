@@ -5,12 +5,12 @@ namespace Src.grid
     public abstract class GridTile
     {
         public readonly int Size;
-        public readonly VectorImmutable Position;
+        public readonly Vector Position;
 
         protected GridTile(int size, int x, int y)
         {
             Size = size;
-            Position = new VectorImmutable(x, y);
+            Position = new Vector(x, y);
         }
     }
 }

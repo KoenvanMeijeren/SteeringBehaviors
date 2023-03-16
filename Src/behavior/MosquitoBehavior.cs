@@ -9,6 +9,6 @@ namespace Src.behavior
         {
         }
 
-        public override VectorImmutable Calculate() => new VectorImmutable(Randomizer.GetRandomNumber(-1000, 1000), Randomizer.GetRandomNumber(-1000, 1000));
+        public override Vector Calculate() => new Vector(Randomizer.GetRandomNumber(-1000, 1000), Randomizer.GetRandomNumber(-1000, 1000));
     }
 }
