@@ -64,7 +64,8 @@ namespace Src.entity
             VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayOutOfWalls(PositionImmutable, HitBox.UpperRightCornerImmutable, VelocityImmutable, World.Grid);
             VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayOutOfWalls(PositionImmutable, HitBox.LowerLeftCornerImmutable, VelocityImmutable, World.Grid);
             VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayOutOfWalls(PositionImmutable, HitBox.LowerRightCornerImmutable, VelocityImmutable, World.Grid);
-            PositionImmutable += VelocityImmutable * timeElapsed;
+            VelocityImmutable *= timeElapsed;
+            PositionImmutable += VelocityImmutable;
         }
 
         public override string ToString()
