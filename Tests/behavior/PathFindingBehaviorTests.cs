@@ -100,6 +100,7 @@ namespace Tests.behavior
                 "(0,0)",
                 "(0,0)",
                 "(0,0)",
+                "(0,0)",
                 "(35,35)"
             );
 
@@ -117,6 +118,7 @@ namespace Tests.behavior
                 "(3,3)",
                 "(3,3)",
                 "(3,3)",
+                "(2.4,2.4)",
                 "(37.4,37.4)"
             );
             world.Update(TimeElapsed);
@@ -137,6 +139,7 @@ namespace Tests.behavior
                 "(3.47,3.47)",
                 "(3.47,3.47)",
                 "(3.47,3.47)",
+                "(2.78,2.78)",
                 "(40.18,40.18)"
             );
             world.Update(TimeElapsed);
@@ -162,6 +165,7 @@ namespace Tests.behavior
                 "(3.09,3.09)",
                 "(3.09,3.09)",
                 "(3.09,3.09)",
+                "(2.47,2.47)",
                 "(160.37,160.37)"
             );
             world.Update(TimeElapsed);
@@ -178,6 +182,7 @@ namespace Tests.behavior
                 steeringBehavior,
                 TimeElapsed,
                 "(200,200)",
+                "(-0,-0)",
                 "(-0,-0)",
                 "(-0,-0)",
                 "(-0,-0)",

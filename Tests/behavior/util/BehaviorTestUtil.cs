@@ -21,6 +21,7 @@ namespace Tests.behavior.util
             string expectedVelocityAfterAlterVectorToStayOutOfWallsUpperRightCorner,
             string expectedVelocityAfterAlterVectorToStayOutOfWallsLowerLeftCorner,
             string expectedVelocityAfterAlterVectorToStayOutOfWallsLowerRightCorner,
+            string expectedVelocityAfterTimeElapsedMultiply,
             string expectedPositionAfterVelocityAddition
         )
         {
@@ -55,8 +56,10 @@ namespace Tests.behavior.util
             velocity = CollisionHandler.AlterVectorToStayOutOfWalls(position, movingEntity.HitBox.LowerRightCorner, velocity, movingEntity.World.Grid);
             Assert.AreEqual(expectedVelocityAfterAlterVectorToStayOutOfWallsLowerRightCorner, velocity.ToString());
 
-            // @todo: add an extra assert for this calculation
-            position += velocity * timeElapsed;
+            velocity *= timeElapsed;
+            Assert.AreEqual(expectedVelocityAfterTimeElapsedMultiply, velocity.ToString());
+            
+            position += velocity;
             Assert.AreEqual(expectedPositionAfterVelocityAddition, position.ToString());
         }
     }
