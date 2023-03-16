@@ -9,7 +9,6 @@ namespace Src.behavior
         {
         }
 
-        public override Vector Calculate() => new Vector(0, 0);
-        public override VectorImmutable CalculateImmutable() => new VectorImmutable(0, 0);
+        public override VectorImmutable Calculate() => new VectorImmutable(0, 0);
     }
 }

@@ -16,27 +16,10 @@ namespace Src.behavior
         {
         }
 
-        public override Vector Calculate()
+        public override VectorImmutable Calculate()
         {
             UpdatePathIfNecessary();
-            Vector targetPosition = MovingEntity.World.Target.Position.Clone();
-
-            if (Path != null && Path.Count > 0)
-            {
-                VectorImmutable targetPositionImmutable = Path.First().Position;
-                targetPosition = new Vector(targetPositionImmutable.X, targetPositionImmutable.Y);
-            }
-
-            Vector desiredVelocity = targetPosition.Subtract(MovingEntity.Position);
-            Vector actualVelocity = desiredVelocity.Subtract(MovingEntity.Velocity);
-
-            return actualVelocity;
-        }
-
-        public override VectorImmutable CalculateImmutable()
-        {
-            UpdatePathIfNecessary();
-            VectorImmutable targetPosition = MovingEntity.World.Target.PositionImmutable;
+            VectorImmutable targetPosition = MovingEntity.World.Target.Position;
 
             if (Path != null && Path.Count > 0)
             {
@@ -44,8 +27,8 @@ namespace Src.behavior
                 targetPosition = new VectorImmutable(targetPositionImmutable.X, targetPositionImmutable.Y);
             }
 
-            VectorImmutable desiredVelocity = targetPosition - MovingEntity.PositionImmutable;
-            VectorImmutable actualVelocity = desiredVelocity - MovingEntity.VelocityImmutable;
+            VectorImmutable desiredVelocity = targetPosition - MovingEntity.Position;
+            VectorImmutable actualVelocity = desiredVelocity - MovingEntity.Velocity;
 
             return actualVelocity;
         }
@@ -56,7 +39,7 @@ namespace Src.behavior
             int vectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)MovingEntity.Position.Y);
             Vertex newClosestVertex = MovingEntity.World.Grid.Graph.GetVertex(vectorX, vectorY);
 
-            Vector targetPosition = MovingEntity.World.Target.Position.Clone();
+            VectorImmutable targetPosition = MovingEntity.World.Target.Position;
             int targetVectorX = MovingEntity.World.Grid.GetCoordinateOfTile((int)targetPosition.X);
             int targetVectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)targetPosition.Y);
             Vertex newTargetVertex = MovingEntity.World.Grid.Graph.GetVertex(targetVectorX, targetVectorY);

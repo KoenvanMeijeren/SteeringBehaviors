@@ -12,7 +12,7 @@ namespace Tests.fixtures.world
     {
         public readonly IMovingEntity SeekingEntity;
 
-        public WorldTest(int width, int height, Vector seekingEntityPosition, Vector targetEntityPosition) : base(width, height)
+        public WorldTest(int width, int height, VectorImmutable seekingEntityPosition, VectorImmutable targetEntityPosition) : base(width, height)
         {
             SeekingEntity = new VehicleTest(seekingEntityPosition, this);
             Target = new VehicleTest(targetEntityPosition, this);

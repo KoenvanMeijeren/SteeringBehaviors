@@ -6,14 +6,10 @@ namespace Src.util
     {
         private readonly IGameEntity _entity;
 
-        public Vector UpperLeftCorner => _entity.Position.Clone().Add(-_entity.Width / 2, -_entity.Height / 2);
-        public VectorImmutable UpperLeftCornerImmutable => _entity.PositionImmutable + new VectorImmutable(-_entity.Width / 2, -_entity.Height / 2);
-        public Vector UpperRightCorner => _entity.Position.Clone().Add(_entity.Width / 2, -_entity.Height / 2);
-        public VectorImmutable UpperRightCornerImmutable => _entity.PositionImmutable + new VectorImmutable(_entity.Width / 2, -_entity.Height / 2);
-        public Vector LowerLeftCorner => _entity.Position.Clone().Add(-_entity.Width / 2, _entity.Height / 2);
-        public VectorImmutable LowerLeftCornerImmutable => _entity.PositionImmutable + new VectorImmutable(-_entity.Width / 2, _entity.Height / 2);
-        public Vector LowerRightCorner => _entity.Position.Clone().Add(_entity.Width / 2, _entity.Height / 2);
-        public VectorImmutable LowerRightCornerImmutable => _entity.PositionImmutable + new VectorImmutable(_entity.Width / 2, _entity.Height / 2);
+        public VectorImmutable UpperLeftCorner => _entity.Position + new VectorImmutable(-_entity.Width / 2, -_entity.Height / 2);
+        public VectorImmutable UpperRightCorner => _entity.Position + new VectorImmutable(_entity.Width / 2, -_entity.Height / 2);
+        public VectorImmutable LowerLeftCorner => _entity.Position + new VectorImmutable(-_entity.Width / 2, _entity.Height / 2);
+        public VectorImmutable LowerRightCorner => _entity.Position + new VectorImmutable(_entity.Width / 2, _entity.Height / 2);
 
         public HitBox(IGameEntity entity)
         {

@@ -9,19 +9,17 @@ namespace Src.entity
     {
         public const int MassDefault = 30, MaxSpeedDefault = 150;
 
-        public Vector Velocity { get; set; }
-        public VectorImmutable VelocityImmutable { get; set; }
+        public VectorImmutable Velocity { get; set; }
         public float Mass { get; set; }
         public float MaxSpeed { get; set; }
 
         public ISteeringBehavior SteeringBehavior { get; private set; }
 
-        protected MovingEntity(Vector position, IWorld world, float height, float width) : base(position, world, height, width)
+        protected MovingEntity(VectorImmutable position, IWorld world, float height, float width) : base(position, world, height, width)
         {
             Mass = MassDefault;
             MaxSpeed = MaxSpeedDefault;
-            Velocity = new Vector(0, 0);
-            VelocityImmutable = new VectorImmutable(0, 0);
+            Velocity = new VectorImmutable(0, 0);
         }
 
         public void SetSteeringBehavior(ISteeringBehavior steeringBehavior)
@@ -36,36 +34,17 @@ namespace Src.entity
                 return;
             }
 
-            Vector steeringForce = SteeringBehavior.Calculate();
-            Vector acceleration = steeringForce.Divide(Mass);
-            Velocity.Add(acceleration.Multiply(timeElapsed));
+            VectorImmutable steeringForce = SteeringBehavior.Calculate();
+            VectorImmutable acceleration = steeringForce / Mass;
+            Velocity += acceleration * timeElapsed;
             Velocity.Truncate(MaxSpeed);
             Velocity = CollisionHandler.AlterVectorToStayInsideOfWorld(Position, Velocity, World);
             Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, HitBox.UpperLeftCorner, Velocity, World.Grid);
             Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, HitBox.UpperRightCorner, Velocity, World.Grid);
             Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, HitBox.LowerLeftCorner, Velocity, World.Grid);
             Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, HitBox.LowerRightCorner, Velocity, World.Grid);
-            Position.Add(Velocity.Multiply(timeElapsed));
-        }
-
-        public override void UpdateImmutable(float timeElapsed)
-        {
-            if (SteeringBehavior == null)
-            {
-                return;
-            }
-
-            VectorImmutable steeringForce = SteeringBehavior.CalculateImmutable();
-            VectorImmutable acceleration = steeringForce / Mass;
-            VelocityImmutable += acceleration * timeElapsed;
-            VelocityImmutable.Truncate(MaxSpeed);
-            VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayInsideOfWorld(PositionImmutable, VelocityImmutable, World);
-            VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayOutOfWalls(PositionImmutable, HitBox.UpperLeftCornerImmutable, VelocityImmutable, World.Grid);
-            VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayOutOfWalls(PositionImmutable, HitBox.UpperRightCornerImmutable, VelocityImmutable, World.Grid);
-            VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayOutOfWalls(PositionImmutable, HitBox.LowerLeftCornerImmutable, VelocityImmutable, World.Grid);
-            VelocityImmutable = CollisionHandlerImmutable.AlterVectorToStayOutOfWalls(PositionImmutable, HitBox.LowerRightCornerImmutable, VelocityImmutable, World.Grid);
-            VelocityImmutable *= timeElapsed;
-            PositionImmutable += VelocityImmutable;
+            Velocity *= timeElapsed;
+            Position += Velocity;
         }
 
         public override string ToString()

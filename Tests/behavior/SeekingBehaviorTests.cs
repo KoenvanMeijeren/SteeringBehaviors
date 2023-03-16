@@ -16,13 +16,13 @@ namespace Tests.behavior
         public void Calculate_01_Ok(int width, int height, float[] seekingPositions, float[] targetPositions, string expectedResult)
         {
             // Arrange
-            Vector seekingEntityPosition = new Vector(seekingPositions[0], seekingPositions[1]);
-            Vector targetEntityPosition = new Vector(targetPositions[0], targetPositions[1]);
+            VectorImmutable seekingEntityPosition = new VectorImmutable(seekingPositions[0], seekingPositions[1]);
+            VectorImmutable targetEntityPosition = new VectorImmutable(targetPositions[0], targetPositions[1]);
             WorldTest world = new WorldTest(width, height, seekingEntityPosition, targetEntityPosition);
             SeekingBehavior steeringBehavior = new SeekingBehavior(world.SeekingEntity);
 
             // Act
-            Vector velocity = steeringBehavior.Calculate();
+            VectorImmutable velocity = steeringBehavior.Calculate();
 
             // Assert
             Assert.AreEqual(expectedResult, velocity.ToString());
@@ -32,13 +32,13 @@ namespace Tests.behavior
         public void Calculate_01_OkOnPositionOutOfWorld(int width, int height, float[] seekingPositions, float[] targetPositions, string expectedResult)
         {
             // Arrange
-            Vector seekingEntityPosition = new Vector(seekingPositions[0], seekingPositions[1]);
-            Vector targetEntityPosition = new Vector(targetPositions[0], targetPositions[1]);
+            VectorImmutable seekingEntityPosition = new VectorImmutable(seekingPositions[0], seekingPositions[1]);
+            VectorImmutable targetEntityPosition = new VectorImmutable(targetPositions[0], targetPositions[1]);
             WorldTest world = new WorldTest(width, height, seekingEntityPosition, targetEntityPosition);
             SeekingBehavior steeringBehavior = new SeekingBehavior(world.SeekingEntity);
 
             // Act
-            Vector velocity = steeringBehavior.Calculate();
+            VectorImmutable velocity = steeringBehavior.Calculate();
 
             // Assert
             Assert.AreEqual(expectedResult, velocity.ToString());
@@ -52,8 +52,8 @@ namespace Tests.behavior
         {
             // Arrange
             const float TimeElapsed = 0.800000012f;
-            Vector seekingEntityPosition = new Vector(35, 35);
-            Vector targetEntityPosition = new Vector(249, 249);
+            VectorImmutable seekingEntityPosition = new VectorImmutable(35, 35);
+            VectorImmutable targetEntityPosition = new VectorImmutable(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             SeekingBehavior steeringBehavior = new SeekingBehavior(world.SeekingEntity);
             IMovingEntity movingEntity = world.SeekingEntity;
@@ -90,8 +90,8 @@ namespace Tests.behavior
         {
             // Arrange
             const float TimeElapsed = 0.800000012f;
-            Vector seekingEntityPosition = new Vector(35, 35);
-            Vector targetEntityPosition = new Vector(200, 200);
+            VectorImmutable seekingEntityPosition = new VectorImmutable(35, 35);
+            VectorImmutable targetEntityPosition = new VectorImmutable(200, 200);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             SeekingBehavior steeringBehavior = new SeekingBehavior(world.SeekingEntity);
             IMovingEntity movingEntity = world.SeekingEntity;
@@ -255,219 +255,6 @@ namespace Tests.behavior
             );
             Assert.AreEqual("(200,200)", movingEntity.Position.ToString());
             Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
-        }
-    }
-
-    public class MovingEntityWithSeekingBehaviorImmutableTests
-    {
-        [Test]
-        public void TestWorldUpdate_01_CloseToWallOk()
-        {
-            // Arrange
-            const float TimeElapsed = 0.800000012f;
-            Vector seekingEntityPosition = new Vector(35, 35);
-            Vector targetEntityPosition = new Vector(249, 249);
-            WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
-            SeekingBehavior steeringBehavior = new SeekingBehavior(world.SeekingEntity);
-            IMovingEntity movingEntity = world.SeekingEntity;
-            movingEntity.SetSteeringBehavior(steeringBehavior);
-
-            // Act & assert
-            Assert.AreEqual("(35,35)", movingEntity.PositionImmutable.ToString());
-            Assert.AreEqual("(0,0)", movingEntity.VelocityImmutable.ToString());
-
-            world.UpdateImmutable(TimeElapsed);
-            Assert.AreEqual("(39.57,39.57)", movingEntity.PositionImmutable.ToString());
-            Assert.AreEqual("(4.57,4.57)", movingEntity.VelocityImmutable.ToString());
-
-            for (int index = 0; index < 10; index++)
-            {
-                world.UpdateImmutable(TimeElapsed);
-            }
-
-            world.UpdateImmutable(TimeElapsed);
-            Assert.AreEqual("(179.32,179.32)", movingEntity.PositionImmutable.ToString());
-            Assert.AreEqual("(11.17,11.17)", movingEntity.VelocityImmutable.ToString());
-
-            for (int index = 0; index < 20; index++)
-            {
-                world.UpdateImmutable(TimeElapsed);
-            }
-
-            Assert.AreEqual("(220,220)", movingEntity.PositionImmutable.ToString());
-            Assert.AreEqual("(0,0)", movingEntity.VelocityImmutable.ToString());
-        }
-
-        [Test]
-        public void TestWorldUpdate_02_ThoroughlyOk()
-        {
-            // Arrange
-            const float TimeElapsed = 0.800000012f;
-            Vector seekingEntityPosition = new Vector(35, 35);
-            Vector targetEntityPosition = new Vector(200, 200);
-            WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
-            SeekingBehavior steeringBehavior = new SeekingBehavior(world.SeekingEntity);
-            IMovingEntity movingEntity = world.SeekingEntity;
-            movingEntity.SetSteeringBehavior(steeringBehavior);
-
-            // Act & assert
-            Assert.AreEqual("(35,35)", movingEntity.PositionImmutable.ToString());
-            Assert.AreEqual("(0,0)", movingEntity.VelocityImmutable.ToString());
-            BehaviorTestUtil.AssertMovingEntityWithSteeringBehaviorImmutable(
-                movingEntity,
-                steeringBehavior,
-                0f,
-                "(35,35)",
-                "(165,165)",
-                "(5.5,5.5)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(35,35)"
-            );
-
-            BehaviorTestUtil.AssertMovingEntityWithSteeringBehaviorImmutable(
-                movingEntity,
-                steeringBehavior,
-                TimeElapsed,
-                "(35,35)",
-                "(165,165)",
-                "(5.5,5.5)",
-                "(4.4,4.4)",
-                "(4.4,4.4)",
-                "(4.4,4.4)",
-                "(4.4,4.4)",
-                "(4.4,4.4)",
-                "(4.4,4.4)",
-                "(4.4,4.4)",
-                "(38.52,38.52)"
-            );
-            world.UpdateImmutable(TimeElapsed);
-            Assert.AreEqual("(38.52,38.52)", movingEntity.PositionImmutable.ToString());
-            Assert.AreEqual("(3.52,3.52)", movingEntity.VelocityImmutable.ToString());
-
-            BehaviorTestUtil.AssertMovingEntityWithSteeringBehaviorImmutable(
-                movingEntity,
-                steeringBehavior,
-                TimeElapsed,
-                "(38.52,38.52)",
-                "(161.48,161.48)",
-                "(5.38,5.38)",
-                "(7.83,7.83)",
-                "(7.83,7.83)",
-                "(7.83,7.83)",
-                "(7.83,7.83)",
-                "(7.83,7.83)",
-                "(7.83,7.83)",
-                "(7.83,7.83)",
-                "(44.78,44.78)"
-            );
-            world.UpdateImmutable(TimeElapsed);
-            Assert.AreEqual("(44.78,44.78)", movingEntity.PositionImmutable.ToString());
-            Assert.AreEqual("(6.26,6.26)", movingEntity.VelocityImmutable.ToString());
-
-            for (int index = 0; index < 10; index++)
-            {
-                world.UpdateImmutable(TimeElapsed);
-            }
-
-            BehaviorTestUtil.AssertMovingEntityWithSteeringBehaviorImmutable(
-                movingEntity,
-                steeringBehavior,
-                TimeElapsed,
-                "(144.19,144.19)",
-                "(47.22,47.22)",
-                "(1.57,1.57)",
-                "(9.84,9.84)",
-                "(9.84,9.84)",
-                "(9.84,9.84)",
-                "(9.84,9.84)",
-                "(9.84,9.84)",
-                "(9.84,9.84)",
-                "(9.84,9.84)",
-                "(152.07,152.07)"
-            );
-            world.UpdateImmutable(TimeElapsed);
-            Assert.AreEqual("(152.07,152.07)", movingEntity.PositionImmutable.ToString());
-            Assert.AreEqual("(7.87,7.87)", movingEntity.VelocityImmutable.ToString());
-
-            for (int index = 0; index < 10; index++)
-            {
-                world.UpdateImmutable(TimeElapsed);
-            }
-
-            BehaviorTestUtil.AssertMovingEntityWithSteeringBehaviorImmutable(
-                movingEntity,
-                steeringBehavior,
-                TimeElapsed,
-                "(195.47,195.47)",
-                "(2.51,2.51)",
-                "(0.08,0.08)",
-                "(2.09,2.09)",
-                "(2.09,2.09)",
-                "(2.09,2.09)",
-                "(2.09,2.09)",
-                "(2.09,2.09)",
-                "(2.09,2.09)",
-                "(2.09,2.09)",
-                "(197.14,197.14)"
-            );
-            world.UpdateImmutable(TimeElapsed);
-            Assert.AreEqual("(197.14,197.14)", movingEntity.PositionImmutable.ToString());
-            Assert.AreEqual("(1.67,1.67)", movingEntity.VelocityImmutable.ToString());
-
-            for (int index = 0; index < 10; index++)
-            {
-                world.UpdateImmutable(TimeElapsed);
-            }
-
-            BehaviorTestUtil.AssertMovingEntityWithSteeringBehaviorImmutable(
-                movingEntity,
-                steeringBehavior,
-                TimeElapsed,
-                "(202.35,202.35)",
-                "(-2.35,-2.35)",
-                "(-0.08,-0.08)",
-                "(-0.07,-0.07)",
-                "(-0.07,-0.07)",
-                "(-0.07,-0.07)",
-                "(-0.07,-0.07)",
-                "(-0.07,-0.07)",
-                "(-0.07,-0.07)",
-                "(-0.07,-0.07)",
-                "(202.3,202.3)"
-            );
-            world.UpdateImmutable(TimeElapsed);
-            Assert.AreEqual("(202.3,202.3)", movingEntity.PositionImmutable.ToString());
-            Assert.AreEqual("(-0.06,-0.06)", movingEntity.VelocityImmutable.ToString());
-
-            for (int index = 0; index < 43; index++)
-            {
-                world.UpdateImmutable(TimeElapsed);
-            }
-
-            BehaviorTestUtil.AssertMovingEntityWithSteeringBehaviorImmutable(
-                movingEntity,
-                steeringBehavior,
-                TimeElapsed,
-                "(199.99,199.99)",
-                "(0.01,0.01)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(0,0)",
-                "(199.99,199.99)"
-            );
-            Assert.AreEqual("(199.99,199.99)", movingEntity.PositionImmutable.ToString());
-            Assert.AreEqual("(0,0)", movingEntity.VelocityImmutable.ToString());
         }
     }
 }

@@ -76,7 +76,7 @@ namespace SteeringCS
 
         private void targetEntityPosition_MouseClick(object sender, MouseEventArgs eventArgs)
         {
-            _world.Target.Position = new Vector(eventArgs.X, eventArgs.Y);
+            _world.Target.Position = new VectorImmutable(eventArgs.X, eventArgs.Y);
             _world.Update(TimeDelta);
             dbPanel.Invalidate();
         }

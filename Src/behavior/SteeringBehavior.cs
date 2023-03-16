@@ -6,20 +6,19 @@ namespace Src.behavior
     public abstract class SteeringBehavior : ISteeringBehavior
     {
         protected IMovingEntity MovingEntity { get; }
-        public abstract Vector Calculate();
-        public abstract VectorImmutable CalculateImmutable();
+        public abstract VectorImmutable Calculate();
 
         protected SteeringBehavior(IMovingEntity movingEntity)
         {
             MovingEntity = movingEntity;
         }
 
-        public Vector GetEntityPosition()
+        public VectorImmutable GetEntityPosition()
         {
             return MovingEntity.Position;
         }
 
-        public Vector GetEntityVelocity()
+        public VectorImmutable GetEntityVelocity()
         {
             return MovingEntity.Velocity;
         }

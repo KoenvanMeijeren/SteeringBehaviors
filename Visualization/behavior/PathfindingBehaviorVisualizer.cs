@@ -16,14 +16,9 @@ namespace SteeringCS.behavior
             _steeringBehavior = new PathfindingBehavior(movingEntity);
         }
 
-        public override Vector Calculate()
+        public override VectorImmutable Calculate()
         {
             return _steeringBehavior.Calculate();
-        }
-
-        public override VectorImmutable CalculateImmutable()
-        {
-            return _steeringBehavior.CalculateImmutable();
         }
 
         public override void Render(Graphics graphic)

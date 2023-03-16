@@ -25,9 +25,9 @@ namespace SteeringCS.entity
         private static readonly Image s_playerGraphicsLeftWalk1 = Image.FromFile("graphics/mario/mario-left-walk-1.png");
         private static readonly Image s_playerGraphicsLeftWalk2 = Image.FromFile("graphics/mario/mario-left-walk-2.png");
 
-        public Mario(Vector position, IWorld world) : base(position, world, s_playerGraphicsRight.Height / 2, s_playerGraphicsRight.Width)
+        public Mario(VectorImmutable position, IWorld world) : base(position, world, s_playerGraphicsRight.Height / 2, s_playerGraphicsRight.Width)
         {
-            Velocity = new Vector(0, 0);
+            Velocity = new VectorImmutable(0, 0);
         }
 
         public void Render(Graphics graphic)

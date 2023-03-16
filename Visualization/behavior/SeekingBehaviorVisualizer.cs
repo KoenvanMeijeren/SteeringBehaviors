@@ -14,19 +14,14 @@ namespace SteeringCS.behavior
             _steeringBehavior = new SeekingBehavior(movingEntity);
         }
 
-        public override Vector Calculate()
+        public override VectorImmutable Calculate()
         {
             return _steeringBehavior.Calculate();
         }
 
-        public override VectorImmutable CalculateImmutable()
-        {
-            return _steeringBehavior.CalculateImmutable();
-        }
-
         public override void Render(Graphics graphic)
         {
-            Vector position = _steeringBehavior.GetEntityPosition();
+            VectorImmutable position = _steeringBehavior.GetEntityPosition();
             SolidBrush brush = new SolidBrush(Color.Red);
             Font font = new Font("Arial", 14, FontStyle.Bold);
             PointF pointF = new PointF((int)position.X, (int)position.Y);

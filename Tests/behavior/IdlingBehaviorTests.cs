@@ -16,13 +16,13 @@ namespace Tests.behavior
         public void Calculate_01_Ok(int width, int height, float[] seekingPositions, float[] targetPositions, string expectedResult)
         {
             // Arrange
-            Vector seekingEntityPosition = new Vector(seekingPositions[0], seekingPositions[1]);
-            Vector targetEntityPosition = new Vector(targetPositions[0], targetPositions[1]);
+            VectorImmutable seekingEntityPosition = new VectorImmutable(seekingPositions[0], seekingPositions[1]);
+            VectorImmutable targetEntityPosition = new VectorImmutable(targetPositions[0], targetPositions[1]);
             WorldTest world = new WorldTest(width, height, seekingEntityPosition, targetEntityPosition);
             ISteeringBehavior steeringBehavior = new IdlingBehavior(world.SeekingEntity);
 
             // Act
-            Vector velocity = steeringBehavior.Calculate();
+            VectorImmutable velocity = steeringBehavior.Calculate();
 
             // Assert
             Assert.AreEqual(expectedResult, velocity.ToString());
@@ -32,13 +32,13 @@ namespace Tests.behavior
         public void Calculate_01_OkOnPositionOutOfWorld(int width, int height, float[] seekingPositions, float[] targetPositions, string expectedResult)
         {
             // Arrange
-            Vector seekingEntityPosition = new Vector(seekingPositions[0], seekingPositions[1]);
-            Vector targetEntityPosition = new Vector(targetPositions[0], targetPositions[1]);
+            VectorImmutable seekingEntityPosition = new VectorImmutable(seekingPositions[0], seekingPositions[1]);
+            VectorImmutable targetEntityPosition = new VectorImmutable(targetPositions[0], targetPositions[1]);
             WorldTest world = new WorldTest(width, height, seekingEntityPosition, targetEntityPosition);
             ISteeringBehavior steeringBehavior = new IdlingBehavior(world.SeekingEntity);
 
             // Act
-            Vector velocity = steeringBehavior.Calculate();
+            VectorImmutable velocity = steeringBehavior.Calculate();
 
             // Assert
             Assert.AreEqual(expectedResult, velocity.ToString());
@@ -52,8 +52,8 @@ namespace Tests.behavior
         {
             // Arrange
             const float TimeElapsed = 0.800000012f;
-            Vector seekingEntityPosition = new Vector(35, 35);
-            Vector targetEntityPosition = new Vector(249, 249);
+            VectorImmutable seekingEntityPosition = new VectorImmutable(35, 35);
+            VectorImmutable targetEntityPosition = new VectorImmutable(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             ISteeringBehavior steeringBehavior = new IdlingBehavior(world.SeekingEntity);
             IMovingEntity movingEntity = world.SeekingEntity;
@@ -77,8 +77,8 @@ namespace Tests.behavior
         {
             // Arrange
             const float TimeElapsed = 0.800000012f;
-            Vector seekingEntityPosition = new Vector(35, 35);
-            Vector targetEntityPosition = new Vector(200, 200);
+            VectorImmutable seekingEntityPosition = new VectorImmutable(35, 35);
+            VectorImmutable targetEntityPosition = new VectorImmutable(200, 200);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             ISteeringBehavior steeringBehavior = new IdlingBehavior(world.SeekingEntity);
             IMovingEntity movingEntity = world.SeekingEntity;
