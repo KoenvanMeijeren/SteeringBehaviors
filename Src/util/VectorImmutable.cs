@@ -58,9 +58,6 @@ namespace Src.util
 
         public VectorImmutable Truncate(double max) => !(Length > max) ? new VectorImmutable(X, Y) : Normalize() * max;
 
-        public bool CanDivide() => X != 0.0 && Y != 0.0;
-        public bool IsEmpty() => X == 0.0 && Y == 0.0;
-
         public override string ToString() => $"({XRounded.ToString(CultureInfo.InvariantCulture)},{YRounded.ToString(CultureInfo.InvariantCulture)})";
     }
 }
