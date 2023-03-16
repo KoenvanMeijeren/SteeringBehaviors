@@ -141,6 +141,7 @@
             // 
             // SteeringBehaviorSelector
             // 
+            this.SteeringBehaviorSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SteeringBehaviorSelector.FormattingEnabled = true;
             this.SteeringBehaviorSelector.Location = new System.Drawing.Point(123, 186);
             this.SteeringBehaviorSelector.Name = "SteeringBehaviorSelector";
