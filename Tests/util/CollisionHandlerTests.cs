@@ -22,7 +22,7 @@ namespace Tests.util
             // Act
             Vector newVelocity = CollisionHandler.AlterVectorToStayInsideOfWorld(position, velocity, world);
             Vector maximumPosition = position + newVelocity;
-            
+
             // Assert
             Assert.AreNotEqual(velocity.ToString(), newVelocity.ToString());
             Assert.AreEqual(expectedNewVelocity, newVelocity.ToString());
