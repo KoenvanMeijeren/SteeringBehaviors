@@ -44,7 +44,7 @@ namespace Tests.behavior
         {
             // Arrange
             KeyHandler.Reset();
-            
+
             const float TimeElapsed = 0.800000012f;
             Vector seekingEntityPosition = new Vector(35, 35);
             Vector targetEntityPosition = new Vector(249, 249);
@@ -52,8 +52,7 @@ namespace Tests.behavior
             ISteeringBehavior steeringBehavior = new KeyboardBehavior(world.SeekingEntity);
             IMovingEntity movingEntity = world.SeekingEntity;
             movingEntity.SetSteeringBehavior(steeringBehavior);
-            
-            
+
             // Act & assert
             KeyHandler.RegisterPressedKeys(pressedKey);
             Assert.AreEqual("(35,35)", movingEntity.Position.ToString());
@@ -62,11 +61,11 @@ namespace Tests.behavior
             world.Update(TimeElapsed);
             Assert.AreEqual(expectedPosition1, movingEntity.Position.ToString());
             Assert.AreEqual(expectedVelocity1, movingEntity.Velocity.ToString());
-            
+
             world.Update(TimeElapsed);
             Assert.AreEqual(expectedPosition2, movingEntity.Position.ToString());
             Assert.AreEqual(expectedVelocity2, movingEntity.Velocity.ToString());
-            
+
             KeyHandler.RegisterUnpressedKeys(pressedKey);
 
             for (int index = 0; index < 37; index++)
@@ -85,7 +84,7 @@ namespace Tests.behavior
             // Mocked values
             const PressedKey PressedKey = PressedKey.D;
             const float TimeElapsed = 0.800000012f;
-            
+
             // Arrange
             KeyHandler.Reset();
             Vector seekingEntityPosition = new Vector(35, 35);
@@ -116,7 +115,7 @@ namespace Tests.behavior
                 "(0,0)",
                 "(35,35)"
             );
-            
+
             BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
@@ -137,7 +136,7 @@ namespace Tests.behavior
             world.Update(TimeElapsed);
             Assert.AreEqual("(37.4,37.4)", movingEntity.Position.ToString());
             Assert.AreEqual("(2.4,2.4)", movingEntity.Velocity.ToString());
-            
+
             BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
@@ -158,13 +157,13 @@ namespace Tests.behavior
             world.Update(TimeElapsed);
             Assert.AreEqual("(39.75,39.32)", movingEntity.Position.ToString());
             Assert.AreEqual("(2.35,1.92)", movingEntity.Velocity.ToString());
-            
+
             KeyHandler.RegisterUnpressedKeys(PressedKey);
             for (int index = 0; index < 37; index++)
             {
                 world.Update(TimeElapsed);
             }
-            
+
             BehaviorTestUtil.AssertMovingEntityWithSteeringBehavior(
                 movingEntity,
                 steeringBehavior,
