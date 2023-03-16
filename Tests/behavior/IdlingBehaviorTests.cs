@@ -101,6 +101,7 @@ namespace Tests.behavior
                 "(0,0)",
                 "(0,0)",
                 "(0,0)",
+                "(0,0)",
                 "(35,35)"
             );
 
@@ -114,6 +115,7 @@ namespace Tests.behavior
                 steeringBehavior,
                 TimeElapsed,
                 "(35,35)",
+                "(0,0)",
                 "(0,0)",
                 "(0,0)",
                 "(0,0)",

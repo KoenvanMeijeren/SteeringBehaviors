@@ -58,6 +58,8 @@ namespace Src.util
 
         public Vector Truncate(double max) => !(Length > max) ? new Vector(X, Y) : Normalize() * max;
 
+        public bool IsEmpty() => X == 0.0 && Y == 0.0;
+
         public override string ToString() => $"({XRounded.ToString(CultureInfo.InvariantCulture)},{YRounded.ToString(CultureInfo.InvariantCulture)})";
     }
 }

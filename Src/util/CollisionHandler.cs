@@ -7,7 +7,7 @@ namespace Src.util
     {
         public static Vector AlterVectorToStayInsideOfWorld(Vector position, Vector vector, IWorld world)
         {
-            if (vector.ToString() == "(0,0)")
+            if (vector.IsEmpty())
             {
                 return vector;
             }
@@ -43,7 +43,7 @@ namespace Src.util
 
         public static Vector AlterVectorToStayOutOfWalls(Vector centerPosition, Vector position, Vector vector, IGrid grid)
         {
-            if (vector.ToString() == "(0,0)")
+            if (vector.IsEmpty())
             {
                 return vector;
             }

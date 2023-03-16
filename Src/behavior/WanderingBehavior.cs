@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Src.entity;
 using Src.util;
 
 namespace Src.behavior
 {
+    [ExcludeFromCodeCoverage]
     public class WanderingBehavior : SteeringBehavior
     {
         public Vector TargetCircle { get; private set; }

@@ -81,6 +81,7 @@
     <Compile Include="MultiFormContext.cs" />
     <Compile Include="util\HitBoxVisualizer.cs" />
     <Compile Include="util\IRender.cs" />
+    <Compile Include="util\KeyEventArgsConverter.cs" />
     <Compile Include="WorldForm.cs">
       <SubType>Form</SubType>
     </Compile>
