@@ -19,16 +19,15 @@ namespace Src.behavior
         public override Vector Calculate()
         {
             UpdatePathIfNecessary();
-            Vector targetPosition = MovingEntity.World.Target.Position.Clone();
 
+            Vector targetPosition = MovingEntity.World.Target.Position;
             if (Path != null && Path.Count > 0)
             {
-                VectorImmutable targetPositionImmutable = Path.First().Position;
-                targetPosition = new Vector(targetPositionImmutable.X, targetPositionImmutable.Y);
+                targetPosition = Path.First().Position;
             }
 
-            Vector desiredVelocity = targetPosition.Subtract(MovingEntity.Position);
-            Vector actualVelocity = desiredVelocity.Subtract(MovingEntity.Velocity);
+            Vector desiredVelocity = targetPosition - MovingEntity.Position;
+            Vector actualVelocity = desiredVelocity - MovingEntity.Velocity;
 
             return actualVelocity;
         }
@@ -39,7 +38,7 @@ namespace Src.behavior
             int vectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)MovingEntity.Position.Y);
             Vertex newClosestVertex = MovingEntity.World.Grid.Graph.GetVertex(vectorX, vectorY);
 
-            Vector targetPosition = MovingEntity.World.Target.Position.Clone();
+            Vector targetPosition = MovingEntity.World.Target.Position;
             int targetVectorX = MovingEntity.World.Grid.GetCoordinateOfTile((int)targetPosition.X);
             int targetVectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)targetPosition.Y);
             Vertex newTargetVertex = MovingEntity.World.Grid.Graph.GetVertex(targetVectorX, targetVectorY);

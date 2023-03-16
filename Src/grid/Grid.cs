@@ -125,7 +125,7 @@ namespace Src.grid
                 return;
             }
 
-            Vector position = entity.Position.Clone();
+            Vector position = entity.Position;
             int tileRow = GetCoordinateOfTile((int)position.X);
             int tileColumn = GetCoordinateOfTile((int)position.Y);
 

@@ -9,9 +9,6 @@ namespace Src.behavior
         {
         }
 
-        public override Vector Calculate()
-        {
-            return KeyHandler.GetKeysDirection();
-        }
+        public override Vector Calculate() => KeyHandler.GetKeysDirection();
     }
 }

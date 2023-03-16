@@ -7,7 +7,7 @@ namespace Tests.behavior.util
 {
     public static class BehaviorTestUtil
     {
-        public static void AssertMovingEntityWithSeekingBehavior(
+        public static void AssertMovingEntityWithSteeringBehavior(
             IMovingEntity movingEntity,
             ISteeringBehavior steeringBehavior,
             float timeElapsed,
@@ -24,17 +24,17 @@ namespace Tests.behavior.util
             string expectedPositionAfterVelocityAddition
         )
         {
-            Vector position = movingEntity.Position.Clone();
-            Vector velocity = movingEntity.Velocity.Clone();
+            Vector position = movingEntity.Position;
+            Vector velocity = movingEntity.Velocity;
             Assert.AreEqual(expectedPositionBeforeVelocityAddition, position.ToString());
 
             Vector steeringForce = steeringBehavior.Calculate();
             Assert.AreEqual(expectedSteeringForce, steeringForce.ToString());
 
-            Vector acceleration = steeringForce.Divide(movingEntity.Mass);
+            Vector acceleration = steeringForce / movingEntity.Mass;
             Assert.AreEqual(expectedAcceleration, acceleration.ToString());
 
-            velocity.Add(acceleration.Multiply(timeElapsed));
+            velocity += acceleration * timeElapsed;
             Assert.AreEqual(expectedVelocityAfterAccelerationAddition, velocity.ToString());
 
             velocity.Truncate(movingEntity.MaxSpeed);
@@ -55,7 +55,8 @@ namespace Tests.behavior.util
             velocity = CollisionHandler.AlterVectorToStayOutOfWalls(position, movingEntity.HitBox.LowerRightCorner, velocity, movingEntity.World.Grid);
             Assert.AreEqual(expectedVelocityAfterAlterVectorToStayOutOfWallsLowerRightCorner, velocity.ToString());
 
-            position.Add(velocity.Multiply(timeElapsed));
+            // @todo: add an extra assert for this calculation
+            position += velocity * timeElapsed;
             Assert.AreEqual(expectedPositionAfterVelocityAddition, position.ToString());
         }
     }

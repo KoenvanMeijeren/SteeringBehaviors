@@ -11,11 +11,11 @@ namespace Src.behavior
 
         public override Vector Calculate()
         {
-            Vector targetPosition = MovingEntity.World.Target.Position.Clone();
-            Vector myPosition = MovingEntity.Position.Clone();
+            Vector targetPosition = MovingEntity.World.Target.Position;
+            Vector myPosition = MovingEntity.Position;
 
-            Vector desiredVelocity = myPosition.Subtract(targetPosition);
-            Vector actualVelocity = desiredVelocity.Subtract(MovingEntity.Velocity);
+            Vector desiredVelocity = myPosition - targetPosition;
+            Vector actualVelocity = desiredVelocity - MovingEntity.Velocity;
 
             return actualVelocity;
         }

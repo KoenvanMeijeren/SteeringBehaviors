@@ -24,7 +24,7 @@ namespace SteeringCS.graph
                         continue;
                     }
 
-                    VectorImmutable vector = graph.Vertices[row, column].Position - (VertexSize / 2);
+                    Vector vector = graph.Vertices[row, column].Position - (VertexSize / 2);
                     rectangle.X = (int)vector.X;
                     rectangle.Y = (int)vector.Y;
                     graphic.DrawEllipse(penVertex, rectangle);

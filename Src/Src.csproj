@@ -71,7 +71,6 @@
     <Compile Include="util\Randomizer.cs" />
     <Compile Include="util\VertexPriorityQueue.cs" />
     <Compile Include="util\Vector.cs" />
-    <Compile Include="util\VectorImmutable.cs" />
     <Compile Include="world\IWorld.cs" />
     <Compile Include="world\WorldBase.cs" />
   </ItemGroup>
