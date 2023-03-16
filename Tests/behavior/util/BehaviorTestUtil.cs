@@ -58,7 +58,7 @@ namespace Tests.behavior.util
 
             velocity *= timeElapsed;
             Assert.AreEqual(expectedVelocityAfterTimeElapsedMultiply, velocity.ToString());
-            
+
             position += velocity;
             Assert.AreEqual(expectedPositionAfterVelocityAddition, position.ToString());
         }

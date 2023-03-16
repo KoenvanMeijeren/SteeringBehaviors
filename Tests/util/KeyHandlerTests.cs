@@ -17,7 +17,7 @@ namespace Tests.util
             KeyHandler.RegisterUnpressedKeys(PressedKey.W);
             Assert.AreEqual("(0,0)", KeyHandler.GetKeysDirection().ToString());
         }
-        
+
         [Test]
         public void WKeyPressed_01_MultipleOk()
         {
@@ -33,7 +33,7 @@ namespace Tests.util
             KeyHandler.RegisterUnpressedKeys(PressedKey.W);
             Assert.AreEqual("(0,0)", KeyHandler.GetKeysDirection().ToString());
         }
-        
+
         [Test]
         public void AKeyPressed_01_SingleOk()
         {
@@ -46,7 +46,7 @@ namespace Tests.util
             KeyHandler.RegisterUnpressedKeys(PressedKey.A);
             Assert.AreEqual("(0,0)", KeyHandler.GetKeysDirection().ToString());
         }
-        
+
         [Test]
         public void AKeyPressed_01_MultipleOk()
         {
@@ -62,7 +62,7 @@ namespace Tests.util
             KeyHandler.RegisterUnpressedKeys(PressedKey.A);
             Assert.AreEqual("(0,0)", KeyHandler.GetKeysDirection().ToString());
         }
-        
+
         [Test]
         public void SKeyPressed_01_SingleOk()
         {
@@ -75,7 +75,7 @@ namespace Tests.util
             KeyHandler.RegisterUnpressedKeys(PressedKey.S);
             Assert.AreEqual("(0,0)", KeyHandler.GetKeysDirection().ToString());
         }
-        
+
         [Test]
         public void SKeyPressed_01_MultipleOk()
         {
@@ -91,7 +91,7 @@ namespace Tests.util
             KeyHandler.RegisterUnpressedKeys(PressedKey.S);
             Assert.AreEqual("(0,0)", KeyHandler.GetKeysDirection().ToString());
         }
-        
+
         [Test]
         public void DKeyPressed_01_SingleOk()
         {
@@ -104,7 +104,7 @@ namespace Tests.util
             KeyHandler.RegisterUnpressedKeys(PressedKey.D);
             Assert.AreEqual("(0,0)", KeyHandler.GetKeysDirection().ToString());
         }
-        
+
         [Test]
         public void DKeyPressed_02_MultipleOk()
         {

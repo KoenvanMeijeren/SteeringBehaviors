@@ -8,7 +8,7 @@
         D,
         DoNothing
     }
-    
+
     public static class KeyHandler
     {
         private static bool s_wKeyPressed,
@@ -80,7 +80,7 @@
             {
                 return new Vector(0, 0);
             }
-            
+
             int x = 0;
             int y = 0;
 

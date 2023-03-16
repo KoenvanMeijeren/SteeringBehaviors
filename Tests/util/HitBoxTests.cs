@@ -21,7 +21,7 @@ namespace Tests.util
             Assert.AreEqual("(30,40)", hitBox.LowerLeftCorner.ToString());
             Assert.AreEqual("(40,40)", hitBox.LowerRightCorner.ToString());
         }
-        
+
         [Test]
         public void Create_02_EmptyOk()
         {

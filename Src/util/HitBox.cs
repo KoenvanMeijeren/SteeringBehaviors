@@ -27,7 +27,7 @@ namespace Src.util
                 {
                     return null;
                 }
-                
+
                 return _entity.Position + new Vector(_entity.Width / 2, -_entity.Height / 2);
             }
         }
@@ -40,7 +40,7 @@ namespace Src.util
                 {
                     return null;
                 }
-                
+
                 return _entity.Position + new Vector(-_entity.Width / 2, _entity.Height / 2);
             }
         }
@@ -53,7 +53,7 @@ namespace Src.util
                 {
                     return null;
                 }
-                
+
                 return _entity.Position + new Vector(_entity.Width / 2, _entity.Height / 2);
             }
         }
