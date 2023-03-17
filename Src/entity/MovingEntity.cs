@@ -15,6 +15,8 @@ namespace Src.entity
 
         public ISteeringBehavior SteeringBehavior { get; private set; }
 
+        public ISteeringBehavior CollisionAvoidingBehavior { get; private set; }
+
         protected MovingEntity(Vector position, IWorld world, float height, float width) : base(position, world, height, width)
         {
             Mass = MassDefault;
@@ -22,9 +24,10 @@ namespace Src.entity
             Velocity = new Vector(0, 0);
         }
 
-        public void SetSteeringBehavior(ISteeringBehavior steeringBehavior)
+        public void SetSteeringBehavior(ISteeringBehavior steeringBehavior, ISteeringBehavior collisionAvoidingBehavior)
         {
             SteeringBehavior = steeringBehavior;
+            CollisionAvoidingBehavior = collisionAvoidingBehavior;
         }
 
         public override void Update(float timeElapsed)
@@ -35,6 +38,8 @@ namespace Src.entity
             }
 
             Vector steeringForce = SteeringBehavior.Calculate();
+            steeringForce += CollisionAvoidingBehavior.Calculate();
+
             Vector acceleration = steeringForce / Mass;
             Velocity += acceleration * timeElapsed;
             Velocity.Truncate(MaxSpeed);

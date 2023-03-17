@@ -17,8 +17,9 @@ namespace Tests.entity
             Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             SeekingBehavior steeringBehavior = new SeekingBehavior(world.SeekingEntity);
+            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.SeekingEntity);
             IMovingEntity movingEntity = world.SeekingEntity;
-            movingEntity.SetSteeringBehavior(steeringBehavior);
+            movingEntity.SetSteeringBehavior(steeringBehavior, collisionBehavior);
 
             // Act & assert
             Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
@@ -44,8 +45,9 @@ namespace Tests.entity
             Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             SeekingBehavior steeringBehavior = new SeekingBehavior(world.SeekingEntity);
+            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.SeekingEntity);
             IMovingEntity movingEntity = world.SeekingEntity;
-            movingEntity.SetSteeringBehavior(steeringBehavior);
+            movingEntity.SetSteeringBehavior(steeringBehavior, collisionBehavior);
 
             // Act
             movingEntity.Update(TimeElapsed);

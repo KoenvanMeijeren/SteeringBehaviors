@@ -8,6 +8,6 @@ namespace Src.entity
         Vector Velocity { get; set; }
         float Mass { get; set; }
         float MaxSpeed { get; set; }
-        void SetSteeringBehavior(ISteeringBehavior steeringBehavior);
+        void SetSteeringBehavior(ISteeringBehavior steeringBehavior, ISteeringBehavior collisionAvoidingBehavior);
     }
 }

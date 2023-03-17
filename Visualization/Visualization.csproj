@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="behavior\ArrivingBehaviorVisualizer.cs" />
+    <Compile Include="behavior\CollisionAvoidingBehaviorVisualizer.cs" />
     <Compile Include="behavior\FleeingBehaviorVisualizer.cs" />
     <Compile Include="behavior\IdlingBehaviorVisualizer.cs" />
     <Compile Include="behavior\ISteeringBehaviorVisualizer.cs" />
