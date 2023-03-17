@@ -53,11 +53,10 @@ namespace Src.util
             // Check if target position is in a wall tile
             Vector targetPosition = position + vector;
 
-            int tileX = grid.GetCoordinateOfTile((int)targetPosition.X);
-            int tileY = grid.GetCoordinateOfTile((int)targetPosition.Y);
+            int tileRow = grid.GetCoordinateOfTile((int)targetPosition.X);
+            int tileColumn = grid.GetCoordinateOfTile((int)targetPosition.Y);
 
-            GridTile gridTile = grid.GetTile(tileX, tileY);
-
+            GridTile gridTile = grid.GetTile(tileRow, tileColumn);
             if (!(gridTile is WallTile wallTile))
             {
                 return alteredVector;
@@ -75,10 +74,10 @@ namespace Src.util
             double southDistanceFromWallTileCenter = centerPosition.Y - wallTileCenterY + MeasureBuffer;
             double westDistanceFromWallTileCenter = wallTileCenterX - centerPosition.X + MeasureBuffer;
 
-            GridTile gridTileNorth = grid.GetTile(tileX, tileY - 1);
-            GridTile gridTileEast = grid.GetTile(tileX + 1, tileY);
-            GridTile gridTileSouth = grid.GetTile(tileX, tileY + 1);
-            GridTile gridTileWest = grid.GetTile(tileX - 1, tileY);
+            GridTile gridTileNorth = grid.GetTile(tileRow, tileColumn - 1);
+            GridTile gridTileEast = grid.GetTile(tileRow + 1, tileColumn);
+            GridTile gridTileSouth = grid.GetTile(tileRow, tileColumn + 1);
+            GridTile gridTileWest = grid.GetTile(tileRow - 1, tileColumn);
 
             // Handle encountering wall from north east
             if (northDistanceFromWallTileCenter > halfWallTileSize && eastDistanceFromWallTileCenter > halfWallTileSize)
