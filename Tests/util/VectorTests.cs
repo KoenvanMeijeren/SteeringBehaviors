@@ -344,5 +344,23 @@ namespace Tests.util
             Assert.AreEqual(ExpectedEastPosition, result.X);
             Assert.AreEqual(ExpectedNorthPosition, result.Y);
         }
+
+        [TestCase(new double[]{0.5, 1.0}, new double[]{1.0, 1.5}, new double[]{0.6, 1.3}, true)]
+        [TestCase(new double[]{1.0, 2.0}, new double[]{1.0, 2.0}, new double[]{0.9, 1.4}, false)]
+        [TestCase(new double[]{1.0, 2.0}, new double[]{2.0, 2.5}, new double[]{1.4, 2.3}, true)]
+        [TestCase(new double[]{352, 20}, new double[]{380, 45}, new double[]{360, 34}, true)]
+        public void IsInRange_01_Ok(double[] startPositions, double[] endPositions, double[] currentPosition, bool expectedResult)
+        {
+            // Arrange
+            Vector start = new Vector(startPositions[0], startPositions[1]);
+            Vector end = new Vector(endPositions[0], endPositions[1]);
+            Vector current = new Vector(currentPosition[0], currentPosition[1]);
+
+            // Act
+            bool resultResult = current.IsInRange(start, end);
+
+            // Assert
+            Assert.AreEqual(expectedResult, resultResult);
+        }
     }
 }
