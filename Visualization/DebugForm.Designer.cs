@@ -46,6 +46,7 @@
             this.pauseButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.UpdateIntervalSelector = new System.Windows.Forms.NumericUpDown();
+            this.ShowVelocityCheckbox = new System.Windows.Forms.CheckBox();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxSpeedSelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MassSelector)).BeginInit();
@@ -54,6 +55,7 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.ShowVelocityCheckbox);
             this.mainPanel.Controls.Add(this.ShowBehaviorCheckbox);
             this.mainPanel.Controls.Add(this.ShowHitboxCheckbox);
             this.mainPanel.Controls.Add(this.ShowGraphCheckbox);
@@ -101,7 +103,7 @@
             // ShowGraphCheckbox
             // 
             this.ShowGraphCheckbox.AutoSize = true;
-            this.ShowGraphCheckbox.Location = new System.Drawing.Point(117, 284);
+            this.ShowGraphCheckbox.Location = new System.Drawing.Point(117, 308);
             this.ShowGraphCheckbox.Name = "ShowGraphCheckbox";
             this.ShowGraphCheckbox.Size = new System.Drawing.Size(100, 20);
             this.ShowGraphCheckbox.TabIndex = 15;
@@ -112,7 +114,7 @@
             // ShowGridCheckbox
             // 
             this.ShowGridCheckbox.AutoSize = true;
-            this.ShowGridCheckbox.Location = new System.Drawing.Point(0, 284);
+            this.ShowGridCheckbox.Location = new System.Drawing.Point(0, 308);
             this.ShowGridCheckbox.Name = "ShowGridCheckbox";
             this.ShowGridCheckbox.Size = new System.Drawing.Size(88, 20);
             this.ShowGridCheckbox.TabIndex = 14;
@@ -124,7 +126,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(-3, 260);
+            this.label6.Location = new System.Drawing.Point(-3, 284);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 16);
             this.label6.TabIndex = 13;
@@ -289,6 +291,17 @@
             0});
             this.UpdateIntervalSelector.ValueChanged += new System.EventHandler(this.UpdateIntervalSelectorValueChangedChanged);
             // 
+            // ShowVelocityCheckbox
+            // 
+            this.ShowVelocityCheckbox.AutoSize = true;
+            this.ShowVelocityCheckbox.Location = new System.Drawing.Point(0, 252);
+            this.ShowVelocityCheckbox.Name = "ShowVelocityCheckbox";
+            this.ShowVelocityCheckbox.Size = new System.Drawing.Size(111, 20);
+            this.ShowVelocityCheckbox.TabIndex = 18;
+            this.ShowVelocityCheckbox.Text = "Show velocity";
+            this.ShowVelocityCheckbox.UseVisualStyleBackColor = true;
+            this.ShowVelocityCheckbox.CheckedChanged += new System.EventHandler(this.ShowVelocityCheckbox_CheckedChanged);
+            // 
             // DebugForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -328,6 +341,7 @@
         private System.Windows.Forms.CheckBox ShowGraphCheckbox;
         private System.Windows.Forms.CheckBox ShowHitboxCheckbox;
         private System.Windows.Forms.CheckBox ShowBehaviorCheckbox;
+        private System.Windows.Forms.CheckBox ShowVelocityCheckbox;
     }
 }
 

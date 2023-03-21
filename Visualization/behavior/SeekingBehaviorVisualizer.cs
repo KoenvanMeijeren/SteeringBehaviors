@@ -19,15 +19,14 @@ namespace SteeringCS.behavior
             return _steeringBehavior.Calculate();
         }
 
-        public override void Render(Graphics graphic)
+        public override void Render(Graphics graphic) { }
+
+        public override void RenderVelocity(Graphics graphic)
         {
             Vector position = _steeringBehavior.GetEntityPosition();
-            SolidBrush brush = new SolidBrush(Color.Red);
-            Font font = new Font("Arial", 14, FontStyle.Bold);
-            PointF pointF = new PointF((int)position.X, (int)position.Y);
 
             RenderVelocity(graphic, position, _steeringBehavior.GetEntityVelocity());
-            graphic.DrawString(Calculate().ToString(), font, brush, pointF);
+            RenderVelocityText(graphic, position, _steeringBehavior.GetEntityVelocity());
         }
     }
 }

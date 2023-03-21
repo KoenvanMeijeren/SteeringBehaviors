@@ -21,8 +21,6 @@ namespace SteeringCS.behavior
 
         public override void Render(Graphics graphic)
         {
-            RenderVelocity(graphic, _steeringBehavior.GetEntityPosition(), _steeringBehavior.GetEntityVelocity());
-
             Vector targetCircle = _steeringBehavior.TargetCircle;
             Vector selectedPoint = _steeringBehavior.SelectedPoint;
             if (targetCircle == null)
@@ -43,6 +41,14 @@ namespace SteeringCS.behavior
             graphic.DrawEllipse(redPen, new Rectangle((int)outerLeftCorner, (int)outerRightCorner, WanderingBehavior.CircleSize, WanderingBehavior.CircleSize));
             graphic.DrawEllipse(greenPen, new Rectangle((int)centerLeftCorner, (int)centerRightCorner, CenterSize, CenterSize));
             graphic.DrawEllipse(greenPen, new Rectangle((int)selectedLeftCorner, (int)selectedRightCorner, CenterSize, CenterSize));
+        }
+
+        public override void RenderVelocity(Graphics graphic)
+        {
+            Vector position = _steeringBehavior.GetEntityPosition();
+
+            RenderVelocity(graphic, position, _steeringBehavior.GetEntityVelocity());
+            RenderVelocityText(graphic, position, _steeringBehavior.GetEntityVelocity());
         }
     }
 }

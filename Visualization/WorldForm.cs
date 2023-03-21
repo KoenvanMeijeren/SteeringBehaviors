@@ -18,6 +18,7 @@ namespace SteeringCS
         private bool _renderGraph;
         private bool _renderHitBox;
         private bool _renderSteeringBehavior;
+        private bool _renderVelocity;
 
         private const float TimeDelta = 0.8f;
         private readonly Timer _timer = new Timer();
@@ -72,6 +73,17 @@ namespace SteeringCS
             if (_renderSteeringBehavior)
             {
                 _world.RenderSteeringBehavior(eventArgs.Graphics);
+            }
+
+            if (_renderSteeringBehavior)
+            {
+                _world.RenderSteeringBehavior(eventArgs.Graphics);
+            }
+
+
+            if (_renderVelocity)
+            {
+                _world.RenderVelocity(eventArgs.Graphics);
             }
         }
 
@@ -151,6 +163,16 @@ namespace SteeringCS
         public void EnableSteeringBehaviorRender()
         {
             _renderSteeringBehavior = true;
+        }
+
+        public void DisableVelocityRender()
+        {
+            _renderVelocity = false;
+        }
+
+        public void EnableVelocityRender()
+        {
+            _renderVelocity = true;
         }
 
         private void WorldForm_KeyDown(object sender, KeyEventArgs eventArgs)
