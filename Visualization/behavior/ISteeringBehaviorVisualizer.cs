@@ -9,5 +9,6 @@ namespace SteeringCS.behavior
         /// Used for displaying debug-information on every moving entity.
         /// </summary>
         void Render(Graphics graphic);
+        void RenderVelocity(Graphics graphic);
     }
 }
