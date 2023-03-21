@@ -56,7 +56,7 @@ namespace SteeringCS.behavior
                 graphic.DrawEllipse(penSuccess, new Rectangle((int)mostThreateningObject.X, (int)mostThreateningObject.Y, CenterSize, CenterSize));
             }
         }
-        
+
         public override void RenderVelocity(Graphics graphic)
         {
             Vector position = _steeringBehavior.GetEntityPosition();
