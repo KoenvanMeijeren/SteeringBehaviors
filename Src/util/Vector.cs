@@ -18,11 +18,11 @@ namespace Src.util
         }
 
         public static Vector operator +(Vector left, Vector right) => new Vector(left.X + right.X, left.Y + right.Y);
-        public static Vector operator +(Vector left, double value) => new Vector(left.X + value, left.Y + value);
+        public static Vector operator +(Vector vector, double value) => new Vector(vector.X + value, vector.Y + value);
         public static Vector operator +(double value, Vector vector) => vector + value;
         public Vector Add(double x, double y) => new Vector(X + x, Y + y);
 
-        public static Vector operator -(Vector vector, Vector right) => new Vector(vector.X - right.X, vector.Y - right.Y);
+        public static Vector operator -(Vector left, Vector right) => new Vector(left.X - right.X, left.Y - right.Y);
         public static Vector operator -(Vector vector, double value) => new Vector(vector.X - value, vector.Y - value);
         public static Vector operator -(double value, Vector vector) => vector - value;
         public Vector Subtract(double x, double y) => new Vector(X - x, Y - y);
@@ -30,7 +30,7 @@ namespace Src.util
         public Vector SubtractY(double amount) => new Vector(X, Y - amount);
 
         public static Vector operator *(Vector left, Vector right) => new Vector(left.X * right.X, left.Y * right.Y);
-        public static Vector operator *(Vector left, double value) => new Vector(left.X * value, left.Y * value);
+        public static Vector operator *(Vector vector, double value) => new Vector(vector.X * value, vector.Y * value);
         public static Vector operator *(double value, Vector vector) => vector * value;
         public Vector Multiply(double x, double y) => new Vector(X * x, Y * y);
 
