@@ -21,10 +21,10 @@ namespace SteeringCS.world
         {
             List<IMovingEntity> entities = new List<IMovingEntity>();
 
-            Mario vehicle = new Mario(new Vector(Width / 2, Height / 2), this);
+            Goomba vehicle = new Goomba(new Vector(Width / 2, Height / 2), this);
             entities.Add(vehicle);
 
-            Target = new Mario(new Vector(100, 40), this);
+            Target = new Luigi(new Vector(100, 40), this);
             Target.SetSteeringBehavior(SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, Target));
 
             return entities;

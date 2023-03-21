@@ -67,6 +67,8 @@
     <Compile Include="DBPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="entity\Goomba.cs" />
+    <Compile Include="entity\Luigi.cs" />
     <Compile Include="entity\Mario.cs" />
     <Compile Include="entity\Vehicle.cs" />
     <Compile Include="DebugForm.cs">
@@ -122,6 +124,48 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="graphics\goomba\goomba-left-walk-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\goomba\goomba-left-walk-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\goomba\goomba-left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\goomba\goomba-right-walk-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\goomba\goomba-right-walk-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\goomba\goomba-right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\goomba\goomba.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\luigi-left-walk-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\luigi-left-walk-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\luigi-left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\luigi-right-walk-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\luigi-right-walk-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\luigi-right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\luigi.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="graphics\mario\mario.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
