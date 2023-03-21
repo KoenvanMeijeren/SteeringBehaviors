@@ -26,7 +26,6 @@ namespace SteeringCS.behavior
         public override void Render(Graphics graphic)
         {
             Vector position = _steeringBehavior.GetEntityPosition();
-            RenderVelocity(graphic, position, _steeringBehavior.GetEntityVelocity());
 
             const int CenterRadius = 2, CenterSize = CenterRadius * 2;
             Pen pen = new Pen(s_renderColor, 2);
@@ -56,6 +55,14 @@ namespace SteeringCS.behavior
             {
                 graphic.DrawEllipse(penSuccess, new Rectangle((int)mostThreateningObject.X, (int)mostThreateningObject.Y, CenterSize, CenterSize));
             }
+        }
+        
+        public override void RenderVelocity(Graphics graphic)
+        {
+            Vector position = _steeringBehavior.GetEntityPosition();
+
+            RenderVelocity(graphic, position, _steeringBehavior.GetEntityVelocity());
+            RenderVelocityText(graphic, position, _steeringBehavior.GetEntityVelocity());
         }
     }
 }
