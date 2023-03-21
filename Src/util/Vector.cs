@@ -18,11 +18,11 @@ namespace Src.util
         }
 
         public static Vector operator +(Vector left, Vector right) => new Vector(left.X + right.X, left.Y + right.Y);
-        public static Vector operator +(Vector left, double value) => new Vector(left.X + value, left.Y + value);
+        public static Vector operator +(Vector vector, double value) => new Vector(vector.X + value, vector.Y + value);
         public static Vector operator +(double value, Vector vector) => vector + value;
         public Vector Add(double x, double y) => new Vector(X + x, Y + y);
 
-        public static Vector operator -(Vector vector, Vector right) => new Vector(vector.X - right.X, vector.Y - right.Y);
+        public static Vector operator -(Vector left, Vector right) => new Vector(left.X - right.X, left.Y - right.Y);
         public static Vector operator -(Vector vector, double value) => new Vector(vector.X - value, vector.Y - value);
         public static Vector operator -(double value, Vector vector) => vector - value;
         public Vector Subtract(double x, double y) => new Vector(X - x, Y - y);
@@ -30,7 +30,7 @@ namespace Src.util
         public Vector SubtractY(double amount) => new Vector(X, Y - amount);
 
         public static Vector operator *(Vector left, Vector right) => new Vector(left.X * right.X, left.Y * right.Y);
-        public static Vector operator *(Vector left, double value) => new Vector(left.X * value, left.Y * value);
+        public static Vector operator *(Vector vector, double value) => new Vector(vector.X * value, vector.Y * value);
         public static Vector operator *(double value, Vector vector) => vector * value;
         public Vector Multiply(double x, double y) => new Vector(X * x, Y * y);
 
@@ -59,6 +59,16 @@ namespace Src.util
         public Vector Truncate(double max) => !(Length > max) ? new Vector(X, Y) : Normalize() * max;
 
         public bool IsEmpty() => X == 0.0 && Y == 0.0;
+
+        public bool IsInRange(Vector start, Vector end)
+        {
+            if (!(X > start.X) || !(X < end.X))
+            {
+                return false;
+            }
+
+            return Y > start.Y && Y < end.Y;
+        }
 
         public override string ToString() => $"({XRounded.ToString(CultureInfo.InvariantCulture)},{YRounded.ToString(CultureInfo.InvariantCulture)})";
     }

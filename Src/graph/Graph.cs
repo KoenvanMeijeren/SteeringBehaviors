@@ -106,7 +106,7 @@ namespace Src.graph
 
             openList.Enqueue(startVertex, 0);
 
-            while (openList.Count != 0 && !closedList.Exists(x => x == targetVertex))
+            while (openList.Count != 0 && !closedList.Exists(vertex => vertex == targetVertex))
             {
                 current = openList.Dequeue();
                 closedList.Add(current);
