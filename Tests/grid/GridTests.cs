@@ -24,7 +24,7 @@ namespace Tests.grid
             Assert.That(pathTile.PositionCenter.ToString(), Is.EqualTo(positionCenter.ToString()));
             Assert.That(pathTile.PositionEnd.ToString(), Is.EqualTo(positionEnd.ToString()));
         }
-        
+
         [TestCase(3, 5, 5)]
         public void Create_WallTile_Ok(int size, int x, int y)
         {
