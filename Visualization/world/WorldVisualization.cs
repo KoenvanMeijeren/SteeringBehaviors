@@ -102,7 +102,6 @@ namespace SteeringCS.world
             }
         }
 
-
         public void Render(Graphics graphics) => GridVisualizer.Render(graphics, Grid);
 
         public void RenderGridOutline(Graphics graphics) => GridVisualizer.RenderOutline(graphics, Grid);

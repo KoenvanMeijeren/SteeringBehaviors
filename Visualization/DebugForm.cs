@@ -119,7 +119,6 @@ namespace SteeringCS
             _worldForm.DisableHitBoxRender();
         }
 
-
         private void ShowBehaviorCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (ShowBehaviorCheckbox.Checked)

@@ -19,7 +19,7 @@ namespace SteeringCS.behavior
             return _steeringBehavior.Calculate();
         }
 
-        public override void Render(Graphics graphic){ }
+        public override void Render(Graphics graphic) { }
 
         public override void RenderVelocity(Graphics graphic)
         {

@@ -80,7 +80,6 @@ namespace SteeringCS
                 _world.RenderSteeringBehavior(eventArgs.Graphics);
             }
 
-
             if (_renderVelocity)
             {
                 _world.RenderVelocity(eventArgs.Graphics);
