@@ -63,7 +63,7 @@ namespace Src.util
             }
 
             // Calculate distance of every direction from center of encountering block
-            int wallTileSizeCenter = wallTile.SizeCenter;
+            int wallTileSizeHalf = wallTile.SizeCenter;
             const int MeasureBuffer = 1;
 
             int wallTileCenterX = (int)wallTile.PositionCenter.X;
@@ -80,7 +80,7 @@ namespace Src.util
             GridTile gridTileWest = grid.GetTile(tileRow - 1, tileColumn);
 
             // Handle encountering wall from north east
-            if (northDistanceFromWallTileCenter > wallTileSizeCenter && eastDistanceFromWallTileCenter > wallTileSizeCenter)
+            if (northDistanceFromWallTileCenter > wallTileSizeHalf && eastDistanceFromWallTileCenter > wallTileSizeHalf)
             {
                 if (gridTileNorth is WallTile && gridTileEast is WallTile)
                 {
@@ -112,7 +112,7 @@ namespace Src.util
             }
 
             // Handle encountering wall from south east
-            if (southDistanceFromWallTileCenter > wallTileSizeCenter && eastDistanceFromWallTileCenter > wallTileSizeCenter)
+            if (southDistanceFromWallTileCenter > wallTileSizeHalf && eastDistanceFromWallTileCenter > wallTileSizeHalf)
             {
                 if (gridTileSouth is WallTile && gridTileEast is WallTile)
                 {
@@ -144,7 +144,7 @@ namespace Src.util
             }
 
             // Handle encountering wall from south west
-            if (southDistanceFromWallTileCenter > wallTileSizeCenter && westDistanceFromWallTileCenter > wallTileSizeCenter)
+            if (southDistanceFromWallTileCenter > wallTileSizeHalf && westDistanceFromWallTileCenter > wallTileSizeHalf)
             {
                 if (gridTileSouth is WallTile && gridTileWest is WallTile)
                 {
@@ -176,7 +176,7 @@ namespace Src.util
             }
 
             // Handle encountering wall from north west
-            if (northDistanceFromWallTileCenter > wallTileSizeCenter && westDistanceFromWallTileCenter > wallTileSizeCenter)
+            if (northDistanceFromWallTileCenter > wallTileSizeHalf && westDistanceFromWallTileCenter > wallTileSizeHalf)
             {
                 if (gridTileNorth is WallTile && gridTileWest is WallTile)
                 {
@@ -208,28 +208,28 @@ namespace Src.util
             }
 
             // Handle encountering wall from north
-            if (northDistanceFromWallTileCenter > wallTileSizeCenter)
+            if (northDistanceFromWallTileCenter > wallTileSizeHalf)
             {
                 alteredVector = ShortenVectorToNorthSideOfGridTile(alteredVector, targetPosition, wallTile);
                 return alteredVector;
             }
 
             // Handle encountering wall from east
-            if (eastDistanceFromWallTileCenter > wallTileSizeCenter)
+            if (eastDistanceFromWallTileCenter > wallTileSizeHalf)
             {
                 alteredVector = ShortenVectorToEastSideOfGridTile(alteredVector, targetPosition, wallTile);
                 return alteredVector;
             }
 
             // Handle encountering wall from south
-            if (southDistanceFromWallTileCenter > wallTileSizeCenter)
+            if (southDistanceFromWallTileCenter > wallTileSizeHalf)
             {
                 alteredVector = ShortenVectorToSouthSideOfGridTile(alteredVector, targetPosition, wallTile);
                 return alteredVector;
             }
 
             // Handle encountering wall from west
-            if (westDistanceFromWallTileCenter > wallTileSizeCenter)
+            if (westDistanceFromWallTileCenter > wallTileSizeHalf)
             {
                 alteredVector = ShortenVectorToWestSideOfGridTile(alteredVector, targetPosition, wallTile);
                 return alteredVector;
