@@ -15,6 +15,7 @@ namespace Src.behavior
 
         public CollisionAvoidingBehavior(IMovingEntity movingEntity) : base(movingEntity)
         {
+            AheadPositions = new List<Tuple<Vector, Vector>>();
         }
 
         public override Vector Calculate()
