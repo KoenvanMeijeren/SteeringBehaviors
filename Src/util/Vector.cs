@@ -60,6 +60,16 @@ namespace Src.util
 
         public bool IsEmpty() => X == 0.0 && Y == 0.0;
 
+        public bool IsInRange(Vector start, Vector end)
+        {
+            if (!(X > start.X) || !(X < end.X))
+            {
+                return false;
+            }
+
+            return Y > start.Y && Y < end.Y;
+        }
+
         public override string ToString() => $"({XRounded.ToString(CultureInfo.InvariantCulture)},{YRounded.ToString(CultureInfo.InvariantCulture)})";
     }
 }
