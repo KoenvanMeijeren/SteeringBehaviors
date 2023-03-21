@@ -69,7 +69,7 @@ namespace Src.util
 
             return Y > start.Y && Y < end.Y;
         }
-        
+
         public override string ToString() => $"({XRounded.ToString(CultureInfo.InvariantCulture)},{YRounded.ToString(CultureInfo.InvariantCulture)})";
     }
 }
