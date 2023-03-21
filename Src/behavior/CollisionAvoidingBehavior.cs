@@ -79,12 +79,12 @@ namespace Src.behavior
                         continue;
                     }
 
-                    if (aheadPosition.IsInRange(wallTile.PositionStart, wallTile.PositionEnd))
+                    if (aheadPosition.IsInRange(wallTile.Position, wallTile.PositionEnd))
                     {
                         MostThreateningObjects.Add(new Tuple<Vector, Vector>(aheadPosition, wallTile.PositionCenter));
                     }
 
-                    if (aheadHalfPosition.IsInRange(wallTile.PositionStart, wallTile.PositionEnd))
+                    if (aheadHalfPosition.IsInRange(wallTile.Position, wallTile.PositionEnd))
                     {
                         MostThreateningObjects.Add(new Tuple<Vector, Vector>(aheadHalfPosition, wallTile.PositionCenter));
                     }
