@@ -43,12 +43,17 @@ namespace Src.behavior
                 return new Vector(0, 0);
             }
 
-            Vector avoidanceVelocity = currentPosition;
+            Vector avoidanceVelocity = new Vector(0, 0);
             foreach ((Vector aheadPosition, Vector mostThreateningObject) in MostThreateningObjects)
             {
                 avoidanceVelocity = aheadPosition - mostThreateningObject;
                 avoidanceVelocity.Normalize();
                 avoidanceVelocity *= 2;
+            }
+
+            if (avoidanceVelocity.IsEmpty())
+            {
+                return new Vector(0, 0);
             }
 
             AvoidancePosition = currentPosition - avoidanceVelocity;
