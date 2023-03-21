@@ -10,6 +10,8 @@ namespace SteeringCS.behavior
         public abstract Vector Calculate();
         public abstract void Render(Graphics graphic);
 
+        public abstract void RenderVelocity(Graphics graphic);
+
         protected static void RenderVelocity(Graphics graphic, Vector position, Vector velocity)
         {
             Vector targetPosition = position + velocity;
@@ -24,6 +26,21 @@ namespace SteeringCS.behavior
 
             graphic.DrawLine(secondaryPen, positionPoint, furtherTargetPositionPoint);
             graphic.DrawLine(pen, positionPoint, targetPositionPoint);
+        }
+
+        protected static void RenderVelocityText(Graphics graphic, Vector position, Vector velocity)
+        {
+            SolidBrush brush = new SolidBrush(Color.White);
+            Font font = new Font("Open sans", 10, FontStyle.Bold);
+            PointF pointF = new PointF((int)position.X, (int)position.Y);
+
+            StringFormat stringFormatCenter = new StringFormat
+            {
+                Alignment = StringAlignment.Center
+            };
+
+            graphic.DrawString(velocity.ToString(), font, brush, pointF, stringFormatCenter);
+
         }
     }
 }

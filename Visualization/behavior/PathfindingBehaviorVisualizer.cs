@@ -23,8 +23,6 @@ namespace SteeringCS.behavior
 
         public override void Render(Graphics graphic)
         {
-            RenderVelocity(graphic, _steeringBehavior.GetEntityPosition(), _steeringBehavior.GetEntityVelocity());
-
             if (_steeringBehavior.Path == null)
             {
                 return;
@@ -51,6 +49,14 @@ namespace SteeringCS.behavior
 
                 prevVertex = vertex;
             }
+        }
+
+        public override void RenderVelocity(Graphics graphic)
+        {
+            Vector position = _steeringBehavior.GetEntityPosition();
+
+            RenderVelocity(graphic, position, _steeringBehavior.GetEntityVelocity());
+            RenderVelocityText(graphic, position, _steeringBehavior.GetEntityVelocity());
         }
     }
 }

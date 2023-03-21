@@ -76,6 +76,32 @@ namespace SteeringCS.world
             }
         }
 
+        public void RenderVelocity(Graphics graphics)
+        {
+            Entities.ForEach(entity =>
+            {
+                if (!(entity is MovingEntity entityRender))
+                {
+                    return;
+                }
+
+                if (entityRender.SteeringBehavior is ISteeringBehaviorVisualizer entityVisualizer)
+                {
+                    entityVisualizer.RenderVelocity(graphics);
+                }
+            });
+
+            if (!(Target is MovingEntity targetRender))
+            {
+                return;
+            }
+
+            if (targetRender.SteeringBehavior is ISteeringBehaviorVisualizer targetVisualizer)
+            {
+                targetVisualizer.RenderVelocity(graphics);
+            }
+        }
+
         public void Render(Graphics graphics) => GridVisualizer.Render(graphics, Grid);
 
         public void RenderGridOutline(Graphics graphics) => GridVisualizer.RenderOutline(graphics, Grid);

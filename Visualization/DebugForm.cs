@@ -130,6 +130,17 @@ namespace SteeringCS
             _worldForm.DisableSteeringBehaviorRender();
         }
 
+        private void ShowVelocityCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ShowVelocityCheckbox.Checked)
+            {
+                _worldForm.EnableVelocityRender();
+                return;
+            }
+
+            _worldForm.DisableVelocityRender();
+        }
+
         private void DebugForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Escape)
