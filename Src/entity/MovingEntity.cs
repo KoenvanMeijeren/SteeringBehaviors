@@ -38,7 +38,10 @@ namespace Src.entity
             }
 
             Vector steeringForce = SteeringBehavior.Calculate();
-            steeringForce += CollisionAvoidingBehavior.Calculate();
+            if (SteeringBehavior.ShouldAvoidObstacles())
+            {
+                steeringForce += CollisionAvoidingBehavior.Calculate();
+            }
 
             Vector acceleration = steeringForce / Mass;
             Velocity += acceleration * timeElapsed;

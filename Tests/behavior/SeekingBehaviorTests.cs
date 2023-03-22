@@ -88,10 +88,10 @@ namespace Tests.behavior
                 world.Update(TimeElapsed);
             }
 
-            Assert.AreEqual("(220,220)", movingEntity.Position.ToString());
-            Assert.AreEqual("(220,220)", steeringBehavior.GetEntityPosition().ToString());
-            Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
-            Assert.AreEqual("(0,0)", steeringBehavior.GetEntityVelocity().ToString());
+            Assert.AreEqual("(210.27,210.27)", movingEntity.Position.ToString());
+            Assert.AreEqual("(210.27,210.27)", steeringBehavior.GetEntityPosition().ToString());
+            Assert.AreEqual("(0.8,0.8)", movingEntity.Velocity.ToString());
+            Assert.AreEqual("(0.8,0.8)", steeringBehavior.GetEntityVelocity().ToString());
         }
 
         [Test]

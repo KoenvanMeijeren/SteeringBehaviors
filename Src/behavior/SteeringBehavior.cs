@@ -22,5 +22,10 @@ namespace Src.behavior
         {
             return MovingEntity.Velocity;
         }
+
+        public virtual bool ShouldAvoidObstacles()
+        {
+            return false;
+        }
     }
 }

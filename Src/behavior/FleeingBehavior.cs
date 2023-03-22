@@ -19,5 +19,10 @@ namespace Src.behavior
 
             return actualVelocity;
         }
+        
+        public override bool ShouldAvoidObstacles()
+        {
+            return true;
+        }
     }
 }

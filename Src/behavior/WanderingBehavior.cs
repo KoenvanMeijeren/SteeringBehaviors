@@ -37,5 +37,10 @@ namespace Src.behavior
 
             return ArrivingBehavior.Calculate(MovingEntity, SelectedPoint);
         }
+
+        public override bool ShouldAvoidObstacles()
+        {
+            return true;
+        }
     }
 }
