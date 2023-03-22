@@ -22,7 +22,7 @@ namespace SteeringCS.behavior
         {
             return _steeringBehavior.Calculate();
         }
-        
+
         public override bool ShouldAvoidObstacles()
         {
             return _steeringBehavior.ShouldAvoidObstacles();

@@ -27,7 +27,7 @@ namespace Src.behavior
             Vector actualVelocity = desiredVelocity - movingEntity.Velocity;
             return actualVelocity;
         }
-        
+
         public override bool ShouldAvoidObstacles()
         {
             return true;
