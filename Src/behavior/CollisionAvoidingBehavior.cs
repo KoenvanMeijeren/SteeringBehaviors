@@ -15,6 +15,7 @@ namespace Src.behavior
 
         public CollisionAvoidingBehavior(IMovingEntity movingEntity) : base(movingEntity)
         {
+            MostThreateningObjects = new List<Tuple<Vector, Vector>>();
             AheadPositions = new List<Tuple<Vector, Vector>>();
         }
 
@@ -49,7 +50,8 @@ namespace Src.behavior
             {
                 avoidanceVelocity = aheadPosition - mostThreateningObject;
                 avoidanceVelocity.Normalize();
-                avoidanceVelocity *= 2;
+                avoidanceVelocity *= 10;
+                AvoidancePosition = aheadPosition + avoidanceVelocity;
             }
 
             if (avoidanceVelocity.IsEmpty())
@@ -57,9 +59,7 @@ namespace Src.behavior
                 return new Vector(0, 0);
             }
 
-            AvoidancePosition = currentPosition - avoidanceVelocity;
-
-            return new Vector(0, 0);
+            return avoidanceVelocity;
 
         }
 
@@ -77,11 +77,6 @@ namespace Src.behavior
                     if (!(gridTile is WallTile wallTile))
                     {
                         continue;
-                    }
-
-                    if (aheadPosition.IsInRange(wallTile.Position, wallTile.PositionEnd))
-                    {
-                        MostThreateningObjects.Add(new Tuple<Vector, Vector>(aheadPosition, wallTile.PositionCenter));
                     }
 
                     if (aheadHalfPosition.IsInRange(wallTile.Position, wallTile.PositionEnd))
