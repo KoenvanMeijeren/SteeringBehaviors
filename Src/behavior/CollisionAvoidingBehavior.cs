@@ -26,8 +26,8 @@ namespace Src.behavior
 
             Tuple<Vector, Vector, Vector> aheadPositions = AheadPositionsUtil.Generate(
                 currentVelocity,
-                MovingEntity.IsDirectionRight, 
-                MovingEntity.IsDirectionUpwards, 
+                MovingEntity.IsDirectionRight,
+                MovingEntity.IsDirectionUpwards,
                 MovingEntity.IsDirectionDownwards
             );
 

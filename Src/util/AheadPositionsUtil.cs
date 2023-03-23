@@ -17,13 +17,13 @@ namespace Src.util
 
                     return new Tuple<Vector, Vector, Vector>(vector, vectorDiagonalUpper, vectorDiagonalLower);
                 }
-                
+
                 vectorDiagonalUpper = (new Vector(vector.X + 32, vector.Y - 32));
                 vectorDiagonalLower = (new Vector(vector.X + 32, vector.Y + 32));
 
                 return new Tuple<Vector, Vector, Vector>(vector, vectorDiagonalUpper, vectorDiagonalLower);
             }
-            
+
             if (isDirectionDownwards)
             {
                 vectorDiagonalUpper = (new Vector(vector.X + 32, vector.Y + 32));
