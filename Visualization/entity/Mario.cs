@@ -13,7 +13,6 @@ namespace SteeringCS.entity
         private const double _movementMargin = 0.1;
         private int _graphicIterator = 0;
         private const int _graphicIteratorLimit = 3;
-        private bool _directionIsRight;
 
         private Image _currentGraphics;
 
@@ -39,22 +38,16 @@ namespace SteeringCS.entity
 
         private void CalculateDirection()
         {
-            if (Velocity.X > _movementMargin)
-            {
-                _directionIsRight = true;
-            }
-
-            if (Velocity.X < -_movementMargin)
-            {
-                _directionIsRight = false;
-            }
+            IsDirectionRight = Velocity.X > _movementMargin;
+            IsDirectionUpwards = Velocity.Y < -_movementMargin;
+            IsDirectionDownwards = Velocity.Y > _movementMargin;
         }
 
         private void CalculateGraphic()
         {
             if (Math.Abs(Velocity.X) < _movementMargin && Math.Abs(Velocity.Y) < _movementMargin)
             {
-                if (_directionIsRight)
+                if (IsDirectionRight)
                 {
                     _currentGraphics = s_playerGraphicsRight;
                     return;
@@ -64,7 +57,7 @@ namespace SteeringCS.entity
                 return;
             }
 
-            if (_directionIsRight)
+            if (IsDirectionRight)
             {
                 if (_graphicIterator / _graphicIteratorLimit < 1)
                 {

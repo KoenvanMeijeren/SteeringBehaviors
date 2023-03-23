@@ -50,8 +50,9 @@ namespace Tests.behavior
             Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             ISteeringBehavior steeringBehavior = new KeyboardBehavior(world.SeekingEntity);
+            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.SeekingEntity);
             IMovingEntity movingEntity = world.SeekingEntity;
-            movingEntity.SetSteeringBehavior(steeringBehavior);
+            movingEntity.SetSteeringBehavior(steeringBehavior, collisionBehavior);
 
             // Act & assert
             KeyHandler.RegisterPressedKeys(pressedKey);
@@ -91,8 +92,9 @@ namespace Tests.behavior
             Vector targetEntityPosition = new Vector(200, 200);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             ISteeringBehavior steeringBehavior = new KeyboardBehavior(world.SeekingEntity);
+            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.SeekingEntity);
             IMovingEntity movingEntity = world.SeekingEntity;
-            movingEntity.SetSteeringBehavior(steeringBehavior);
+            movingEntity.SetSteeringBehavior(steeringBehavior, collisionBehavior);
 
             // Act & assert
             KeyHandler.RegisterPressedKeys(PressedKey);

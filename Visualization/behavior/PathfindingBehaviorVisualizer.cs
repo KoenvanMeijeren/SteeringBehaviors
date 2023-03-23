@@ -21,6 +21,11 @@ namespace SteeringCS.behavior
             return _steeringBehavior.Calculate();
         }
 
+        public override bool ShouldAvoidObstacles()
+        {
+            return _steeringBehavior.ShouldAvoidObstacles();
+        }
+
         public override void Render(Graphics graphic)
         {
             if (_steeringBehavior.Path == null)

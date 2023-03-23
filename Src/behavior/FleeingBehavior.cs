@@ -5,7 +5,7 @@ namespace Src.behavior
 {
     public class FleeingBehavior : SteeringBehavior
     {
-        public FleeingBehavior(IMovingEntity movingEntity) : base(movingEntity)
+        public FleeingBehavior(IMovingEntity movingEntity, bool shouldAvoidObstacles = true) : base(movingEntity, shouldAvoidObstacles)
         {
         }
 

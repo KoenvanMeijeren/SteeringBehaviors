@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="behavior\ArrivingBehavior.cs" />
+    <Compile Include="behavior\CollisionAvoidingBehavior.cs" />
     <Compile Include="behavior\FleeingBehavior.cs" />
     <Compile Include="behavior\IdlingBehavior.cs" />
     <Compile Include="behavior\ISteeringBehavior.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="behavior\SteeringBehaviorFactory.cs" />
     <Compile Include="behavior\WanderingBehavior.cs" />
     <Compile Include="entity\BaseGameEntity.cs" />
+    <Compile Include="util\AheadPositionsUtil.cs" />
     <Compile Include="util\HitBox.cs" />
     <Compile Include="entity\IGameEntity.cs" />
     <Compile Include="entity\IMovingEntity.cs" />

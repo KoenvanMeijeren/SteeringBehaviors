@@ -5,7 +5,7 @@ namespace Src.behavior
 {
     public class ArrivingBehavior : SteeringBehavior
     {
-        public ArrivingBehavior(IMovingEntity movingEntity) : base(movingEntity)
+        public ArrivingBehavior(IMovingEntity movingEntity, bool shouldAvoidObstacles = true) : base(movingEntity, shouldAvoidObstacles)
         {
         }
 

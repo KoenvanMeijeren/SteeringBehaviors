@@ -30,7 +30,10 @@ namespace Tests.fixtures.world
         {
             foreach (IMovingEntity entity in Entities)
             {
-                entity.SetSteeringBehavior(SteeringBehaviorFactory.CreateFromEnum(selectedOption, entity));
+                entity.SetSteeringBehavior(
+                    SteeringBehaviorFactory.CreateFromEnum(selectedOption, entity),
+                    new CollisionAvoidingBehavior(entity)
+                );
                 entity.Mass = mass;
                 entity.MaxSpeed = maxSpeed;
             }
