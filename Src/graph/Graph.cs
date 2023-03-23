@@ -130,7 +130,14 @@ namespace Src.graph
                 return null;
             }
 
-            Vertex temp = closedList[closedList.IndexOf(current)];
+            Vertex temp = closedList.FirstOrDefault(vertex => vertex == current);
+
+            if (temp == null)
+            {
+                return null;
+            }
+
+            temp = temp.Parent;
 
             if (temp == null)
             {

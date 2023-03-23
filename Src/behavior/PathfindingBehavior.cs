@@ -1,6 +1,7 @@
 ﻿using Src.entity;
 using Src.graph;
 using Src.util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -43,7 +44,13 @@ namespace Src.behavior
             int targetVectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)targetPosition.Y);
             Vertex newTargetVertex = MovingEntity.World.Grid.Graph.GetVertex(targetVectorX, targetVectorY);
 
-            if (_closestVertex == newClosestVertex && _targetVertex == newTargetVertex)
+            if (Path != null && Path.Count > 0 && Path.Peek() == newClosestVertex)
+            {
+                _closestVertex = newClosestVertex;
+                Path.Pop();
+            }
+
+            if (_targetVertex == newTargetVertex)
             {
                 return;
             }
@@ -51,6 +58,7 @@ namespace Src.behavior
             _closestVertex = newClosestVertex;
             _targetVertex = newTargetVertex;
             Path = Graph.GetShortestPath(_closestVertex, _targetVertex);
+            Console.WriteLine("NEW PATH");
         }
     }
 }

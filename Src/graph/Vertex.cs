@@ -7,7 +7,7 @@ namespace Src.graph
 {
     public class Vertex
     {
-        private const float Infinity = float.MaxValue;
+        private const float defaultCost = 0;
 
         public readonly Vector Position;
         public readonly LinkedList<Edge> Edges;
@@ -16,7 +16,7 @@ namespace Src.graph
         public float Cost { get; set; }
         public int DistanceFromTarget { get; set; }
 
-        public Vertex(int x, int y, float cost = Infinity)
+        public Vertex(int x, int y, float cost = defaultCost)
         {
             Edges = new LinkedList<Edge>();
             Position = new Vector(x, y);
@@ -66,7 +66,7 @@ namespace Src.graph
 
         private bool HasCalculatedDistance()
         {
-            return Math.Abs(Cost - Infinity) > 0;
+            return Math.Abs(Cost - defaultCost) > 0;
         }
     }
 }

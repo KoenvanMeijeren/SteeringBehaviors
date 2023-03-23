@@ -12,6 +12,7 @@ namespace SteeringCS.entity
         protected const double _movementMargin = 0.5;
         protected int _graphicIterator = 0;
         protected const int _graphicIteratorLimit = 3;
+        protected bool _isDrawDirectionRight;
 
         protected Image _currentGraphics;
 
@@ -32,6 +33,16 @@ namespace SteeringCS.entity
             IsDirectionRight = Velocity.X > _movementMargin;
             IsDirectionUpwards = Velocity.Y < -_movementMargin;
             IsDirectionDownwards = Velocity.Y > _movementMargin;
+
+            if (Velocity.X > _movementMargin)
+            {
+                _isDrawDirectionRight = true;
+            }
+
+            if (Velocity.X < -_movementMargin)
+            {
+                _isDrawDirectionRight = false;
+            }
         }
 
         protected abstract void CalculateGraphic();
