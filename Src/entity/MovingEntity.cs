@@ -12,6 +12,9 @@ namespace Src.entity
         public Vector Velocity { get; set; }
         public float Mass { get; set; }
         public float MaxSpeed { get; set; }
+        public bool IsDirectionRight { get; set; }
+        public bool IsDirectionUpwards { get; set; }
+        public bool IsDirectionDownwards { get; set; }
 
         public ISteeringBehavior SteeringBehavior { get; private set; }
 
