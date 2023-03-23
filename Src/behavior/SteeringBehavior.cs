@@ -25,7 +25,7 @@ namespace Src.behavior
             return MovingEntity.Velocity;
         }
 
-        public bool ShouldAvoidObstacles()
+        public virtual bool ShouldAvoidObstacles()
         {
             return _shouldAvoidObstacles;
         }
