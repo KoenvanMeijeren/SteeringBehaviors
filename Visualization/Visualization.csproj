@@ -71,13 +71,13 @@
     <Compile Include="entity\Goomba.cs" />
     <Compile Include="entity\Luigi.cs" />
     <Compile Include="entity\Mario.cs" />
-    <Compile Include="entity\Vehicle.cs" />
     <Compile Include="DebugForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DebugForm.Designer.cs">
       <DependentUpon>DebugForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="entity\MovingEntityVisualization.cs" />
     <Compile Include="graph\GraphVisualizer.cs" />
     <Compile Include="grid\PathTileVisualizer.cs" />
     <Compile Include="grid\WallTileVisualizer.cs" />
