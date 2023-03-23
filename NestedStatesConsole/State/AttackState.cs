@@ -12,21 +12,21 @@ namespace NestedStatesConsole.State
         {
             Player = player;
         }
-        
+
         public void ChangeState(IAttackState newState)
         {
             _attackState?.Exit();
             _attackState = newState;
             _attackState.Enter();
         }
-        
+
         public void Enter()
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Start the fight!");
             Console.ResetColor();
-            
+
             ChangeState(new DoAttackState(this));
         }
 
@@ -43,7 +43,7 @@ namespace NestedStatesConsole.State
             Console.ResetColor();
         }
     }
-    
+
     public class RegenerateAttackPowerState : IAttackState
     {
         public AttackState AttackState { get; }
@@ -52,7 +52,7 @@ namespace NestedStatesConsole.State
         {
             AttackState = attackState;
         }
-        
+
         public void Enter()
         {
             Console.BackgroundColor = ConsoleColor.DarkYellow;
@@ -72,7 +72,7 @@ namespace NestedStatesConsole.State
             {
                 AttackState.ChangeState(new DoAttackState(AttackState));
             }
-            
+
             Console.ResetColor();
         }
 
@@ -84,7 +84,7 @@ namespace NestedStatesConsole.State
             Console.ResetColor();
         }
     }
-    
+
     public class DoAttackState : IAttackState
     {
         public AttackState AttackState { get; }
@@ -93,10 +93,10 @@ namespace NestedStatesConsole.State
         {
             AttackState = attackState;
         }
-        
+
         public void Enter()
         {
-            
+
         }
 
         public void Execute()

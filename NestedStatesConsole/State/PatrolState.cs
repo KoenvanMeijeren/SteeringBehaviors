@@ -10,7 +10,7 @@ namespace NestedStatesConsole.State
         {
             Player = player;
         }
-        
+
         public void Enter()
         {
             Console.BackgroundColor = ConsoleColor.DarkGreen;
@@ -39,7 +39,7 @@ namespace NestedStatesConsole.State
             {
                 Player.ChangeState(new HideState(Player));
             }
-            
+
             Console.ResetColor();
         }
 

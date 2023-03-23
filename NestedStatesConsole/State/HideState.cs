@@ -10,7 +10,7 @@ namespace NestedStatesConsole.State
         {
             Player = player;
         }
-        
+
         public void Enter()
         {
             Console.BackgroundColor = ConsoleColor.Blue;
@@ -30,6 +30,7 @@ namespace NestedStatesConsole.State
             {
                 Player.ChangeState(new PatrolState(Player));
             }
+
             Console.ResetColor();
         }
 

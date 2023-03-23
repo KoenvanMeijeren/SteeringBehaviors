@@ -9,8 +9,10 @@ namespace NestedStatesConsole
         {
             Player player = new Player();
 
-            Timer timer = new Timer(1000);
-            timer.AutoReset = true; 
+            Timer timer = new Timer(1000)
+            {
+                AutoReset = true
+            };
             timer.Elapsed += player.Update;
             timer.Start();
             Console.ReadLine();
