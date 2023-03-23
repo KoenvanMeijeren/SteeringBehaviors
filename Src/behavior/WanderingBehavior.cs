@@ -19,7 +19,7 @@ namespace Src.behavior
         private readonly int _randomClampedXPosition, _randomClampedYPosition;
         private double _wanderTheta = Math.PI / 2;
 
-        public WanderingBehavior(IMovingEntity movingEntity) : base(movingEntity)
+        public WanderingBehavior(IMovingEntity movingEntity, bool shouldAvoidObstacles = true) : base(movingEntity, shouldAvoidObstacles)
         {
             _randomClampedXPosition = Randomizer.RandomClamped();
             _randomClampedYPosition = Randomizer.RandomClamped();
@@ -36,11 +36,6 @@ namespace Src.behavior
             SelectedPoint = TargetCircle.Add(xPosition, yPosition);
 
             return ArrivingBehavior.Calculate(MovingEntity, SelectedPoint);
-        }
-
-        public override bool ShouldAvoidObstacles()
-        {
-            return true;
         }
     }
 }

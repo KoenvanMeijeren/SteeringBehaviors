@@ -5,7 +5,7 @@ namespace Src.behavior
 {
     public class FleeingBehavior : SteeringBehavior
     {
-        public FleeingBehavior(IMovingEntity movingEntity) : base(movingEntity)
+        public FleeingBehavior(IMovingEntity movingEntity, bool shouldAvoidObstacles = true) : base(movingEntity, shouldAvoidObstacles)
         {
         }
 
@@ -18,11 +18,6 @@ namespace Src.behavior
             Vector actualVelocity = desiredVelocity - MovingEntity.Velocity;
 
             return actualVelocity;
-        }
-
-        public override bool ShouldAvoidObstacles()
-        {
-            return true;
         }
     }
 }
