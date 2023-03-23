@@ -21,6 +21,7 @@ namespace Src.behavior
 
         public override Vector Calculate()
         {
+            IGrid grid = MovingEntity.World.Grid;
             Vector currentPosition = MovingEntity.Position;
             Vector currentVelocity = MovingEntity.Velocity;
 
@@ -48,9 +49,9 @@ namespace Src.behavior
             };
 
             MostThreateningObjects = new List<Tuple<Vector, Vector>>();
-            foreach ((Vector positionAhead, Vector positionAheadHalf) in AheadPositions)
+            foreach ((_, Vector positionAheadHalf) in AheadPositions)
             {
-                FindMostThreateningObjects(positionAhead, positionAheadHalf);
+                FindMostThreateningObjects(grid, positionAheadHalf);
             }
 
             if (MostThreateningObjects.Count <= 0)
@@ -71,9 +72,8 @@ namespace Src.behavior
             return avoidanceVelocity.IsEmpty() ? new Vector(0, 0) : avoidanceVelocity;
         }
 
-        private void FindMostThreateningObjects(Vector aheadPosition, Vector aheadHalfPosition)
+        private void FindMostThreateningObjects(IGrid grid, Vector aheadPosition)
         {
-            IGrid grid = MovingEntity.World.Grid;
             int tileRow = grid.GetCoordinateOfTile((int)aheadPosition.X);
             int tileColumn = grid.GetCoordinateOfTile((int)aheadPosition.Y);
 
@@ -87,9 +87,9 @@ namespace Src.behavior
                         continue;
                     }
 
-                    if (aheadHalfPosition.IsInRange(wallTile.Position, wallTile.PositionEnd))
+                    if (aheadPosition.IsInRange(wallTile.Position, wallTile.PositionEnd))
                     {
-                        MostThreateningObjects.Add(new Tuple<Vector, Vector>(aheadHalfPosition, wallTile.PositionCenter));
+                        MostThreateningObjects.Add(new Tuple<Vector, Vector>(aheadPosition, wallTile.PositionCenter));
                     }
                 }
             }
