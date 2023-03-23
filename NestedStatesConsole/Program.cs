@@ -1,12 +1,19 @@
 ﻿using System;
+using System.Timers;
 
 namespace NestedStatesConsole
 {
-    internal static class Program
+    public static class Program
     {
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Player player = new Player();
+
+            Timer timer = new Timer(1000);
+            timer.AutoReset = true; 
+            timer.Elapsed += player.Update;
+            timer.Start();
+            Console.ReadLine();
         }
     }
 }
