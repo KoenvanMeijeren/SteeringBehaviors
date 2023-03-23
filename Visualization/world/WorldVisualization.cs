@@ -95,9 +95,9 @@ namespace SteeringCS.world
                 if (playerRender.CollisionAvoidingBehavior is ISteeringBehaviorVisualizer playerCollisionBehaviorVisualizer)
                 {
                     playerCollisionBehaviorVisualizer.Render(graphics);
-                }            
+                }
             }
-            
+
             if (Rescuee is MovingEntity rescueeRender)
             {
                 if (rescueeRender.SteeringBehavior is ISteeringBehaviorVisualizer rescueeSteeringBehaviorVisualizer)
@@ -108,7 +108,7 @@ namespace SteeringCS.world
                 if (rescueeRender.CollisionAvoidingBehavior is ISteeringBehaviorVisualizer rescueeCollisionBehaviorVisualizer)
                 {
                     rescueeCollisionBehaviorVisualizer.Render(graphics);
-                }            
+                }
             }
         }
 
@@ -131,7 +131,7 @@ namespace SteeringCS.world
             {
                 playerSteeringVisualizer.RenderVelocity(graphics);
             }
-            
+
             if (Rescuee is MovingEntity rescuee && rescuee.SteeringBehavior is ISteeringBehaviorVisualizer rescueeSteeringVisualizer)
             {
                 rescueeSteeringVisualizer.RenderVelocity(graphics);
