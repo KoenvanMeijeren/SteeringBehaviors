@@ -33,20 +33,22 @@ namespace SteeringCS.behavior
             Vector position = _steeringBehavior.GetEntityPosition();
 
             const int CenterRadius = 2, CenterSize = CenterRadius * 2;
-            Pen penPositionAhead = new Pen(s_positionAheadRenderColor, 2);
-            Pen penPositionAheadHalf = new Pen(s_positionAheadHalfRenderColor, 2);
             Pen penThreateningObject = new Pen(s_threateningObjectRenderColor, 2);
             Pen penAvoidancePosition = new Pen(s_avoidancePositionRenderColor, 2);
 
             Point positionPoint = new Point((int)position.X, (int)position.Y);
 
+            Color positionAheadColor = s_positionAheadRenderColor;
             foreach ((Vector positionAhead, Vector positionAheadHalf) in _steeringBehavior.AheadPositions)
             {
                 Point positionAheadPoint = new Point((int)positionAhead.X, (int)positionAhead.Y);
                 Point positionAheadHalfPoint = new Point((int)positionAheadHalf.X, (int)positionAheadHalf.Y);
 
+                Pen penPositionAhead = new Pen(positionAheadColor, 2);
+                Pen penPositionAheadHalf = new Pen(s_positionAheadHalfRenderColor, 2);
                 graphic.DrawLine(penPositionAhead, positionPoint, positionAheadPoint);
                 graphic.DrawLine(penPositionAheadHalf, positionPoint, positionAheadHalfPoint);
+                positionAheadColor = Color.Blue;
             }
 
             Vector positionAfterAvoidance = _steeringBehavior.AvoidancePosition;
