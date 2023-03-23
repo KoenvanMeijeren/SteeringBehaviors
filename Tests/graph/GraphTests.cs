@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
-using Src.entity;
 using Src.graph;
 using Src.util;
 using Tests.fixtures.world;
@@ -67,8 +66,7 @@ namespace Tests.graph
         public void Create_04_GridGraph_Ok()
         {
             // Arrange
-            List<IMovingEntity> entities = new List<IMovingEntity>();
-            Graph graph = GraphBuilder.CreateGridGraph(100, 100, entities);
+            Graph graph = GraphBuilder.CreateGridGraph(100, 100);
 
             // Act
             string[] resultLines = graph.ToString().Split(new string[] { "\r\n" }, StringSplitOptions.None);

@@ -16,9 +16,9 @@ namespace Tests.entity
             Vector seekingEntityPosition = new Vector(35, 35);
             Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
-            SeekingBehavior steeringBehavior = new SeekingBehavior(world.SeekingEntity);
-            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.SeekingEntity);
-            IMovingEntity movingEntity = world.SeekingEntity;
+            SeekingBehavior steeringBehavior = new SeekingBehavior(world.Rescue);
+            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.Rescue);
+            IMovingEntity movingEntity = world.Rescue;
             movingEntity.SetSteeringBehavior(steeringBehavior, collisionBehavior);
 
             // Act & assert
@@ -44,9 +44,9 @@ namespace Tests.entity
             Vector seekingEntityPosition = new Vector(35, 35);
             Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
-            SeekingBehavior steeringBehavior = new SeekingBehavior(world.SeekingEntity, false);
-            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.SeekingEntity);
-            IMovingEntity movingEntity = world.SeekingEntity;
+            SeekingBehavior steeringBehavior = new SeekingBehavior(world.Rescue, false);
+            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.Rescue);
+            IMovingEntity movingEntity = world.Rescue;
             movingEntity.SetSteeringBehavior(steeringBehavior, collisionBehavior);
 
             // Act
@@ -64,7 +64,7 @@ namespace Tests.entity
             Vector seekingEntityPosition = new Vector(35, 35);
             Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
-            IMovingEntity movingEntity = world.SeekingEntity;
+            IMovingEntity movingEntity = world.Rescue;
 
             // Act & assert
             movingEntity.Update(0f);

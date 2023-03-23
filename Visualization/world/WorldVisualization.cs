@@ -17,34 +17,44 @@ namespace SteeringCS.world
         {
         }
 
-        protected override void SetEntities()
+        protected override List<IEnemy> GetEnemies()
         {
             Goomba goomba = new Goomba(new Vector(Width / 2, Height / 2), this);
-            Enemies.Add(goomba);
+            return new List<IEnemy> { goomba };
+        }
 
-            Player = new Mario(new Vector(100, 40), this);
-            Player.SetSteeringBehavior(
-                SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, Player),
-                new CollisionAvoidingBehaviorVisualizer(Player)
+        protected override IPlayer GetPlayer()
+        {
+            IPlayer player = new Mario(new Vector(100, 40), this);
+            player.SetSteeringBehavior(
+                SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, player),
+                new CollisionAvoidingBehaviorVisualizer(player)
             );
 
-            Rescuee = new Luigi(new Vector(100, 40), this);
-            Rescuee.SetSteeringBehavior(
-                SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.PathfindingBehavior, Rescuee),
-                new CollisionAvoidingBehaviorVisualizer(Rescuee)
+            return player;
+        }
+
+        protected override IRescue GetRescue()
+        {
+            IRescue rescue = new Luigi(new Vector(100, 40), this);
+            rescue.SetSteeringBehavior(
+                SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.PathfindingBehavior, rescue),
+                new CollisionAvoidingBehaviorVisualizer(rescue)
             );
+
+            return rescue;
         }
 
         public void EditPopulation(SteeringBehaviorOptions selectedOption, int mass, int maxSpeed)
         {
-            foreach (IMovingEntity entity in Enemies)
+            foreach (IEnemy enemy in Enemies)
             {
-                entity.SetSteeringBehavior(
-                    SteeringBehaviorVisualizationFactory.CreateFromEnum(selectedOption, entity),
-                    new CollisionAvoidingBehaviorVisualizer(entity)
+                enemy.SetSteeringBehavior(
+                    SteeringBehaviorVisualizationFactory.CreateFromEnum(selectedOption, enemy),
+                    new CollisionAvoidingBehaviorVisualizer(enemy)
                 );
-                entity.Mass = mass;
-                entity.MaxSpeed = maxSpeed;
+                enemy.Mass = mass;
+                enemy.MaxSpeed = maxSpeed;
             }
         }
 

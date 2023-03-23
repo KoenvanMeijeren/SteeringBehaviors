@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Src.behavior;
 using Src.entity;
 using Src.grid;
 using Src.util;
@@ -10,38 +9,27 @@ namespace Tests.fixtures.world
 {
     public class WorldTest : WorldBase
     {
-        public readonly IMovingEntity SeekingEntity;
-
         public WorldTest(int width, int height, Vector seekingEntityPosition, Vector targetEntityPosition) : base(width, height)
         {
-            SeekingEntity = new VehicleTest(seekingEntityPosition, this);
             Player = new VehicleTest(targetEntityPosition, this);
-            Enemies.Add(SeekingEntity);
-            Grid = new Grid(width, height, Enemies, false);
+            Rescue = new VehicleTest(seekingEntityPosition, this);
+            Grid = new Grid(width, height, false);
             Grid.AddOrMoveEntity(Player);
         }
 
-        protected override List<IMovingEntity> SetEntities()
+        protected override List<IEnemy> GetEnemies()
         {
-            return new List<IMovingEntity>();
+            return new List<IEnemy>();
         }
 
-        public void EditPopulation(SteeringBehaviorOptions selectedOption, int mass, int maxSpeed)
+        protected override IPlayer GetPlayer()
         {
-            foreach (IMovingEntity entity in Enemies)
-            {
-                entity.SetSteeringBehavior(
-                    SteeringBehaviorFactory.CreateFromEnum(selectedOption, entity),
-                    new CollisionAvoidingBehavior(entity)
-                );
-                entity.Mass = mass;
-                entity.MaxSpeed = maxSpeed;
-            }
+            return null;
         }
 
-        public List<IMovingEntity> GetEntities()
+        protected override IRescue GetRescue()
         {
-            return Enemies;
+            return null;
         }
     }
 }

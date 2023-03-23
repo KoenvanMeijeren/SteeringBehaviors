@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Src.entity;
-using Src.graph;
+﻿using Src.graph;
 using Src.grid;
 
 namespace Tests.graph
@@ -50,9 +48,9 @@ namespace Tests.graph
             return new Graph(vertices);
         }
 
-        public static Graph CreateGridGraph(int width, int height, List<IMovingEntity> entities)
+        public static Graph CreateGridGraph(int width, int height)
         {
-            Grid grid = new Grid(width, height, entities, false);
+            Grid grid = new Grid(width, height, false);
 
             return grid.Graph;
         }

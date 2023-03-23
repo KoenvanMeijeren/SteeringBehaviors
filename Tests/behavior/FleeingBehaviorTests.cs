@@ -17,7 +17,7 @@ namespace Tests.behavior
             Vector seekingEntityPosition = new Vector(seekingPositions[0], seekingPositions[1]);
             Vector targetEntityPosition = new Vector(targetPositions[0], targetPositions[1]);
             WorldTest world = new WorldTest(width, height, seekingEntityPosition, targetEntityPosition);
-            ISteeringBehavior steeringBehavior = new FleeingBehavior(world.SeekingEntity);
+            ISteeringBehavior steeringBehavior = new FleeingBehavior(world.Rescue);
 
             // Act
             Vector velocity = steeringBehavior.Calculate();
@@ -33,7 +33,7 @@ namespace Tests.behavior
             Vector seekingEntityPosition = new Vector(seekingPositions[0], seekingPositions[1]);
             Vector targetEntityPosition = new Vector(targetPositions[0], targetPositions[1]);
             WorldTest world = new WorldTest(width, height, seekingEntityPosition, targetEntityPosition);
-            ISteeringBehavior steeringBehavior = new FleeingBehavior(world.SeekingEntity);
+            ISteeringBehavior steeringBehavior = new FleeingBehavior(world.Rescue);
 
             // Act
             Vector velocity = steeringBehavior.Calculate();

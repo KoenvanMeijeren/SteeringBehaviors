@@ -17,7 +17,7 @@ namespace Tests.util
             Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             Vector position = new Vector(startPositionX, startPositionY);
-            Vector velocity = world.SeekingEntity.Velocity + new Vector(addVelocityX, addVelocityY);
+            Vector velocity = world.Rescue.Velocity + new Vector(addVelocityX, addVelocityY);
 
             // Act
             Vector newVelocity = CollisionHandler.AlterVectorToStayInsideOfWorld(position, velocity, world);

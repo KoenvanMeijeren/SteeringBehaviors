@@ -7,7 +7,7 @@ namespace Src.world
     public abstract class WorldBase : IWorld
     {
         public IPlayer Player { get; protected set; }
-        public IRescuee Rescuee { get; protected set; }
+        public IRescue Rescue { get; protected set; }
 
         protected readonly List<IEnemy> Enemies;
         public IGrid Grid { get; protected set; }
@@ -19,23 +19,26 @@ namespace Src.world
         {
             Width = width;
             Height = height;
-            Enemies = new List<IEnemy>();
-            SetEntities();
+            Enemies = GetEnemies();
+            Player = GetPlayer();
+            Rescue = GetRescue();
             Grid = new Grid(width, height);
             Grid.AddOrMoveEntity(Player);
         }
 
-        protected abstract void SetEntities();
+        protected abstract List<IEnemy> GetEnemies();
+        protected abstract IPlayer GetPlayer();
+        protected abstract IRescue GetRescue();
 
         public void Update(float timeElapsed)
         {
             Player.Update(timeElapsed);
-            Rescuee.Update(timeElapsed);
-
             Grid.AddOrMoveEntity(Player);
-            Grid.AddOrMoveEntity(Rescuee);
 
-            foreach (IMovingEntity entity in Enemies)
+            Rescue.Update(timeElapsed);
+            Grid.AddOrMoveEntity(Rescue);
+
+            foreach (IEnemy entity in Enemies)
             {
                 entity.Update(timeElapsed);
                 Grid.AddOrMoveEntity(entity);

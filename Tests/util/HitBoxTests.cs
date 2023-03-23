@@ -13,7 +13,7 @@ namespace Tests.util
             Vector seekingEntityPosition = new Vector(35, 35);
             Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
-            HitBox hitBox = world.SeekingEntity.HitBox;
+            HitBox hitBox = world.Rescue.HitBox;
 
             // Act & assert
             Assert.AreEqual("(30,30)", hitBox.UpperLeftCorner.ToString());

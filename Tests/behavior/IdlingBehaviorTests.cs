@@ -19,7 +19,7 @@ namespace Tests.behavior
             Vector seekingEntityPosition = new Vector(seekingPositions[0], seekingPositions[1]);
             Vector targetEntityPosition = new Vector(targetPositions[0], targetPositions[1]);
             WorldTest world = new WorldTest(width, height, seekingEntityPosition, targetEntityPosition);
-            ISteeringBehavior steeringBehavior = new IdlingBehavior(world.SeekingEntity);
+            ISteeringBehavior steeringBehavior = new IdlingBehavior(world.Rescue);
 
             // Act
             Vector velocity = steeringBehavior.Calculate();
@@ -35,7 +35,7 @@ namespace Tests.behavior
             Vector seekingEntityPosition = new Vector(seekingPositions[0], seekingPositions[1]);
             Vector targetEntityPosition = new Vector(targetPositions[0], targetPositions[1]);
             WorldTest world = new WorldTest(width, height, seekingEntityPosition, targetEntityPosition);
-            ISteeringBehavior steeringBehavior = new IdlingBehavior(world.SeekingEntity);
+            ISteeringBehavior steeringBehavior = new IdlingBehavior(world.Rescue);
 
             // Act
             Vector velocity = steeringBehavior.Calculate();
@@ -55,9 +55,9 @@ namespace Tests.behavior
             Vector seekingEntityPosition = new Vector(35, 35);
             Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
-            ISteeringBehavior steeringBehavior = new IdlingBehavior(world.SeekingEntity);
-            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.SeekingEntity);
-            IMovingEntity movingEntity = world.SeekingEntity;
+            ISteeringBehavior steeringBehavior = new IdlingBehavior(world.Rescue);
+            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.Rescue);
+            IMovingEntity movingEntity = world.Rescue;
             movingEntity.SetSteeringBehavior(steeringBehavior, collisionBehavior);
 
             // Act & assert
@@ -81,9 +81,9 @@ namespace Tests.behavior
             Vector seekingEntityPosition = new Vector(35, 35);
             Vector targetEntityPosition = new Vector(200, 200);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
-            ISteeringBehavior steeringBehavior = new IdlingBehavior(world.SeekingEntity);
-            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.SeekingEntity);
-            IMovingEntity movingEntity = world.SeekingEntity;
+            ISteeringBehavior steeringBehavior = new IdlingBehavior(world.Rescue);
+            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.Rescue);
+            IMovingEntity movingEntity = world.Rescue;
             movingEntity.SetSteeringBehavior(steeringBehavior, collisionBehavior);
 
             // Act & assert
