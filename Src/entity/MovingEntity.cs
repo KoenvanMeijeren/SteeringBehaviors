@@ -9,19 +9,20 @@ namespace Src.entity
     {
         public const int MassDefault = 30, MaxSpeedDefault = 150;
         public IWorld World { get; }
-        public float Height { get; protected set; }
-        public float Width { get; protected set; }
+        public float Height { get; }
+        public float Width { get; }
         public float Mass { get; set; }
         public float MaxSpeed { get; set; }
-        public HitBox HitBox { get; protected set; }
+        public HitBox HitBox { get; }
         public Vector Position { get; set; }
-        public Vector Velocity { get; set; }
-        public bool IsDirectionRight { get; set; }
-        public bool IsDirectionUpwards { get; set; }
-        public bool IsDirectionDownwards { get; set; }
+        public Vector Velocity { get; protected set; }
+
+        public bool IsDirectionLeft { get; protected set; }
+        public bool IsDirectionRight { get; protected set; }
+        public bool IsDirectionUpwards { get; protected set; }
+        public bool IsDirectionDownwards { get; protected set; }
 
         public ISteeringBehavior SteeringBehavior { get; private set; }
-
         public ISteeringBehavior CollisionAvoidingBehavior { get; private set; }
 
         protected MovingEntity(Vector position, IWorld world, float height, float width)
