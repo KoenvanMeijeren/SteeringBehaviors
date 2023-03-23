@@ -1,21 +1,12 @@
-﻿using Src.entity;
-using Src.util;
+﻿using Src.util;
 using Src.world;
-using SteeringCS.util;
 using System;
 using System.Drawing;
 
 namespace SteeringCS.entity
 {
-    public class Mario : MovingEntity, IRender
+    public class Mario : MovingEntityVisualization
     {
-        private readonly Color _shadowColor = Color.FromArgb(100, Color.Black);
-        private const double _movementMargin = 0.5;
-        private int _graphicIterator = 0;
-        private const int _graphicIteratorLimit = 3;
-
-        private Image _currentGraphics;
-
         private static readonly Image s_playerGraphicsRight = Image.FromFile("graphics/mario/mario-right.png");
         private static readonly Image s_playerGraphicsRightWalk1 = Image.FromFile("graphics/mario/mario-right-walk-1.png");
         private static readonly Image s_playerGraphicsRightWalk2 = Image.FromFile("graphics/mario/mario-right-walk-2.png");
@@ -29,25 +20,11 @@ namespace SteeringCS.entity
             Velocity = new Vector(0, 0);
         }
 
-        public void Render(Graphics graphic)
-        {
-            CalculateDirection();
-            CalculateGraphic();
-            RenderCurrentGraphic(graphic);
-        }
-
-        private void CalculateDirection()
-        {
-            IsDirectionRight = Velocity.X > _movementMargin;
-            IsDirectionUpwards = Velocity.Y < -_movementMargin;
-            IsDirectionDownwards = Velocity.Y > _movementMargin;
-        }
-
-        private void CalculateGraphic()
+        protected override void CalculateGraphic()
         {
             if (Math.Abs(Velocity.X) < _movementMargin && Math.Abs(Velocity.Y) < _movementMargin)
             {
-                if (IsDirectionRight)
+                if (IsDirectionRight && !IsDirectionLeft)
                 {
                     _currentGraphics = s_playerGraphicsRight;
                     return;
@@ -57,7 +34,7 @@ namespace SteeringCS.entity
                 return;
             }
 
-            if (IsDirectionRight)
+            if (IsDirectionRight && !IsDirectionLeft)
             {
                 if (_graphicIterator / _graphicIteratorLimit < 1)
                 {
@@ -108,14 +85,6 @@ namespace SteeringCS.entity
                     _graphicIterator = 0;
                     break;
             }
-        }
-
-        private void RenderCurrentGraphic(Graphics graphic)
-        {
-            Brush brush = new SolidBrush(_shadowColor);
-            graphic.FillEllipse(brush, (int)Position.X - Width / 2, (int)Position.Y + Height / 5, Width, Height / 2);
-
-            graphic.DrawImage(_currentGraphics, (int)Position.X - Width / 2, (int)Position.Y - (int)(Height * 1.5));
         }
     }
 }

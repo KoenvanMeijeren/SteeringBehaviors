@@ -77,6 +77,7 @@
     <Compile Include="DebugForm.Designer.cs">
       <DependentUpon>DebugForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="entity\MovingEntityVisualization.cs" />
     <Compile Include="graph\GraphVisualizer.cs" />
     <Compile Include="grid\PathTileVisualizer.cs" />
     <Compile Include="grid\WallTileVisualizer.cs" />
