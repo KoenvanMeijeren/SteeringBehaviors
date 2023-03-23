@@ -71,7 +71,6 @@
     <Compile Include="entity\Goomba.cs" />
     <Compile Include="entity\Luigi.cs" />
     <Compile Include="entity\Mario.cs" />
-    <Compile Include="entity\Vehicle.cs" />
     <Compile Include="DebugForm.cs">
       <SubType>Form</SubType>
     </Compile>
