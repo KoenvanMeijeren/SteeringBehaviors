@@ -11,7 +11,7 @@ namespace Src.behavior
         public List<Tuple<Vector, Vector>> MostThreateningObjects { get; private set; }
         public List<Tuple<Vector, Vector>> AheadPositions { get; private set; }
         public Vector AvoidancePosition { get; private set; }
-        private const int MaxSeeAhead = 50, MaxSeeAheadHalf = MaxSeeAhead / 2;
+        private const int MaxSeeAhead = 30, MaxSeeAheadHalf = MaxSeeAhead / 2;
 
         public CollisionAvoidingBehavior(IMovingEntity movingEntity) : base(movingEntity)
         {
@@ -24,12 +24,26 @@ namespace Src.behavior
             Vector currentPosition = MovingEntity.Position;
             Vector currentVelocity = MovingEntity.Velocity;
 
-            Vector vectorStraightForward = currentVelocity.Normalize();
+            Tuple<Vector, Vector, Vector> aheadPositions = AheadPositionsUtil.Generate(
+                currentVelocity,
+                MovingEntity.IsDirectionRight, 
+                MovingEntity.IsDirectionUpwards, 
+                MovingEntity.IsDirectionDownwards
+            );
+
             AheadPositions = new List<Tuple<Vector, Vector>>
             {
                 new Tuple<Vector, Vector>(
-                    currentPosition + (vectorStraightForward * MaxSeeAhead),
-                    currentPosition + (vectorStraightForward * MaxSeeAheadHalf)
+                    currentPosition + (aheadPositions.Item1.Normalize() * MaxSeeAhead),
+                    currentPosition + (aheadPositions.Item1.Normalize() * MaxSeeAheadHalf)
+                ),
+                new Tuple<Vector, Vector>(
+                    currentPosition + (aheadPositions.Item2.Normalize() * MaxSeeAhead),
+                    currentPosition + (aheadPositions.Item2.Normalize() * MaxSeeAheadHalf)
+                ),
+                new Tuple<Vector, Vector>(
+                    currentPosition + (aheadPositions.Item3.Normalize() * MaxSeeAhead),
+                    currentPosition + (aheadPositions.Item3.Normalize() * MaxSeeAheadHalf)
                 ),
             };
 
@@ -54,13 +68,7 @@ namespace Src.behavior
                 AvoidancePosition = aheadPosition + avoidanceVelocity;
             }
 
-            if (avoidanceVelocity.IsEmpty())
-            {
-                return new Vector(0, 0);
-            }
-
-            return avoidanceVelocity;
-
+            return avoidanceVelocity.IsEmpty() ? new Vector(0, 0) : avoidanceVelocity;
         }
 
         private void FindMostThreateningObjects(Vector aheadPosition, Vector aheadHalfPosition)
