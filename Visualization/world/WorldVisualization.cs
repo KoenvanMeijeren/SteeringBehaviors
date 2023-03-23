@@ -34,15 +34,15 @@ namespace SteeringCS.world
             return player;
         }
 
-        protected override IRescue GetRescue()
+        protected override IRescuee GetRescuee()
         {
-            IRescue rescue = new Luigi(new Vector(100, 40), this);
-            rescue.SetSteeringBehavior(
-                SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.PathfindingBehavior, rescue),
-                new CollisionAvoidingBehaviorVisualizer(rescue)
+            IRescuee rescuee = new Luigi(new Vector(100, 40), this);
+            rescuee.SetSteeringBehavior(
+                SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.PathfindingBehavior, rescuee),
+                new CollisionAvoidingBehaviorVisualizer(rescuee)
             );
 
-            return rescue;
+            return rescuee;
         }
 
         public void EditPopulation(SteeringBehaviorOptions selectedOption, int mass, int maxSpeed)
@@ -60,73 +60,81 @@ namespace SteeringCS.world
 
         public void RenderHitBox(Graphics graphics)
         {
-            Enemies.ForEach(entity =>
-            {
-                HitBoxVisualizer.Render(graphics, entity.HitBox);
-            });
-
+            Enemies.ForEach(enemy => HitBoxVisualizer.Render(graphics, enemy.HitBox));
             HitBoxVisualizer.Render(graphics, Player.HitBox);
+            HitBoxVisualizer.Render(graphics, Rescuee.HitBox);
         }
 
         public void RenderSteeringBehavior(Graphics graphics)
         {
-            Enemies.ForEach(entity =>
+            Enemies.ForEach(enemy =>
             {
-                if (!(entity is MovingEntity entityRender))
+                if (!(enemy is MovingEntity enemyRender))
                 {
                     return;
                 }
 
-                if (entityRender.SteeringBehavior is ISteeringBehaviorVisualizer steeringBehaviorEntityVisualizer)
+                if (enemyRender.SteeringBehavior is ISteeringBehaviorVisualizer enemySteeringBehaviorVisualizer)
                 {
-                    steeringBehaviorEntityVisualizer.Render(graphics);
+                    enemySteeringBehaviorVisualizer.Render(graphics);
                 }
 
-                if (entityRender.CollisionAvoidingBehavior is ISteeringBehaviorVisualizer collisionBehaviorEntityVisualizer)
+                if (enemyRender.CollisionAvoidingBehavior is ISteeringBehaviorVisualizer enemyCollisionBehaviorVisualizer)
                 {
-                    collisionBehaviorEntityVisualizer.Render(graphics);
+                    enemyCollisionBehaviorVisualizer.Render(graphics);
                 }
             });
 
-            if (!(Player is MovingEntity targetRender))
+            if (Player is MovingEntity playerRender)
             {
-                return;
-            }
+                if (playerRender.SteeringBehavior is ISteeringBehaviorVisualizer playerSteeringVisualizer)
+                {
+                    playerSteeringVisualizer.Render(graphics);
+                }
 
-            if (targetRender.SteeringBehavior is ISteeringBehaviorVisualizer steeringBehaviorTargetVisualizer)
-            {
-                steeringBehaviorTargetVisualizer.Render(graphics);
+                if (playerRender.CollisionAvoidingBehavior is ISteeringBehaviorVisualizer playerCollisionBehaviorVisualizer)
+                {
+                    playerCollisionBehaviorVisualizer.Render(graphics);
+                }            
             }
-
-            if (targetRender.CollisionAvoidingBehavior is ISteeringBehaviorVisualizer collisionBehaviorTargetVisualizer)
+            
+            if (Rescuee is MovingEntity rescueeRender)
             {
-                collisionBehaviorTargetVisualizer.Render(graphics);
+                if (rescueeRender.SteeringBehavior is ISteeringBehaviorVisualizer rescueeSteeringBehaviorVisualizer)
+                {
+                    rescueeSteeringBehaviorVisualizer.Render(graphics);
+                }
+
+                if (rescueeRender.CollisionAvoidingBehavior is ISteeringBehaviorVisualizer rescueeCollisionBehaviorVisualizer)
+                {
+                    rescueeCollisionBehaviorVisualizer.Render(graphics);
+                }            
             }
         }
 
         public void RenderVelocity(Graphics graphics)
         {
-            Enemies.ForEach(entity =>
+            Enemies.ForEach(enemy =>
             {
-                if (!(entity is MovingEntity entityRender))
+                if (!(enemy is MovingEntity enemyRender))
                 {
                     return;
                 }
 
-                if (entityRender.SteeringBehavior is ISteeringBehaviorVisualizer entityVisualizer)
+                if (enemyRender.SteeringBehavior is ISteeringBehaviorVisualizer enemySteeringVisualizer)
                 {
-                    entityVisualizer.RenderVelocity(graphics);
+                    enemySteeringVisualizer.RenderVelocity(graphics);
                 }
             });
 
-            if (!(Player is MovingEntity targetRender))
+            if (Player is MovingEntity player && player.SteeringBehavior is ISteeringBehaviorVisualizer playerSteeringVisualizer)
             {
-                return;
+                playerSteeringVisualizer.RenderVelocity(graphics);
             }
-
-            if (targetRender.SteeringBehavior is ISteeringBehaviorVisualizer targetVisualizer)
+            
+            if (Rescuee is MovingEntity rescuee && rescuee.SteeringBehavior is ISteeringBehaviorVisualizer rescueeSteeringVisualizer)
             {
-                targetVisualizer.RenderVelocity(graphics);
+                rescueeSteeringVisualizer.RenderVelocity(graphics);
             }
         }
 

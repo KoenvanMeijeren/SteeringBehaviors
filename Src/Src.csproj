@@ -54,7 +54,7 @@
     <Compile Include="behavior\WanderingBehavior.cs" />
     <Compile Include="entity\IEnemy.cs" />
     <Compile Include="entity\IPlayer.cs" />
-    <Compile Include="entity\IRescue.cs" />
+    <Compile Include="entity\IRescuee.cs" />
     <Compile Include="util\AheadPositionsUtil.cs" />
     <Compile Include="util\HitBox.cs" />
     <Compile Include="entity\IMovingEntity.cs" />

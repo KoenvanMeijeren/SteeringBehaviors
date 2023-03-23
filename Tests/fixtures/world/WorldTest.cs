@@ -12,7 +12,7 @@ namespace Tests.fixtures.world
         public WorldTest(int width, int height, Vector seekingEntityPosition, Vector targetEntityPosition) : base(width, height)
         {
             Player = new VehicleTest(targetEntityPosition, this);
-            Rescue = new VehicleTest(seekingEntityPosition, this);
+            Rescuee = new VehicleTest(seekingEntityPosition, this);
             Grid = new Grid(width, height, false);
             Grid.AddOrMoveEntity(Player);
         }
@@ -27,7 +27,7 @@ namespace Tests.fixtures.world
             return null;
         }
 
-        protected override IRescue GetRescue()
+        protected override IRescuee GetRescuee()
         {
             return null;
         }

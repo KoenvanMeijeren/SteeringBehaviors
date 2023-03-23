@@ -6,7 +6,7 @@ namespace Src.world
     public interface IWorld
     {
         IPlayer Player { get; }
-        IRescue Rescue { get; }
+        IRescuee Rescuee { get; }
         IGrid Grid { get; }
 
         int Width { get; }
