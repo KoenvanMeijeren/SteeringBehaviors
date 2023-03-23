@@ -4,7 +4,7 @@ namespace Src.util
 {
     public class HitBox
     {
-        private readonly IGameEntity _entity;
+        private readonly IMovingEntity _entity;
 
         public Vector UpperLeftCorner
         {
@@ -58,7 +58,7 @@ namespace Src.util
             }
         }
 
-        public HitBox(IGameEntity entity)
+        public HitBox(IMovingEntity entity)
         {
             _entity = entity;
         }

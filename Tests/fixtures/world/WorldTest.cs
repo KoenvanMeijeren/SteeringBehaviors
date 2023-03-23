@@ -15,20 +15,20 @@ namespace Tests.fixtures.world
         public WorldTest(int width, int height, Vector seekingEntityPosition, Vector targetEntityPosition) : base(width, height)
         {
             SeekingEntity = new VehicleTest(seekingEntityPosition, this);
-            Target = new VehicleTest(targetEntityPosition, this);
-            Entities.Add(SeekingEntity);
-            Grid = new Grid(width, height, Entities, false);
-            Grid.AddOrMoveEntity(Target);
+            Player = new VehicleTest(targetEntityPosition, this);
+            Enemies.Add(SeekingEntity);
+            Grid = new Grid(width, height, Enemies, false);
+            Grid.AddOrMoveEntity(Player);
         }
 
-        protected override List<IMovingEntity> GetPopulation()
+        protected override List<IMovingEntity> SetEntities()
         {
             return new List<IMovingEntity>();
         }
 
         public void EditPopulation(SteeringBehaviorOptions selectedOption, int mass, int maxSpeed)
         {
-            foreach (IMovingEntity entity in Entities)
+            foreach (IMovingEntity entity in Enemies)
             {
                 entity.SetSteeringBehavior(
                     SteeringBehaviorFactory.CreateFromEnum(selectedOption, entity),
@@ -41,7 +41,7 @@ namespace Tests.fixtures.world
 
         public List<IMovingEntity> GetEntities()
         {
-            return Entities;
+            return Enemies;
         }
     }
 }

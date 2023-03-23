@@ -5,7 +5,8 @@ namespace Src.world
 {
     public interface IWorld
     {
-        IMovingEntity Target { get; }
+        IPlayer Player { get; }
+        IRescuee Rescuee { get; }
         IGrid Grid { get; }
 
         int Width { get; }

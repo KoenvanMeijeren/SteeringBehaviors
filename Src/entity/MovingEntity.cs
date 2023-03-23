@@ -5,13 +5,17 @@ using Src.world;
 namespace Src.entity
 {
 
-    public abstract class MovingEntity : BaseGameEntity, IMovingEntity
+    public abstract class MovingEntity : IPlayer, IEnemy, IRescuee
     {
         public const int MassDefault = 30, MaxSpeedDefault = 150;
-
-        public Vector Velocity { get; set; }
+        public IWorld World { get; }
+        public float Height { get; protected set; }
+        public float Width { get; protected set; }
         public float Mass { get; set; }
         public float MaxSpeed { get; set; }
+        public HitBox HitBox { get; protected set; }
+        public Vector Position { get; set; }
+        public Vector Velocity { get; set; }
         public bool IsDirectionRight { get; set; }
         public bool IsDirectionUpwards { get; set; }
         public bool IsDirectionDownwards { get; set; }
@@ -20,8 +24,13 @@ namespace Src.entity
 
         public ISteeringBehavior CollisionAvoidingBehavior { get; private set; }
 
-        protected MovingEntity(Vector position, IWorld world, float height, float width) : base(position, world, height, width)
+        protected MovingEntity(Vector position, IWorld world, float height, float width)
         {
+            Position = position;
+            World = world;
+            Height = height;
+            Width = width;
+            HitBox = new HitBox(this);
             Mass = MassDefault;
             MaxSpeed = MaxSpeedDefault;
             Velocity = new Vector(0, 0);
@@ -33,7 +42,7 @@ namespace Src.entity
             CollisionAvoidingBehavior = collisionAvoidingBehavior;
         }
 
-        public override void Update(float timeElapsed)
+        public void Update(float timeElapsed)
         {
             if (SteeringBehavior == null)
             {

@@ -17,25 +17,27 @@ namespace SteeringCS.world
         {
         }
 
-        protected override List<IMovingEntity> GetPopulation()
+        protected override void SetEntities()
         {
-            List<IMovingEntity> entities = new List<IMovingEntity>();
+            Goomba goomba = new Goomba(new Vector(Width / 2, Height / 2), this);
+            Enemies.Add(goomba);
 
-            Luigi vehicle = new Luigi(new Vector(Width / 2, Height / 2), this);
-            entities.Add(vehicle);
-
-            Target = new Mario(new Vector(100, 40), this);
-            Target.SetSteeringBehavior(
-                SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, Target),
-                new CollisionAvoidingBehaviorVisualizer(Target)
+            Player = new Mario(new Vector(100, 40), this);
+            Player.SetSteeringBehavior(
+                SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, Player),
+                new CollisionAvoidingBehaviorVisualizer(Player)
             );
 
-            return entities;
+            Rescuee = new Luigi(new Vector(100, 40), this);
+            Rescuee.SetSteeringBehavior(
+                SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.PathfindingBehavior, Rescuee),
+                new CollisionAvoidingBehaviorVisualizer(Rescuee)
+            );
         }
 
         public void EditPopulation(SteeringBehaviorOptions selectedOption, int mass, int maxSpeed)
         {
-            foreach (IMovingEntity entity in Entities)
+            foreach (IMovingEntity entity in Enemies)
             {
                 entity.SetSteeringBehavior(
                     SteeringBehaviorVisualizationFactory.CreateFromEnum(selectedOption, entity),
@@ -48,17 +50,17 @@ namespace SteeringCS.world
 
         public void RenderHitBox(Graphics graphics)
         {
-            Entities.ForEach(entity =>
+            Enemies.ForEach(entity =>
             {
                 HitBoxVisualizer.Render(graphics, entity.HitBox);
             });
 
-            HitBoxVisualizer.Render(graphics, Target.HitBox);
+            HitBoxVisualizer.Render(graphics, Player.HitBox);
         }
 
         public void RenderSteeringBehavior(Graphics graphics)
         {
-            Entities.ForEach(entity =>
+            Enemies.ForEach(entity =>
             {
                 if (!(entity is MovingEntity entityRender))
                 {
@@ -76,7 +78,7 @@ namespace SteeringCS.world
                 }
             });
 
-            if (!(Target is MovingEntity targetRender))
+            if (!(Player is MovingEntity targetRender))
             {
                 return;
             }
@@ -94,7 +96,7 @@ namespace SteeringCS.world
 
         public void RenderVelocity(Graphics graphics)
         {
-            Entities.ForEach(entity =>
+            Enemies.ForEach(entity =>
             {
                 if (!(entity is MovingEntity entityRender))
                 {
@@ -107,7 +109,7 @@ namespace SteeringCS.world
                 }
             });
 
-            if (!(Target is MovingEntity targetRender))
+            if (!(Player is MovingEntity targetRender))
             {
                 return;
             }

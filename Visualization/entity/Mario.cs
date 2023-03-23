@@ -10,7 +10,7 @@ namespace SteeringCS.entity
     public class Mario : MovingEntity, IRender
     {
         private readonly Color _shadowColor = Color.FromArgb(100, Color.Black);
-        private const double _movementMargin = 0.1;
+        private const double _movementMargin = 0.5;
         private int _graphicIterator = 0;
         private const int _graphicIteratorLimit = 3;
 
