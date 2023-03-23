@@ -48,7 +48,7 @@ namespace Src.behavior
                 {
                     return ArrivingBehavior.Calculate(MovingEntity, SelectedPoint);
                 }
-                
+
                 _wanderTheta += 1;
                 _randomClampedXPosition = _randomClampedXPosition == -1 ? 1 : -1;
                 _randomClampedYPosition = _randomClampedYPosition == -1 ? 1 : -1;
