@@ -9,7 +9,7 @@ namespace SteeringCS.behavior
     public class PathfindingBehaviorVisualizer : SteeringBehaviorVisualizer
     {
         private readonly PathfindingBehavior _steeringBehavior;
-        private static readonly Color s_renderColor = Color.Orange;
+        private static readonly Color s_renderColor = Color.DarkBlue;
 
         public PathfindingBehaviorVisualizer(IMovingEntity movingEntity)
         {
@@ -19,6 +19,11 @@ namespace SteeringCS.behavior
         public override Vector Calculate()
         {
             return _steeringBehavior.Calculate();
+        }
+
+        public override bool ShouldAvoidObstacles()
+        {
+            return _steeringBehavior.ShouldAvoidObstacles();
         }
 
         public override void Render(Graphics graphic)

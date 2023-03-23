@@ -25,7 +25,10 @@ namespace SteeringCS.world
             entities.Add(vehicle);
 
             Target = new Mario(new Vector(100, 40), this);
-            Target.SetSteeringBehavior(SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, Target));
+            Target.SetSteeringBehavior(
+                SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, Target),
+                new CollisionAvoidingBehaviorVisualizer(Target)
+            );
 
             return entities;
         }
@@ -34,7 +37,10 @@ namespace SteeringCS.world
         {
             foreach (IMovingEntity entity in Entities)
             {
-                entity.SetSteeringBehavior(SteeringBehaviorVisualizationFactory.CreateFromEnum(selectedOption, entity));
+                entity.SetSteeringBehavior(
+                    SteeringBehaviorVisualizationFactory.CreateFromEnum(selectedOption, entity),
+                    new CollisionAvoidingBehaviorVisualizer(entity)
+                );
                 entity.Mass = mass;
                 entity.MaxSpeed = maxSpeed;
             }
@@ -59,9 +65,14 @@ namespace SteeringCS.world
                     return;
                 }
 
-                if (entityRender.SteeringBehavior is ISteeringBehaviorVisualizer entityVisualizer)
+                if (entityRender.SteeringBehavior is ISteeringBehaviorVisualizer steeringBehaviorEntityVisualizer)
                 {
-                    entityVisualizer.Render(graphics);
+                    steeringBehaviorEntityVisualizer.Render(graphics);
+                }
+
+                if (entityRender.CollisionAvoidingBehavior is ISteeringBehaviorVisualizer collisionBehaviorEntityVisualizer)
+                {
+                    collisionBehaviorEntityVisualizer.Render(graphics);
                 }
             });
 
@@ -70,9 +81,14 @@ namespace SteeringCS.world
                 return;
             }
 
-            if (targetRender.SteeringBehavior is ISteeringBehaviorVisualizer targetVisualizer)
+            if (targetRender.SteeringBehavior is ISteeringBehaviorVisualizer steeringBehaviorTargetVisualizer)
             {
-                targetVisualizer.Render(graphics);
+                steeringBehaviorTargetVisualizer.Render(graphics);
+            }
+
+            if (targetRender.CollisionAvoidingBehavior is ISteeringBehaviorVisualizer collisionBehaviorTargetVisualizer)
+            {
+                collisionBehaviorTargetVisualizer.Render(graphics);
             }
         }
 

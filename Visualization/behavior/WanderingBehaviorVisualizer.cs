@@ -19,6 +19,11 @@ namespace SteeringCS.behavior
             return _steeringBehavior.Calculate();
         }
 
+        public override bool ShouldAvoidObstacles()
+        {
+            return _steeringBehavior.ShouldAvoidObstacles();
+        }
+
         public override void Render(Graphics graphic)
         {
             Vector targetCircle = _steeringBehavior.TargetCircle;
@@ -36,11 +41,11 @@ namespace SteeringCS.behavior
             double selectedLeftCorner = selectedPoint.X - CenterRadius;
             double selectedRightCorner = selectedPoint.Y - CenterRadius;
 
-            Pen redPen = new Pen(Color.Red, 2);
-            Pen greenPen = new Pen(Color.Green, 2);
-            graphic.DrawEllipse(redPen, new Rectangle((int)outerLeftCorner, (int)outerRightCorner, WanderingBehavior.CircleSize, WanderingBehavior.CircleSize));
-            graphic.DrawEllipse(greenPen, new Rectangle((int)centerLeftCorner, (int)centerRightCorner, CenterSize, CenterSize));
-            graphic.DrawEllipse(greenPen, new Rectangle((int)selectedLeftCorner, (int)selectedRightCorner, CenterSize, CenterSize));
+            Pen outerCirclePen = new Pen(Color.Red, 2);
+            Pen selectedPointPen = new Pen(Color.DarkGreen, 2);
+            graphic.DrawEllipse(outerCirclePen, new Rectangle((int)outerLeftCorner, (int)outerRightCorner, WanderingBehavior.CircleSize, WanderingBehavior.CircleSize));
+            graphic.DrawEllipse(selectedPointPen, new Rectangle((int)centerLeftCorner, (int)centerRightCorner, CenterSize, CenterSize));
+            graphic.DrawEllipse(selectedPointPen, new Rectangle((int)selectedLeftCorner, (int)selectedRightCorner, CenterSize, CenterSize));
         }
 
         public override void RenderVelocity(Graphics graphic)

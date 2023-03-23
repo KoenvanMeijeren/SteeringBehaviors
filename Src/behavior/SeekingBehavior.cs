@@ -6,7 +6,7 @@ namespace Src.behavior
     public class SeekingBehavior : SteeringBehavior
     {
         private const int ArrivalRange = 200;
-        public SeekingBehavior(IMovingEntity movingEntity) : base(movingEntity)
+        public SeekingBehavior(IMovingEntity movingEntity, bool shouldAvoidObstacles = true) : base(movingEntity, shouldAvoidObstacles)
         {
         }
 
