@@ -7,24 +7,25 @@ using System.Drawing;
 
 namespace SteeringCS.entity
 {
-    public class Mario : MovingEntity, IRender
+    public class Goomba : MovingEntity, IRender
     {
         private readonly Color _shadowColor = Color.FromArgb(100, Color.Black);
-        private const double _movementMargin = 0.5;
+        private const double _movementMargin = 0.1;
         private int _graphicIterator = 0;
         private const int _graphicIteratorLimit = 3;
+        private bool _directionIsRight;
 
         private Image _currentGraphics;
 
-        private static readonly Image s_playerGraphicsRight = Image.FromFile("graphics/mario/mario-right.png");
-        private static readonly Image s_playerGraphicsRightWalk1 = Image.FromFile("graphics/mario/mario-right-walk-1.png");
-        private static readonly Image s_playerGraphicsRightWalk2 = Image.FromFile("graphics/mario/mario-right-walk-2.png");
+        private static readonly Image s_playerGraphicsRight = Image.FromFile("graphics/goomba/goomba-right.png");
+        private static readonly Image s_playerGraphicsRightWalk1 = Image.FromFile("graphics/goomba/goomba-right-walk-1.png");
+        private static readonly Image s_playerGraphicsRightWalk2 = Image.FromFile("graphics/goomba/goomba-right-walk-2.png");
 
-        private static readonly Image s_playerGraphicsLeft = Image.FromFile("graphics/mario/mario-left.png");
-        private static readonly Image s_playerGraphicsLeftWalk1 = Image.FromFile("graphics/mario/mario-left-walk-1.png");
-        private static readonly Image s_playerGraphicsLeftWalk2 = Image.FromFile("graphics/mario/mario-left-walk-2.png");
+        private static readonly Image s_playerGraphicsLeft = Image.FromFile("graphics/goomba/goomba-left.png");
+        private static readonly Image s_playerGraphicsLeftWalk1 = Image.FromFile("graphics/goomba/goomba-left-walk-1.png");
+        private static readonly Image s_playerGraphicsLeftWalk2 = Image.FromFile("graphics/goomba/goomba-left-walk-2.png");
 
-        public Mario(Vector position, IWorld world) : base(position, world, s_playerGraphicsRight.Height / 2, s_playerGraphicsRight.Width)
+        public Goomba(Vector position, IWorld world) : base(position, world, s_playerGraphicsRight.Height / 2, s_playerGraphicsRight.Width)
         {
             Velocity = new Vector(0, 0);
         }
@@ -38,16 +39,22 @@ namespace SteeringCS.entity
 
         private void CalculateDirection()
         {
-            IsDirectionRight = Velocity.X > _movementMargin;
-            IsDirectionUpwards = Velocity.Y < -_movementMargin;
-            IsDirectionDownwards = Velocity.Y > _movementMargin;
+            if (Velocity.X > _movementMargin)
+            {
+                _directionIsRight = true;
+            }
+
+            if (Velocity.X < -_movementMargin)
+            {
+                _directionIsRight = false;
+            }
         }
 
         private void CalculateGraphic()
         {
             if (Math.Abs(Velocity.X) < _movementMargin && Math.Abs(Velocity.Y) < _movementMargin)
             {
-                if (IsDirectionRight)
+                if (_directionIsRight)
                 {
                     _currentGraphics = s_playerGraphicsRight;
                     return;
@@ -57,7 +64,7 @@ namespace SteeringCS.entity
                 return;
             }
 
-            if (IsDirectionRight)
+            if (_directionIsRight)
             {
                 if (_graphicIterator / _graphicIteratorLimit < 1)
                 {

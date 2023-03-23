@@ -15,7 +15,7 @@ namespace Src.grid
         private readonly Dictionary<IMovingEntity, PathTile> _entities;
         private readonly bool _fillWithRandomTiles;
 
-        public Grid(int width, int height, List<IMovingEntity> entities, bool fillWithRandomTiles = true)
+        public Grid(int width, int height, bool fillWithRandomTiles = true)
         {
             Width = width;
             Height = height;
@@ -27,7 +27,6 @@ namespace Src.grid
             InitializeMazeWallTiles();
             InitializePathTiles();
             InitializeGraph();
-            AddEntities(entities);
         }
 
         private void InitializeGridTilesArray()
@@ -151,14 +150,6 @@ namespace Src.grid
             currentPathTile.RemoveEntity(entity);
             newPathTile.AddEntity(entity);
             _entities[entity] = newPathTile;
-        }
-
-        private void AddEntities(List<IMovingEntity> entities)
-        {
-            foreach (IMovingEntity entity in entities)
-            {
-                AddOrMoveEntity(entity);
-            }
         }
 
         private static bool IsPositionWithInBounds(int row, int column, GridTile[,] tiles)

@@ -6,9 +6,11 @@ namespace Src.world
 {
     public abstract class WorldBase : IWorld
     {
-        protected readonly List<IMovingEntity> Entities;
+        public IPlayer Player { get; protected set; }
+        public IRescuee Rescuee { get; protected set; }
+
+        protected readonly List<IEnemy> Enemies;
         public IGrid Grid { get; protected set; }
-        public IMovingEntity Target { get; protected set; }
 
         public int Width { get; }
         public int Height { get; }
@@ -17,19 +19,23 @@ namespace Src.world
         {
             Width = width;
             Height = height;
-            Entities = GetPopulation();
-            Grid = new Grid(width, height, Entities);
-            Grid.AddOrMoveEntity(Target);
+            Enemies = new List<IEnemy>();
+            SetEntities();
+            Grid = new Grid(width, height);
+            Grid.AddOrMoveEntity(Player);
         }
 
-        protected abstract List<IMovingEntity> GetPopulation();
+        protected abstract void SetEntities();
 
         public void Update(float timeElapsed)
         {
-            Target.Update(timeElapsed);
-            Grid.AddOrMoveEntity(Target);
+            Player.Update(timeElapsed);
+            Rescuee.Update(timeElapsed);
 
-            foreach (IMovingEntity entity in Entities)
+            Grid.AddOrMoveEntity(Player);
+            Grid.AddOrMoveEntity(Rescuee);
+
+            foreach (IMovingEntity entity in Enemies)
             {
                 entity.Update(timeElapsed);
                 Grid.AddOrMoveEntity(entity);

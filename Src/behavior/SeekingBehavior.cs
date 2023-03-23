@@ -12,7 +12,7 @@ namespace Src.behavior
 
         public override Vector Calculate()
         {
-            return Calculate(MovingEntity, MovingEntity.World.Target.Position);
+            return Calculate(MovingEntity, MovingEntity.World.Player.Position);
         }
 
         private static Vector Calculate(IMovingEntity movingEntity, Vector targetPosition)

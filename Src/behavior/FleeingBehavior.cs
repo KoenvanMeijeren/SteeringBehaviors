@@ -11,7 +11,7 @@ namespace Src.behavior
 
         public override Vector Calculate()
         {
-            Vector targetPosition = MovingEntity.World.Target.Position;
+            Vector targetPosition = MovingEntity.World.Player.Position;
             Vector myPosition = MovingEntity.Position;
 
             Vector desiredVelocity = myPosition - targetPosition;

@@ -20,7 +20,7 @@ namespace Src.behavior
         {
             UpdatePathIfNecessary();
 
-            Vector targetPosition = MovingEntity.World.Target.Position;
+            Vector targetPosition = MovingEntity.World.Player.Position;
             if (Path != null && Path.Count > 0)
             {
                 targetPosition = Path.First().Position;
@@ -38,7 +38,7 @@ namespace Src.behavior
             int vectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)MovingEntity.Position.Y);
             Vertex newClosestVertex = MovingEntity.World.Grid.Graph.GetVertex(vectorX, vectorY);
 
-            Vector targetPosition = MovingEntity.World.Target.Position;
+            Vector targetPosition = MovingEntity.World.Player.Position;
             int targetVectorX = MovingEntity.World.Grid.GetCoordinateOfTile((int)targetPosition.X);
             int targetVectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)targetPosition.Y);
             Vertex newTargetVertex = MovingEntity.World.Grid.Graph.GetVertex(targetVectorX, targetVectorY);
