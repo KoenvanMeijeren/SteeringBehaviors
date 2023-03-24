@@ -14,10 +14,10 @@
         private static bool s_wKeyPressed,
             s_aKeyPressed,
             s_sKeyPressed,
-            s_dKeyPressed,
-            s_doNothingKeyPressed;
+            s_dKeyPressed;
 
-        private const int _speed = 20;
+        private const int Speed = 20;
+        private const int SpeedDiagonal = 15;
 
         public static void Reset()
         {
@@ -25,7 +25,6 @@
             s_aKeyPressed = false;
             s_sKeyPressed = false;
             s_dKeyPressed = false;
-            s_doNothingKeyPressed = false;
         }
 
         public static void RegisterPressedKeys(PressedKey pressedKey)
@@ -46,7 +45,6 @@
                     break;
                 case PressedKey.DoNothing:
                 default:
-                    s_doNothingKeyPressed = true;
                     break;
             }
         }
@@ -69,39 +67,44 @@
                     break;
                 case PressedKey.DoNothing:
                 default:
-                    s_doNothingKeyPressed = false;
                     break;
             }
         }
 
         public static Vector GetKeysDirection()
         {
-            if (s_doNothingKeyPressed)
-            {
-                return new Vector(0, 0);
-            }
-
             int x = 0;
             int y = 0;
 
+            int speed = Speed;
+
+            if ((s_wKeyPressed ? 1 : 0) + 
+                (s_aKeyPressed ? 1 : 0) + 
+                (s_sKeyPressed ? 1 : 0) + 
+                (s_dKeyPressed ? 1 : 0) 
+                >= 2)
+            {
+                speed = SpeedDiagonal;
+            }
+
             if (s_wKeyPressed)
             {
-                y -= _speed;
+                y -= speed;
             }
 
             if (s_aKeyPressed)
             {
-                x -= _speed;
+                x -= speed;
             }
 
             if (s_sKeyPressed)
             {
-                y += _speed;
+                y += speed;
             }
 
             if (s_dKeyPressed)
             {
-                x += _speed;
+                x += speed;
             }
 
             return new Vector(x, y);
