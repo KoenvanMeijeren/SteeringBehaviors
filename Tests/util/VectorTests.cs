@@ -362,7 +362,7 @@ namespace Tests.util
             // Assert
             Assert.AreEqual(expectedResult, resultResult);
         }
-        
+
         [TestCase(new double[] { 0.5, 1.0 }, new double[] { 1.0, 1.5 }, 1.0)]
         [TestCase(new double[] { 5, 1 }, new double[] { 10, 15 }, 19.0)]
         [TestCase(new double[] { 50, 100 }, new double[] { 10, 15 }, 125.0)]

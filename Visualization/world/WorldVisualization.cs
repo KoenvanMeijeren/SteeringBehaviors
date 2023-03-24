@@ -79,7 +79,7 @@ namespace SteeringCS.world
                     enemySteeringBehaviorVisualizer.Render(graphics);
                 }
 
-                if (enemyRender.SteeringBehavior.ShouldAvoidObstacles() 
+                if (enemyRender.SteeringBehavior.ShouldAvoidObstacles()
                     && enemyRender.CollisionAvoidingBehavior is ISteeringBehaviorVisualizer enemyCollisionBehaviorVisualizer)
                 {
                     enemyCollisionBehaviorVisualizer.Render(graphics);
@@ -107,7 +107,7 @@ namespace SteeringCS.world
                     rescueeSteeringBehaviorVisualizer.Render(graphics);
                 }
 
-                if (rescueeRender.SteeringBehavior.ShouldAvoidObstacles() 
+                if (rescueeRender.SteeringBehavior.ShouldAvoidObstacles()
                     && rescueeRender.CollisionAvoidingBehavior is ISteeringBehaviorVisualizer rescueeCollisionBehaviorVisualizer)
                 {
                     rescueeCollisionBehaviorVisualizer.Render(graphics);

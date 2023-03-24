@@ -15,7 +15,7 @@ namespace Src.behavior
             double distanceBetween = MovingEntity.Position.DistanceBetween(MovingEntity.World.Player.Position);
             return distanceBetween > MinimalDistanceForObstacleAvoiding;
         }
-        
+
         public override Vector Calculate()
         {
             return Calculate(MovingEntity, MovingEntity.World.Player.Position);
