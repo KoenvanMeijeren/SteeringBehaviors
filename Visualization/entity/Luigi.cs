@@ -1,11 +1,12 @@
-﻿using Src.util;
+﻿using Src.entity;
+using Src.util;
 using Src.world;
 using System;
 using System.Drawing;
 
 namespace SteeringCS.entity
 {
-    public class Luigi : MovingEntityVisualization
+    public class Luigi : MovingEntityVisualization, IRescuee
     {
         private static readonly Image s_playerGraphicsRight = Image.FromFile("graphics/luigi/luigi-right.png");
         private static readonly Image s_playerGraphicsRightWalk1 = Image.FromFile("graphics/luigi/luigi-right-walk-1.png");

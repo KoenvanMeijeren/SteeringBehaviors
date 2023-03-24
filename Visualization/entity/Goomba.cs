@@ -1,11 +1,12 @@
-﻿using Src.util;
+﻿using Src.entity;
+using Src.util;
 using Src.world;
 using System;
 using System.Drawing;
 
 namespace SteeringCS.entity
 {
-    public class Goomba : MovingEntityVisualization
+    public class Goomba : MovingEntityVisualization, IEnemy
     {
         private static readonly Image s_playerGraphicsRight = Image.FromFile("graphics/goomba/goomba-right.png");
         private static readonly Image s_playerGraphicsRightWalk1 = Image.FromFile("graphics/goomba/goomba-right-walk-1.png");

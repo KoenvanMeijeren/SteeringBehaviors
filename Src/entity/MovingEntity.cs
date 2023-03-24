@@ -5,7 +5,7 @@ using Src.world;
 namespace Src.entity
 {
 
-    public abstract class MovingEntity : IPlayer, IEnemy, IRescuee
+    public abstract class MovingEntity
     {
         public const int MassDefault = 30, MaxSpeedDefault = 150;
         public IWorld World { get; }
