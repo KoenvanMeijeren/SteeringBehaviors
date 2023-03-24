@@ -5,8 +5,15 @@ namespace Src.behavior
 {
     public class ArrivingBehavior : SteeringBehavior
     {
+        private const int MinimalDistanceForObstacleAvoiding = 15;
         public ArrivingBehavior(IMovingEntity movingEntity, bool shouldAvoidObstacles = true) : base(movingEntity, shouldAvoidObstacles)
         {
+        }
+
+        public override bool ShouldAvoidObstacles()
+        {
+            double distanceBetween = MovingEntity.Position.DistanceBetween(MovingEntity.World.Player.Position);
+            return distanceBetween > MinimalDistanceForObstacleAvoiding;
         }
 
         public override Vector Calculate()

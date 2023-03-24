@@ -78,10 +78,10 @@
 
             int speed = Speed;
 
-            if ((s_wKeyPressed ? 1 : 0) + 
-                (s_aKeyPressed ? 1 : 0) + 
-                (s_sKeyPressed ? 1 : 0) + 
-                (s_dKeyPressed ? 1 : 0) 
+            if ((s_wKeyPressed ? 1 : 0) +
+                (s_aKeyPressed ? 1 : 0) +
+                (s_sKeyPressed ? 1 : 0) +
+                (s_dKeyPressed ? 1 : 0)
                 >= 2)
             {
                 speed = SpeedDiagonal;
