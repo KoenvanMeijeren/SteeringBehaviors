@@ -51,7 +51,7 @@ namespace Src.entity
             }
 
             Vector steeringForce = SteeringBehavior.Calculate();
-            if (SteeringBehavior.ShouldAvoidObstacles())
+            if (CollisionAvoidingBehavior != null && SteeringBehavior.ShouldAvoidObstacles())
             {
                 steeringForce += CollisionAvoidingBehavior.Calculate();
             }
