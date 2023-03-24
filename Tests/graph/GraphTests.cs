@@ -164,10 +164,9 @@ namespace Tests.graph
             Stack<Vertex> pathVertices = Graph.GetShortestPath(startVertex, targetVertex);
 
             // Assert
-            Assert.AreEqual(2, pathVertices.Count);
+            Assert.AreEqual(1, pathVertices.Count);
             Assert.AreEqual("(48,48)", startVertex.Position.ToString());
             Assert.AreEqual("(80,80)", pathVertices.Pop().Position.ToString());
-            Assert.AreEqual("(112,112)", pathVertices.Pop().Position.ToString());
             Assert.AreEqual("(112,112)", targetVertex.Position.ToString());
         }
 

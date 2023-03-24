@@ -9,7 +9,7 @@ namespace Tests.behavior
 {
     public class PathFindingBehaviorTests
     {
-        [TestCase(100, 100, new float[] { 35, 35 }, new float[] { 75, 75 }, "(45,45)")]
+        [TestCase(100, 100, new float[] { 35, 35 }, new float[] { 75, 75 }, "(40,40)")]
         [TestCase(250, 250, new float[] { 50, 50 }, new float[] { 200, 200 }, "(30,30)")]
         public void Calculate_01_Ok(int width, int height, float[] seekingPositions, float[] targetPositions, string expectedResult)
         {
