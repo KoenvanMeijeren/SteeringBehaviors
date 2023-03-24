@@ -56,9 +56,8 @@ namespace Tests.behavior
             Vector targetEntityPosition = new Vector(249, 249);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             ISteeringBehavior steeringBehavior = new ArrivingBehavior(world.Rescuee, false);
-            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.Rescuee);
             IMovingEntity movingEntity = world.Rescuee;
-            movingEntity.SetSteeringBehavior(steeringBehavior, collisionBehavior);
+            movingEntity.SetSteeringBehavior(steeringBehavior, null);
 
             // Act & assert
             Assert.AreEqual("(35,35)", movingEntity.Position.ToString());
@@ -95,9 +94,8 @@ namespace Tests.behavior
             Vector targetEntityPosition = new Vector(200, 200);
             WorldTest world = new WorldTest(250, 250, seekingEntityPosition, targetEntityPosition);
             ISteeringBehavior steeringBehavior = new ArrivingBehavior(world.Rescuee, false);
-            ISteeringBehavior collisionBehavior = new CollisionAvoidingBehavior(world.Rescuee);
             IMovingEntity movingEntity = world.Rescuee;
-            movingEntity.SetSteeringBehavior(steeringBehavior, collisionBehavior);
+            movingEntity.SetSteeringBehavior(steeringBehavior, null);
 
             // Act & assert
             Assert.AreEqual("(35,35)", movingEntity.Position.ToString());

@@ -362,5 +362,21 @@ namespace Tests.util
             // Assert
             Assert.AreEqual(expectedResult, resultResult);
         }
+
+        [TestCase(new double[] { 0.5, 1.0 }, new double[] { 1.0, 1.5 }, 1.0)]
+        [TestCase(new double[] { 5, 1 }, new double[] { 10, 15 }, 19.0)]
+        [TestCase(new double[] { 50, 100 }, new double[] { 10, 15 }, 125.0)]
+        public void Distance_01_Ok(double[] leftPositions, double[] rightPositions, double expectedDistance)
+        {
+            // Arrange
+            Vector left = new Vector(leftPositions[0], leftPositions[1]);
+            Vector right = new Vector(rightPositions[0], rightPositions[1]);
+
+            // Act
+            double distance = left.DistanceBetween(right);
+
+            // Assert
+            Assert.AreEqual(expectedDistance, distance);
+        }
     }
 }
