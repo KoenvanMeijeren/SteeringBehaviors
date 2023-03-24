@@ -15,7 +15,7 @@ namespace Src.grid
         private readonly Dictionary<IMovingEntity, PathTile> _entities;
         private readonly bool _fillWithRandomTiles;
 
-        public Grid(int width, int height, bool fillWithRandomTiles = false)
+        public Grid(int width, int height, bool fillWithRandomTiles = true)
         {
             Width = width;
             Height = height;
