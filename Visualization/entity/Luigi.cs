@@ -34,7 +34,7 @@ namespace SteeringCS.entity
                 return;
             }
 
-            if (IsDirectionRight && !IsDirectionLeft)
+            if (_isDrawDirectionRight)
             {
                 if (_graphicIterator / _graphicIteratorLimit < 1)
                 {
