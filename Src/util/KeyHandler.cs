@@ -17,6 +17,7 @@
             s_dKeyPressed;
 
         private const int Speed = 20;
+        private const int SpeedDiagonal = 15;
 
         public static void Reset()
         {
@@ -74,24 +75,36 @@
         {
             int x = 0;
             int y = 0;
+
+            int speed = Speed;
+
+            if ((s_wKeyPressed ? 1 : 0) + 
+                (s_aKeyPressed ? 1 : 0) + 
+                (s_sKeyPressed ? 1 : 0) + 
+                (s_dKeyPressed ? 1 : 0) 
+                >= 2)
+            {
+                speed = SpeedDiagonal;
+            }
+
             if (s_wKeyPressed)
             {
-                y -= Speed;
+                y -= speed;
             }
 
             if (s_aKeyPressed)
             {
-                x -= Speed;
+                x -= speed;
             }
 
             if (s_sKeyPressed)
             {
-                y += Speed;
+                y += speed;
             }
 
             if (s_dKeyPressed)
             {
-                x += Speed;
+                x += speed;
             }
 
             return new Vector(x, y);
