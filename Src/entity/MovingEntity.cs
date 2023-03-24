@@ -1,4 +1,5 @@
 ﻿using Src.behavior;
+using Src.state;
 using Src.util;
 using Src.world;
 
@@ -24,6 +25,7 @@ namespace Src.entity
 
         public ISteeringBehavior SteeringBehavior { get; private set; }
         public ISteeringBehavior CollisionAvoidingBehavior { get; private set; }
+        public IState State { get; protected set; }
 
         protected MovingEntity(Vector position, IWorld world, float height, float width)
         {
