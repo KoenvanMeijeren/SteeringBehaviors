@@ -130,7 +130,14 @@ namespace Src.graph
                 return null;
             }
 
-            Vertex temp = closedList[closedList.IndexOf(current)];
+            Vertex temp = closedList.FirstOrDefault(vertex => vertex == current);
+
+            if (temp == null)
+            {
+                return null;
+            }
+
+            temp = temp.Parent;
 
             if (temp == null)
             {
@@ -151,16 +158,6 @@ namespace Src.graph
             return IsPositionWithInBounds(row, column, Vertices) ? Vertices[row, column] : null;
         }
 
-        //----------------------------------------------------------------------
-        // ToString that has to be implemented for exam
-        //----------------------------------------------------------------------
-
-        /// <summary>
-        ///    Converts this instance of Graph to its string representation.
-        ///    It will call the ToString method of each Vertex. The output is
-        ///    ascending on vertex name.
-        /// </summary>
-        /// <returns>The string representation of this Graph instance</returns>
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
