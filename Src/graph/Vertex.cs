@@ -7,7 +7,7 @@ namespace Src.graph
 {
     public class Vertex
     {
-        private const float Infinity = float.MaxValue;
+        private const float DefaultCost = 0;
 
         public readonly Vector Position;
         public readonly LinkedList<Edge> Edges;
@@ -16,7 +16,7 @@ namespace Src.graph
         public float Cost { get; set; }
         public int DistanceFromTarget { get; set; }
 
-        public Vertex(int x, int y, float cost = Infinity)
+        public Vertex(int x, int y, float cost = DefaultCost)
         {
             Edges = new LinkedList<Edge>();
             Position = new Vector(x, y);
@@ -28,17 +28,6 @@ namespace Src.graph
             Edges.AddLast(edge);
         }
 
-        //----------------------------------------------------------------------
-        // ToString that has to be implemented for exam
-        //----------------------------------------------------------------------
-
-        /// <summary>
-        ///    Converts this instance of Vertex to its string representation.
-        ///    <para>Output will be like : name (distance) [ adj1 (cost) adj2 (cost) .. ]</para>
-        ///    <para>Adjacency are ordered ascending by name. If no distance is
-        ///    calculated yet, the distance and the parenthesis are omitted.</para>
-        /// </summary>
-        /// <returns>The string representation of this Graph instance</returns> 
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -66,7 +55,7 @@ namespace Src.graph
 
         private bool HasCalculatedDistance()
         {
-            return Math.Abs(Cost - Infinity) > 0;
+            return Math.Abs(Cost - DefaultCost) > 0;
         }
     }
 }

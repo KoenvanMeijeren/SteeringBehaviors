@@ -24,7 +24,7 @@ namespace SteeringCS.entity
         {
             if (Math.Abs(Velocity.X) < _movementMargin && Math.Abs(Velocity.Y) < _movementMargin)
             {
-                if (IsDirectionRight && !IsDirectionLeft)
+                if (_isDrawDirectionRight)
                 {
                     _currentGraphics = s_playerGraphicsRight;
                     return;
