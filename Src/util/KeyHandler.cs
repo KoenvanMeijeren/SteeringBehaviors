@@ -9,15 +9,14 @@
         DoNothing
     }
 
-    public static class a
+    public static class KeyHandler
     {
         private static bool s_wKeyPressed,
             s_aKeyPressed,
             s_sKeyPressed,
-            s_dKeyPressed,
-            s_doNothingKeyPressed;
+            s_dKeyPressed;
 
-        private const int _speed = 20;
+        private const int Speed = 20;
 
         public static void Reset()
         {
@@ -25,7 +24,6 @@
             s_aKeyPressed = false;
             s_sKeyPressed = false;
             s_dKeyPressed = false;
-            s_doNothingKeyPressed = false;
         }
 
         public static void RegisterPressedKeys(PressedKey pressedKey)
@@ -46,7 +44,6 @@
                     break;
                 case PressedKey.DoNothing:
                 default:
-                    s_doNothingKeyPressed = true;
                     break;
             }
         }
@@ -69,39 +66,32 @@
                     break;
                 case PressedKey.DoNothing:
                 default:
-                    s_doNothingKeyPressed = false;
                     break;
             }
         }
 
         public static Vector GetKeysDirection()
         {
-            if (s_doNothingKeyPressed)
-            {
-                return new Vector(0, 0);
-            }
-
             int x = 0;
             int y = 0;
-
             if (s_wKeyPressed)
             {
-                y -= _speed;
+                y -= Speed;
             }
 
             if (s_aKeyPressed)
             {
-                x -= _speed;
+                x -= Speed;
             }
 
             if (s_sKeyPressed)
             {
-                y += _speed;
+                y += Speed;
             }
 
             if (s_dKeyPressed)
             {
-                x += _speed;
+                x += Speed;
             }
 
             return new Vector(x, y);
