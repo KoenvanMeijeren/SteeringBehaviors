@@ -9,7 +9,7 @@
         DoNothing
     }
 
-    public static class KeyHandler
+    public static class a
     {
         private static bool s_wKeyPressed,
             s_aKeyPressed,
