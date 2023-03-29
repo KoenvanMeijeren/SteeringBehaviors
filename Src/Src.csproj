@@ -55,6 +55,12 @@
     <Compile Include="entity\IEnemy.cs" />
     <Compile Include="entity\IPlayer.cs" />
     <Compile Include="entity\IRescuee.cs" />
+    <Compile Include="fuzzy-logic\FuzzyTerm.cs" />
+    <Compile Include="fuzzy-logic\Set\FuzzySet.cs" />
+    <Compile Include="fuzzy-logic\Set\FuzzySetLeftShoulder.cs" />
+    <Compile Include="fuzzy-logic\Set\FuzzySetRightShoulder.cs" />
+    <Compile Include="fuzzy-logic\Set\FuzzySetSingleton.cs" />
+    <Compile Include="fuzzy-logic\Set\FuzzySetTriangle.cs" />
     <Compile Include="util\AheadPositionsUtil.cs" />
     <Compile Include="util\HitBox.cs" />
     <Compile Include="entity\IMovingEntity.cs" />
