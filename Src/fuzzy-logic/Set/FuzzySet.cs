@@ -5,7 +5,7 @@
         /// <summary>
         /// This will hold the degree of membership of a given value in this set.
         /// </summary>
-        public double Dom { get; protected set; }
+        public double Dom { get; private set; }
 
         /// <summary>
         /// This is the maximum of the set's membership function. For instance, if
