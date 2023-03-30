@@ -1,4 +1,4 @@
-﻿namespace Src.fuzzy_logic
+﻿namespace Src.fuzzy_logic.Term
 {
     /// <summary>
     /// Abstract class to provide an interface for classes able to be
@@ -24,6 +24,6 @@
         /// <summary>
         /// Method for updating the DOM of a consequent when a rule fires.
         /// </summary>
-        public abstract void OrWithDom();
+        public abstract void OrWithDom(double value);
     }
 }
