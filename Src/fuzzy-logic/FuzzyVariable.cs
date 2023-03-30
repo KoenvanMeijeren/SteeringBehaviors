@@ -13,7 +13,7 @@ namespace Src.fuzzy_logic
     public class FuzzyVariable
     {
         private readonly Dictionary<string, FuzzySet> _members = new Dictionary<string, FuzzySet>();
-        private double _minRange = 0, _maxRange = 0;
+        private double _minRange, _maxRange;
         
         /// <summary>
         /// This method is called with the upper and lower bound of a set each time a
