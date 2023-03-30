@@ -1,6 +1,6 @@
-﻿using Src.util;
+﻿using Visualization.util;
 
-namespace Src.behavior
+namespace Visualization.behavior
 {
     public interface ISteeringBehavior
     {

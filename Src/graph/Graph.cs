@@ -1,10 +1,10 @@
-﻿using Src.util;
+﻿using Visualization.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Src.graph
+namespace Visualization.graph
 {
     public class Graph
     {
@@ -131,13 +131,6 @@ namespace Src.graph
             }
 
             Vertex temp = closedList.FirstOrDefault(vertex => vertex == current);
-
-            if (temp == null)
-            {
-                return null;
-            }
-
-            temp = temp.Parent;
 
             if (temp == null)
             {

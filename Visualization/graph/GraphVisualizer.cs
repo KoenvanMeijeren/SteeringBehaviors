@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
-using Src.graph;
-using Src.util;
+using Visualization.graph;
+using Visualization.util;
 
 namespace SteeringCS.graph
 {

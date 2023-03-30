@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
-using Src.entity;
+using Visualization.entity;
 
-namespace Src.behavior
+namespace Visualization.behavior
 {
     public enum SteeringBehaviorOptions
     {

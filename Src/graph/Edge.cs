@@ -1,4 +1,4 @@
-﻿namespace Src.graph
+﻿namespace Visualization.graph
 {
     public class Edge
     {

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.ShowVelocityCheckbox = new System.Windows.Forms.CheckBox();
             this.ShowBehaviorCheckbox = new System.Windows.Forms.CheckBox();
             this.ShowHitboxCheckbox = new System.Windows.Forms.CheckBox();
             this.ShowGraphCheckbox = new System.Windows.Forms.CheckBox();
@@ -46,7 +47,6 @@
             this.pauseButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.UpdateIntervalSelector = new System.Windows.Forms.NumericUpDown();
-            this.ShowVelocityCheckbox = new System.Windows.Forms.CheckBox();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxSpeedSelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MassSelector)).BeginInit();
@@ -77,6 +77,17 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(260, 355);
             this.mainPanel.TabIndex = 1;
+            // 
+            // ShowVelocityCheckbox
+            // 
+            this.ShowVelocityCheckbox.AutoSize = true;
+            this.ShowVelocityCheckbox.Location = new System.Drawing.Point(0, 252);
+            this.ShowVelocityCheckbox.Name = "ShowVelocityCheckbox";
+            this.ShowVelocityCheckbox.Size = new System.Drawing.Size(111, 20);
+            this.ShowVelocityCheckbox.TabIndex = 18;
+            this.ShowVelocityCheckbox.Text = "Show velocity";
+            this.ShowVelocityCheckbox.UseVisualStyleBackColor = true;
+            this.ShowVelocityCheckbox.CheckedChanged += new System.EventHandler(this.ShowVelocityCheckbox_CheckedChanged);
             // 
             // ShowBehaviorCheckbox
             // 
@@ -290,17 +301,6 @@
             0,
             0});
             this.UpdateIntervalSelector.ValueChanged += new System.EventHandler(this.UpdateIntervalSelectorValueChangedChanged);
-            // 
-            // ShowVelocityCheckbox
-            // 
-            this.ShowVelocityCheckbox.AutoSize = true;
-            this.ShowVelocityCheckbox.Location = new System.Drawing.Point(0, 252);
-            this.ShowVelocityCheckbox.Name = "ShowVelocityCheckbox";
-            this.ShowVelocityCheckbox.Size = new System.Drawing.Size(111, 20);
-            this.ShowVelocityCheckbox.TabIndex = 18;
-            this.ShowVelocityCheckbox.Text = "Show velocity";
-            this.ShowVelocityCheckbox.UseVisualStyleBackColor = true;
-            this.ShowVelocityCheckbox.CheckedChanged += new System.EventHandler(this.ShowVelocityCheckbox_CheckedChanged);
             // 
             // DebugForm
             // 

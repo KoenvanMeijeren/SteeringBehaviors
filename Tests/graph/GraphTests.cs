@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
-using Src.graph;
-using Src.util;
+using Visualization.graph;
+using Visualization.util;
 using Tests.fixtures.world;
 
 namespace Tests.graph

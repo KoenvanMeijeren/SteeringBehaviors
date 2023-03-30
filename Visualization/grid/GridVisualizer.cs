@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using Src.grid;
+using Visualization.grid;
 using SteeringCS.graph;
 
 namespace SteeringCS.grid

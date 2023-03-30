@@ -1,7 +1,7 @@
-﻿using Src.entity;
-using Src.graph;
+﻿using Visualization.entity;
+using Visualization.graph;
 
-namespace Src.grid
+namespace Visualization.grid
 {
     public interface IGrid
     {

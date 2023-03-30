@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
-using Src.grid;
-using Src.util;
+using Visualization.grid;
+using Visualization.util;
 
 namespace Tests.grid
 {

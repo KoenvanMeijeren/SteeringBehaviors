@@ -1,9 +1,9 @@
-﻿using Src.behavior;
-using Src.state;
-using Src.util;
-using Src.world;
+﻿using Visualization.behavior;
+using Visualization.state;
+using Visualization.util;
+using Visualization.world;
 
-namespace Src.entity
+namespace Visualization.entity
 {
 
     public abstract class MovingEntity : IMovingEntity
@@ -45,8 +45,16 @@ namespace Src.entity
             CollisionAvoidingBehavior = collisionAvoidingBehavior;
         }
 
+        public void ChangeState(IState state)
+        {
+            State = state;
+            State.Enter();
+        }
+
         public void Update(float timeElapsed)
         {
+            State?.Execute();
+
             if (SteeringBehavior == null)
             {
                 return;

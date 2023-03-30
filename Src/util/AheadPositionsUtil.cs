@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Src.util
+namespace Visualization.util
 {
     public static class AheadPositionsUtil
     {

@@ -1,4 +1,4 @@
-﻿namespace Src.util
+﻿namespace Visualization.util
 {
     public enum PressedKey
     {

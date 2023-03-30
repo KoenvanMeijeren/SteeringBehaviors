@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
-using Src.graph;
-using Src.util;
+using Visualization.graph;
+using Visualization.util;
 
 namespace Tests.util
 {

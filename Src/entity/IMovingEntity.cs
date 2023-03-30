@@ -1,9 +1,9 @@
-﻿using Src.behavior;
-using Src.state;
-using Src.util;
-using Src.world;
+﻿using Visualization.behavior;
+using Visualization.state;
+using Visualization.util;
+using Visualization.world;
 
-namespace Src.entity
+namespace Visualization.entity
 {
     public interface IMovingEntity
     {
@@ -24,5 +24,6 @@ namespace Src.entity
         IState State { get; }
         void Update(float timeElapsed);
         void SetSteeringBehavior(ISteeringBehavior steeringBehavior, ISteeringBehavior collisionAvoidingBehavior);
+        void ChangeState(IState state);
     }
 }

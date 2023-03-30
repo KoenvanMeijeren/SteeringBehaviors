@@ -1,4 +1,4 @@
-﻿namespace Src.grid
+﻿namespace Visualization.grid
 {
     public class WallTile : GridTile
     {

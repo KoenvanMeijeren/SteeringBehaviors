@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
-using Src.behavior;
-using Src.util;
+using Visualization.behavior;
+using Visualization.util;
 using Tests.fixtures.world;
 
 namespace Tests.behavior

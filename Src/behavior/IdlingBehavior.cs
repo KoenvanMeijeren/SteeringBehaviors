@@ -1,7 +1,7 @@
-﻿using Src.entity;
-using Src.util;
+﻿using Visualization.entity;
+using Visualization.util;
 
-namespace Src.behavior
+namespace Visualization.behavior
 {
     public class IdlingBehavior : SteeringBehavior
     {

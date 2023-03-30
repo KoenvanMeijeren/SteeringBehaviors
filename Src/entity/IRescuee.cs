@@ -1,4 +1,4 @@
-﻿namespace Src.entity
+﻿namespace Visualization.entity
 {
     public interface IRescuee : IMovingEntity
     {

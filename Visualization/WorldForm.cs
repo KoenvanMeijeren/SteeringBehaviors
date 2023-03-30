@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-using Src.behavior;
-using Src.util;
+using Visualization.behavior;
+using Visualization.util;
 using SteeringCS.util;
 using SteeringCS.world;
 using Timer = System.Timers.Timer;

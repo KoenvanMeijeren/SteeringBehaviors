@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Src.entity;
-using Src.grid;
-using Src.util;
-using Src.world;
+using Visualization.entity;
+using Visualization.grid;
+using Visualization.util;
+using Visualization.world;
 using Tests.fixtures.entity;
 
 namespace Tests.fixtures.world

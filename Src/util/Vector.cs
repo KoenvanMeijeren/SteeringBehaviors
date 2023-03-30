@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Src.util
+namespace Visualization.util
 {
     public class Vector
     {
@@ -74,7 +74,7 @@ namespace Src.util
         {
             Vector result = this - vector;
 
-            return Math.Abs(result.X + result.Y);
+            return result.Length;
         }
 
         public override string ToString() => $"({XRounded.ToString(CultureInfo.InvariantCulture)},{YRounded.ToString(CultureInfo.InvariantCulture)})";

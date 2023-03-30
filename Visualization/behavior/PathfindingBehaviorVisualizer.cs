@@ -1,7 +1,7 @@
-﻿using Src.behavior;
-using Src.entity;
-using Src.graph;
-using Src.util;
+﻿using Visualization.behavior;
+using Visualization.entity;
+using Visualization.graph;
+using Visualization.util;
 using System.Drawing;
 
 namespace SteeringCS.behavior

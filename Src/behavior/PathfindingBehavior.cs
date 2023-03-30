@@ -1,11 +1,10 @@
-﻿using Src.entity;
-using Src.graph;
-using Src.util;
-using System;
+﻿using Visualization.entity;
+using Visualization.graph;
+using Visualization.util;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Src.behavior
+namespace Visualization.behavior
 {
     public class PathfindingBehavior : SteeringBehavior
     {
@@ -22,7 +21,7 @@ namespace Src.behavior
             UpdatePathIfNecessary();
 
             Vector targetPosition = MovingEntity.World.Player.Position;
-            if (Path != null && Path.Count > 0)
+            if (Path != null && Path.Count > 1)
             {
                 targetPosition = Path.First().Position;
             }
@@ -30,7 +29,7 @@ namespace Src.behavior
             Vector desiredVelocity = targetPosition - MovingEntity.Position;
             Vector actualVelocity = desiredVelocity - MovingEntity.Velocity;
 
-            return actualVelocity;
+            return actualVelocity.Truncate(30);
         }
 
         private void UpdatePathIfNecessary()
@@ -58,7 +57,6 @@ namespace Src.behavior
             _closestVertex = newClosestVertex;
             _targetVertex = newTargetVertex;
             Path = Graph.GetShortestPath(_closestVertex, _targetVertex);
-            Console.WriteLine("NEW PATH");
         }
     }
 }

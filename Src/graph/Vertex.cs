@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Src.util;
+using Visualization.util;
 
-namespace Src.graph
+namespace Visualization.graph
 {
     public class Vertex
     {

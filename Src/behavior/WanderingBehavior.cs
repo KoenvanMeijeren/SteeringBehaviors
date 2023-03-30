@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Src.entity;
-using Src.grid;
-using Src.util;
+using Visualization.entity;
+using Visualization.grid;
+using Visualization.util;
 
-namespace Src.behavior
+namespace Visualization.behavior
 {
     [ExcludeFromCodeCoverage]
     public class WanderingBehavior : SteeringBehavior

@@ -1,6 +1,6 @@
-﻿using Src.entity;
+﻿using Visualization.entity;
 
-namespace Src.util
+namespace Visualization.util
 {
     public class HitBox
     {

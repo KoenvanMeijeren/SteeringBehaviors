@@ -1,6 +1,6 @@
-﻿using Src.entity;
-using Src.util;
-using Src.world;
+﻿using Visualization.entity;
+using Visualization.util;
+using Visualization.world;
 
 namespace Tests.fixtures.entity
 {

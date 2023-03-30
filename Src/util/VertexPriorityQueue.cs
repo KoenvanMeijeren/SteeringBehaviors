@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Src.graph;
+using Visualization.graph;
 
-namespace Src.util
+namespace Visualization.util
 {
     public class VertexPriorityQueue
     {

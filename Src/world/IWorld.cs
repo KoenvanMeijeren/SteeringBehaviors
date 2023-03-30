@@ -1,7 +1,7 @@
-﻿using Src.entity;
-using Src.grid;
+﻿using Visualization.entity;
+using Visualization.grid;
 
-namespace Src.world
+namespace Visualization.world
 {
     public interface IWorld
     {

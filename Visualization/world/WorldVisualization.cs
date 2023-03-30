@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using Src.behavior;
-using Src.entity;
-using Src.util;
-using Src.world;
+using Visualization.behavior;
+using Visualization.entity;
+using Visualization.state;
+using Visualization.util;
+using Visualization.world;
 using SteeringCS.behavior;
 using SteeringCS.entity;
 using SteeringCS.grid;
 using SteeringCS.util;
+using SteeringCS.state;
 
 namespace SteeringCS.world
 {
@@ -20,6 +22,8 @@ namespace SteeringCS.world
         protected override List<IEnemy> GetEnemies()
         {
             Goomba goomba = new Goomba(new Vector(Width / 2, Height / 2), this);
+            goomba.ChangeState(new SearchState(goomba));
+
             return new List<IEnemy> { goomba };
         }
 
@@ -36,11 +40,8 @@ namespace SteeringCS.world
 
         protected override IRescuee GetRescuee()
         {
-            IRescuee rescuee = new Luigi(new Vector(100, 40), this);
-            rescuee.SetSteeringBehavior(
-                SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.PathfindingBehavior, rescuee),
-                new CollisionAvoidingBehaviorVisualizer(rescuee)
-            );
+            IRescuee rescuee = new Luigi(new Vector(400, 40), this);
+            rescuee.ChangeState(new LostState(rescuee));
 
             return rescuee;
         }
