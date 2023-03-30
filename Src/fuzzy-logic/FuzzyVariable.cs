@@ -78,7 +78,7 @@ namespace Src.fuzzy_logic
         {
             foreach (FuzzySet set in _members.Values)
             {
-                set.Dom = set.CalculateDom(value);
+                set.DegreeOfMembership = set.CalculateDom(value);
             }
         }
 
@@ -92,8 +92,8 @@ namespace Src.fuzzy_logic
 
             foreach (FuzzySet set in _members.Values)
             {
-                top += set.RepresentativeValue * set.Dom;
-                bottom += set.Dom;
+                top += set.RepresentativeValue * set.DegreeOfMembership;
+                bottom += set.DegreeOfMembership;
             }
 
             // Make sure bottom is not equal to zero
@@ -130,7 +130,7 @@ namespace Src.fuzzy_logic
                 // For each set get the contribution to the area. This is the lower of the 
                 // value returned from CalculateDOM or the actual DOM of the fuzzified 
                 // value itself.
-                foreach (double contribution in _members.Select(member => member.Value).Select(set => Math.Min(set.CalculateDom(_minRange + sample * stepSize), set.Dom)))
+                foreach (double contribution in _members.Select(member => member.Value).Select(set => Math.Min(set.CalculateDom(_minRange + sample * stepSize), set.DegreeOfMembership)))
                 {
                     totalArea += contribution;
                     sumOfMoments += (_minRange + sample * stepSize)  * contribution;

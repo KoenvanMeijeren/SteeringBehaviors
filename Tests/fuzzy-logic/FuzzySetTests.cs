@@ -29,7 +29,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(peak, leftShoulder.PeakPoint);
             Assert.AreEqual(leftOffset, leftShoulder.LeftOffset);
             Assert.AreEqual(rightOffset, leftShoulder.RightOffset);
-            Assert.AreEqual(0, leftShoulder.Dom);
+            Assert.AreEqual(0, leftShoulder.DegreeOfMembership);
             Assert.AreEqual(expectedRepresentativeValue, leftShoulder.RepresentativeValue);
             Assert.AreEqual(expectedResult, result);
         }
@@ -60,7 +60,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(peak, rightShoulder.PeakPoint);
             Assert.AreEqual(leftOffset, rightShoulder.LeftOffset);
             Assert.AreEqual(rightOffset, rightShoulder.RightOffset);
-            Assert.AreEqual(0, rightShoulder.Dom);
+            Assert.AreEqual(0, rightShoulder.DegreeOfMembership);
             Assert.AreEqual(expectedRepresentativeValue, rightShoulder.RepresentativeValue);
             Assert.AreEqual(expectedResult, result);
         }
@@ -91,7 +91,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(midPoint, triangle.MidPoint);
             Assert.AreEqual(leftOffset, triangle.LeftOffset);
             Assert.AreEqual(rightOffset, triangle.RightOffset);
-            Assert.AreEqual(0, triangle.Dom);
+            Assert.AreEqual(0, triangle.DegreeOfMembership);
             Assert.AreEqual(expectedRepresentativeValue, triangle.RepresentativeValue);
             Assert.AreEqual(expectedResult, result);
         }
@@ -122,7 +122,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(midPoint, singleton.MidPoint);
             Assert.AreEqual(leftOffset, singleton.LeftOffset);
             Assert.AreEqual(rightOffset, singleton.RightOffset);
-            Assert.AreEqual(0, singleton.Dom);
+            Assert.AreEqual(0, singleton.DegreeOfMembership);
             Assert.AreEqual(expectedRepresentativeValue, singleton.RepresentativeValue);
             Assert.AreEqual(expectedResult, result);
         }

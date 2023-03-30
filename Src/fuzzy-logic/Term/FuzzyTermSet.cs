@@ -12,7 +12,7 @@ namespace Src.fuzzy_logic.Term
         }
 
         public override FuzzyTerm Clone() => new FuzzyTermSet(_set);
-        public override double GetDom() => _set.Dom;
+        public override double GetDom() => _set.DegreeOfMembership;
         public override void ResetDom() => _set.ResetDom();
         public override void OrWithDom(double value) => _set.OrWithDom(value);
     }

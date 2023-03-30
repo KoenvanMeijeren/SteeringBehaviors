@@ -1,11 +1,14 @@
 ﻿namespace Src.fuzzy_logic.Set
 {
+    /// <summary>
+    /// Class to define an interface for a fuzzy set.
+    /// </summary>
     public abstract class FuzzySet
     {
         /// <summary>
         /// This will hold the degree of membership of a given value in this set.
         /// </summary>
-        public double Dom { get; set; }
+        public double DegreeOfMembership { get; set; }
 
         /// <summary>
         /// This is the maximum of the set's membership function. For instance, if
@@ -18,7 +21,7 @@
 
         protected FuzzySet(double representativeValue)
         {
-            Dom = 0;
+            DegreeOfMembership = 0;
             RepresentativeValue = representativeValue;
         }
 
@@ -38,17 +41,17 @@
         /// </summary>
         public void OrWithDom(double value)
         {
-            if (!(value > Dom))
+            if (!(value > DegreeOfMembership))
             {
                 return;
             }
 
-            Dom = value;
+            DegreeOfMembership = value;
         }
 
         public void ResetDom()
         {
-            Dom = 0;
+            DegreeOfMembership = 0;
         }
     }
 }
