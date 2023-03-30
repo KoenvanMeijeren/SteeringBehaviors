@@ -6,6 +6,9 @@ namespace Tests.fuzzy_logic
 {
     public class FuzzySetLeftShoulderTests
     {
+        [TestCase(0, 0, 0, 0, 0.0, "1.00")]
+        [TestCase(0, 0, 0.5, 0, 0.0, "1.00")]
+        [TestCase(0, 0.3, 0, 0, -0.14999999999999999d, "1.00")]
         [TestCase(0, 0.25, 0.5, 0, -0.125, "1.00")]
         [TestCase(0, 0.25, 0.5, 0.1, -0.125, "0.80")]
         [TestCase(0, 0.25, 0.5, 0.2, -0.125, "0.60")]
@@ -17,6 +20,7 @@ namespace Tests.fuzzy_logic
         [TestCase(0, 0.25, 0.5, 0.8, -0.125, "0.00")]
         [TestCase(0, 0.25, 0.5, 0.9, -0.125, "0.00")]
         [TestCase(0, 0.25, 0.5, 1.0, -0.125, "0.00")]
+        [TestCase(0.25, 0.75, 0.5, 0.20, -0.125, "1.00")]
         public void Create_01_Ok(double peak, double leftOffset, double rightOffset, double dom, double expectedRepresentativeValue, string expectedResult)
         {
             // Arrange
@@ -65,6 +69,9 @@ namespace Tests.fuzzy_logic
     
     public class FuzzySetRightShoulderTests
     {
+        [TestCase(0, 0, 0, 0, 0.0, "1.00")]
+        [TestCase(0, 0, 0.5, 0, 0.25, "1.00")]
+        [TestCase(0, 0.3, 0, 0, 0.0, "1.00")]
         [TestCase(0.3, 0.5, 1.0, 0, 0.8, "0.40")]
         [TestCase(0.3, 0.5, 1.0, 0.1, 0.8, "0.60")]
         [TestCase(0.3, 0.5, 1.0, 0.2, 0.8, "0.80")]
@@ -124,6 +131,9 @@ namespace Tests.fuzzy_logic
     
     public class FuzzySetTriangleTests
     {
+        [TestCase(0, 0, 0.0, 0, 0.0, "1.00")]
+        [TestCase(0, 0, 0.5, 0, 0.0, "1.00")]
+        [TestCase(0, 0.3, 0, 0, 0.0, "1.00")]
         [TestCase(0.1, 0.3, 0.5, 0, 0.1, "0.67")]
         [TestCase(0.1, 0.3, 0.5, 0.1, 0.1, "1.00")]
         [TestCase(0.1, 0.3, 0.5, 0.2, 0.1, "0.80")]
@@ -183,6 +193,7 @@ namespace Tests.fuzzy_logic
     
     public class FuzzySetSingletonTests
     {
+        [TestCase(0, 0, 0, 0, 0.0, "1.00")]
         [TestCase(0.1, 0.3, 0.5, 0, 0.1, "1.00")]
         [TestCase(0.1, 0.3, 0.5, 0.1, 0.1, "1.00")]
         [TestCase(0.1, 0.3, 0.5, 0.2, 0.1, "1.00")]
