@@ -47,31 +47,12 @@ namespace FuzzyLogicConsole
                         continue;
                     }
 
-                    string desirableValue = "";
-                    if (deFuzzifiedValue is >= 0 and <= 0.5)
+                    string desirableValue = deFuzzifiedValue switch
                     {
-                        desirableValue = "undesirable";
-                    }
-
-                    if (deFuzzifiedValue is >= 0.25 and <= 0.75)
-                    {
-                        if (desirableValue.Length > 0)
-                        {
-                            desirableValue += "&";
-                        }
-
-                        desirableValue += "desirable";
-                    }
-
-                    if (deFuzzifiedValue is >= 0.5 and <= 1.0)
-                    {
-                        if (desirableValue.Length > 0)
-                        {
-                            desirableValue += "&";
-                        }
-
-                        desirableValue += "veryDesirable";
-                    }
+                        >= 0.40 and <= 0.75 => "desirable -> je hebt een beetje zin in eten en slaap ",
+                        >= 0.5 and <= 1.0 => "very desirable -> je hebt lekker gesmikkeld en mag gaan uitbuiken",
+                        _ => "undesirable -> je hebt heel snel veel eten en slaap nodig"
+                    };
 
                     Console.WriteLine($"Desirability for hunger({hungerIndex:N2}) and sleep ({sleepIndex:N2}): " + deFuzzifiedValue.ToString("N2") + ": " + desirableValue);
                 }

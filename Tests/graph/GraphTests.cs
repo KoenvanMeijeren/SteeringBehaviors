@@ -161,7 +161,8 @@ namespace Tests.graph
             Vertex targetVertex = graph.GetVertex(3, 3);
 
             // Act
-            Stack<Vertex> pathVertices = Graph.GetShortestPath(startVertex, targetVertex);
+            ShortestPathResult result = Graph.GetShortestPath(startVertex, targetVertex);
+            Stack<Vertex> pathVertices = result.Path;
 
             // Assert
             Assert.AreEqual(1, pathVertices.Count);
@@ -174,10 +175,10 @@ namespace Tests.graph
         public void GetShortestPath_02_WorldGridGraph_Ok_DoesNotCrashOnEmptyInputVertex()
         {
             // Act
-            Stack<Vertex> pathVertices = Graph.GetShortestPath(null, null);
+            ShortestPathResult result = Graph.GetShortestPath(null, null);
 
             // Assert
-            Assert.IsNull(pathVertices);
+            Assert.IsNull(result);
         }
     }
 }
