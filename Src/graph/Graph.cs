@@ -198,7 +198,7 @@ namespace Src.graph
     {
         public readonly Stack<Vertex> Path;
         public readonly List<Vertex> SearchedVertices;
-        
+
         public ShortestPathResult(Stack<Vertex> path, List<Vertex> searchedVertices)
         {
             Path = path;

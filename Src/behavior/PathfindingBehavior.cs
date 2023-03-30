@@ -63,7 +63,7 @@ namespace Src.behavior
             {
                 return;
             }
-            
+
             Path = result.Path;
             SearchedVertices = result.SearchedVertices;
             Console.WriteLine("NEW PATH");

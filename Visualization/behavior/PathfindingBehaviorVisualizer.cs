@@ -41,7 +41,7 @@ namespace SteeringCS.behavior
             Rectangle rectangle = new Rectangle(0, 0, VertexSize, VertexSize);
 
             Vertex prevVertex = null;
-            
+
             foreach (Vector vector in _steeringBehavior.SearchedVertices.Select(vertex => vertex.Position))
             {
                 rectangle.X = (int)vector.X;
