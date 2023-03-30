@@ -29,7 +29,7 @@ namespace Tests.fuzzy_logic
         [TestCase(100, 1, 87.5)]
         [TestCase(1, 100, 0)]
         [TestCase(100, 100, 87.5)]
-        public void Fuzzify_01_OrOperator_TwoAntecedents_Ok(double energyInput, double sleepInput, double expectedResult)
+        public void FuzzifyAndDefuzzyify_01_OrOperator_TwoAntecedents_Ok(double energyInput, double sleepInput, double expectedResult)
         {
             // Arrange
             FuzzyModule fuzzyModule = new();
@@ -78,7 +78,7 @@ namespace Tests.fuzzy_logic
         [TestCase(86, 51, 87.5)]
         [TestCase(90, 65, 87.5)]
         [TestCase(97, 65, 87.5)]
-        public void Fuzzify_01_AndOperator_TwoAntecedents_Ok(double energyInput, double sleepInput, double expectedResult)
+        public void FuzzifyAndDefuzzyify_01_AndOperator_TwoAntecedents_Ok(double energyInput, double sleepInput, double expectedResult)
         {
             // Arrange
             FuzzyModule fuzzyModule = new();
@@ -131,7 +131,7 @@ namespace Tests.fuzzy_logic
         [TestCase(86, 51, 87.5)]
         [TestCase(90, 65, 87.5)]
         [TestCase(97, 65, 87.5)]
-        public void Fuzzify_01_CombinedOperators_TwoAntecedents_Ok(double energyInput, double sleepInput, double expectedResult)
+        public void FuzzifyAndDefuzzyify_01_CombinedOperators_TwoAntecedents_Ok(double energyInput, double sleepInput, double expectedResult)
         {
             // Arrange
             FuzzyModule fuzzyModule = new();
@@ -167,7 +167,7 @@ namespace Tests.fuzzy_logic
         }
         
         [Test]
-        public void Fuzzify_01_AndOperator_NonExisting_Ok()
+        public void Defuzzyify_01_AndOperator_NonExisting_Ok()
         {
             // Arrange & act
             FuzzyModule fuzzyModule = new();
