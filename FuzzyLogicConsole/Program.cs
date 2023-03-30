@@ -73,7 +73,7 @@ namespace FuzzyLogicConsole
                         desirableValue += "veryDesirable";
                     }
 
-                    Console.WriteLine($"Desirability for hunger({hungerIndex.ToString("N2")}) and sleep ({sleepIndex.ToString("N2")}): " + deFuzzifiedValue.ToString("N2") + ": " + desirableValue);
+                    Console.WriteLine($"Desirability for hunger({hungerIndex:N2}) and sleep ({sleepIndex:N2}): " + deFuzzifiedValue.ToString("N2") + ": " + desirableValue);
                 }
             }
         }
