@@ -21,20 +21,20 @@ namespace Src.fuzzy_logic
         /// </summary>
         public FuzzyTermSet AddLeftShoulderSet(string name, double min, double peak, double max)
         {
-            return AddFuzzyTermSet(name, new FuzzySetLeftShoulder(peak, peak - min, peak - max), min, max);
+            return AddFuzzyTermSet(name, new FuzzySetLeftShoulder(peak, peak - min, peak - max));
         }
 
         public FuzzyTermSet AddRightShoulderSet(string name, double min, double peak, double max)
         {
-            return AddFuzzyTermSet(name, new FuzzySetRightShoulder(peak, peak - min, peak - max), min, max);
+            return AddFuzzyTermSet(name, new FuzzySetRightShoulder(peak, peak - min, peak - max));
         }
 
         public FuzzyTermSet AddTriangleSet(string name, double min, double mid, double max)
         {
-            return AddFuzzyTermSet(name, new FuzzySetTriangle(mid, mid - min, mid - max), min, max);
+            return AddFuzzyTermSet(name, new FuzzySetTriangle(mid, mid - min, mid - max));
         }
 
-        private FuzzyTermSet AddFuzzyTermSet(string name, FuzzySet set, double min, double max)
+        private FuzzyTermSet AddFuzzyTermSet(string name, FuzzySet set)
         {
             _members.Add(name, set);
 

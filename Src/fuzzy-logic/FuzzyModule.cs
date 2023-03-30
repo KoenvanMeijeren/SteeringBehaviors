@@ -32,10 +32,12 @@ namespace Src.fuzzy_logic
         /// </summary>
         public void Fuzzify(string nameFlv, double value)
         {
-            if (_variables.TryGetValue(nameFlv, out FuzzyVariable fuzzyVariable))
+            if (!_variables.TryGetValue(nameFlv, out FuzzyVariable fuzzyVariable))
             {
-                fuzzyVariable.Fuzzify(value);
+                return;
             }
+
+            fuzzyVariable.Fuzzify(value);
         }
 
         /// <summary>
