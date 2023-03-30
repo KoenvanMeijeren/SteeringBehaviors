@@ -33,6 +33,34 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(expectedRepresentativeValue, leftShoulder.RepresentativeValue);
             Assert.AreEqual(expectedResult, result);
         }
+
+        [Test]
+        public void OrWithDom_01_Ok()
+        {
+            // Arrange
+            FuzzySetLeftShoulder leftShoulder = new(15, 30, 0);
+
+            // Act & assert
+            leftShoulder.OrWithDom(10);
+            Assert.AreEqual(10, leftShoulder.DegreeOfMembership);
+            leftShoulder.OrWithDom(5);
+            Assert.AreEqual(10, leftShoulder.DegreeOfMembership);
+            leftShoulder.OrWithDom(30);
+            Assert.AreEqual(30, leftShoulder.DegreeOfMembership);
+        }
+        
+        [Test]
+        public void ResetDom_01_Ok()
+        {
+            // Arrange
+            FuzzySetLeftShoulder leftShoulder = new(15, 30, 0);
+
+            // Act & assert
+            leftShoulder.OrWithDom(10);
+            Assert.AreEqual(10, leftShoulder.DegreeOfMembership);
+            leftShoulder.ResetDom();
+            Assert.AreEqual(0, leftShoulder.DegreeOfMembership);
+        }
     }
     
     public class FuzzySetRightShoulderTests
@@ -63,6 +91,34 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(0, rightShoulder.DegreeOfMembership);
             Assert.AreEqual(expectedRepresentativeValue, rightShoulder.RepresentativeValue);
             Assert.AreEqual(expectedResult, result);
+        }
+        
+        [Test]
+        public void OrWithDom_01_Ok()
+        {
+            // Arrange
+            FuzzySetRightShoulder rightShoulder = new(15, 30, 0);
+
+            // Act & assert
+            rightShoulder.OrWithDom(10);
+            Assert.AreEqual(10, rightShoulder.DegreeOfMembership);
+            rightShoulder.OrWithDom(5);
+            Assert.AreEqual(10, rightShoulder.DegreeOfMembership);
+            rightShoulder.OrWithDom(30);
+            Assert.AreEqual(30, rightShoulder.DegreeOfMembership);
+        }
+        
+        [Test]
+        public void ResetDom_01_Ok()
+        {
+            // Arrange
+            FuzzySetRightShoulder rightShoulder = new(15, 30, 0);
+
+            // Act & assert
+            rightShoulder.OrWithDom(10);
+            Assert.AreEqual(10, rightShoulder.DegreeOfMembership);
+            rightShoulder.ResetDom();
+            Assert.AreEqual(0, rightShoulder.DegreeOfMembership);
         }
     }
     
@@ -95,6 +151,34 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(expectedRepresentativeValue, triangle.RepresentativeValue);
             Assert.AreEqual(expectedResult, result);
         }
+        
+        [Test]
+        public void OrWithDom_01_Ok()
+        {
+            // Arrange
+            FuzzySetTriangle triangle = new(15, 30, 0);
+
+            // Act & assert
+            triangle.OrWithDom(10);
+            Assert.AreEqual(10, triangle.DegreeOfMembership);
+            triangle.OrWithDom(5);
+            Assert.AreEqual(10, triangle.DegreeOfMembership);
+            triangle.OrWithDom(30);
+            Assert.AreEqual(30, triangle.DegreeOfMembership);
+        }
+        
+        [Test]
+        public void ResetDom_01_Ok()
+        {
+            // Arrange
+            FuzzySetTriangle triangle = new(15, 30, 0);
+
+            // Act & assert
+            triangle.OrWithDom(10);
+            Assert.AreEqual(10, triangle.DegreeOfMembership);
+            triangle.ResetDom();
+            Assert.AreEqual(0, triangle.DegreeOfMembership);
+        }
     }
     
     public class FuzzySetSingletonTests
@@ -125,6 +209,34 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(0, singleton.DegreeOfMembership);
             Assert.AreEqual(expectedRepresentativeValue, singleton.RepresentativeValue);
             Assert.AreEqual(expectedResult, result);
+        }
+        
+        [Test]
+        public void OrWithDom_01_Ok()
+        {
+            // Arrange
+            FuzzySetSingleton singleton = new(15, 30, 0);
+
+            // Act & assert
+            singleton.OrWithDom(10);
+            Assert.AreEqual(10, singleton.DegreeOfMembership);
+            singleton.OrWithDom(5);
+            Assert.AreEqual(10, singleton.DegreeOfMembership);
+            singleton.OrWithDom(30);
+            Assert.AreEqual(30, singleton.DegreeOfMembership);
+        }
+        
+        [Test]
+        public void ResetDom_01_Ok()
+        {
+            // Arrange
+            FuzzySetSingleton singleton = new(15, 30, 0);
+
+            // Act & assert
+            singleton.OrWithDom(10);
+            Assert.AreEqual(10, singleton.DegreeOfMembership);
+            singleton.ResetDom();
+            Assert.AreEqual(0, singleton.DegreeOfMembership);
         }
     }
 }
