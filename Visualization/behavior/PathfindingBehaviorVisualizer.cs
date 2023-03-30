@@ -44,8 +44,9 @@ namespace SteeringCS.behavior
 
             foreach (Vector vector in _steeringBehavior.SearchedVertices.Select(vertex => vertex.Position))
             {
-                rectangle.X = (int)vector.X;
-                rectangle.Y = (int)vector.Y;
+                Vector updatedVector = vector - (VertexSize / 2);
+                rectangle.X = (int)updatedVector.X;
+                rectangle.Y = (int)updatedVector.Y;
                 graphic.DrawEllipse(penForSearchedVertex, rectangle);
             }
 
