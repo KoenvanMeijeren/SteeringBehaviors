@@ -12,9 +12,9 @@
         /// </summary>
         public readonly double PeakPoint, RightOffset, LeftOffset;
 
-        public FuzzySetRightShoulder(double peakPoint, double rightOffset, double leftOffset): base(((peakPoint + rightOffset) + peakPoint) / 2)
+        public FuzzySetRightShoulder(double peakPoint, double rightOffset, double leftOffset) : base(((peakPoint + rightOffset) + peakPoint) / 2)
         {
-            PeakPoint = peakPoint; 
+            PeakPoint = peakPoint;
             RightOffset = rightOffset;
             LeftOffset = leftOffset;
         }
@@ -29,14 +29,14 @@
             }
 
             // Find DOM if left of center
-            if ( (value <= PeakPoint) && (value > (PeakPoint - LeftOffset)) )
+            if ((value <= PeakPoint) && (value > (PeakPoint - LeftOffset)))
             {
                 double grad = 1.0 / LeftOffset;
 
                 return grad * (value - (PeakPoint - LeftOffset));
             }
             // Find DOM if right of center and less than center + right offset
-            if ( (value > PeakPoint) && (value <= PeakPoint + RightOffset) )
+            if ((value > PeakPoint) && (value <= PeakPoint + RightOffset))
             {
                 return 1.0;
             }

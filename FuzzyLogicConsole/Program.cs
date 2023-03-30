@@ -10,7 +10,7 @@ namespace FuzzyLogicConsole
         private static void Main()
         {
             Console.WriteLine("Fuzzy logic demo");
-            
+
             FuzzyModule fuzzyModule = new();
 
             FuzzyVariable hunger = fuzzyModule.CreateFlv("Hunger");
@@ -52,14 +52,14 @@ namespace FuzzyLogicConsole
                     {
                         desirableValue = "undesirable";
                     }
-                    
+
                     if (deFuzzifiedValue is >= 0.25 and <= 0.75)
                     {
                         if (desirableValue.Length > 0)
                         {
                             desirableValue += "&";
                         }
-                        
+
                         desirableValue += "desirable";
                     }
 
@@ -69,7 +69,7 @@ namespace FuzzyLogicConsole
                         {
                             desirableValue += "&";
                         }
-                        
+
                         desirableValue += "veryDesirable";
                     }
 

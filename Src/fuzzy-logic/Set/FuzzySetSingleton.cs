@@ -11,9 +11,9 @@
         /// </summary>
         public readonly double MidPoint, RightOffset, LeftOffset;
 
-        public FuzzySetSingleton(double midPoint, double rightOffset, double leftOffset): base(midPoint)
+        public FuzzySetSingleton(double midPoint, double rightOffset, double leftOffset) : base(midPoint)
         {
-            MidPoint = midPoint; 
+            MidPoint = midPoint;
             RightOffset = rightOffset;
             LeftOffset = leftOffset;
         }
@@ -24,7 +24,7 @@
             {
                 return 1.0;
             }
-            
+
             // Out of range of this FLV, return zero
             return 0.0;
         }

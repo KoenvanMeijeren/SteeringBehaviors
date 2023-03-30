@@ -19,7 +19,7 @@ namespace Src.fuzzy_logic
         /// methods return a proxy class representing the newly created instance. This
         /// proxy set can be used as an operand when creating the rule base.
         /// </summary>
-        public FuzzyTermSet AddLeftShoulderSet(string name, double min, double peak, double max) 
+        public FuzzyTermSet AddLeftShoulderSet(string name, double min, double peak, double max)
         {
             return AddFuzzyTermSet(name, new FuzzySetLeftShoulder(peak, peak - min, peak - max), min, max);
         }
@@ -37,7 +37,7 @@ namespace Src.fuzzy_logic
         private FuzzyTermSet AddFuzzyTermSet(string name, FuzzySet set, double min, double max)
         {
             _members.Add(name, set);
-            
+
             return _members.TryGetValue(name, out FuzzySet fuzzySet) ? new FuzzyTermSet(fuzzySet) : null;
         }
 
@@ -55,7 +55,7 @@ namespace Src.fuzzy_logic
         /// <summary>
         /// Defuzzify the variable using the max average method.
         /// </summary>
-        public double DeFuzzifyMaxAv() 
+        public double DeFuzzifyMaxAv()
         {
             double top = 0, bottom = 0;
 

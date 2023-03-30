@@ -25,7 +25,7 @@ namespace Tests.fuzzy_logic
         {
             // Arrange
             FuzzySetLeftShoulder leftShoulder = new(peak, rightOffset, leftOffset);
-            
+
             // Act
             string result = leftShoulder.CalculateDom(dom).ToString("N2", CultureInfo.InvariantCulture);
 
@@ -52,7 +52,7 @@ namespace Tests.fuzzy_logic
             leftShoulder.OrWithDom(30);
             Assert.AreEqual(30, leftShoulder.DegreeOfMembership);
         }
-        
+
         [Test]
         public void ResetDom_01_Ok()
         {
@@ -66,7 +66,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(0, leftShoulder.DegreeOfMembership);
         }
     }
-    
+
     public class FuzzySetRightShoulderTests
     {
         [TestCase(0, 0, 0, 0, 0.0, "1.00")]
@@ -87,7 +87,7 @@ namespace Tests.fuzzy_logic
         {
             // Arrange
             FuzzySetRightShoulder rightShoulder = new(peak, rightOffset, leftOffset);
-            
+
             // Act
             string result = rightShoulder.CalculateDom(dom).ToString("N2", CultureInfo.InvariantCulture);
 
@@ -99,7 +99,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(expectedRepresentativeValue, rightShoulder.RepresentativeValue);
             Assert.AreEqual(expectedResult, result);
         }
-        
+
         [Test]
         public void OrWithDom_01_Ok()
         {
@@ -114,7 +114,7 @@ namespace Tests.fuzzy_logic
             rightShoulder.OrWithDom(30);
             Assert.AreEqual(30, rightShoulder.DegreeOfMembership);
         }
-        
+
         [Test]
         public void ResetDom_01_Ok()
         {
@@ -128,7 +128,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(0, rightShoulder.DegreeOfMembership);
         }
     }
-    
+
     public class FuzzySetTriangleTests
     {
         [TestCase(0, 0, 0.0, 0, 0.0, "1.00")]
@@ -149,7 +149,7 @@ namespace Tests.fuzzy_logic
         {
             // Arrange
             FuzzySetTriangle triangle = new(midPoint, rightOffset, leftOffset);
-            
+
             // Act
             string result = triangle.CalculateDom(dom).ToString("N2", CultureInfo.InvariantCulture);
 
@@ -161,7 +161,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(expectedRepresentativeValue, triangle.RepresentativeValue);
             Assert.AreEqual(expectedResult, result);
         }
-        
+
         [Test]
         public void OrWithDom_01_Ok()
         {
@@ -176,7 +176,7 @@ namespace Tests.fuzzy_logic
             triangle.OrWithDom(30);
             Assert.AreEqual(30, triangle.DegreeOfMembership);
         }
-        
+
         [Test]
         public void ResetDom_01_Ok()
         {
@@ -190,7 +190,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(0, triangle.DegreeOfMembership);
         }
     }
-    
+
     public class FuzzySetSingletonTests
     {
         [TestCase(0, 0, 0, 0, 0.0, "1.00")]
@@ -209,7 +209,7 @@ namespace Tests.fuzzy_logic
         {
             // Arrange
             FuzzySetSingleton singleton = new(midPoint, rightOffset, leftOffset);
-            
+
             // Act
             string result = singleton.CalculateDom(dom).ToString("N2", CultureInfo.InvariantCulture);
 
@@ -221,7 +221,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(expectedRepresentativeValue, singleton.RepresentativeValue);
             Assert.AreEqual(expectedResult, result);
         }
-        
+
         [Test]
         public void OrWithDom_01_Ok()
         {
@@ -236,7 +236,7 @@ namespace Tests.fuzzy_logic
             singleton.OrWithDom(30);
             Assert.AreEqual(30, singleton.DegreeOfMembership);
         }
-        
+
         [Test]
         public void ResetDom_01_Ok()
         {

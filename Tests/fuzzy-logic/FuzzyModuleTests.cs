@@ -38,7 +38,7 @@ namespace Tests.fuzzy_logic
             FuzzyTermSet energyLow = energy.AddLeftShoulderSet("low", 0, 10, 30);
             FuzzyTermSet energyDecent = energy.AddTriangleSet("content", 10, 50, 75);
             FuzzyTermSet energyFull = energy.AddRightShoulderSet("high", 50, 75, 100);
-            
+
             FuzzyVariable sleep = fuzzyModule.CreateFlv("sleep");
             FuzzyTermSet tired = sleep.AddLeftShoulderSet("tired", 0, 10, 30);
             FuzzyTermSet sleepy = sleep.AddTriangleSet("sleepy", 10, 30, 50);
@@ -48,12 +48,12 @@ namespace Tests.fuzzy_logic
             FuzzyTermSet undesirable = desirability.AddLeftShoulderSet("undesirable", 0, 25, 50);
             FuzzyTermSet desirable = desirability.AddTriangleSet("desirable", 25, 50, 75);
             FuzzyTermSet veryDesirable = desirability.AddRightShoulderSet("veryDesirable", 50, 75, 100);
-            
+
             // Act
             fuzzyModule.AddRule(new FuzzyOperatorOr(energyLow, tired), undesirable);
             fuzzyModule.AddRule(new FuzzyOperatorOr(energyDecent, sleepy), desirable);
             fuzzyModule.AddRule(new FuzzyOperatorOr(energyFull, awake), veryDesirable);
-            
+
             fuzzyModule.Fuzzify("energy", energyInput);
             fuzzyModule.Fuzzify("sleep", sleepInput);
             double result = fuzzyModule.DeFuzzify("desirability");
@@ -61,7 +61,7 @@ namespace Tests.fuzzy_logic
             // Assert
             Assert.AreEqual(expectedResult, result);
         }
-        
+
         [TestCase(0, 0, 0)]
         [TestCase(5, 0, 0)]
         [TestCase(9, 9, 0)]
@@ -87,7 +87,7 @@ namespace Tests.fuzzy_logic
             FuzzyTermSet energyLow = energy.AddLeftShoulderSet("low", 0, 10, 30);
             FuzzyTermSet energyDecent = energy.AddTriangleSet("content", 10, 50, 75);
             FuzzyTermSet energyFull = energy.AddRightShoulderSet("high", 50, 75, 100);
-            
+
             FuzzyVariable sleep = fuzzyModule.CreateFlv("sleep");
             FuzzyTermSet tired = sleep.AddLeftShoulderSet("tired", 0, 10, 30);
             FuzzyTermSet sleepy = sleep.AddTriangleSet("sleepy", 10, 30, 50);
@@ -97,12 +97,12 @@ namespace Tests.fuzzy_logic
             FuzzyTermSet undesirable = desirability.AddLeftShoulderSet("undesirable", 0, 25, 50);
             FuzzyTermSet desirable = desirability.AddTriangleSet("desirable", 25, 50, 75);
             FuzzyTermSet veryDesirable = desirability.AddRightShoulderSet("veryDesirable", 50, 75, 100);
-            
+
             // Act
             fuzzyModule.AddRule(new FuzzyOperatorAnd(energyLow, tired), undesirable);
             fuzzyModule.AddRule(new FuzzyOperatorAnd(energyDecent, sleepy), desirable);
             fuzzyModule.AddRule(new FuzzyOperatorAnd(energyFull, awake), veryDesirable);
-            
+
             fuzzyModule.Fuzzify("energy", energyInput);
             fuzzyModule.Fuzzify("sleep", sleepInput);
             double result = fuzzyModule.DeFuzzify("desirability");
@@ -110,7 +110,7 @@ namespace Tests.fuzzy_logic
             // Assert
             Assert.AreEqual(expectedResult, result);
         }
-        
+
         [TestCase(0, 0, 0)]
         [TestCase(5, 0, 0)]
         [TestCase(9, 9, 0)]
@@ -140,7 +140,7 @@ namespace Tests.fuzzy_logic
             FuzzyTermSet energyLow = energy.AddLeftShoulderSet("low", 0, 10, 30);
             FuzzyTermSet energyDecent = energy.AddTriangleSet("content", 10, 50, 75);
             FuzzyTermSet energyFull = energy.AddRightShoulderSet("high", 50, 75, 100);
-            
+
             FuzzyVariable sleep = fuzzyModule.CreateFlv("sleep");
             FuzzyTermSet tired = sleep.AddLeftShoulderSet("tired", 0, 10, 30);
             FuzzyTermSet sleepy = sleep.AddTriangleSet("sleepy", 10, 30, 50);
@@ -150,14 +150,14 @@ namespace Tests.fuzzy_logic
             FuzzyTermSet undesirable = desirability.AddLeftShoulderSet("undesirable", 0, 25, 50);
             FuzzyTermSet desirable = desirability.AddTriangleSet("desirable", 25, 50, 75);
             FuzzyTermSet veryDesirable = desirability.AddRightShoulderSet("veryDesirable", 50, 75, 100);
-            
+
             // Act
             fuzzyModule.AddRule(new FuzzyOperatorOr(energyLow, tired), undesirable);
             fuzzyModule.AddRule(new FuzzyOperatorAnd(energyFull, tired), undesirable);
             fuzzyModule.AddRule(new FuzzyOperatorAnd(energyDecent, awake), desirable);
             fuzzyModule.AddRule(new FuzzyOperatorAnd(energyDecent, sleepy), desirable);
             fuzzyModule.AddRule(new FuzzyOperatorAnd(energyFull, awake), veryDesirable);
-            
+
             fuzzyModule.Fuzzify("energy", energyInput);
             fuzzyModule.Fuzzify("sleep", sleepInput);
             double result = fuzzyModule.DeFuzzify("desirability");
@@ -165,7 +165,7 @@ namespace Tests.fuzzy_logic
             // Assert
             Assert.AreEqual(expectedResult, result);
         }
-        
+
         [Test]
         public void Defuzzyify_01_AndOperator_NonExisting_Ok()
         {

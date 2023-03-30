@@ -19,7 +19,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(0, fuzzyTerm.GetDom());
             Assert.AreNotEqual(fuzzyTerm, fuzzyTerm.Clone());
         }
-        
+
         [Test]
         public void GetDom_01_LeftShoulder_Ok()
         {
@@ -33,7 +33,7 @@ namespace Tests.fuzzy_logic
             // Assert
             Assert.AreEqual(3.1622776601683795d, fuzzyTerm.GetDom());
         }
-        
+
         [Test]
         public void GetDom_01_RightShoulder_Ok()
         {
@@ -47,7 +47,7 @@ namespace Tests.fuzzy_logic
             // Assert
             Assert.AreEqual(3.1622776601683795d, fuzzyTerm.GetDom());
         }
-        
+
         [Test]
         public void ResetDom_01_Ok()
         {
@@ -62,7 +62,7 @@ namespace Tests.fuzzy_logic
             // Assert
             Assert.AreEqual(0, fuzzyTerm.GetDom());
         }
-        
+
         [Test]
         public void OrWithDom_01_Ok()
         {
@@ -77,7 +77,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(2.4322992790977875d, fuzzyTerm.GetDom());
         }
     }
-    
+
     public class FuzzyTermSetTests
     {
         [Test]
@@ -93,7 +93,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(0, fuzzyTerm.GetDom());
             Assert.AreNotEqual(fuzzyTerm, fuzzyTerm.Clone());
         }
-        
+
         [Test]
         public void GetDom_01_LeftShoulder_Ok()
         {
@@ -107,7 +107,7 @@ namespace Tests.fuzzy_logic
             // Assert
             Assert.AreEqual(10, fuzzyTerm.GetDom());
         }
-        
+
         [Test]
         public void GetDom_01_RightShoulder_Ok()
         {
@@ -121,7 +121,7 @@ namespace Tests.fuzzy_logic
             // Assert
             Assert.AreEqual(10, fuzzyTerm.GetDom());
         }
-        
+
         [Test]
         public void ResetDom_01_Ok()
         {
@@ -136,7 +136,7 @@ namespace Tests.fuzzy_logic
             // Assert
             Assert.AreEqual(0, fuzzyTerm.GetDom());
         }
-        
+
         [Test]
         public void OrWithDom_01_Ok()
         {
@@ -151,7 +151,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(35, fuzzyTerm.GetDom());
         }
     }
-    
+
     public class FuzzyTermVeryTests
     {
         [Test]
@@ -167,7 +167,7 @@ namespace Tests.fuzzy_logic
             Assert.AreEqual(0, fuzzyTerm.GetDom());
             Assert.AreNotEqual(fuzzyTerm, fuzzyTerm.Clone());
         }
-        
+
         [Test]
         public void GetDom_01_LeftShoulder_Ok()
         {
@@ -181,7 +181,7 @@ namespace Tests.fuzzy_logic
             // Assert
             Assert.AreEqual(100, fuzzyTerm.GetDom());
         }
-        
+
         [Test]
         public void GetDom_01_RightShoulder_Ok()
         {
@@ -195,7 +195,7 @@ namespace Tests.fuzzy_logic
             // Assert
             Assert.AreEqual(100, fuzzyTerm.GetDom());
         }
-        
+
         [Test]
         public void ResetDom_01_Ok()
         {
@@ -210,7 +210,7 @@ namespace Tests.fuzzy_logic
             // Assert
             Assert.AreEqual(0, fuzzyTerm.GetDom());
         }
-        
+
         [Test]
         public void OrWithDom_01_Ok()
         {

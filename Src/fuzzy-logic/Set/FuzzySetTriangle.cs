@@ -12,9 +12,9 @@
         /// </summary>
         public readonly double MidPoint, RightOffset, LeftOffset;
 
-        public FuzzySetTriangle(double midPoint, double rightOffset, double leftOffset): base(midPoint)
+        public FuzzySetTriangle(double midPoint, double rightOffset, double leftOffset) : base(midPoint)
         {
-            MidPoint = midPoint; 
+            MidPoint = midPoint;
             RightOffset = rightOffset;
             LeftOffset = leftOffset;
         }
@@ -28,13 +28,13 @@
             }
 
             // Find DOM if left of center
-            if ( (value <= MidPoint) && (value > (MidPoint - LeftOffset)) )
+            if ((value <= MidPoint) && (value > (MidPoint - LeftOffset)))
             {
                 double grad = 1.0 / LeftOffset;
 
                 return grad * (value - (MidPoint - LeftOffset));
             }
-            
+
             // Find DOM if right of center
             if ((value > MidPoint) && (value < (MidPoint + RightOffset)))
             {
@@ -42,7 +42,7 @@
 
                 return grad * (value - MidPoint) + 1.0;
             }
-            
+
             // Out of range of this FLV, return zero
             return 0.0;
         }

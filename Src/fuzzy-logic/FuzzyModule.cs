@@ -15,7 +15,7 @@ namespace Src.fuzzy_logic
         /// <summary>
         /// Creates a new "empty" fuzzy variable and returns a reference to it.
         /// </summary>
-        public FuzzyVariable CreateFlv(string name) 
+        public FuzzyVariable CreateFlv(string name)
         {
             _variables.Add(name, new FuzzyVariable());
 
@@ -30,7 +30,7 @@ namespace Src.fuzzy_logic
         /// <summary>
         /// This method calls the Fuzzify method of the variable with the same name as the key.
         /// </summary>
-        public void Fuzzify(string nameFlv, double value) 
+        public void Fuzzify(string nameFlv, double value)
         {
             if (_variables.TryGetValue(nameFlv, out FuzzyVariable fuzzyVariable))
             {
@@ -47,7 +47,7 @@ namespace Src.fuzzy_logic
             {
                 return 0;
             }
-            
+
             foreach (FuzzyRule rule in _rules)
             {
                 rule.ResetConsequence();

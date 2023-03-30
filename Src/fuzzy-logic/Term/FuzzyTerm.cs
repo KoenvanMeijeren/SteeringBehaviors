@@ -10,17 +10,17 @@
         /// All terms must implement a virtual constructor.
         /// </summary>
         public abstract FuzzyTerm Clone();
-        
+
         /// <summary>
         /// Retrieves the degree of membership of the term.
         /// </summary>
         public abstract double GetDom();
-        
+
         /// <summary>
         /// Resets the degree of membership of the term.
         /// </summary>
         public abstract void ResetDom();
-        
+
         /// <summary>
         /// Method for updating the DOM of a consequent when a rule fires.
         /// </summary>
