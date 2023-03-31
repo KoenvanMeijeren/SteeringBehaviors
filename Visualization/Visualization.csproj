@@ -88,7 +88,6 @@
     <Compile Include="state\DoAttackState.cs" />
     <Compile Include="state\FollowState.cs" />
     <Compile Include="state\LostState.cs" />
-    <Compile Include="state\Player.cs" />
     <Compile Include="state\RestState.cs" />
     <Compile Include="state\SearchState.cs" />
     <Compile Include="util\HitBoxVisualizer.cs" />

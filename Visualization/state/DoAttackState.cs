@@ -20,5 +20,7 @@
             AttackState.Power = 0;
             AttackState.ChangeState(new RestState(AttackState));
         }
+
+        public override string ToString() => "Attacking...";
     }
 }

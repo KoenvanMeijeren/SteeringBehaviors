@@ -24,9 +24,6 @@ namespace SteeringCS.state
         {
         }
 
-        public override string ToString()
-        {
-            return "Follow";
-        }
+        public override string ToString() => "Follow";
     }
 }

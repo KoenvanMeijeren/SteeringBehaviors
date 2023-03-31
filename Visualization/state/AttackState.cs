@@ -14,7 +14,7 @@ namespace SteeringCS.state
 
     public class AttackState : IState
     {
-        public IMovingEntity MovingEntity { get;}
+        public IMovingEntity MovingEntity { get; }
         private IAttackState _attackState;
         private const int _maxShortestPathDistance = 3;
         public const int _maxPower = 100;
@@ -52,5 +52,7 @@ namespace SteeringCS.state
 
             _attackState.Execute();
         }
+
+        public override string ToString() => _attackState.ToString();
     }
 }

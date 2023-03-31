@@ -29,5 +29,7 @@ namespace SteeringCS.state
 
             AttackState.Power++;
         }
+
+        public override string ToString() => "Resting...";
     }
 }

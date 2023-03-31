@@ -31,9 +31,6 @@ namespace SteeringCS.state
             }
         }
 
-        public override string ToString()
-        {
-            return "Chase";
-        }
+        public override string ToString() => "Chase";
     }
 }
