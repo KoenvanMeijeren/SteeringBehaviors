@@ -30,5 +30,10 @@ namespace SteeringCS.state
                 AttackState.ChangeState(new DoAttackState(AttackState));
             }
         }
+
+        public override string ToString()
+        {
+            return "Chase";
+        }
     }
 }
