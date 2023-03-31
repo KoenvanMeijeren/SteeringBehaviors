@@ -31,7 +31,7 @@ namespace Src.behavior
             }
 
             Vector actualVelocity = desiredVelocity - movingEntity.Velocity;
-            return actualVelocity * 2;
+            return actualVelocity;
         }
     }
 }
