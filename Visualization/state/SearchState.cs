@@ -55,5 +55,10 @@ namespace SteeringCS.state
 
             return result.Path.Count < _maxShortestPathDistance;
         }
+        
+        public override string ToString()
+        {
+            return "Search";
+        }
     }
 }
