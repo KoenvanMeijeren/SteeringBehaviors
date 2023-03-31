@@ -9,8 +9,8 @@ namespace Tests.behavior
 {
     public class PathFindingBehaviorTests
     {
-        [TestCase(100, 100, new float[] { 35, 35 }, new float[] { 75, 75 }, "(40,40)")]
-        [TestCase(250, 250, new float[] { 50, 50 }, new float[] { 200, 200 }, "(30,30)")]
+        [TestCase(100, 100, new float[] { 35, 35 }, new float[] { 75, 75 }, "(21.21,21.21)")]
+        [TestCase(250, 250, new float[] { 50, 50 }, new float[] { 200, 200 }, "(21.21,21.21)")]
         public void Calculate_01_Ok(int width, int height, float[] seekingPositions, float[] targetPositions, string expectedResult)
         {
             // Arrange
@@ -51,19 +51,19 @@ namespace Tests.behavior
             Assert.AreEqual("(2.4,2.4)", movingEntity.Velocity.ToString());
 
             world.Update(TimeElapsed);
-            Assert.AreEqual("(40.18,40.18)", movingEntity.Position.ToString());
-            Assert.AreEqual("(2.78,2.78)", movingEntity.Velocity.ToString());
+            Assert.AreEqual("(39.77,39.77)", movingEntity.Position.ToString());
+            Assert.AreEqual("(2.37,2.37)", movingEntity.Velocity.ToString());
 
-            for (int index = 0; index < 19; index++)
+            for (int index = 0; index < 26; index++)
             {
                 world.Update(TimeElapsed);
             }
 
             world.Update(TimeElapsed);
-            Assert.AreEqual("(98.41,98.41)", movingEntity.Position.ToString());
-            Assert.AreEqual("(2.29,2.29)", movingEntity.Velocity.ToString());
+            Assert.AreEqual("(98.55,98.55)", movingEntity.Position.ToString());
+            Assert.AreEqual("(1.91,1.91)", movingEntity.Velocity.ToString());
 
-            for (int index = 0; index < 100; index++)
+            for (int index = 0; index < 115; index++)
             {
                 world.Update(TimeElapsed);
             }
@@ -93,8 +93,8 @@ namespace Tests.behavior
                 steeringBehavior,
                 0f,
                 "(35,35)",
-                "(45,45)",
-                "(1.5,1.5)",
+                "(21.21,21.21)",
+                "(0.71,0.71)",
                 "(0,0)",
                 "(0,0)",
                 "(0,0)",
@@ -111,11 +111,11 @@ namespace Tests.behavior
                 steeringBehavior,
                 TimeElapsed,
                 "(35,35)",
-                "(45,45)",
-                "(1.5,1.5)",
-                "(1.2,1.2)",
-                "(1.2,1.2)",
-                "(1.2,1.2)",
+                "(21.21,21.21)",
+                "(0.71,0.71)",
+                "(0.57,0.57)",
+                "(0.57,0.57)",
+                "(0.57,0.57)",
                 "(3,3)",
                 "(3,3)",
                 "(3,3)",
@@ -132,23 +132,23 @@ namespace Tests.behavior
                 steeringBehavior,
                 TimeElapsed,
                 "(37.4,37.4)",
-                "(40.2,40.2)",
-                "(1.34,1.34)",
-                "(3.47,3.47)",
-                "(3.47,3.47)",
-                "(3.47,3.47)",
-                "(3.47,3.47)",
-                "(3.47,3.47)",
-                "(3.47,3.47)",
-                "(3.47,3.47)",
-                "(2.78,2.78)",
-                "(40.18,40.18)"
+                "(21.21,21.21)",
+                "(0.71,0.71)",
+                "(2.97,2.97)",
+                "(2.97,2.97)",
+                "(2.97,2.97)",
+                "(2.97,2.97)",
+                "(2.97,2.97)",
+                "(2.97,2.97)",
+                "(2.97,2.97)",
+                "(2.37,2.37)",
+                "(39.77,39.77)"
             );
             world.Update(TimeElapsed);
-            Assert.AreEqual("(40.18,40.18)", movingEntity.Position.ToString());
-            Assert.AreEqual("(2.78,2.78)", movingEntity.Velocity.ToString());
+            Assert.AreEqual("(39.77,39.77)", movingEntity.Position.ToString());
+            Assert.AreEqual("(2.37,2.37)", movingEntity.Velocity.ToString());
 
-            for (int index = 0; index < 40; index++)
+            for (int index = 0; index < 55; index++)
             {
                 world.Update(TimeElapsed);
             }
@@ -157,24 +157,24 @@ namespace Tests.behavior
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
-                "(157.9,157.9)",
-                "(15.42,15.42)",
-                "(0.51,0.51)",
-                "(3.09,3.09)",
-                "(3.09,3.09)",
-                "(3.09,3.09)",
-                "(3.09,3.09)",
-                "(3.09,3.09)",
-                "(3.09,3.09)",
-                "(3.09,3.09)",
-                "(2.47,2.47)",
-                "(160.37,160.37)"
+                "(158.54,158.54)",
+                "(21.21,21.21)",
+                "(0.71,0.71)",
+                "(2.81,2.81)",
+                "(2.81,2.81)",
+                "(2.81,2.81)",
+                "(2.81,2.81)",
+                "(2.81,2.81)",
+                "(2.81,2.81)",
+                "(2.81,2.81)",
+                "(2.25,2.25)",
+                "(160.79,160.79)"
             );
             world.Update(TimeElapsed);
-            Assert.AreEqual("(160.37,160.37)", movingEntity.Position.ToString());
-            Assert.AreEqual("(2.47,2.47)", movingEntity.Velocity.ToString());
+            Assert.AreEqual("(160.79,160.79)", movingEntity.Position.ToString());
+            Assert.AreEqual("(2.25,2.25)", movingEntity.Velocity.ToString());
 
-            for (int index = 0; index < 100; index++)
+            for (int index = 0; index < 60; index++)
             {
                 world.Update(TimeElapsed);
             }
@@ -184,8 +184,8 @@ namespace Tests.behavior
                 steeringBehavior,
                 TimeElapsed,
                 "(200,200)",
-                "(-0,-0)",
-                "(-0,-0)",
+                "(0,0)",
+                "(0,0)",
                 "(-0,-0)",
                 "(-0,-0)",
                 "(-0,-0)",
