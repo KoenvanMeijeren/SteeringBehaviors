@@ -9,7 +9,7 @@ namespace Src.world
         public IPlayer Player { get; protected set; }
         public IRescuee Rescuee { get; protected set; }
 
-        protected readonly List<IEnemy> Enemies;
+        public readonly List<IEnemy> Enemies;
         public IGrid Grid { get; protected set; }
 
         public int Width { get; }

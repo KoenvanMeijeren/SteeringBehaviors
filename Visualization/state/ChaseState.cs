@@ -33,5 +33,10 @@ namespace SteeringCS.state
                 MovingEntity.ChangeState(new SearchState(MovingEntity));
             }
         }
+
+        public override string ToString()
+        {
+            return "Chase";
+        }
     }
 }

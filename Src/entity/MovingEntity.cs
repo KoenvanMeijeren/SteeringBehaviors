@@ -27,15 +27,15 @@ namespace Src.entity
         public ISteeringBehavior CollisionAvoidingBehavior { get; private set; }
         public IState State { get; protected set; }
 
-        protected MovingEntity(Vector position, IWorld world, float height, float width)
+        protected MovingEntity(Vector position, IWorld world, float height, float width, float mass = MassDefault, float maxSpeed = MaxSpeedDefault)
         {
             Position = position;
             World = world;
             Height = height;
             Width = width;
             HitBox = new HitBox(this);
-            Mass = MassDefault;
-            MaxSpeed = MaxSpeedDefault;
+            Mass = mass;
+            MaxSpeed = maxSpeed;
             Velocity = new Vector(0, 0);
         }
 
@@ -66,8 +66,12 @@ namespace Src.entity
                 steeringForce += CollisionAvoidingBehavior.Calculate();
             }
 
-            Vector acceleration = steeringForce / Mass;
-            Velocity += acceleration * timeElapsed;
+            if (Mass != 0)
+            {
+                Vector acceleration = steeringForce / Mass;
+                Velocity += acceleration * timeElapsed;
+            }
+
             Velocity.Truncate(MaxSpeed);
             Velocity = CollisionHandler.AlterVectorToStayInsideOfWorld(Position, Velocity, World);
             Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, HitBox.UpperLeftCorner, Velocity, World.Grid);

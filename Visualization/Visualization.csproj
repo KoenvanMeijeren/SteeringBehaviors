@@ -78,6 +78,7 @@
       <DependentUpon>DebugForm.cs</DependentUpon>
     </Compile>
     <Compile Include="entity\MovingEntityVisualization.cs" />
+    <Compile Include="events\UpdateWorldEvent.cs" />
     <Compile Include="graph\GraphVisualizer.cs" />
     <Compile Include="grid\PathTileVisualizer.cs" />
     <Compile Include="grid\WallTileVisualizer.cs" />

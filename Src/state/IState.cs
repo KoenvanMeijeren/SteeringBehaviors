@@ -8,5 +8,7 @@ namespace Src.state
 
         void Enter();
         void Execute();
+
+        string ToString();
     }
 }

@@ -8,7 +8,7 @@ namespace SteeringCS.entity
 {
     public class Goomba : MovingEntityVisualization, IEnemy
     {
-        public const int GoombaMass = 45, GoombaMaxSpeed = 150;
+        private const int GoombaMass = 45, GoombaMaxSpeed = 150;
 
         private static readonly Image s_playerGraphicsRight = Image.FromFile("graphics/goomba/goomba-right.png");
         private static readonly Image s_playerGraphicsRightWalk1 = Image.FromFile("graphics/goomba/goomba-right-walk-1.png");
@@ -18,11 +18,9 @@ namespace SteeringCS.entity
         private static readonly Image s_playerGraphicsLeftWalk1 = Image.FromFile("graphics/goomba/goomba-left-walk-1.png");
         private static readonly Image s_playerGraphicsLeftWalk2 = Image.FromFile("graphics/goomba/goomba-left-walk-2.png");
 
-        public Goomba(Vector position, IWorld world) : base(position, world, s_playerGraphicsRight.Height / 2, s_playerGraphicsRight.Width)
+        public Goomba(Vector position, IWorld world, float mass = GoombaMass, float maxSpeed = GoombaMaxSpeed) : base(position, world, s_playerGraphicsRight.Height / 2, s_playerGraphicsRight.Width, mass, maxSpeed)
         {
             Velocity = new Vector(0, 0);
-            Mass = GoombaMass;
-            MaxSpeed = GoombaMaxSpeed;
         }
 
         protected override void CalculateGraphic()
