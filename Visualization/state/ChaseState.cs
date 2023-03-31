@@ -23,12 +23,14 @@ namespace SteeringCS.state
 
         public void Execute()
         {
-            if (MovingEntity.SteeringBehavior is PathfindingBehaviorVisualizer pathfindingBehaviorVisualizer)
+            if (!(MovingEntity.SteeringBehavior is PathfindingBehaviorVisualizer pathfindingBehaviorVisualizer))
             {
-                if (pathfindingBehaviorVisualizer.Path.Count > _maxShortestPathDistance)
-                {
-                    MovingEntity.ChangeState(new SearchState(MovingEntity));
-                }
+                return;
+            }
+
+            if (pathfindingBehaviorVisualizer.Path.Count > _maxShortestPathDistance)
+            {
+                MovingEntity.ChangeState(new SearchState(MovingEntity));
             }
         }
     }

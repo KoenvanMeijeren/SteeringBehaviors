@@ -4,7 +4,6 @@ using Src.behavior;
 using Src.entity;
 using Src.graph;
 using Src.util;
-using System.Drawing;
 using System.Linq;
 
 namespace SteeringCS.behavior

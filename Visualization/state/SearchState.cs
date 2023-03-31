@@ -1,5 +1,4 @@
 ﻿using SteeringCS.behavior;
-using System.Collections.Generic;
 using Src.behavior;
 using Src.entity;
 using Src.graph;
@@ -37,7 +36,7 @@ namespace SteeringCS.state
             }
         }
 
-        public bool IsShortestPathInSearchDistance()
+        private bool IsShortestPathInSearchDistance()
         {
             int vectorX = MovingEntity.World.Grid.GetCoordinateOfTile((int)MovingEntity.Position.X);
             int vectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)MovingEntity.Position.Y);
@@ -48,13 +47,13 @@ namespace SteeringCS.state
             int targetVectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)targetPosition.Y);
             Vertex targetVertex = MovingEntity.World.Grid.Graph.GetVertex(targetVectorX, targetVectorY);
 
-            Stack<Vertex> path = Graph.GetShortestPath(closestVertex, targetVertex);
-            if (path == null)
+            ShortestPathResult result = Graph.GetShortestPath(closestVertex, targetVertex);
+            if (result == null)
             {
                 return false;
             }
 
-            return path.Count < _maxShortestPathDistance;
+            return result.Path.Count < _maxShortestPathDistance;
         }
     }
 }
