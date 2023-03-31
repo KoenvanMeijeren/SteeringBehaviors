@@ -20,10 +20,15 @@ namespace SteeringCS.world
 
         protected override List<IEnemy> GetEnemies()
         {
-            Goomba goomba = new Goomba(new Vector(Width / 2, Height / 2), this);
-            goomba.ChangeState(new SearchState(goomba));
+            List<IEnemy> enemies = new List<IEnemy>();
+            for (int index = 0; index < 3; index++)
+            {
+                Goomba goomba = new Goomba(new Vector(Width / 2, Height / 2), this);
+                goomba.ChangeState(new SearchState(goomba));
+                enemies.Add(goomba);
+            }
 
-            return new List<IEnemy> { goomba };
+            return enemies;
         }
 
         protected override IPlayer GetPlayer()
