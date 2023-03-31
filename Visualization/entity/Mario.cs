@@ -8,7 +8,7 @@ namespace SteeringCS.entity
 {
     public class Mario : MovingEntityVisualization, IPlayer
     {
-        public int Health { get; set; } = 2;
+        public int Health { get; private set; } = 2;
         private static readonly Image s_marioBigGraphicsRight = Image.FromFile("graphics/mario/mario-big/mario-right.png");
         private static readonly Image s_marioBigGraphicsRightWalk1 = Image.FromFile("graphics/mario/mario-big/mario-right-walk-1.png");
         private static readonly Image s_marioBigGraphicsRightWalk2 = Image.FromFile("graphics/mario/mario-big/mario-right-walk-2.png");
