@@ -32,7 +32,7 @@ namespace SteeringCS.state
 
             if (isPlayerClose && IsShortestPathInSearchDistance())
             {
-                MovingEntity.ChangeState(new ChaseState(MovingEntity));
+                MovingEntity.ChangeState(new AttackState(MovingEntity));
             }
         }
 
@@ -56,9 +56,6 @@ namespace SteeringCS.state
             return result.Path.Count < _maxShortestPathDistance;
         }
 
-        public override string ToString()
-        {
-            return "Search";
-        }
+        public override string ToString() => "Search";
     }
 }

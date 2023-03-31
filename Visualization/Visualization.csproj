@@ -83,9 +83,12 @@
     <Compile Include="grid\PathTileVisualizer.cs" />
     <Compile Include="grid\WallTileVisualizer.cs" />
     <Compile Include="MultiFormContext.cs" />
+    <Compile Include="state\AttackState.cs" />
     <Compile Include="state\ChaseState.cs" />
+    <Compile Include="state\DoAttackState.cs" />
     <Compile Include="state\FollowState.cs" />
     <Compile Include="state\LostState.cs" />
+    <Compile Include="state\RestState.cs" />
     <Compile Include="state\SearchState.cs" />
     <Compile Include="util\HitBoxVisualizer.cs" />
     <Compile Include="util\IRender.cs" />
@@ -190,25 +193,37 @@
     <Content Include="graphics\luigi\luigi.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="graphics\mario\mario.png">
+    <Content Include="graphics\mario\mario-small\mario-left.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="graphics\mario\mario-left-walk-2.png">
+    <Content Include="graphics\mario\mario-small\mario-left-walk-1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="graphics\mario\mario-left-walk-1.png">
+    <Content Include="graphics\mario\mario-small\mario-right-walk-1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="graphics\mario\mario-left.png">
+    <Content Include="graphics\mario\mario-small\mario-right.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="graphics\mario\mario-right-walk-2.png">
+    <Content Include="graphics\mario\mario-big\mario.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="graphics\mario\mario-right-walk-1.png">
+    <Content Include="graphics\mario\mario-big\mario-left-walk-2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="graphics\mario\mario-right.png">
+    <Content Include="graphics\mario\mario-big\mario-left-walk-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\mario\mario-big\mario-left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\mario\mario-big\mario-right-walk-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\mario\mario-big\mario-right-walk-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\mario\mario-big\mario-right.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="graphics\path.png">
