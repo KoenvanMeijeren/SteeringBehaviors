@@ -185,7 +185,7 @@
             0,
             0});
             this.Enemy3MaxSpeedValue.Minimum = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
@@ -193,7 +193,7 @@
             this.Enemy3MaxSpeedValue.Size = new System.Drawing.Size(52, 22);
             this.Enemy3MaxSpeedValue.TabIndex = 43;
             this.Enemy3MaxSpeedValue.Value = new decimal(new int[] {
-            150,
+            0,
             0,
             0,
             0});
@@ -218,7 +218,7 @@
             0,
             0});
             this.Enemy3MassValue.Minimum = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
@@ -226,7 +226,7 @@
             this.Enemy3MassValue.Size = new System.Drawing.Size(55, 22);
             this.Enemy3MassValue.TabIndex = 41;
             this.Enemy3MassValue.Value = new decimal(new int[] {
-            30,
+            0,
             0,
             0,
             0});
@@ -269,7 +269,7 @@
             0,
             0});
             this.Enemy2MaxSpeedValue.Minimum = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
@@ -277,7 +277,7 @@
             this.Enemy2MaxSpeedValue.Size = new System.Drawing.Size(49, 22);
             this.Enemy2MaxSpeedValue.TabIndex = 37;
             this.Enemy2MaxSpeedValue.Value = new decimal(new int[] {
-            150,
+            0,
             0,
             0,
             0});
@@ -302,7 +302,7 @@
             0,
             0});
             this.Enemy2MassValue.Minimum = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
@@ -310,7 +310,7 @@
             this.Enemy2MassValue.Size = new System.Drawing.Size(51, 22);
             this.Enemy2MassValue.TabIndex = 35;
             this.Enemy2MassValue.Value = new decimal(new int[] {
-            30,
+            0,
             0,
             0,
             0});
@@ -353,7 +353,7 @@
             0,
             0});
             this.Enemy1MaxSpeedValue.Minimum = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
@@ -361,7 +361,7 @@
             this.Enemy1MaxSpeedValue.Size = new System.Drawing.Size(49, 22);
             this.Enemy1MaxSpeedValue.TabIndex = 31;
             this.Enemy1MaxSpeedValue.Value = new decimal(new int[] {
-            150,
+            0,
             0,
             0,
             0});
@@ -385,19 +385,9 @@
             0,
             0,
             0});
-            this.Enemy1MassValue.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.Enemy1MassValue.Name = "Enemy1MassValue";
             this.Enemy1MassValue.Size = new System.Drawing.Size(51, 22);
             this.Enemy1MassValue.TabIndex = 29;
-            this.Enemy1MassValue.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
             this.Enemy1MassValue.ValueChanged += new System.EventHandler(this.Enemy1MassValue_ValueChanged);
             // 
             // EnemiesSettingsLabel
@@ -447,7 +437,7 @@
             0,
             0});
             this.RescueeMaxSpeedValue.Minimum = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
@@ -455,7 +445,7 @@
             this.RescueeMaxSpeedValue.Size = new System.Drawing.Size(54, 22);
             this.RescueeMaxSpeedValue.TabIndex = 24;
             this.RescueeMaxSpeedValue.Value = new decimal(new int[] {
-            150,
+            0,
             0,
             0,
             0});
@@ -480,7 +470,7 @@
             0,
             0});
             this.RescueeMassValue.Minimum = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
@@ -488,7 +478,7 @@
             this.RescueeMassValue.Size = new System.Drawing.Size(51, 22);
             this.RescueeMassValue.TabIndex = 22;
             this.RescueeMassValue.Value = new decimal(new int[] {
-            30,
+            0,
             0,
             0,
             0});
@@ -596,7 +586,7 @@
             0,
             0});
             this.PlayerMaxSpeedValue.Minimum = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
@@ -604,7 +594,7 @@
             this.PlayerMaxSpeedValue.Size = new System.Drawing.Size(53, 22);
             this.PlayerMaxSpeedValue.TabIndex = 9;
             this.PlayerMaxSpeedValue.Value = new decimal(new int[] {
-            150,
+            0,
             0,
             0,
             0});
@@ -629,7 +619,7 @@
             0,
             0});
             this.PlayerMassValue.Minimum = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
@@ -637,7 +627,7 @@
             this.PlayerMassValue.Size = new System.Drawing.Size(50, 22);
             this.PlayerMassValue.TabIndex = 7;
             this.PlayerMassValue.Value = new decimal(new int[] {
-            30,
+            0,
             0,
             0,
             0});
@@ -703,7 +693,7 @@
             0,
             0});
             this.UpdateIntervalSelector.Minimum = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
