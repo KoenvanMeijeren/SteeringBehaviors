@@ -1,6 +1,8 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Src.util;
+using SteeringCS.events;
 using SteeringCS.util;
 using SteeringCS.world;
 using Timer = System.Timers.Timer;
@@ -9,7 +11,8 @@ namespace SteeringCS
 {
     public partial class WorldForm : Form
     {
-        private WorldVisualization _world;
+        public event EventHandler<UpdateWorldEvent> UpdateWorldEventHandler; 
+        public readonly WorldVisualization World;
         private const int WorldHeight = 640;
         private const int WorldWidth = 640;
 
@@ -25,11 +28,7 @@ namespace SteeringCS
         public WorldForm()
         {
             InitializeComponent();
-            Initialize();
-        }
-
-        private void Initialize()
-        {
+            
             Width = WorldWidth + 116;
             Height = WorldHeight + 140;
 
@@ -37,7 +36,7 @@ namespace SteeringCS
             dbPanel.Height = WorldHeight;
             dbPanel.Location = new Point(50, 50);
 
-            _world = new WorldVisualization(width: WorldWidth, height: WorldHeight);
+            World = new WorldVisualization(width: WorldWidth, height: WorldHeight);
 
             _timer.Elapsed += Timer_Elapsed;
             _timer.Interval = 20;
@@ -46,49 +45,52 @@ namespace SteeringCS
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs eventArgs)
         {
-            _world.Update(TimeDelta);
+            World.Update(TimeDelta);
             dbPanel.Invalidate();
+            
+            EventHandler<UpdateWorldEvent> handler = UpdateWorldEventHandler;
+            handler?.Invoke(this, new UpdateWorldEvent(World));
         }
 
         private void Render(object sender, PaintEventArgs eventArgs)
         {
-            _world.Render(eventArgs.Graphics);
+            World.Render(eventArgs.Graphics);
 
             if (_renderGrid)
             {
-                _world.RenderGridOutline(eventArgs.Graphics);
+                World.RenderGridOutline(eventArgs.Graphics);
             }
 
             if (_renderGraph)
             {
-                _world.RenderGraph(eventArgs.Graphics);
+                World.RenderGraph(eventArgs.Graphics);
             }
 
             if (_renderHitBox)
             {
-                _world.RenderHitBox(eventArgs.Graphics);
+                World.RenderHitBox(eventArgs.Graphics);
             }
 
             if (_renderSteeringBehavior)
             {
-                _world.RenderSteeringBehavior(eventArgs.Graphics);
+                World.RenderSteeringBehavior(eventArgs.Graphics);
             }
 
             if (_renderSteeringBehavior)
             {
-                _world.RenderSteeringBehavior(eventArgs.Graphics);
+                World.RenderSteeringBehavior(eventArgs.Graphics);
             }
 
             if (_renderVelocity)
             {
-                _world.RenderVelocity(eventArgs.Graphics);
+                World.RenderVelocity(eventArgs.Graphics);
             }
         }
 
         private void targetEntityPosition_MouseClick(object sender, MouseEventArgs eventArgs)
         {
-            _world.Player.Position = new Vector(eventArgs.X, eventArgs.Y);
-            _world.Update(TimeDelta);
+            World.Player.Position = new Vector(eventArgs.X, eventArgs.Y);
+            World.Update(TimeDelta);
             dbPanel.Invalidate();
         }
 
@@ -114,13 +116,9 @@ namespace SteeringCS
 
         public void UpdateWorld()
         {
-            _world.Update(TimeDelta);
+            World.Update(TimeDelta);
+            
             dbPanel.Invalidate();
-        }
-
-        public void UpdateEntityValues(int mass, int maxSpeed)
-        {
-            _world.EditPopulation(mass, maxSpeed);
         }
 
         public void DisableGridRender()

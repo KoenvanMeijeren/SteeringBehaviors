@@ -45,15 +45,6 @@ namespace SteeringCS.world
             return rescuee;
         }
 
-        public void EditPopulation(int mass, int maxSpeed)
-        {
-            foreach (IEnemy enemy in Enemies)
-            {
-                enemy.Mass = mass;
-                enemy.MaxSpeed = maxSpeed;
-            }
-        }
-
         public void RenderHitBox(Graphics graphics)
         {
             Enemies.ForEach(enemy => HitBoxVisualizer.Render(graphics, enemy.HitBox));
