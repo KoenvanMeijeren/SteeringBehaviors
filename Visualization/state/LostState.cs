@@ -1,11 +1,12 @@
-﻿using Visualization.behavior;
-using Visualization.entity;
-using Visualization.graph;
-using Visualization.util;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Src.behavior;
+using Src.entity;
+using Src.graph;
+using Src.state;
+using Src.util;
 using SteeringCS.behavior;
 
-namespace Visualization.state
+namespace SteeringCS.state
 {
     public class LostState : IState
     {

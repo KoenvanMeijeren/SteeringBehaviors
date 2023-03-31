@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
-using Visualization.entity;
-using Visualization.util;
-using Visualization.world;
+using Src.entity;
+using Src.util;
+using Src.world;
 using SteeringCS.util;
 
 namespace SteeringCS.entity

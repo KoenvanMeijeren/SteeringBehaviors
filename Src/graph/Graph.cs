@@ -1,10 +1,10 @@
-﻿using Visualization.util;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Src.util;
 
-namespace Visualization.graph
+namespace Src.graph
 {
     public class Graph
     {

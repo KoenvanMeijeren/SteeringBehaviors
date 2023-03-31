@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Visualization.util
+namespace Src.util
 {
     [ExcludeFromCodeCoverage]
     public static class Randomizer

@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using Visualization.util;
+using Src.util;
 using Tests.fixtures.world;
 
 namespace Tests.util

@@ -1,10 +1,10 @@
-﻿using Visualization.entity;
-using Visualization.graph;
-using Visualization.util;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Src.entity;
+using Src.graph;
+using Src.util;
 
-namespace Visualization.behavior
+namespace Src.behavior
 {
     public class PathfindingBehavior : SteeringBehavior
     {

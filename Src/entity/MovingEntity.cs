@@ -1,9 +1,9 @@
-﻿using Visualization.behavior;
-using Visualization.state;
-using Visualization.util;
-using Visualization.world;
+﻿using Src.behavior;
+using Src.state;
+using Src.util;
+using Src.world;
 
-namespace Visualization.entity
+namespace Src.entity
 {
 
     public abstract class MovingEntity : IMovingEntity

@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
-using Visualization.behavior;
-using Visualization.entity;
-using Visualization.util;
+using Src.behavior;
+using Src.entity;
+using Src.util;
 
 namespace SteeringCS.behavior
 {

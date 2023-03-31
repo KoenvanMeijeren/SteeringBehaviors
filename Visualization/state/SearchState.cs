@@ -1,10 +1,10 @@
 ﻿using SteeringCS.behavior;
 using System.Collections.Generic;
-using Visualization.behavior;
-using Visualization.entity;
-using Visualization.graph;
-using Visualization.state;
-using Visualization.util;
+using Src.behavior;
+using Src.entity;
+using Src.graph;
+using Src.state;
+using Src.util;
 
 namespace SteeringCS.state
 {

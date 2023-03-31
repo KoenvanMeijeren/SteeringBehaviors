@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Visualization.entity;
-using Visualization.graph;
-using Visualization.util;
+using Src.entity;
+using Src.graph;
+using Src.util;
 
-namespace Visualization.grid
+namespace Src.grid
 {
     public class Grid : IGrid
     {

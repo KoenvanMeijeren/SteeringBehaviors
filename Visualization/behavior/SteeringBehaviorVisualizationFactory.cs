@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
-using Visualization.behavior;
-using Visualization.entity;
+using Src.behavior;
+using Src.entity;
 
 namespace SteeringCS.behavior
 {

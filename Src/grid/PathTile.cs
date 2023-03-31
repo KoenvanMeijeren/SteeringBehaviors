@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Visualization.entity;
-using Visualization.graph;
+using Src.entity;
+using Src.graph;
 
-namespace Visualization.grid
+namespace Src.grid
 {
     public class PathTile : GridTile
     {

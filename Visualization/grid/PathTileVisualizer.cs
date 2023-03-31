@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Linq;
-using Visualization.entity;
-using Visualization.grid;
+using Src.entity;
+using Src.grid;
 using SteeringCS.util;
 
 namespace SteeringCS.grid

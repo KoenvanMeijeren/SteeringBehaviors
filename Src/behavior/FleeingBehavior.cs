@@ -1,7 +1,7 @@
-﻿using Visualization.entity;
-using Visualization.util;
+﻿using Src.entity;
+using Src.util;
 
-namespace Visualization.behavior
+namespace Src.behavior
 {
     public class FleeingBehavior : SteeringBehavior
     {

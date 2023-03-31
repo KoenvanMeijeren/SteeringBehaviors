@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Visualization.util
+namespace Src.util
 {
     public class Vector
     {

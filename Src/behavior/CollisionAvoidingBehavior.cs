@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Visualization.entity;
-using Visualization.grid;
-using Visualization.util;
+using Src.entity;
+using Src.grid;
+using Src.util;
 
-namespace Visualization.behavior
+namespace Src.behavior
 {
     public class CollisionAvoidingBehavior : SteeringBehavior
     {

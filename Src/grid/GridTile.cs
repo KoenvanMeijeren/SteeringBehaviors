@@ -1,6 +1,6 @@
-﻿using Visualization.util;
+﻿using Src.util;
 
-namespace Visualization.grid
+namespace Src.grid
 {
     public abstract class GridTile
     {

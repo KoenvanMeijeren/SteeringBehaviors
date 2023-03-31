@@ -1,6 +1,6 @@
-﻿using Visualization.entity;
+﻿using Src.entity;
 
-namespace Visualization.state
+namespace Src.state
 {
     public interface IState
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
-using Visualization.util;
+using Src.util;
 
 namespace Tests.util
 {

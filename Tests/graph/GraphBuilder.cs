@@ -1,5 +1,5 @@
-﻿using Visualization.graph;
-using Visualization.grid;
+﻿using Src.graph;
+using Src.grid;
 
 namespace Tests.graph
 {

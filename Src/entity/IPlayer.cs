@@ -1,4 +1,4 @@
-﻿namespace Visualization.entity
+﻿namespace Src.entity
 {
     public interface IPlayer : IMovingEntity
     {

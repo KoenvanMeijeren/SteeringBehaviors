@@ -1,7 +1,7 @@
-﻿using SteeringCS.behavior;
-using Visualization.behavior;
-using Visualization.entity;
-using Visualization.state;
+﻿using Src.behavior;
+using Src.entity;
+using Src.state;
+using SteeringCS.behavior;
 
 namespace SteeringCS.state
 {

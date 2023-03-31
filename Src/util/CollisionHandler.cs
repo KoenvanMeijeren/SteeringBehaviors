@@ -1,7 +1,7 @@
-﻿using Visualization.grid;
-using Visualization.world;
+﻿using Src.grid;
+using Src.world;
 
-namespace Visualization.util
+namespace Src.util
 {
     public static class CollisionHandler
     {

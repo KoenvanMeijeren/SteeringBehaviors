@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using NUnit.Framework;
-using Visualization.behavior;
-using Visualization.entity;
-using Visualization.util;
+using Src.behavior;
+using Src.entity;
+using Src.util;
 using Tests.fixtures.entity;
 using Tests.fixtures.world;
 

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using Visualization.behavior;
-using Visualization.entity;
-using Visualization.state;
-using Visualization.util;
-using Visualization.world;
+using Src.behavior;
+using Src.entity;
+using Src.util;
+using Src.world;
 using SteeringCS.behavior;
 using SteeringCS.entity;
 using SteeringCS.grid;

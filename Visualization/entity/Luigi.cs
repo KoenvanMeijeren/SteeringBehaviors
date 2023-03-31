@@ -1,9 +1,9 @@
-﻿using Visualization.entity;
-using Visualization.state;
-using Visualization.util;
-using Visualization.world;
-using System;
+﻿using System;
 using System.Drawing;
+using Src.entity;
+using Src.util;
+using Src.world;
+using SteeringCS.state;
 
 namespace SteeringCS.entity
 {
@@ -106,8 +106,8 @@ namespace SteeringCS.entity
 
         private void CalculateScaredGraphic()
         {
-            int iteratorBoost = 10;
-            switch (_graphicIterator / (_graphicIteratorLimit * iteratorBoost))
+            const int IteratorBoost = 10;
+            switch (_graphicIterator / (_graphicIteratorLimit * IteratorBoost))
             {
                 case 0:
                     _currentGraphics = s_playerGraphicsScared1;
@@ -115,19 +115,19 @@ namespace SteeringCS.entity
                     return;
                 case 1:
                     _currentGraphics = s_playerGraphicsScared2;
-                    _graphicIterator += iteratorBoost;
+                    _graphicIterator += IteratorBoost;
                     return;
                 case 2:
                     _currentGraphics = s_playerGraphicsScared3;
-                    _graphicIterator += iteratorBoost;
+                    _graphicIterator += IteratorBoost;
                     return;
                 case 3:
                     _currentGraphics = s_playerGraphicsScared4;
-                    _graphicIterator += iteratorBoost;
+                    _graphicIterator += IteratorBoost;
                     return;
                 case 4:
                     _currentGraphics = s_playerGraphicsScared5;
-                    _graphicIterator += iteratorBoost;
+                    _graphicIterator += IteratorBoost;
                     return;
                 case 5:
                     _currentGraphics = s_playerGraphicsScared6;
@@ -143,19 +143,19 @@ namespace SteeringCS.entity
                     return;
                 case 8:
                     _currentGraphics = s_playerGraphicsScared5;
-                    _graphicIterator += iteratorBoost;
+                    _graphicIterator += IteratorBoost;
                     return;
                 case 9:
                     _currentGraphics = s_playerGraphicsScared4;
-                    _graphicIterator += iteratorBoost;
+                    _graphicIterator += IteratorBoost;
                     return;
                 case 10:
                     _currentGraphics = s_playerGraphicsScared3;
-                    _graphicIterator += iteratorBoost;
+                    _graphicIterator += IteratorBoost;
                     return;
                 case 11:
                     _currentGraphics = s_playerGraphicsScared2;
-                    _graphicIterator += iteratorBoost;
+                    _graphicIterator += IteratorBoost;
                     return;
                 case 12:
                     _currentGraphics = s_playerGraphicsScared1;

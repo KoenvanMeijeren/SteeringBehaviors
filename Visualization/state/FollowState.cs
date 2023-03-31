@@ -1,8 +1,9 @@
-﻿using SteeringCS.behavior;
-using Visualization.behavior;
-using Visualization.entity;
+﻿using Src.behavior;
+using Src.entity;
+using Src.state;
+using SteeringCS.behavior;
 
-namespace Visualization.state
+namespace SteeringCS.state
 {
     public class FollowState : IState
     {

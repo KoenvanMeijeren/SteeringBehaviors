@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Visualization.entity;
-using Visualization.util;
+using Src.entity;
+using Src.util;
 
-namespace Visualization.behavior
+namespace Src.behavior
 {
     [ExcludeFromCodeCoverage]
     public class MosquitoBehavior : SteeringBehavior
