@@ -37,14 +37,14 @@ namespace SteeringCS
             IPlayer player = world.Player;
             if (PlayerMassValue.Value == 0)
             {
-                PlayerMassValue.Invoke((MethodInvoker)(() => PlayerMassValue.Value = (decimal) player.Mass));
+                PlayerMassValue.Invoke((MethodInvoker)(() => PlayerMassValue.Value = (decimal)player.Mass));
             }
-            
+
             if (PlayerMaxSpeedValue.Value == 0)
             {
-                PlayerMaxSpeedValue.Invoke((MethodInvoker)(() => PlayerMaxSpeedValue.Value = (decimal) player.MaxSpeed));
+                PlayerMaxSpeedValue.Invoke((MethodInvoker)(() => PlayerMaxSpeedValue.Value = (decimal)player.MaxSpeed));
             }
-            
+
             if (player?.State != null && !PlayerStateValue.Text.Equals(player.State.ToString()))
             {
                 PlayerStateValue.Invoke((MethodInvoker)(() => PlayerStateValue.Text = player.State.ToString()));
@@ -53,14 +53,14 @@ namespace SteeringCS
             IRescuee rescuee = world.Rescuee;
             if (RescueeMassValue.Value == 0)
             {
-                RescueeMassValue.Invoke((MethodInvoker)(() => RescueeMassValue.Value = (decimal) rescuee.Mass));
+                RescueeMassValue.Invoke((MethodInvoker)(() => RescueeMassValue.Value = (decimal)rescuee.Mass));
             }
-            
+
             if (RescueeMaxSpeedValue.Value == 0)
             {
-                RescueeMaxSpeedValue.Invoke((MethodInvoker)(() => RescueeMaxSpeedValue.Value = (decimal) rescuee.MaxSpeed));
+                RescueeMaxSpeedValue.Invoke((MethodInvoker)(() => RescueeMaxSpeedValue.Value = (decimal)rescuee.MaxSpeed));
             }
-            
+
             if (rescuee?.State != null && !RescueeStateValue.Text.Equals(rescuee.State.ToString()))
             {
                 RescueeStateValue.Invoke((MethodInvoker)(() => RescueeStateValue.Text = rescuee.State.ToString()));
@@ -69,14 +69,14 @@ namespace SteeringCS
             IEnemy enemy1 = world.Enemies.First();
             if (enemy1 != null && Enemy1MassValue.Value == 0)
             {
-                Enemy1MassValue.Invoke((MethodInvoker)(() => Enemy1MassValue.Value = (decimal) enemy1.Mass));
+                Enemy1MassValue.Invoke((MethodInvoker)(() => Enemy1MassValue.Value = (decimal)enemy1.Mass));
             }
-            
+
             if (enemy1 != null && Enemy1MaxSpeedValue.Value == 0)
             {
-                Enemy1MaxSpeedValue.Invoke((MethodInvoker)(() => Enemy1MaxSpeedValue.Value = (decimal) enemy1.MaxSpeed));
+                Enemy1MaxSpeedValue.Invoke((MethodInvoker)(() => Enemy1MaxSpeedValue.Value = (decimal)enemy1.MaxSpeed));
             }
-            
+
             if (enemy1?.State != null && !Enemy1StateValue.Text.Equals(enemy1.State.ToString()))
             {
                 Enemy1StateValue.Invoke((MethodInvoker)(() => Enemy1StateValue.Text = enemy1.State.ToString()));
@@ -87,15 +87,15 @@ namespace SteeringCS
             {
                 enemy2 = world.Enemies[1];
             }
-            
+
             if (enemy2 != null && Enemy2MassValue.Value == 0)
             {
-                Enemy2MassValue.Invoke((MethodInvoker)(() => Enemy2MassValue.Value = (decimal) enemy2.Mass));
+                Enemy2MassValue.Invoke((MethodInvoker)(() => Enemy2MassValue.Value = (decimal)enemy2.Mass));
             }
-            
+
             if (enemy2 != null && Enemy2MaxSpeedValue.Value == 0)
             {
-                Enemy2MaxSpeedValue.Invoke((MethodInvoker)(() => Enemy2MaxSpeedValue.Value = (decimal) enemy2.MaxSpeed));
+                Enemy2MaxSpeedValue.Invoke((MethodInvoker)(() => Enemy2MaxSpeedValue.Value = (decimal)enemy2.MaxSpeed));
             }
 
             if (enemy2?.State != null && !Enemy2StateValue.Text.Equals(enemy2.State.ToString()))
@@ -108,15 +108,15 @@ namespace SteeringCS
             {
                 enemy3 = world.Enemies[2];
             }
-            
+
             if (enemy3 != null && Enemy3MassValue.Value == 0)
             {
-                Enemy3MassValue.Invoke((MethodInvoker)(() => Enemy3MassValue.Value = (decimal) enemy3.Mass));
+                Enemy3MassValue.Invoke((MethodInvoker)(() => Enemy3MassValue.Value = (decimal)enemy3.Mass));
             }
-            
+
             if (enemy3 != null && Enemy3MaxSpeedValue.Value == 0)
             {
-                Enemy3MaxSpeedValue.Invoke((MethodInvoker)(() => Enemy3MaxSpeedValue.Value = (decimal) enemy3.MaxSpeed));
+                Enemy3MaxSpeedValue.Invoke((MethodInvoker)(() => Enemy3MaxSpeedValue.Value = (decimal)enemy3.MaxSpeed));
             }
 
             if (enemy3?.State != null && !Enemy3StateValue.Text.Equals(enemy3.State.ToString()))
@@ -125,7 +125,6 @@ namespace SteeringCS
             }
         }
 
-        
         private void UpdateIntervalSelectorValueChangedChanged(object sender, EventArgs e)
         {
             _worldForm.UpdateTimerInterval((int)UpdateIntervalSelector.Value);

@@ -65,13 +65,13 @@ namespace Src.entity
             {
                 steeringForce += CollisionAvoidingBehavior.Calculate();
             }
-            
+
             if (Mass != 0)
             {
                 Vector acceleration = steeringForce / Mass;
                 Velocity += acceleration * timeElapsed;
             }
-            
+
             Velocity.Truncate(MaxSpeed);
             Velocity = CollisionHandler.AlterVectorToStayInsideOfWorld(Position, Velocity, World);
             Velocity = CollisionHandler.AlterVectorToStayOutOfWalls(Position, HitBox.UpperLeftCorner, Velocity, World.Grid);
