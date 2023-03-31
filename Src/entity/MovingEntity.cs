@@ -10,8 +10,8 @@ namespace Src.entity
     {
         public const int MassDefault = 30, MaxSpeedDefault = 150;
         public IWorld World { get; }
-        public float Height { get; }
-        public float Width { get; }
+        public float Height { get; set; }
+        public float Width { get; set; }
         public float Mass { get; set; }
         public float MaxSpeed { get; set; }
         public HitBox HitBox { get; }

@@ -32,7 +32,7 @@ namespace SteeringCS.state
 
             if (isPlayerClose && IsShortestPathInSearchDistance())
             {
-                MovingEntity.ChangeState(new ChaseState(MovingEntity));
+                MovingEntity.ChangeState(new AttackState(MovingEntity));
             }
         }
 

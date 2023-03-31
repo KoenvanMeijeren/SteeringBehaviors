@@ -1,36 +1,33 @@
 ﻿using Src.behavior;
-using Src.entity;
-using Src.state;
 using SteeringCS.behavior;
 
 namespace SteeringCS.state
 {
-    public class ChaseState : IState
+    public class ChaseState : IAttackState
     {
-        public IMovingEntity MovingEntity { get; }
-        private const int _maxShortestPathDistance = 3;
+        public AttackState AttackState { get; }
 
-        public ChaseState(IMovingEntity movingEntity)
+        private const int _attackDistance = 16;
+
+        public ChaseState(AttackState attackState)
         {
-            MovingEntity = movingEntity;
+            AttackState = attackState;
         }
 
         public void Enter()
         {
-            MovingEntity.SetSteeringBehavior(SteeringBehaviorVisualizationFactory.CreateFromEnum(
-                SteeringBehaviorOptions.PathfindingBehavior, MovingEntity), null);
+            AttackState.MovingEntity.SetSteeringBehavior(SteeringBehaviorVisualizationFactory.CreateFromEnum(
+                SteeringBehaviorOptions.PathfindingBehavior, AttackState.MovingEntity), null);
         }
 
         public void Execute()
         {
-            if (!(MovingEntity.SteeringBehavior is PathfindingBehaviorVisualizer pathfindingBehaviorVisualizer))
-            {
-                return;
-            }
+            double distanceFromPlayer = AttackState.MovingEntity.Position.DistanceBetween(AttackState.MovingEntity.World.Player.Position);
+            bool isPlayerClose = distanceFromPlayer < _attackDistance;
 
-            if (pathfindingBehaviorVisualizer.Path.Count > _maxShortestPathDistance)
+            if (isPlayerClose)
             {
-                MovingEntity.ChangeState(new SearchState(MovingEntity));
+                AttackState.ChangeState(new DoAttackState(AttackState));
             }
         }
     }

@@ -2,6 +2,7 @@
 {
     public interface IPlayer : IMovingEntity
     {
-
+        int Health { get; }
+        void TakeDamage();
     }
 }
