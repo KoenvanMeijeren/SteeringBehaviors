@@ -16,7 +16,7 @@ namespace SteeringCS.entity
 
         protected Image _currentGraphics;
 
-        protected MovingEntityVisualization(Vector position, IWorld world, float height, float width) : base(position, world, height, width)
+        protected MovingEntityVisualization(Vector position, IWorld world, float height, float width, float mass = MassDefault, float maxSpeed = MaxSpeedDefault) : base(position, world, height, width, mass, maxSpeed)
         {
         }
 
