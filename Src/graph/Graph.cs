@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Src.util;
 
 namespace Src.graph
 {
@@ -92,7 +91,7 @@ namespace Src.graph
             }
         }
 
-        public static Stack<Vertex> GetShortestPath(Vertex startVertex, Vertex targetVertex)
+        public static ShortestPathResult GetShortestPath(Vertex startVertex, Vertex targetVertex)
         {
             if (startVertex == null || targetVertex == null)
             {
@@ -131,7 +130,7 @@ namespace Src.graph
             }
 
             Vertex temp = closedList.FirstOrDefault(vertex => vertex == current);
-
+            temp = temp?.Parent;
             if (temp == null)
             {
                 return null;
@@ -143,7 +142,7 @@ namespace Src.graph
                 temp = temp.Parent;
             }
 
-            return path;
+            return new ShortestPathResult(path, closedList);
         }
 
         public Vertex GetVertex(int row, int column)
@@ -191,6 +190,18 @@ namespace Src.graph
             }
 
             return column >= 0 && column < vertices.GetLength(1);
+        }
+    }
+
+    public class ShortestPathResult
+    {
+        public readonly Stack<Vertex> Path;
+        public readonly List<Vertex> SearchedVertices;
+
+        public ShortestPathResult(Stack<Vertex> path, List<Vertex> searchedVertices)
+        {
+            Path = path;
+            SearchedVertices = searchedVertices;
         }
     }
 }

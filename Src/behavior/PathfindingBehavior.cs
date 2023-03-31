@@ -11,6 +11,7 @@ namespace Src.behavior
         private Vertex _closestVertex;
         private Vertex _targetVertex;
         public Stack<Vertex> Path { get; private set; }
+        public List<Vertex> SearchedVertices { get; private set; }
 
         public PathfindingBehavior(IMovingEntity movingEntity) : base(movingEntity)
         {
@@ -56,7 +57,14 @@ namespace Src.behavior
 
             _closestVertex = newClosestVertex;
             _targetVertex = newTargetVertex;
-            Path = Graph.GetShortestPath(_closestVertex, _targetVertex);
+            ShortestPathResult result = Graph.GetShortestPath(_closestVertex, _targetVertex);
+            if (result == null)
+            {
+                return;
+            }
+
+            Path = result.Path;
+            SearchedVertices = result.SearchedVertices;
         }
     }
 }
