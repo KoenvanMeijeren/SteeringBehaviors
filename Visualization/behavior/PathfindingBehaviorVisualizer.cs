@@ -3,6 +3,7 @@ using Visualization.entity;
 using Visualization.graph;
 using Visualization.util;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace SteeringCS.behavior
 {
@@ -10,6 +11,8 @@ namespace SteeringCS.behavior
     {
         private readonly PathfindingBehavior _steeringBehavior;
         private static readonly Color s_renderColor = Color.DarkBlue;
+
+        public Stack<Vertex> Path => _steeringBehavior.Path;
 
         public PathfindingBehaviorVisualizer(IMovingEntity movingEntity)
         {

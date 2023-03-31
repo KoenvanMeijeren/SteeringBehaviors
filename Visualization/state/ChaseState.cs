@@ -8,6 +8,7 @@ namespace SteeringCS.state
     public class ChaseState : IState
     {
         public IMovingEntity MovingEntity { get; }
+        private const int _maxShortestPathDistance = 3;
 
         public ChaseState(IMovingEntity movingEntity)
         {
@@ -22,7 +23,13 @@ namespace SteeringCS.state
 
         public void Execute()
         {
-
+            if (MovingEntity.SteeringBehavior is PathfindingBehaviorVisualizer pathfindingBehaviorVisualizer)
+            {
+                if (pathfindingBehaviorVisualizer.Path.Count > _maxShortestPathDistance)
+                {
+                    MovingEntity.ChangeState(new SearchState(MovingEntity));
+                }
+            }
         }
     }
 }

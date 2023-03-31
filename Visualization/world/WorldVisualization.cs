@@ -46,14 +46,10 @@ namespace SteeringCS.world
             return rescuee;
         }
 
-        public void EditPopulation(SteeringBehaviorOptions selectedOption, int mass, int maxSpeed)
+        public void EditPopulation(int mass, int maxSpeed)
         {
             foreach (IEnemy enemy in Enemies)
             {
-                enemy.SetSteeringBehavior(
-                    SteeringBehaviorVisualizationFactory.CreateFromEnum(selectedOption, enemy),
-                    new CollisionAvoidingBehaviorVisualizer(enemy)
-                );
                 enemy.Mass = mass;
                 enemy.MaxSpeed = maxSpeed;
             }

@@ -35,8 +35,6 @@
             this.ShowGraphCheckbox = new System.Windows.Forms.CheckBox();
             this.ShowGridCheckbox = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.SteeringBehaviorSelector = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.MaxSpeedSelector = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,8 +59,6 @@
             this.mainPanel.Controls.Add(this.ShowGraphCheckbox);
             this.mainPanel.Controls.Add(this.ShowGridCheckbox);
             this.mainPanel.Controls.Add(this.label6);
-            this.mainPanel.Controls.Add(this.label5);
-            this.mainPanel.Controls.Add(this.SteeringBehaviorSelector);
             this.mainPanel.Controls.Add(this.label4);
             this.mainPanel.Controls.Add(this.MaxSpeedSelector);
             this.mainPanel.Controls.Add(this.label3);
@@ -142,25 +138,6 @@
             this.label6.Size = new System.Drawing.Size(98, 16);
             this.label6.TabIndex = 13;
             this.label6.Text = "Grid settings:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(-2, 189);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 16);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Steering Behavior:";
-            // 
-            // SteeringBehaviorSelector
-            // 
-            this.SteeringBehaviorSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SteeringBehaviorSelector.FormattingEnabled = true;
-            this.SteeringBehaviorSelector.Location = new System.Drawing.Point(123, 186);
-            this.SteeringBehaviorSelector.Name = "SteeringBehaviorSelector";
-            this.SteeringBehaviorSelector.Size = new System.Drawing.Size(136, 24);
-            this.SteeringBehaviorSelector.TabIndex = 11;
-            this.SteeringBehaviorSelector.SelectedIndexChanged += new System.EventHandler(this.SteeringBehaviorSelector_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -334,8 +311,6 @@
         private System.Windows.Forms.NumericUpDown MaxSpeedSelector;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown MassSelector;
-        private System.Windows.Forms.ComboBox SteeringBehaviorSelector;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox ShowGridCheckbox;
         private System.Windows.Forms.CheckBox ShowGraphCheckbox;
