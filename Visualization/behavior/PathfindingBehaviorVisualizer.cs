@@ -1,8 +1,9 @@
-﻿using Src.behavior;
+﻿using System.Drawing;
+using System.Collections.Generic;
+using Src.behavior;
 using Src.entity;
 using Src.graph;
 using Src.util;
-using System.Drawing;
 using System.Linq;
 
 namespace SteeringCS.behavior
@@ -11,6 +12,8 @@ namespace SteeringCS.behavior
     {
         private readonly PathfindingBehavior _steeringBehavior;
         private static readonly Color s_pathRenderColor = Color.DarkBlue, s_searchedVertexRenderColor = Color.Red;
+
+        public Stack<Vertex> Path => _steeringBehavior.Path;
 
         public PathfindingBehaviorVisualizer(IMovingEntity movingEntity)
         {

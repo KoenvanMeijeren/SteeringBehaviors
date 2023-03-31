@@ -1,11 +1,12 @@
-﻿using Src.util;
-using Src.world;
-using System;
+﻿using System;
 using System.Drawing;
+using Src.entity;
+using Src.util;
+using Src.world;
 
 namespace SteeringCS.entity
 {
-    public class Mario : MovingEntityVisualization
+    public class Mario : MovingEntityVisualization, IPlayer
     {
         private static readonly Image s_playerGraphicsRight = Image.FromFile("graphics/mario/mario-right.png");
         private static readonly Image s_playerGraphicsRightWalk1 = Image.FromFile("graphics/mario/mario-right-walk-1.png");

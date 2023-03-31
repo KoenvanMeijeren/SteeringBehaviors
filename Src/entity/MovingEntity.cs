@@ -1,11 +1,12 @@
 ﻿using Src.behavior;
+using Src.state;
 using Src.util;
 using Src.world;
 
 namespace Src.entity
 {
 
-    public abstract class MovingEntity : IPlayer, IEnemy, IRescuee
+    public abstract class MovingEntity : IMovingEntity
     {
         public const int MassDefault = 30, MaxSpeedDefault = 150;
         public IWorld World { get; }
@@ -24,6 +25,7 @@ namespace Src.entity
 
         public ISteeringBehavior SteeringBehavior { get; private set; }
         public ISteeringBehavior CollisionAvoidingBehavior { get; private set; }
+        public IState State { get; protected set; }
 
         protected MovingEntity(Vector position, IWorld world, float height, float width)
         {
@@ -43,8 +45,16 @@ namespace Src.entity
             CollisionAvoidingBehavior = collisionAvoidingBehavior;
         }
 
+        public void ChangeState(IState state)
+        {
+            State = state;
+            State.Enter();
+        }
+
         public void Update(float timeElapsed)
         {
+            State?.Execute();
+
             if (SteeringBehavior == null)
             {
                 return;

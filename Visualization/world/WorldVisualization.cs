@@ -8,6 +8,7 @@ using SteeringCS.behavior;
 using SteeringCS.entity;
 using SteeringCS.grid;
 using SteeringCS.util;
+using SteeringCS.state;
 
 namespace SteeringCS.world
 {
@@ -20,6 +21,8 @@ namespace SteeringCS.world
         protected override List<IEnemy> GetEnemies()
         {
             Goomba goomba = new Goomba(new Vector(Width / 2, Height / 2), this);
+            goomba.ChangeState(new SearchState(goomba));
+
             return new List<IEnemy> { goomba };
         }
 
@@ -36,23 +39,16 @@ namespace SteeringCS.world
 
         protected override IRescuee GetRescuee()
         {
-            IRescuee rescuee = new Luigi(new Vector(100, 40), this);
-            rescuee.SetSteeringBehavior(
-                SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.PathfindingBehavior, rescuee),
-                new CollisionAvoidingBehaviorVisualizer(rescuee)
-            );
+            IRescuee rescuee = new Luigi(new Vector(400, 40), this);
+            rescuee.ChangeState(new LostState(rescuee));
 
             return rescuee;
         }
 
-        public void EditPopulation(SteeringBehaviorOptions selectedOption, int mass, int maxSpeed)
+        public void EditPopulation(int mass, int maxSpeed)
         {
             foreach (IEnemy enemy in Enemies)
             {
-                enemy.SetSteeringBehavior(
-                    SteeringBehaviorVisualizationFactory.CreateFromEnum(selectedOption, enemy),
-                    new CollisionAvoidingBehaviorVisualizer(enemy)
-                );
                 enemy.Mass = mass;
                 enemy.MaxSpeed = maxSpeed;
             }

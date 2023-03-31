@@ -363,9 +363,9 @@ namespace Tests.util
             Assert.AreEqual(expectedResult, resultResult);
         }
 
-        [TestCase(new double[] { 0.5, 1.0 }, new double[] { 1.0, 1.5 }, 1.0)]
-        [TestCase(new double[] { 5, 1 }, new double[] { 10, 15 }, 19.0)]
-        [TestCase(new double[] { 50, 100 }, new double[] { 10, 15 }, 125.0)]
+        [TestCase(new double[] { 0.5, 1.0 }, new double[] { 1.0, 1.5 }, 0.70710678118654757d)]
+        [TestCase(new double[] { 5, 1 }, new double[] { 10, 15 }, 14.866068747318506d)]
+        [TestCase(new double[] { 50, 100 }, new double[] { 10, 15 }, 93.941471140279674d)]
         public void Distance_01_Ok(double[] leftPositions, double[] rightPositions, double expectedDistance)
         {
             // Arrange

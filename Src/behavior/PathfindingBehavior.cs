@@ -1,14 +1,14 @@
-﻿using Src.entity;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Src.entity;
 using Src.graph;
 using Src.util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Src.behavior
 {
     public class PathfindingBehavior : SteeringBehavior
     {
+        private const int MaximumPathFindingVelocity = 30;
         private Vertex _closestVertex;
         private Vertex _targetVertex;
         public Stack<Vertex> Path { get; private set; }
@@ -23,7 +23,8 @@ namespace Src.behavior
             UpdatePathIfNecessary();
 
             Vector targetPosition = MovingEntity.World.Player.Position;
-            if (Path != null && Path.Count > 0)
+            // Only allow path finding when moving entity is one tile further away.
+            if (Path != null && Path.Count > 1)
             {
                 targetPosition = Path.First().Position;
             }
@@ -31,7 +32,7 @@ namespace Src.behavior
             Vector desiredVelocity = targetPosition - MovingEntity.Position;
             Vector actualVelocity = desiredVelocity - MovingEntity.Velocity;
 
-            return actualVelocity;
+            return actualVelocity.Truncate(MaximumPathFindingVelocity);
         }
 
         private void UpdatePathIfNecessary()
@@ -66,7 +67,6 @@ namespace Src.behavior
 
             Path = result.Path;
             SearchedVertices = result.SearchedVertices;
-            Console.WriteLine("NEW PATH");
         }
     }
 }

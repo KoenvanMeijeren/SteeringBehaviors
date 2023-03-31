@@ -4,7 +4,7 @@ using Src.world;
 
 namespace Tests.fixtures.entity
 {
-    public class VehicleTest : MovingEntity
+    public class VehicleTest : MovingEntity, IPlayer, IRescuee, IEnemy
     {
         public const int DefaultHeight = 10, DefaultWidth = 10;
         private const float DefaultMass = 30, DefaultMaxSpeed = 150;

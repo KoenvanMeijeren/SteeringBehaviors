@@ -1,6 +1,5 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-using Src.behavior;
 using Src.util;
 using SteeringCS.util;
 using SteeringCS.world;
@@ -119,9 +118,9 @@ namespace SteeringCS
             dbPanel.Invalidate();
         }
 
-        public void UpdateEntityValues(int mass, int maxSpeed, SteeringBehaviorOptions steeringBehaviorOption)
+        public void UpdateEntityValues(int mass, int maxSpeed)
         {
-            _world.EditPopulation(steeringBehaviorOption, mass, maxSpeed);
+            _world.EditPopulation(mass, maxSpeed);
         }
 
         public void DisableGridRender()

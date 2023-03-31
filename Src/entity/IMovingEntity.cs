@@ -1,4 +1,5 @@
 ﻿using Src.behavior;
+using Src.state;
 using Src.util;
 using Src.world;
 
@@ -18,7 +19,11 @@ namespace Src.entity
         bool IsDirectionRight { get; }
         bool IsDirectionUpwards { get; }
         bool IsDirectionDownwards { get; }
+        ISteeringBehavior SteeringBehavior { get; }
+        ISteeringBehavior CollisionAvoidingBehavior { get; }
+        IState State { get; }
         void Update(float timeElapsed);
         void SetSteeringBehavior(ISteeringBehavior steeringBehavior, ISteeringBehavior collisionAvoidingBehavior);
+        void ChangeState(IState state);
     }
 }

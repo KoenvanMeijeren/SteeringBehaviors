@@ -82,6 +82,10 @@
     <Compile Include="grid\PathTileVisualizer.cs" />
     <Compile Include="grid\WallTileVisualizer.cs" />
     <Compile Include="MultiFormContext.cs" />
+    <Compile Include="state\ChaseState.cs" />
+    <Compile Include="state\FollowState.cs" />
+    <Compile Include="state\LostState.cs" />
+    <Compile Include="state\SearchState.cs" />
     <Compile Include="util\HitBoxVisualizer.cs" />
     <Compile Include="util\IRender.cs" />
     <Compile Include="util\KeyEventArgsConverter.cs" />
@@ -146,19 +150,37 @@
     <Content Include="graphics\goomba\goomba.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="graphics\luigi\luigi-left-walk-1.png">
+    <Content Include="graphics\luigi\scared\luigi-scared-6.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="graphics\luigi\luigi-left-walk-2.png">
+    <Content Include="graphics\luigi\scared\luigi-scared-5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\scared\luigi-scared-4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\scared\luigi-scared-3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\scared\luigi-scared-2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\scared\luigi-scared-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\walk\luigi-left-walk-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="graphics\luigi\walk\luigi-left-walk-2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="graphics\luigi\luigi-left.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="graphics\luigi\luigi-right-walk-1.png">
+    <Content Include="graphics\luigi\walk\luigi-right-walk-1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="graphics\luigi\luigi-right-walk-2.png">
+    <Content Include="graphics\luigi\walk\luigi-right-walk-2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="graphics\luigi\luigi-right.png">

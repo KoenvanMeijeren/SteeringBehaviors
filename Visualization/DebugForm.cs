@@ -1,30 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
-using Src.behavior;
 
 namespace SteeringCS
 {
     public partial class DebugForm : Form
     {
-        private const SteeringBehaviorOptions SteeringBehaviorOptionDefault = SteeringBehaviorOptions.IdlingBehavior;
         private readonly WorldForm _worldForm;
 
         public DebugForm(WorldForm worldForm)
         {
             _worldForm = worldForm;
             InitializeComponent();
-            InitializeSteeringBehaviorSelector();
             Text = pauseButton.Text;
-        }
-
-        private void InitializeSteeringBehaviorSelector()
-        {
-            foreach (SteeringBehaviorOptions option in Enum.GetValues(typeof(SteeringBehaviorOptions)))
-            {
-                SteeringBehaviorSelector.Items.Add(option);
-            }
-
-            SteeringBehaviorSelector.SelectedItem = SteeringBehaviorOptionDefault;
         }
 
         private void UpdateIntervalSelectorValueChangedChanged(object sender, EventArgs e)
@@ -62,28 +49,11 @@ namespace SteeringCS
             UpdateEntityValues();
         }
 
-        private void SteeringBehaviorSelector_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateEntityValues();
-        }
-
         private void UpdateEntityValues()
         {
             int mass = (int)MassSelector.Value;
             int maxSpeed = (int)MaxSpeedSelector.Value;
-            SteeringBehaviorOptions steeringBehaviorOption = GetSelectedSteeringBehavior();
-            _worldForm.UpdateEntityValues(mass, maxSpeed, steeringBehaviorOption);
-        }
-
-        private SteeringBehaviorOptions GetSelectedSteeringBehavior()
-        {
-            SteeringBehaviorOptions selected = SteeringBehaviorOptions.SeekingBehavior;
-            if (SteeringBehaviorSelector.SelectedItem != null)
-            {
-                selected = (SteeringBehaviorOptions)SteeringBehaviorSelector.SelectedItem;
-            }
-
-            return selected;
+            _worldForm.UpdateEntityValues(mass, maxSpeed);
         }
 
         private void ShowGridCheckbox_CheckedChanged(object sender, EventArgs e)
