@@ -27,7 +27,7 @@ namespace SteeringCS.state
         public void Execute()
         {
             double distanceFromPlayer = MovingEntity.Position.DistanceBetween(MovingEntity.World.Player.Position);
-            
+
             bool isPlayerClose = distanceFromPlayer < _searchDistance;
 
             if (isPlayerClose && IsShortestPathInSearchDistance())

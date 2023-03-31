@@ -31,7 +31,7 @@ namespace SteeringCS.entity
 
         protected override void CalculateGraphic()
         {
-            if (State.GetType() == typeof(LostState)) 
+            if (State.GetType() == typeof(LostState))
             {
                 CalculateScaredGraphic();
                 return;
