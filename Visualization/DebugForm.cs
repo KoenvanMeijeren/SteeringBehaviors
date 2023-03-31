@@ -16,7 +16,7 @@ namespace SteeringCS
             _worldForm = worldForm;
             InitializeComponent();
             Text = pauseButton.Text;
-            
+
             worldForm.UpdateWorldEventHandler += WorldFormOnUpdateWorldEventHandler;
         }
 
@@ -26,15 +26,15 @@ namespace SteeringCS
             {
                 return;
             }
-            
+
             WorldVisualization world = eventArgs.World;
-            
+
             IPlayer player = world.Player;
             if (player?.State != null && !PlayerStateValue.Text.Equals(player.State.ToString()))
             {
                 PlayerStateValue.Invoke((MethodInvoker)(() => PlayerStateValue.Text = player.State.ToString()));
             }
-            
+
             IRescuee rescuee = world.Rescuee;
             if (rescuee?.State != null && !RescueeStateValue.Text.Equals(rescuee.State.ToString()))
             {
@@ -46,24 +46,24 @@ namespace SteeringCS
             {
                 Enemy1StateValue.Invoke((MethodInvoker)(() => Enemy1StateValue.Text = enemy1.State.ToString()));
             }
-            
+
             IEnemy enemy2 = null;
             if (world.Enemies.Count > 1)
             {
                 enemy2 = world.Enemies[1];
             }
-            
+
             if (enemy2?.State != null && !Enemy2StateValue.Text.Equals(enemy2.State.ToString()))
             {
                 Enemy2StateValue.Invoke((MethodInvoker)(() => Enemy2StateValue.Text = enemy2.State.ToString()));
             }
-            
+
             IEnemy enemy3 = null;
             if (world.Enemies.Count > 2)
             {
                 enemy3 = world.Enemies[2];
             }
-            
+
             if (enemy3?.State != null && !Enemy3StateValue.Text.Equals(enemy3.State.ToString()))
             {
                 Enemy3StateValue.Invoke((MethodInvoker)(() => Enemy3StateValue.Text = enemy3.State.ToString()));
@@ -248,7 +248,7 @@ namespace SteeringCS
             {
                 enemy = world.Enemies[1];
             }
-            
+
             if (enemy == null)
             {
                 return;
@@ -266,7 +266,7 @@ namespace SteeringCS
             {
                 enemy = world.Enemies[1];
             }
-            
+
             if (enemy == null)
             {
                 return;
@@ -284,7 +284,7 @@ namespace SteeringCS
             {
                 enemy = world.Enemies[2];
             }
-            
+
             if (enemy == null)
             {
                 return;
@@ -302,7 +302,7 @@ namespace SteeringCS
             {
                 enemy = world.Enemies[2];
             }
-            
+
             if (enemy == null)
             {
                 return;

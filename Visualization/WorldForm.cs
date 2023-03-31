@@ -11,7 +11,7 @@ namespace SteeringCS
 {
     public partial class WorldForm : Form
     {
-        public event EventHandler<UpdateWorldEvent> UpdateWorldEventHandler; 
+        public event EventHandler<UpdateWorldEvent> UpdateWorldEventHandler;
         public readonly WorldVisualization World;
         private const int WorldHeight = 640;
         private const int WorldWidth = 640;
@@ -28,7 +28,7 @@ namespace SteeringCS
         public WorldForm()
         {
             InitializeComponent();
-            
+
             Width = WorldWidth + 116;
             Height = WorldHeight + 140;
 
@@ -47,7 +47,7 @@ namespace SteeringCS
         {
             World.Update(TimeDelta);
             dbPanel.Invalidate();
-            
+
             EventHandler<UpdateWorldEvent> handler = UpdateWorldEventHandler;
             handler?.Invoke(this, new UpdateWorldEvent(World));
         }
@@ -117,7 +117,7 @@ namespace SteeringCS
         public void UpdateWorld()
         {
             World.Update(TimeDelta);
-            
+
             dbPanel.Invalidate();
         }
 

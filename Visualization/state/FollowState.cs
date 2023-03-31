@@ -23,7 +23,7 @@ namespace SteeringCS.state
         public void Execute()
         {
         }
-        
+
         public override string ToString()
         {
             return "Follow";
