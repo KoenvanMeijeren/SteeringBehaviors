@@ -13,7 +13,7 @@ namespace Tests.fixtures.world
         {
             Player = new VehicleTest(targetEntityPosition, this);
             Rescuee = new VehicleTest(seekingEntityPosition, this);
-            Grid = new Grid(width, height, false);
+            Grid = new Grid(width, height);
             Grid.AddOrMoveEntity(Player);
         }
 

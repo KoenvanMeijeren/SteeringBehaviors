@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 using Src.util;
 using SteeringCS.events;
@@ -12,9 +13,13 @@ namespace SteeringCS
     public partial class WorldForm : Form
     {
         public event EventHandler<UpdateWorldEvent> UpdateWorldEventHandler;
-        public readonly WorldVisualization World;
+        public WorldVisualization World { get; private set; }
         private const int WorldHeight = 640;
         private const int WorldWidth = 640;
+
+        private bool _gameIsActive;
+        private bool _gameLost;
+        private bool _gameWon;
 
         private bool _renderGrid;
         private bool _renderGraph;
@@ -36,11 +41,71 @@ namespace SteeringCS
             dbPanel.Height = WorldHeight;
             dbPanel.Location = new Point(50, 50);
 
-            World = new WorldVisualization(width: WorldWidth, height: WorldHeight);
-
             _timer.Elapsed += Timer_Elapsed;
             _timer.Interval = 20;
+        }
+
+        private void RenderStartScreen(Graphics graphics)
+        {
+            PrivateFontCollection fontCollection = new PrivateFontCollection();
+            SolidBrush blackBrush = new SolidBrush(Color.Black);
+            SolidBrush whiteBrush = new SolidBrush(Color.White);
+            fontCollection.AddFontFile("graphics/mario-font.ttf");
+
+            // Create amazing mario logo
+            Font logoFont = new Font(fontCollection.Families[0], 64f);
+
+            SolidBrush logoBackgroundBrush = new SolidBrush(Color.FromArgb(199, 80, 20));
+            SolidBrush logoBrush = new SolidBrush(Color.FromArgb(246, 197, 183));
+
+            graphics.FillRectangle(logoBrush, 118, 30, 400, 200);
+            graphics.FillRectangle(blackBrush, 122, 34, 400, 200);
+            graphics.FillRectangle(logoBackgroundBrush, 120, 32, 400, 200);
+
+            graphics.DrawString("amazing", logoFont, blackBrush, 135, 5);
+            graphics.DrawString("amazing", logoFont, logoBrush, 130, 0);
+            graphics.DrawString("MARIO BROS.", logoFont, blackBrush, 135, 115);
+            graphics.DrawString("MARIO BROS.", logoFont, logoBrush, 130, 110);
+
+            // Set gamestate related graphics
+            string stateText = "TRY TO SAVE LUIGI!";
+
+            if (_gameLost)
+            {
+                stateText = "FAILED SAVING LUIGI!";
+                BackColor = Color.DarkRed;
+                dbPanel.BackColor = Color.DarkRed;
+            }
+
+            if (_gameWon)
+            {
+                stateText = "YOU SAVED LUIGI!";
+                BackColor = Color.Green;
+                dbPanel.BackColor = Color.Green;
+            }
+
+            Font font = new Font(fontCollection.Families[0], 64f);
+
+            SizeF textSize = graphics.MeasureString(stateText, font);
+            float x = (graphics.VisibleClipBounds.Width - textSize.Width) / 2f;
+            float y = (graphics.VisibleClipBounds.Height - textSize.Height) / 2f;
+
+            graphics.DrawString(stateText, font, whiteBrush, x, y);
+
+            // Create press space to enter text
+            Font playFont = new Font(fontCollection.Families[0], 24f);
+            graphics.DrawString("press space to play", playFont, whiteBrush, 200, 350);
+        }
+
+        private void StartGame()
+        {
+            World = new WorldVisualization(width: WorldWidth, height: WorldHeight);
             _timer.Enabled = true;
+            _gameIsActive = true;
+            _gameLost = false;
+            _gameWon = false;
+
+            BackColor = Color.FromArgb(51, 153, 255);
         }
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs eventArgs)
@@ -48,12 +113,33 @@ namespace SteeringCS
             World.Update(TimeDelta);
             dbPanel.Invalidate();
 
-            EventHandler<UpdateWorldEvent> handler = UpdateWorldEventHandler;
-            handler?.Invoke(this, new UpdateWorldEvent(World));
+            UpdateWorldEventHandler?.Invoke(this, new UpdateWorldEvent(World));
         }
 
         private void Render(object sender, PaintEventArgs eventArgs)
         {
+            if (!_gameIsActive)
+            {
+                RenderStartScreen(eventArgs.Graphics);
+                return;
+            }
+
+            if (World.Player.Health <= 0)
+            {
+                _gameLost = true;
+                _gameIsActive = false;
+                RenderStartScreen(eventArgs.Graphics);
+                return;
+            }
+
+            if (World.Rescuee.IsSaved)
+            {
+                _gameWon = true;
+                _gameIsActive = false;
+                RenderStartScreen(eventArgs.Graphics);
+                return;
+            }
+
             World.Render(eventArgs.Graphics);
 
             if (_renderGrid)
@@ -89,6 +175,11 @@ namespace SteeringCS
 
         private void targetEntityPosition_MouseClick(object sender, MouseEventArgs eventArgs)
         {
+            if (!_gameIsActive)
+            {
+                return;
+            }
+
             World.Player.Position = new Vector(eventArgs.X, eventArgs.Y);
             World.Update(TimeDelta);
             dbPanel.Invalidate();
@@ -178,6 +269,11 @@ namespace SteeringCS
             if (eventArgs.KeyCode == Keys.Escape)
             {
                 Close();
+            }
+
+            if (eventArgs.KeyCode == Keys.Space)
+            {
+                StartGame();
             }
         }
 

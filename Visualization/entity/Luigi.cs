@@ -24,6 +24,8 @@ namespace SteeringCS.entity
         private static readonly Image s_playerGraphicsLeftWalk1 = Image.FromFile("graphics/luigi/walk/luigi-left-walk-1.png");
         private static readonly Image s_playerGraphicsLeftWalk2 = Image.FromFile("graphics/luigi/walk/luigi-left-walk-2.png");
 
+        public bool IsSaved { get; set; } = false;
+
         public Luigi(Vector position, IWorld world) : base(position, world, s_playerGraphicsRight.Height / 2, s_playerGraphicsRight.Width)
         {
             Velocity = new Vector(0, 0);

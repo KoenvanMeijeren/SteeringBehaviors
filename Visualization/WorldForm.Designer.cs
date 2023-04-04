@@ -33,7 +33,7 @@
             // 
             // dbPanel
             // 
-            this.dbPanel.BackColor = System.Drawing.Color.White;
+            this.dbPanel.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.dbPanel.Location = new System.Drawing.Point(0, 0);
             this.dbPanel.Margin = new System.Windows.Forms.Padding(4);
             this.dbPanel.Name = "dbPanel";
