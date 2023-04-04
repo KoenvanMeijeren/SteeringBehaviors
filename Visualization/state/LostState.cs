@@ -32,7 +32,7 @@ namespace SteeringCS.state
 
             bool isPlayerClose = distanceFromPlayer < _searchDistance;
 
-            if (isPlayerClose)
+            if (isPlayerClose && IsShortestPathInSearchDistance())
             {
                 MovingEntity.ChangeState(new FollowState(MovingEntity));
             }
