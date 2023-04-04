@@ -11,7 +11,6 @@ namespace Src.graph
 
         public readonly Vector Position;
         public readonly LinkedList<Edge> Edges;
-
         public Vertex Parent { get; set; }
         public float Cost { get; set; }
         public int DistanceFromTarget { get; set; }
@@ -23,6 +22,13 @@ namespace Src.graph
             Cost = cost;
         }
 
+        public void Reset()
+        {
+            Parent = null;
+            Cost = DefaultCost;
+            DistanceFromTarget = 0;
+        }
+        
         public void AddEdge(Edge edge)
         {
             Edges.AddLast(edge);

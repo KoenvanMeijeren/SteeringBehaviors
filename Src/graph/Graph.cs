@@ -92,13 +92,22 @@ namespace Src.graph
             }
         }
 
-        public static ShortestPathResult GetShortestPath(Vertex startVertex, Vertex targetVertex)
+        private void ClearAll()
+        {
+            foreach (Vertex vertex in Vertices)
+            {
+                vertex?.Reset();
+            }
+        }
+
+        public ShortestPathResult GetShortestPath(Vertex startVertex, Vertex targetVertex)
         {
             if (startVertex == null || targetVertex == null)
             {
                 return null;
             }
 
+            ClearAll();
             Stack<Vertex> path = new Stack<Vertex>();
             VertexPriorityQueue openList = new VertexPriorityQueue();
             List<Vertex> closedList = new List<Vertex>();
