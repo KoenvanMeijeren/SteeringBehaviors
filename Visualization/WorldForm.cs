@@ -125,7 +125,7 @@ namespace SteeringCS
                 return;
             }
 
-            if (World.Player.Health == 0)
+            if (World.Player.Health <= 0)
             {
                 _gameLost = true;
                 _gameIsActive = false;
