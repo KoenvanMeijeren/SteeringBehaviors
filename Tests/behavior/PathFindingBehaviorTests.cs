@@ -157,24 +157,24 @@ namespace Tests.behavior
                 movingEntity,
                 steeringBehavior,
                 TimeElapsed,
-                "(158.54,158.54)",
-                "(21.21,21.21)",
-                "(0.71,0.71)",
-                "(2.81,2.81)",
-                "(2.81,2.81)",
-                "(2.81,2.81)",
-                "(2.81,2.81)",
-                "(2.81,2.81)",
-                "(2.81,2.81)",
-                "(2.81,2.81)",
-                "(2.25,2.25)",
-                "(160.79,160.79)"
+                "(158.41,158.41)",
+                "(15.45,15.45)",
+                "(0.52,0.52)",
+                "(2.55,2.55)",
+                "(2.55,2.55)",
+                "(2.55,2.55)",
+                "(2.55,2.55)",
+                "(2.55,2.55)",
+                "(2.55,2.55)",
+                "(2.55,2.55)",
+                "(2.04,2.04)",
+                "(160.45,160.45)"
             );
             world.Update(TimeElapsed);
-            Assert.AreEqual("(160.79,160.79)", movingEntity.Position.ToString());
-            Assert.AreEqual("(2.25,2.25)", movingEntity.Velocity.ToString());
+            Assert.AreEqual("(160.45,160.45)", movingEntity.Position.ToString());
+            Assert.AreEqual("(2.04,2.04)", movingEntity.Velocity.ToString());
 
-            for (int index = 0; index < 60; index++)
+            for (int index = 0; index < 100; index++)
             {
                 world.Update(TimeElapsed);
             }
@@ -184,21 +184,21 @@ namespace Tests.behavior
                 steeringBehavior,
                 TimeElapsed,
                 "(200,200)",
+                "(-0,-0)",
+                "(-0,-0)",
                 "(0,0)",
                 "(0,0)",
-                "(-0,-0)",
-                "(-0,-0)",
-                "(-0,-0)",
-                "(-0,-0)",
-                "(-0,-0)",
-                "(-0,-0)",
-                "(-0,-0)",
-                "(-0,-0)",
+                "(0,0)",
+                "(0,0)",
+                "(0,0)",
+                "(0,0)",
+                "(0,0)",
+                "(0,0)",
                 "(200,200)"
             );
             world.Update(TimeElapsed);
             Assert.AreEqual("(200,200)", movingEntity.Position.ToString());
-            Assert.AreEqual("(-0,-0)", movingEntity.Velocity.ToString());
+            Assert.AreEqual("(0,0)", movingEntity.Velocity.ToString());
         }
     }
 }
