@@ -73,8 +73,8 @@ namespace Tests.graph
 
             // Assert
             Assert.AreEqual(5, resultLines.Length);
-            Assert.AreEqual("{(0,0)},{(0,0)},{(0,0)},{(0,0)}", resultLines[0]);
-            Assert.AreEqual("{(0,0)},{(48,48)d=1->[(80,48),(80,80),(48,80)]},{(48,80)d=1->[(48,48),(80,48),(80,80)]},{(0,0)}", resultLines[1]);
+            Assert.AreEqual("{(16,16)d=1->[(48,16),(48,48),(16,48)]},{(16,48)d=1->[(16,16),(48,16),(48,48)]},{(0,0)},{(0,0)}", resultLines[0]);
+            Assert.AreEqual("{(48,16)d=1->[(48,48),(16,48),(16,16)]},{(48,48)d=1->[(48,16),(80,48),(80,80),(48,80),(16,48),(16,16)]},{(48,80)d=1->[(48,48),(80,48),(80,80)]},{(0,0)}", resultLines[1]);
             Assert.AreEqual("{(0,0)},{(80,48)d=1->[(80,80),(48,80),(48,48)]},{(80,80)d=1->[(80,48),(48,80),(48,48)]},{(0,0)}", resultLines[2]);
             Assert.AreEqual("{(0,0)},{(0,0)},{(0,0)},{(0,0)}", resultLines[3]);
             Assert.AreEqual("", resultLines[4]);
@@ -94,8 +94,8 @@ namespace Tests.graph
 
             // Assert
             Assert.AreEqual(5, resultLines.Length);
-            Assert.AreEqual("{(0,0)},{(0,0)},{(0,0)},{(0,0)}", resultLines[0]);
-            Assert.AreEqual("{(0,0)},{(48,48)d=1->[(80,48),(80,80),(48,80)]},{(48,80)d=1->[(48,48),(80,48),(80,80)]},{(0,0)}", resultLines[1]);
+            Assert.AreEqual("{(16,16)d=1->[(48,16),(48,48),(16,48)]},{(16,48)d=1->[(16,16),(48,16),(48,48)]},{(0,0)},{(0,0)}", resultLines[0]);
+            Assert.AreEqual("{(48,16)d=1->[(48,48),(16,48),(16,16)]},{(48,48)d=1->[(48,16),(80,48),(80,80),(48,80),(16,48),(16,16)]},{(48,80)d=1->[(48,48),(80,48),(80,80)]},{(0,0)}", resultLines[1]);
             Assert.AreEqual("{(0,0)},{(80,48)d=1->[(80,80),(48,80),(48,48)]},{(80,80)d=1->[(80,48),(48,80),(48,48)]},{(0,0)}", resultLines[2]);
             Assert.AreEqual("{(0,0)},{(0,0)},{(0,0)},{(0,0)}", resultLines[3]);
             Assert.AreEqual("", resultLines[4]);
@@ -114,7 +114,7 @@ namespace Tests.graph
             Vertex vertex = graph.GetVertex(1, 1);
 
             // Assert
-            Assert.AreEqual("{(48,48)d=1->[(80,48),(80,80),(48,80)]}", vertex.ToString());
+            Assert.AreEqual("{(48,48)d=1->[(48,16),(80,48),(80,80),(48,80),(16,48),(16,16)]}", vertex.ToString());
         }
 
         [Test]
