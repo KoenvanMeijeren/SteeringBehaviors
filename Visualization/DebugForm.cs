@@ -23,7 +23,7 @@ namespace SteeringCS
 
         private void WorldFormOnUpdateWorldEventHandler(object sender, UpdateWorldEvent eventArgs)
         {
-            if (!IsHandleCreated || IsDisposed)
+            if (!IsHandleCreated || IsDisposed || !IsAccessible)
             {
                 return;
             }

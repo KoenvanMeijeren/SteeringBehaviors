@@ -38,7 +38,7 @@ namespace SteeringCS.state
 
         public void Execute()
         {
-            if (!(MovingEntity.SteeringBehavior is PathfindingBehaviorVisualizer pathfindingBehaviorVisualizer))
+            if (!(MovingEntity.SteeringBehavior is PathfindingBehaviorVisualizer pathfindingBehaviorVisualizer) || pathfindingBehaviorVisualizer.Path == null)
             {
                 _attackState.Execute();
                 return;

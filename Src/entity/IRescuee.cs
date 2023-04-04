@@ -2,6 +2,6 @@
 {
     public interface IRescuee : IMovingEntity
     {
-
+        bool IsSaved { get; set; }
     }
 }

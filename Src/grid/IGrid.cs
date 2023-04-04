@@ -13,6 +13,7 @@ namespace Src.grid
 
         int GetCoordinateOfTile(int length);
         GridTile GetTile(int row, int column);
+        PathTile GetRandomPathTile();
         void AddOrMoveEntity(IMovingEntity entity);
     }
 }

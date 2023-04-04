@@ -13,18 +13,16 @@ namespace Src.grid
         public GridTile[,] Tiles { get; private set; }
         public Graph Graph { get; private set; }
         private readonly Dictionary<IMovingEntity, PathTile> _entities;
-        private readonly bool _fillWithRandomTiles;
 
-        public Grid(int width, int height, bool fillWithRandomTiles = true)
+        public Grid(int width, int height)
         {
             Width = width;
             Height = height;
             _entities = new Dictionary<IMovingEntity, PathTile>();
-            _fillWithRandomTiles = fillWithRandomTiles;
 
             InitializeGridTilesArray();
             InitializeOutsideWallTiles();
-            InitializeMazeWallTiles();
+            InitializeFinishTiles();
             InitializePathTiles();
             InitializeGraph();
         }
@@ -54,24 +52,29 @@ namespace Src.grid
             }
         }
 
-        private void InitializeMazeWallTiles()
+        private void InitializeFinishTiles()
         {
-            if (!_fillWithRandomTiles)
+            int centerTileX = (Width / 2) / TileSize;
+            int centerTileY = (Height / 2) / TileSize;
+
+            if (IsPositionWithInBounds(centerTileX, centerTileY, Tiles))
             {
-                return;
+                Tiles[centerTileX, centerTileY] = new PathTile(TileSize, centerTileX * TileSize, centerTileY * TileSize, true);
             }
-
-            for (int row = 0; row < Tiles.GetLength(0); row++)
+            
+            if (IsPositionWithInBounds(centerTileX - 1, centerTileY, Tiles))
             {
-                for (int column = 0; column < Tiles.GetLength(1); column++)
-                {
-                    int randomNumber = Randomizer.GetRandomNumber(1, 101);
-
-                    if (randomNumber <= 20)
-                    {
-                        Tiles[row, column] = new WallTile(TileSize, row * TileSize, column * TileSize);
-                    }
-                }
+                Tiles[centerTileX - 1, centerTileY] = new PathTile(TileSize, (centerTileX - 1) * TileSize, centerTileY * TileSize, true);
+            }
+            
+            if (IsPositionWithInBounds(centerTileX, centerTileY - 1, Tiles))
+            {
+                Tiles[centerTileX, centerTileY - 1] = new PathTile(TileSize, centerTileX * TileSize, (centerTileY - 1) * TileSize, true);
+            }
+            
+            if (IsPositionWithInBounds(centerTileX - 1, centerTileY - 1, Tiles))
+            {
+                Tiles[centerTileX - 1, centerTileY - 1] = new PathTile(TileSize, (centerTileX - 1) * TileSize, (centerTileY - 1) * TileSize, true);
             }
         }
 
@@ -115,6 +118,27 @@ namespace Src.grid
         public GridTile GetTile(int row, int column)
         {
             return IsPositionWithInBounds(row, column, Tiles) ? Tiles[row, column] : null;
+        }
+
+        public PathTile GetRandomPathTile()
+        {
+            List<PathTile> pathTiles = new List<PathTile>();
+
+            foreach (GridTile tile in Tiles)
+            {
+                if (tile is PathTile pathTile && !pathTile.IsFinish)
+                {
+                    pathTiles.Add(pathTile);
+                }
+            }
+
+            if (pathTiles.Count == 0)
+            {
+                return null;
+            }
+
+            int randomIndex = Randomizer.GetRandomNumber(0, pathTiles.Count);
+            return pathTiles[randomIndex];
         }
 
         public void AddOrMoveEntity(IMovingEntity entity)

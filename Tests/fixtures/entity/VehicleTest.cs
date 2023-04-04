@@ -16,5 +16,6 @@ namespace Tests.fixtures.entity
             MaxSpeed = DefaultMaxSpeed;
         }
         public void TakeDamage() => Health--;
+        public bool IsSaved { get; set; }
     }
 }
