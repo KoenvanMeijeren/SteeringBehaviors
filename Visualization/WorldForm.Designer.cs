@@ -40,7 +40,7 @@
             this.dbPanel.Size = new System.Drawing.Size(327, 233);
             this.dbPanel.TabIndex = 0;
             this.dbPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Render);
-            this.dbPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.targetEntityPosition_MouseClick);
+            this.dbPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnTargetEntityPositionMouseClick);
             // 
             // WorldForm
             // 
@@ -52,8 +52,8 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WorldForm";
             this.Text = "WorldForm";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WorldForm_KeyDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.WorldForm_KeyUp);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnWorldFormKeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnWorldFormKeyUp);
             this.ResumeLayout(false);
 
         }
