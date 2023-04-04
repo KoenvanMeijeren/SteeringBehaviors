@@ -100,9 +100,9 @@ namespace Src.graph
             }
         }
 
-        public ShortestPathResult GetShortestPath(Vertex startVertex, Vertex targetVertex)
+        public ShortestPathResult GetShortestPath(Vertex start, Vertex target)
         {
-            if (startVertex == null || targetVertex == null)
+            if (start == null || target == null)
             {
                 return null;
             }
@@ -111,13 +111,15 @@ namespace Src.graph
             Stack<Vertex> path = new Stack<Vertex>();
             VertexPriorityQueue openList = new VertexPriorityQueue();
             List<Vertex> closedList = new List<Vertex>();
-            Vertex current = startVertex;
+            List<Vertex> searchedList = new List<Vertex>();
+            Vertex current = start;
 
-            openList.Enqueue(startVertex, 0);
+            openList.Enqueue(start, start.FinalCost);
 
-            while (openList.Count != 0 && !closedList.Exists(vertex => vertex == targetVertex))
+            while(openList.Count != 0 && !closedList.Exists(vertex => vertex.Position.Equals(target.Position)))
             {
                 current = openList.Dequeue();
+                searchedList.Add(current);
                 closedList.Add(current);
                 IEnumerable<Vertex> adjacentVertexes = GetAdjacentVertexes(current);
 
@@ -125,49 +127,35 @@ namespace Src.graph
                              .Where(vertex => !closedList.Contains(vertex))
                              .Where(vertex => !openList.Contains(vertex)))
                 {
-                    vertex.Parent = current;
+                    searchedList.Add(vertex);
                     
-                    double edgeHCost = CalculateManhattanDistance(vertex, targetVertex);
-                    double parentEdgeHCost = CalculateManhattanDistance(vertex.Parent, targetVertex);
-                    
-                    vertex.DistanceFromTarget = (int) edgeHCost;
-                    int distanceFromParent = (int) parentEdgeHCost;
-
-                    vertex.Cost = distanceFromParent + vertex.Parent.Cost;
-                    openList.Enqueue(vertex, vertex.Cost + vertex.DistanceFromTarget);
+                    vertex.Previous = current;
+                    vertex.DistanceToTarget = (float) (Math.Abs(vertex.Position.X - target.Position.X) + Math.Abs(vertex.Position.Y - target.Position.Y));
+                    vertex.Cost = vertex.Weight + vertex.Previous.Cost;
+                    openList.Enqueue(vertex, vertex.FinalCost);
                 }
             }
-
-            if (!closedList.Exists(vertex => vertex == targetVertex))
+            
+            // Construct path, if target was not closed return null.
+            if(!closedList.Exists(vertex => vertex.Position.Equals(target.Position)))
             {
                 return null;
             }
 
-            Vertex temp = closedList.FirstOrDefault(vertex => vertex == current);
-            temp = temp?.Parent;
+            // If all good, construct and return path.
+            Vertex temp = closedList[closedList.IndexOf(current)];
             if (temp == null)
             {
                 return null;
             }
 
-            while (temp != startVertex && temp != null)
+            while (temp != start && temp != null)
             {
                 path.Push(temp);
-                temp = temp.Parent;
+                temp = temp.Previous;
             }
 
-            return new ShortestPathResult(path, closedList);
-        }
-
-        /// <summary>
-        /// Guess cost of traversing to target with the Manhattan Distance.
-        /// </summary>
-        private static double CalculateManhattanDistance(Vertex vertex, Vertex targetVertex)
-        {
-            double hX = Math.Abs(targetVertex.Position.X - vertex.Position.X) / 16;
-            double hY = Math.Abs(targetVertex.Position.Y - vertex.Position.Y) / 16;
-            
-            return hX + hY;
+            return new ShortestPathResult(path, searchedList);
         }
 
         public Vertex GetVertex(int row, int column)

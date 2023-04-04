@@ -7,26 +7,44 @@ namespace Src.graph
 {
     public class Vertex
     {
-        private const float DefaultCost = 0;
+        private const float DefaultCost = 1,
+            DefaultWeight = 1, 
+            UninitializedDistanceToTarget = -1;
 
         public readonly Vector Position;
         public readonly LinkedList<Edge> Edges;
-        public Vertex Parent { get; set; }
+        public Vertex Previous { get; set; }
         public float Cost { get; set; }
-        public int DistanceFromTarget { get; set; }
-
-        public Vertex(int x, int y, float cost = DefaultCost)
+        public float DistanceToTarget { get; set; }
+        public float Weight { get; }
+        public float FinalCost
         {
+            get
+            {
+                if (DistanceToTarget != UninitializedDistanceToTarget && Cost != UninitializedDistanceToTarget)
+                {
+                    return DistanceToTarget + Cost;
+                }
+                
+                return UninitializedDistanceToTarget;
+            }
+        }
+
+        public Vertex(int x, int y, float weight = DefaultWeight)
+        {
+            Previous = null;
             Edges = new LinkedList<Edge>();
             Position = new Vector(x, y);
-            Cost = cost;
+            DistanceToTarget = UninitializedDistanceToTarget;
+            Cost = DefaultCost;
+            Weight = weight;
         }
 
         public void Reset()
         {
-            Parent = null;
+            Previous = null;
+            DistanceToTarget = UninitializedDistanceToTarget;
             Cost = DefaultCost;
-            DistanceFromTarget = 0;
         }
         
         public void AddEdge(Edge edge)
@@ -41,7 +59,7 @@ namespace Src.graph
             stringBuilder.Append("{" + Position);
             if (HasCalculatedDistance())
             {
-                stringBuilder.Append($"d={Cost}");
+                stringBuilder.Append($"d={Weight}");
             }
 
             stringBuilder.Append("->[");
@@ -61,7 +79,7 @@ namespace Src.graph
 
         private bool HasCalculatedDistance()
         {
-            return Math.Abs(Cost - DefaultCost) > 0;
+            return Math.Abs(Weight) > 0;
         }
     }
 }
