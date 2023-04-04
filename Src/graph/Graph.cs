@@ -126,10 +126,14 @@ namespace Src.graph
                              .Where(vertex => !openList.Contains(vertex)))
                 {
                     vertex.Parent = current;
-                    vertex.DistanceFromTarget = (int)(Math.Abs(vertex.Position.X - targetVertex.Position.X) + Math.Abs(vertex.Position.Y - targetVertex.Position.Y));
-                    int distanceFromParent = (int)(Math.Abs(vertex.Position.X - vertex.Parent.Position.X) + Math.Abs(vertex.Position.Y - vertex.Parent.Position.Y));
+                    
+                    double edgeHCost = CalculateManhattanDistance(vertex, targetVertex);
+                    double parentEdgeHCost = CalculateManhattanDistance(vertex.Parent, targetVertex);
+                    
+                    vertex.DistanceFromTarget = (int) edgeHCost;
+                    int distanceFromParent = (int) parentEdgeHCost;
 
-                    vertex.Cost = (distanceFromParent * 2) + vertex.Parent.Cost;
+                    vertex.Cost = distanceFromParent + vertex.Parent.Cost;
                     openList.Enqueue(vertex, vertex.Cost + vertex.DistanceFromTarget);
                 }
             }
@@ -153,6 +157,17 @@ namespace Src.graph
             }
 
             return new ShortestPathResult(path, closedList);
+        }
+
+        /// <summary>
+        /// Guess cost of traversing to target with the Manhattan Distance.
+        /// </summary>
+        private static double CalculateManhattanDistance(Vertex vertex, Vertex targetVertex)
+        {
+            double hX = Math.Abs(targetVertex.Position.X - vertex.Position.X) / 16;
+            double hY = Math.Abs(targetVertex.Position.Y - vertex.Position.Y) / 16;
+            
+            return hX + hY;
         }
 
         public Vertex GetVertex(int row, int column)
