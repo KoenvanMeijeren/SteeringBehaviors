@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using Src.entity;
@@ -34,6 +35,7 @@ namespace SteeringCS
                 ProcessWorldFormOnUpdateWorldEventHandler(sender, eventArgs);
             }
             catch (InvalidOperationException) { }
+            catch (Win32Exception) { }
         }
 
         private void ProcessWorldFormOnUpdateWorldEventHandler(object sender, UpdateWorldEvent eventArgs)
