@@ -113,8 +113,7 @@ namespace SteeringCS
             World.Update(TimeDelta);
             dbPanel.Invalidate();
 
-            EventHandler<UpdateWorldEvent> handler = UpdateWorldEventHandler;
-            handler?.Invoke(this, new UpdateWorldEvent(World));
+            UpdateWorldEventHandler?.Invoke(this, new UpdateWorldEvent(World));
         }
 
         private void Render(object sender, PaintEventArgs eventArgs)
