@@ -25,10 +25,10 @@ namespace Src.grid
         {
             Entities.Add(entity);
 
-            if(entity is IRescuee rescuee&& IsFinish)
+            if (entity is IRescuee rescuee && IsFinish)
             {
                 rescuee.IsSaved = true;
-            } 
+            }
         }
 
         public void RemoveEntity(IMovingEntity entity)

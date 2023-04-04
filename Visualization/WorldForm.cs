@@ -13,13 +13,13 @@ namespace SteeringCS
     public partial class WorldForm : Form
     {
         public event EventHandler<UpdateWorldEvent> UpdateWorldEventHandler;
-        public WorldVisualization World;
+        public WorldVisualization World { get; private set; }
         private const int WorldHeight = 640;
         private const int WorldWidth = 640;
 
-        private bool _gameIsActive = false;
-        private bool _gameLost = false;
-        private bool _gameWon = false;
+        private bool _gameIsActive;
+        private bool _gameLost;
+        private bool _gameWon;
 
         private bool _renderGrid;
         private bool _renderGraph;
@@ -45,7 +45,7 @@ namespace SteeringCS
             _timer.Interval = 20;
         }
 
-        public void RenderStartScreen(Graphics graphics)
+        private void RenderStartScreen(Graphics graphics)
         {
             PrivateFontCollection fontCollection = new PrivateFontCollection();
             SolidBrush blackBrush = new SolidBrush(Color.Black);
@@ -97,7 +97,7 @@ namespace SteeringCS
             graphics.DrawString("press space to play", playFont, whiteBrush, 200, 350);
         }
 
-        public void StartGame()
+        private void StartGame()
         {
             World = new WorldVisualization(width: WorldWidth, height: WorldHeight);
             _timer.Enabled = true;
@@ -119,7 +119,7 @@ namespace SteeringCS
 
         private void Render(object sender, PaintEventArgs eventArgs)
         {
-            if(!_gameIsActive)
+            if (!_gameIsActive)
             {
                 RenderStartScreen(eventArgs.Graphics);
                 return;

@@ -36,7 +36,7 @@ namespace SteeringCS.world
 
         protected override IPlayer GetPlayer()
         {
-            IPlayer player = new Mario(new Vector(Width/2, Height/2), this);
+            IPlayer player = new Mario(new Vector(Width / 2, Height / 2), this);
             player.SetSteeringBehavior(
                 SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, player),
                 new CollisionAvoidingBehaviorVisualizer(player)
