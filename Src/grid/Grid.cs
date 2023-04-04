@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Common;
 using Src.entity;
 using Src.graph;
 using Src.util;
@@ -24,7 +23,6 @@ namespace Src.grid
             InitializeGridTilesArray();
             InitializeOutsideWallTiles();
             InitializeFinishTiles();
-            InitializeTwirlMazeWallTiles();
             InitializePathTiles();
             InitializeGraph();
         }
@@ -56,18 +54,28 @@ namespace Src.grid
 
         private void InitializeFinishTiles()
         {
-            int centerTileX = (Width / 2)/TileSize;
-            int centerTileY = (Height / 2)/TileSize;
+            int centerTileX = (Width / 2) / TileSize;
+            int centerTileY = (Height / 2) / TileSize;
 
-            Tiles[centerTileX, centerTileY] = new PathTile(TileSize, centerTileX * TileSize, centerTileY * TileSize, true);
-            Tiles[centerTileX - 1, centerTileY] = new PathTile(TileSize, (centerTileX - 1) * TileSize, centerTileY * TileSize, true);
-            Tiles[centerTileX, centerTileY - 1] = new PathTile(TileSize, centerTileX * TileSize, (centerTileY - 1) * TileSize, true);
-            Tiles[centerTileX - 1, centerTileY - 1] = new PathTile(TileSize, (centerTileX - 1) * TileSize, (centerTileY - 1) * TileSize, true);
-        }
-
-        private void InitializeTwirlMazeWallTiles()
-        {
-
+            if (IsPositionWithInBounds(centerTileX, centerTileY, Tiles))
+            {
+                Tiles[centerTileX, centerTileY] = new PathTile(TileSize, centerTileX * TileSize, centerTileY * TileSize, true);
+            }
+            
+            if (IsPositionWithInBounds(centerTileX - 1, centerTileY, Tiles))
+            {
+                Tiles[centerTileX - 1, centerTileY] = new PathTile(TileSize, (centerTileX - 1) * TileSize, centerTileY * TileSize, true);
+            }
+            
+            if (IsPositionWithInBounds(centerTileX, centerTileY - 1, Tiles))
+            {
+                Tiles[centerTileX, centerTileY - 1] = new PathTile(TileSize, centerTileX * TileSize, (centerTileY - 1) * TileSize, true);
+            }
+            
+            if (IsPositionWithInBounds(centerTileX - 1, centerTileY - 1, Tiles))
+            {
+                Tiles[centerTileX - 1, centerTileY - 1] = new PathTile(TileSize, (centerTileX - 1) * TileSize, (centerTileY - 1) * TileSize, true);
+            }
         }
 
         private void InitializePathTiles()
