@@ -41,7 +41,7 @@ namespace Src.behavior
         {
             IWorld world = MovingEntity.World;
             IGrid grid = world.Grid;
-            
+
             int vectorX = grid.GetCoordinateOfTile((int)MovingEntity.Position.X);
             int vectorY = grid.GetCoordinateOfTile((int)MovingEntity.Position.Y);
             Vertex newClosestVertex = grid.Graph.GetVertex(vectorX, vectorY);

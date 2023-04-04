@@ -378,7 +378,7 @@ namespace Tests.util
             // Assert
             Assert.AreEqual(expectedDistance, distance);
         }
-        
+
         [TestCase(new double[] { 5, 1 }, new double[] { 10, 15 }, false)]
         [TestCase(new double[] { 50, 100 }, new double[] { 10, 15 }, false)]
         [TestCase(new double[] { 5, 5 }, new double[] { 5, 5 }, true)]
@@ -394,7 +394,7 @@ namespace Tests.util
             // Assert
             Assert.AreEqual(expectedResult, isEquals);
         }
-        
+
         [TestCase(new double[] { 1, 2 }, true)]
         public void Equals_01_OneVector_Ok(double[] positions, bool expectedResult)
         {

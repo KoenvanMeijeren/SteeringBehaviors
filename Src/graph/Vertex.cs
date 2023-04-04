@@ -8,7 +8,7 @@ namespace Src.graph
     public class Vertex
     {
         private const float DefaultCost = 1,
-            DefaultWeight = 1, 
+            DefaultWeight = 1,
             UninitializedDistanceToTarget = -1;
 
         public readonly Vector Position;
@@ -25,7 +25,7 @@ namespace Src.graph
                 {
                     return DistanceToTarget + Cost;
                 }
-                
+
                 return UninitializedDistanceToTarget;
             }
         }
@@ -46,7 +46,7 @@ namespace Src.graph
             DistanceToTarget = UninitializedDistanceToTarget;
             Cost = DefaultCost;
         }
-        
+
         public void AddEdge(Edge edge)
         {
             Edges.AddLast(edge);

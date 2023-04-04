@@ -116,7 +116,7 @@ namespace Src.graph
 
             openList.Enqueue(start, start.FinalCost);
 
-            while(openList.Count != 0 && !closedList.Exists(vertex => vertex.Position.Equals(target.Position)))
+            while (openList.Count != 0 && !closedList.Exists(vertex => vertex.Position.Equals(target.Position)))
             {
                 current = openList.Dequeue();
                 searchedList.Add(current);
@@ -128,16 +128,16 @@ namespace Src.graph
                              .Where(vertex => !openList.Contains(vertex)))
                 {
                     searchedList.Add(vertex);
-                    
+
                     vertex.Previous = current;
-                    vertex.DistanceToTarget = (float) (Math.Abs(vertex.Position.X - target.Position.X) + Math.Abs(vertex.Position.Y - target.Position.Y));
+                    vertex.DistanceToTarget = (float)(Math.Abs(vertex.Position.X - target.Position.X) + Math.Abs(vertex.Position.Y - target.Position.Y));
                     vertex.Cost = vertex.Weight + vertex.Previous.Cost;
                     openList.Enqueue(vertex, vertex.FinalCost);
                 }
             }
-            
+
             // Construct path, if target was not closed return null.
-            if(!closedList.Exists(vertex => vertex.Position.Equals(target.Position)))
+            if (!closedList.Exists(vertex => vertex.Position.Equals(target.Position)))
             {
                 return null;
             }
