@@ -161,7 +161,7 @@ namespace Tests.graph
             Vertex targetVertex = graph.GetVertex(3, 3);
 
             // Act
-            ShortestPathResult result = Graph.GetShortestPath(startVertex, targetVertex);
+            ShortestPathResult result = graph.GetShortestPath(startVertex, targetVertex);
             Stack<Vertex> pathVertices = result.Path;
 
             // Assert
@@ -175,7 +175,11 @@ namespace Tests.graph
         public void GetShortestPath_02_WorldGridGraph_Ok_DoesNotCrashOnEmptyInputVertex()
         {
             // Act
-            ShortestPathResult result = Graph.GetShortestPath(null, null);
+            Vector seekingEntityPosition = new Vector(35, 35);
+            Vector targetEntityPosition = new Vector(75, 75);
+            WorldTest world = new WorldTest(150, 150, seekingEntityPosition, targetEntityPosition);
+            Graph graph = world.Grid.Graph;
+            ShortestPathResult result = graph.GetShortestPath(null, null);
 
             // Assert
             Assert.IsNull(result);

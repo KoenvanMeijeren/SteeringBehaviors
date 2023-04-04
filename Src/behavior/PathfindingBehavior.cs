@@ -2,7 +2,9 @@
 using System.Linq;
 using Src.entity;
 using Src.graph;
+using Src.grid;
 using Src.util;
+using Src.world;
 
 namespace Src.behavior
 {
@@ -37,14 +39,17 @@ namespace Src.behavior
 
         private void UpdatePathIfNecessary()
         {
-            int vectorX = MovingEntity.World.Grid.GetCoordinateOfTile((int)MovingEntity.Position.X);
-            int vectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)MovingEntity.Position.Y);
-            Vertex newClosestVertex = MovingEntity.World.Grid.Graph.GetVertex(vectorX, vectorY);
+            IWorld world = MovingEntity.World;
+            IGrid grid = world.Grid;
+            
+            int vectorX = grid.GetCoordinateOfTile((int)MovingEntity.Position.X);
+            int vectorY = grid.GetCoordinateOfTile((int)MovingEntity.Position.Y);
+            Vertex newClosestVertex = grid.Graph.GetVertex(vectorX, vectorY);
 
-            Vector targetPosition = MovingEntity.World.Player.Position;
-            int targetVectorX = MovingEntity.World.Grid.GetCoordinateOfTile((int)targetPosition.X);
-            int targetVectorY = MovingEntity.World.Grid.GetCoordinateOfTile((int)targetPosition.Y);
-            Vertex newTargetVertex = MovingEntity.World.Grid.Graph.GetVertex(targetVectorX, targetVectorY);
+            Vector targetPosition = world.Player.Position;
+            int targetVectorX = grid.GetCoordinateOfTile((int)targetPosition.X);
+            int targetVectorY = grid.GetCoordinateOfTile((int)targetPosition.Y);
+            Vertex newTargetVertex = grid.Graph.GetVertex(targetVectorX, targetVectorY);
 
             if (Path != null && Path.Count > 0 && Path.Peek() == newClosestVertex)
             {
@@ -59,7 +64,7 @@ namespace Src.behavior
 
             _closestVertex = newClosestVertex;
             _targetVertex = newTargetVertex;
-            ShortestPathResult result = Graph.GetShortestPath(_closestVertex, _targetVertex);
+            ShortestPathResult result = grid.Graph.GetShortestPath(_closestVertex, _targetVertex);
             if (result == null)
             {
                 return;
