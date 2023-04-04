@@ -378,5 +378,34 @@ namespace Tests.util
             // Assert
             Assert.AreEqual(expectedDistance, distance);
         }
+        
+        [TestCase(new double[] { 5, 1 }, new double[] { 10, 15 }, false)]
+        [TestCase(new double[] { 50, 100 }, new double[] { 10, 15 }, false)]
+        [TestCase(new double[] { 5, 5 }, new double[] { 5, 5 }, true)]
+        public void Equals_01_TwoVectors_Ok(double[] leftPositions, double[] rightPositions, bool expectedResult)
+        {
+            // Arrange
+            Vector left = new Vector(leftPositions[0], leftPositions[1]);
+            Vector right = new Vector(rightPositions[0], rightPositions[1]);
+
+            // Act
+            bool isEquals = left.Equals(right);
+
+            // Assert
+            Assert.AreEqual(expectedResult, isEquals);
+        }
+        
+        [TestCase(new double[] { 1, 2 }, true)]
+        public void Equals_01_OneVector_Ok(double[] positions, bool expectedResult)
+        {
+            // Arrange
+            Vector vector = new Vector(positions[0], positions[1]);
+
+            // Act
+            bool isEquals = vector.Equals(vector);
+
+            // Assert
+            Assert.AreEqual(expectedResult, isEquals);
+        }
     }
 }
