@@ -9,6 +9,7 @@ using SteeringCS.entity;
 using SteeringCS.grid;
 using SteeringCS.util;
 using SteeringCS.state;
+using Src.grid;
 
 namespace SteeringCS.world
 {
@@ -23,7 +24,9 @@ namespace SteeringCS.world
             List<IEnemy> enemies = new List<IEnemy>();
             for (int index = 0; index < 3; index++)
             {
-                Goomba goomba = new Goomba(new Vector(Width / 2, Height / 2), this);
+                PathTile randomPathTile = Grid.GetRandomPathTile();
+                Goomba goomba = new Goomba(
+                    new Vector(randomPathTile.PositionCenter.X, randomPathTile.PositionCenter.Y), this);
                 goomba.ChangeState(new SearchState(goomba));
                 enemies.Add(goomba);
             }
@@ -33,7 +36,7 @@ namespace SteeringCS.world
 
         protected override IPlayer GetPlayer()
         {
-            IPlayer player = new Mario(new Vector(100, 40), this);
+            IPlayer player = new Mario(new Vector(Width/2, Height/2), this);
             player.SetSteeringBehavior(
                 SteeringBehaviorVisualizationFactory.CreateFromEnum(SteeringBehaviorOptions.KeyboardBehavior, player),
                 new CollisionAvoidingBehaviorVisualizer(player)
@@ -44,7 +47,7 @@ namespace SteeringCS.world
 
         protected override IRescuee GetRescuee()
         {
-            IRescuee rescuee = new Luigi(new Vector(400, 40), this);
+            IRescuee rescuee = new Luigi(new Vector(320, 600), this);
             rescuee.ChangeState(new LostState(rescuee));
 
             return rescuee;

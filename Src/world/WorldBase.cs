@@ -19,10 +19,10 @@ namespace Src.world
         {
             Width = width;
             Height = height;
+            Grid = new Grid(width, height);
             Enemies = GetEnemies();
             Player = GetPlayer();
             Rescuee = GetRescuee();
-            Grid = new Grid(width, height);
             Grid.AddOrMoveEntity(Player);
         }
 

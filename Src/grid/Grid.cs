@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Common;
 using Src.entity;
 using Src.graph;
 using Src.util;
@@ -15,7 +16,7 @@ namespace Src.grid
         private readonly Dictionary<IMovingEntity, PathTile> _entities;
         private readonly bool _fillWithRandomTiles;
 
-        public Grid(int width, int height, bool fillWithRandomTiles = true)
+        public Grid(int width, int height, bool fillWithRandomTiles = false)
         {
             Width = width;
             Height = height;
@@ -24,7 +25,16 @@ namespace Src.grid
 
             InitializeGridTilesArray();
             InitializeOutsideWallTiles();
-            InitializeMazeWallTiles();
+            InitializeFinishTiles();
+            if (fillWithRandomTiles)
+            {
+                InitializeRandomMazeWallTiles();
+            }
+            else
+            {
+                InitializeMazeWallTiles();
+            }
+
             InitializePathTiles();
             InitializeGraph();
         }
@@ -54,7 +64,18 @@ namespace Src.grid
             }
         }
 
-        private void InitializeMazeWallTiles()
+        private void InitializeFinishTiles()
+        {
+            int centerTileX = (Width / 2)/TileSize;
+            int centerTileY = (Height / 2)/TileSize;
+
+            Tiles[centerTileX, centerTileY] = new PathTile(TileSize, centerTileX * TileSize, centerTileY * TileSize, true);
+            Tiles[centerTileX - 1, centerTileY] = new PathTile(TileSize, (centerTileX - 1) * TileSize, centerTileY * TileSize, true);
+            Tiles[centerTileX, centerTileY - 1] = new PathTile(TileSize, centerTileX * TileSize, (centerTileY - 1) * TileSize, true);
+            Tiles[centerTileX - 1, centerTileY - 1] = new PathTile(TileSize, (centerTileX - 1) * TileSize, (centerTileY - 1) * TileSize, true);
+        }
+
+        private void InitializeRandomMazeWallTiles()
         {
             if (!_fillWithRandomTiles)
             {
@@ -73,6 +94,11 @@ namespace Src.grid
                     }
                 }
             }
+        }
+
+        private void InitializeMazeWallTiles()
+        {
+
         }
 
         private void InitializePathTiles()
@@ -115,6 +141,27 @@ namespace Src.grid
         public GridTile GetTile(int row, int column)
         {
             return IsPositionWithInBounds(row, column, Tiles) ? Tiles[row, column] : null;
+        }
+
+        public PathTile GetRandomPathTile()
+        {
+            List<PathTile> pathTiles = new List<PathTile>();
+
+            foreach (GridTile tile in Tiles)
+            {
+                if (tile is PathTile)
+                {
+                    pathTiles.Add(tile as PathTile);
+                }
+            }
+
+            if (pathTiles.Count == 0)
+            {
+                return null;
+            }
+
+            int randomIndex = Randomizer.GetRandomNumber(0, pathTiles.Count);
+            return pathTiles[randomIndex];
         }
 
         public void AddOrMoveEntity(IMovingEntity entity)
