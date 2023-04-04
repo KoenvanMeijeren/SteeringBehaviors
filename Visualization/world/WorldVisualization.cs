@@ -47,7 +47,7 @@ namespace SteeringCS.world
 
         protected override IRescuee GetRescuee()
         {
-            IRescuee rescuee = new Luigi(new Vector(320, 600), this);
+            IRescuee rescuee = new Luigi(new Vector(320, 590), this);
             rescuee.ChangeState(new LostState(rescuee));
 
             return rescuee;

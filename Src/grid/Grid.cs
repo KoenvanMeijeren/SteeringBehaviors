@@ -14,27 +14,17 @@ namespace Src.grid
         public GridTile[,] Tiles { get; private set; }
         public Graph Graph { get; private set; }
         private readonly Dictionary<IMovingEntity, PathTile> _entities;
-        private readonly bool _fillWithRandomTiles;
 
-        public Grid(int width, int height, bool fillWithRandomTiles = false)
+        public Grid(int width, int height)
         {
             Width = width;
             Height = height;
             _entities = new Dictionary<IMovingEntity, PathTile>();
-            _fillWithRandomTiles = fillWithRandomTiles;
 
             InitializeGridTilesArray();
             InitializeOutsideWallTiles();
             InitializeFinishTiles();
-            if (fillWithRandomTiles)
-            {
-                InitializeRandomMazeWallTiles();
-            }
-            else
-            {
-                InitializeMazeWallTiles();
-            }
-
+            InitializeTwirlMazeWallTiles();
             InitializePathTiles();
             InitializeGraph();
         }
@@ -75,28 +65,7 @@ namespace Src.grid
             Tiles[centerTileX - 1, centerTileY - 1] = new PathTile(TileSize, (centerTileX - 1) * TileSize, (centerTileY - 1) * TileSize, true);
         }
 
-        private void InitializeRandomMazeWallTiles()
-        {
-            if (!_fillWithRandomTiles)
-            {
-                return;
-            }
-
-            for (int row = 0; row < Tiles.GetLength(0); row++)
-            {
-                for (int column = 0; column < Tiles.GetLength(1); column++)
-                {
-                    int randomNumber = Randomizer.GetRandomNumber(1, 101);
-
-                    if (randomNumber <= 20)
-                    {
-                        Tiles[row, column] = new WallTile(TileSize, row * TileSize, column * TileSize);
-                    }
-                }
-            }
-        }
-
-        private void InitializeMazeWallTiles()
+        private void InitializeTwirlMazeWallTiles()
         {
 
         }
@@ -149,9 +118,9 @@ namespace Src.grid
 
             foreach (GridTile tile in Tiles)
             {
-                if (tile is PathTile)
+                if (tile is PathTile pathTile && !pathTile.IsFinish)
                 {
-                    pathTiles.Add(tile as PathTile);
+                    pathTiles.Add(pathTile);
                 }
             }
 

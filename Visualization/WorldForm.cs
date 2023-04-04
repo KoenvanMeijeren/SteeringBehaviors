@@ -95,7 +95,6 @@ namespace SteeringCS
             // Create press space to enter text
             Font playFont = new Font(fontCollection.Families[0], 24f);
             graphics.DrawString("press space to play", playFont, whiteBrush, 200, 350);
-
         }
 
         public void StartGame()
@@ -128,7 +127,15 @@ namespace SteeringCS
 
             if (World.Player.Health == 0)
             {
-                _gameLost |= true;
+                _gameLost = true;
+                _gameIsActive = false;
+                RenderStartScreen(eventArgs.Graphics);
+                return;
+            }
+
+            if (World.Rescuee.IsSaved)
+            {
+                _gameWon = true;
                 _gameIsActive = false;
                 RenderStartScreen(eventArgs.Graphics);
                 return;
