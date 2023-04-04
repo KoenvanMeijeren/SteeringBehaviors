@@ -61,17 +61,17 @@ namespace Src.grid
             {
                 Tiles[centerTileX, centerTileY] = new PathTile(TileSize, centerTileX * TileSize, centerTileY * TileSize, true);
             }
-            
+
             if (IsPositionWithInBounds(centerTileX - 1, centerTileY, Tiles))
             {
                 Tiles[centerTileX - 1, centerTileY] = new PathTile(TileSize, (centerTileX - 1) * TileSize, centerTileY * TileSize, true);
             }
-            
+
             if (IsPositionWithInBounds(centerTileX, centerTileY - 1, Tiles))
             {
                 Tiles[centerTileX, centerTileY - 1] = new PathTile(TileSize, centerTileX * TileSize, (centerTileY - 1) * TileSize, true);
             }
-            
+
             if (IsPositionWithInBounds(centerTileX - 1, centerTileY - 1, Tiles))
             {
                 Tiles[centerTileX - 1, centerTileY - 1] = new PathTile(TileSize, (centerTileX - 1) * TileSize, (centerTileY - 1) * TileSize, true);

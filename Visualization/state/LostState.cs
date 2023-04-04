@@ -42,7 +42,7 @@ namespace SteeringCS.state
         {
             IWorld world = MovingEntity.World;
             IGrid grid = world.Grid;
-            
+
             int vectorX = grid.GetCoordinateOfTile((int)MovingEntity.Position.X);
             int vectorY = grid.GetCoordinateOfTile((int)MovingEntity.Position.Y);
             Vertex closestVertex = grid.Graph.GetVertex(vectorX, vectorY);
