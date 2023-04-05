@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using Src.entity;
@@ -22,12 +23,19 @@ namespace SteeringCS
 
         private void WorldFormOnUpdateWorldEventHandler(object sender, UpdateWorldEvent eventArgs)
         {
-            if (!IsHandleCreated || IsDisposed || !IsAccessible)
+            if (!IsHandleCreated || IsDisposed)
             {
                 return;
             }
 
-            ProcessWorldFormOnUpdateWorldEventHandler(sender, eventArgs);
+            try
+            {
+                // Workaround for exceptions which occurs on closing the debug form.
+                // @see: https://stackoverflow.com/questions/4460709/detect-if-control-was-disposed/4460737#4460737
+                ProcessWorldFormOnUpdateWorldEventHandler(sender, eventArgs);
+            }
+            catch (InvalidOperationException) { }
+            catch (Win32Exception) { }
         }
 
         private void ProcessWorldFormOnUpdateWorldEventHandler(object sender, UpdateWorldEvent eventArgs)

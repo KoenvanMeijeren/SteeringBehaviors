@@ -92,23 +92,34 @@ namespace Src.graph
             }
         }
 
-        public static ShortestPathResult GetShortestPath(Vertex startVertex, Vertex targetVertex)
+        private void ClearAll()
         {
-            if (startVertex == null || targetVertex == null)
+            foreach (Vertex vertex in Vertices)
+            {
+                vertex?.Reset();
+            }
+        }
+
+        public ShortestPathResult GetShortestPath(Vertex start, Vertex target)
+        {
+            if (start == null || target == null)
             {
                 return null;
             }
 
+            ClearAll();
             Stack<Vertex> path = new Stack<Vertex>();
             VertexPriorityQueue openList = new VertexPriorityQueue();
             List<Vertex> closedList = new List<Vertex>();
-            Vertex current = startVertex;
+            List<Vertex> searchedList = new List<Vertex>();
+            Vertex current = start;
 
-            openList.Enqueue(startVertex, 0);
+            openList.Enqueue(start, start.FinalCost);
 
-            while (openList.Count != 0 && !closedList.Exists(vertex => vertex == targetVertex))
+            while (openList.Count != 0 && !closedList.Exists(vertex => vertex.Position.Equals(target.Position)))
             {
                 current = openList.Dequeue();
+                searchedList.Add(current);
                 closedList.Add(current);
                 IEnumerable<Vertex> adjacentVertexes = GetAdjacentVertexes(current);
 
@@ -116,34 +127,35 @@ namespace Src.graph
                              .Where(vertex => !closedList.Contains(vertex))
                              .Where(vertex => !openList.Contains(vertex)))
                 {
-                    vertex.Parent = current;
-                    vertex.DistanceFromTarget = (int)(Math.Abs(vertex.Position.X - targetVertex.Position.X) + Math.Abs(vertex.Position.Y - targetVertex.Position.Y));
-                    int distanceFromParent = (int)(Math.Abs(vertex.Position.X - vertex.Parent.Position.X) + Math.Abs(vertex.Position.Y - vertex.Parent.Position.Y));
+                    searchedList.Add(vertex);
 
-                    vertex.Cost = (distanceFromParent * 2) + vertex.Parent.Cost;
-                    openList.Enqueue(vertex, vertex.Cost + vertex.DistanceFromTarget);
+                    vertex.Previous = current;
+                    vertex.DistanceToTarget = (float)(Math.Abs(vertex.Position.X - target.Position.X) + Math.Abs(vertex.Position.Y - target.Position.Y));
+                    vertex.Cost = vertex.Weight + vertex.Previous.Cost;
+                    openList.Enqueue(vertex, vertex.FinalCost);
                 }
             }
 
-            if (!closedList.Exists(vertex => vertex == targetVertex))
+            // Construct path, if target was not closed return null.
+            if (!closedList.Exists(vertex => vertex.Position.Equals(target.Position)))
             {
                 return null;
             }
 
-            Vertex temp = closedList.FirstOrDefault(vertex => vertex == current);
-            temp = temp?.Parent;
+            // If all good, construct and return path.
+            Vertex temp = closedList[closedList.IndexOf(current)];
             if (temp == null)
             {
                 return null;
             }
 
-            while (temp != startVertex && temp != null)
+            while (temp != start && temp != null)
             {
                 path.Push(temp);
-                temp = temp.Parent;
+                temp = temp.Previous;
             }
 
-            return new ShortestPathResult(path, closedList);
+            return new ShortestPathResult(path, searchedList);
         }
 
         public Vertex GetVertex(int row, int column)

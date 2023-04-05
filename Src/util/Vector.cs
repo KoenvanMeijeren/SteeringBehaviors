@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Src.util
 {
-    public class Vector
+    public class Vector : IEquatable<Vector>
     {
         public readonly double X, Y, Length, LengthSquared;
         public double XRounded => Math.Round(X, 2);
@@ -78,5 +78,52 @@ namespace Src.util
         }
 
         public override string ToString() => $"({XRounded.ToString(CultureInfo.InvariantCulture)},{YRounded.ToString(CultureInfo.InvariantCulture)})";
+
+        public bool Equals(Vector other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return X.Equals(other.X) && Y.Equals(other.Y) && Length.Equals(other.Length) && LengthSquared.Equals(other.LengthSquared);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((Vector)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = X.GetHashCode();
+                hashCode = (hashCode * 397) ^ Y.GetHashCode();
+                hashCode = (hashCode * 397) ^ Length.GetHashCode();
+                hashCode = (hashCode * 397) ^ LengthSquared.GetHashCode();
+                return hashCode;
+            }
+        }
     }
 }

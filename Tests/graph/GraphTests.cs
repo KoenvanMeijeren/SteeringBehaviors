@@ -73,9 +73,9 @@ namespace Tests.graph
 
             // Assert
             Assert.AreEqual(5, resultLines.Length);
-            Assert.AreEqual("{(0,0)},{(0,0)},{(0,0)},{(0,0)}", resultLines[0]);
-            Assert.AreEqual("{(0,0)},{(48,48)->[(80,48),(80,80),(48,80)]},{(48,80)->[(48,48),(80,48),(80,80)]},{(0,0)}", resultLines[1]);
-            Assert.AreEqual("{(0,0)},{(80,48)->[(80,80),(48,80),(48,48)]},{(80,80)->[(80,48),(48,80),(48,48)]},{(0,0)}", resultLines[2]);
+            Assert.AreEqual("{(16,16)d=1->[(48,16),(48,48),(16,48)]},{(16,48)d=1->[(16,16),(48,16),(48,48)]},{(0,0)},{(0,0)}", resultLines[0]);
+            Assert.AreEqual("{(48,16)d=1->[(48,48),(16,48),(16,16)]},{(48,48)d=1->[(48,16),(80,48),(80,80),(48,80),(16,48),(16,16)]},{(48,80)d=1->[(48,48),(80,48),(80,80)]},{(0,0)}", resultLines[1]);
+            Assert.AreEqual("{(0,0)},{(80,48)d=1->[(80,80),(48,80),(48,48)]},{(80,80)d=1->[(80,48),(48,80),(48,48)]},{(0,0)}", resultLines[2]);
             Assert.AreEqual("{(0,0)},{(0,0)},{(0,0)},{(0,0)}", resultLines[3]);
             Assert.AreEqual("", resultLines[4]);
         }
@@ -94,9 +94,9 @@ namespace Tests.graph
 
             // Assert
             Assert.AreEqual(5, resultLines.Length);
-            Assert.AreEqual("{(0,0)},{(0,0)},{(0,0)},{(0,0)}", resultLines[0]);
-            Assert.AreEqual("{(0,0)},{(48,48)->[(80,48),(80,80),(48,80)]},{(48,80)->[(48,48),(80,48),(80,80)]},{(0,0)}", resultLines[1]);
-            Assert.AreEqual("{(0,0)},{(80,48)->[(80,80),(48,80),(48,48)]},{(80,80)->[(80,48),(48,80),(48,48)]},{(0,0)}", resultLines[2]);
+            Assert.AreEqual("{(16,16)d=1->[(48,16),(48,48),(16,48)]},{(16,48)d=1->[(16,16),(48,16),(48,48)]},{(0,0)},{(0,0)}", resultLines[0]);
+            Assert.AreEqual("{(48,16)d=1->[(48,48),(16,48),(16,16)]},{(48,48)d=1->[(48,16),(80,48),(80,80),(48,80),(16,48),(16,16)]},{(48,80)d=1->[(48,48),(80,48),(80,80)]},{(0,0)}", resultLines[1]);
+            Assert.AreEqual("{(0,0)},{(80,48)d=1->[(80,80),(48,80),(48,48)]},{(80,80)d=1->[(80,48),(48,80),(48,48)]},{(0,0)}", resultLines[2]);
             Assert.AreEqual("{(0,0)},{(0,0)},{(0,0)},{(0,0)}", resultLines[3]);
             Assert.AreEqual("", resultLines[4]);
         }
@@ -114,7 +114,7 @@ namespace Tests.graph
             Vertex vertex = graph.GetVertex(1, 1);
 
             // Assert
-            Assert.AreEqual("{(48,48)->[(80,48),(80,80),(48,80)]}", vertex.ToString());
+            Assert.AreEqual("{(48,48)d=1->[(48,16),(80,48),(80,80),(48,80),(16,48),(16,16)]}", vertex.ToString());
         }
 
         [Test]
@@ -161,11 +161,11 @@ namespace Tests.graph
             Vertex targetVertex = graph.GetVertex(3, 3);
 
             // Act
-            ShortestPathResult result = Graph.GetShortestPath(startVertex, targetVertex);
+            ShortestPathResult result = graph.GetShortestPath(startVertex, targetVertex);
             Stack<Vertex> pathVertices = result.Path;
 
             // Assert
-            Assert.AreEqual(1, pathVertices.Count);
+            Assert.AreEqual(2, pathVertices.Count);
             Assert.AreEqual("(48,48)", startVertex.Position.ToString());
             Assert.AreEqual("(80,80)", pathVertices.Pop().Position.ToString());
             Assert.AreEqual("(112,112)", targetVertex.Position.ToString());
@@ -175,7 +175,11 @@ namespace Tests.graph
         public void GetShortestPath_02_WorldGridGraph_Ok_DoesNotCrashOnEmptyInputVertex()
         {
             // Act
-            ShortestPathResult result = Graph.GetShortestPath(null, null);
+            Vector seekingEntityPosition = new Vector(35, 35);
+            Vector targetEntityPosition = new Vector(75, 75);
+            WorldTest world = new WorldTest(150, 150, seekingEntityPosition, targetEntityPosition);
+            Graph graph = world.Grid.Graph;
+            ShortestPathResult result = graph.GetShortestPath(null, null);
 
             // Assert
             Assert.IsNull(result);

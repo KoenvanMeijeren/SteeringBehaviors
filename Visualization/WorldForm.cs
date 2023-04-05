@@ -41,7 +41,7 @@ namespace SteeringCS
             dbPanel.Height = WorldHeight;
             dbPanel.Location = new Point(50, 50);
 
-            _timer.Elapsed += Timer_Elapsed;
+            _timer.Elapsed += WorldTimerElapsed;
             _timer.Interval = 20;
         }
 
@@ -108,7 +108,7 @@ namespace SteeringCS
             BackColor = Color.FromArgb(51, 153, 255);
         }
 
-        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs eventArgs)
+        private void WorldTimerElapsed(object sender, System.Timers.ElapsedEventArgs eventArgs)
         {
             World.Update(TimeDelta);
             dbPanel.Invalidate();
@@ -173,7 +173,7 @@ namespace SteeringCS
             }
         }
 
-        private void targetEntityPosition_MouseClick(object sender, MouseEventArgs eventArgs)
+        private void OnTargetEntityPositionMouseClick(object sender, MouseEventArgs eventArgs)
         {
             if (!_gameIsActive)
             {
@@ -262,22 +262,22 @@ namespace SteeringCS
             _renderVelocity = true;
         }
 
-        private void WorldForm_KeyDown(object sender, KeyEventArgs eventArgs)
+        private void OnWorldFormKeyDown(object sender, KeyEventArgs eventArgs)
         {
             KeyHandler.RegisterPressedKeys(KeyEventArgsConverter.CreateFromEvent(eventArgs));
 
-            if (eventArgs.KeyCode == Keys.Escape)
+            switch (eventArgs.KeyCode)
             {
-                Close();
-            }
-
-            if (eventArgs.KeyCode == Keys.Space)
-            {
-                StartGame();
+                case Keys.Escape:
+                    Close();
+                    break;
+                case Keys.Space:
+                    StartGame();
+                    break;
             }
         }
 
-        private void WorldForm_KeyUp(object sender, KeyEventArgs eventArgs)
+        private void OnWorldFormKeyUp(object sender, KeyEventArgs eventArgs)
         {
             KeyHandler.RegisterUnpressedKeys(KeyEventArgsConverter.CreateFromEvent(eventArgs));
         }
