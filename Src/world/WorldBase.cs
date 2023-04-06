@@ -39,17 +39,17 @@ namespace Src.world
             {
                 return;
             }
-            
+
             _enemiesCount = enemiesCount;
             // Remove all entities from grid because otherwise they stay forever on the last known grid tiles.
             foreach (IEnemy enemy in Enemies)
             {
                 Grid.RemoveEntity(enemy);
             }
-            
+
             Enemies = GetEnemies(enemiesCount);
         }
-        
+
         public void Update(float timeElapsed)
         {
             Player.Update(timeElapsed);

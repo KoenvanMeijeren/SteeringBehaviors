@@ -175,7 +175,7 @@ namespace Src.grid
             newPathTile.AddEntity(entity);
             _entities[entity] = newPathTile;
         }
-        
+
         public void RemoveEntity(IMovingEntity entity)
         {
             if (entity == null)
