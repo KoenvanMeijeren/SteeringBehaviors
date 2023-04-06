@@ -49,8 +49,6 @@ namespace SteeringCS.state
                     _distanceFromNearestGoomba = MovingEntity.Position.DistanceBetween(goomba.Position);
                 }
             }
-
-            Console.WriteLine(_distanceFromNearestGoomba.ToString());
         }
 
         public override string ToString() => "Follow";

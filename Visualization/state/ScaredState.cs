@@ -28,6 +28,26 @@ namespace SteeringCS.state
             // FUZY LOGIC (change to follow if fuzzy logics says so)
         }
 
+        public void CalculateDistanceFromFinish()
+        {
+            _distanceFromFinish = MovingEntity.Position.DistanceBetween(MovingEntity.World.Center);
+        }
+
+        public void CalculateDistanceFromNearestGoomba()
+        {
+            _distanceFromNearestGoomba = double.MaxValue;
+            double distanceFromNearestGoomba;
+
+            foreach (IEnemy goomba in MovingEntity.World.Enemies)
+            {
+                distanceFromNearestGoomba = MovingEntity.Position.DistanceBetween(goomba.Position);
+                if (distanceFromNearestGoomba < _distanceFromNearestGoomba)
+                {
+                    _distanceFromNearestGoomba = MovingEntity.Position.DistanceBetween(goomba.Position);
+                }
+            }
+        }
+
         public override string ToString() => "Scared";
     }
 }
