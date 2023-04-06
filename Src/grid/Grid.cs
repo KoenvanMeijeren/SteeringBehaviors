@@ -175,6 +175,17 @@ namespace Src.grid
             newPathTile.AddEntity(entity);
             _entities[entity] = newPathTile;
         }
+        
+        public void RemoveEntity(IMovingEntity entity)
+        {
+            if (entity == null)
+            {
+                return;
+            }
+
+            PathTile currentPathTile = _entities[entity];
+            currentPathTile.RemoveEntity(entity);
+        }
 
         private static bool IsPositionWithInBounds(int row, int column, GridTile[,] tiles)
         {

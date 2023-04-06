@@ -15,5 +15,6 @@ namespace Src.grid
         GridTile GetTile(int row, int column);
         PathTile GetRandomPathTile();
         void AddOrMoveEntity(IMovingEntity entity);
+        void RemoveEntity(IMovingEntity entity);
     }
 }
