@@ -9,6 +9,9 @@ namespace SteeringCS.state
     {
         public IMovingEntity MovingEntity { get; }
 
+        private const int _distanceFromFinish = 80;
+        private const int _distanceFromNearestGoomba = 3;
+
         public FollowState(IMovingEntity movingEntity)
         {
             MovingEntity = movingEntity;
@@ -22,6 +25,8 @@ namespace SteeringCS.state
 
         public void Execute()
         {
+            // FUZY LOGIC (change to scared if fuzzy logics says so)
+            MovingEntity.ChangeState(new ScaredState(MovingEntity));
         }
 
         public override string ToString() => "Follow";
