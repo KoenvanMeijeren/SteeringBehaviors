@@ -19,10 +19,10 @@ namespace SteeringCS.world
         {
         }
 
-        protected override List<IEnemy> GetEnemies()
+        protected override List<IEnemy> GetEnemies(int enemiesCount)
         {
             List<IEnemy> enemies = new List<IEnemy>();
-            for (int index = 0; index < 3; index++)
+            for (int index = 0; index < enemiesCount; index++)
             {
                 PathTile randomPathTile = Grid.GetRandomPathTile();
                 Goomba goomba = new Goomba(

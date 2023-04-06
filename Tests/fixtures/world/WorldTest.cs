@@ -17,7 +17,7 @@ namespace Tests.fixtures.world
             Grid.AddOrMoveEntity(Player);
         }
 
-        protected override List<IEnemy> GetEnemies()
+        protected override List<IEnemy> GetEnemies(int enemiesCount)
         {
             return new List<IEnemy>();
         }

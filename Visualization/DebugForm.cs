@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using Src.entity;
+using Src.world;
 using SteeringCS.events;
 using SteeringCS.world;
 
@@ -130,6 +131,11 @@ namespace SteeringCS
             if (enemy3?.State != null && !Enemy3StateValue.Text.Equals(enemy3.State.ToString()))
             {
                 Enemy3StateValue.Invoke((MethodInvoker)(() => Enemy3StateValue.Text = enemy3.State.ToString()));
+            }
+
+            if (world.Enemies.Count != enemiesValue.Value)
+            {
+                enemiesValue.Invoke((MethodInvoker)(() => enemiesValue.Value = WorldBase.DefaultEnemiesCount));
             }
         }
 
@@ -372,6 +378,13 @@ namespace SteeringCS
             }
 
             enemy.MaxSpeed = maxSpeed;
+        }
+
+        private void enemiesValue_ValueChanged(object sender, EventArgs e)
+        {
+            int enemiesCount = (int)enemiesValue.Value;
+            WorldVisualization world = _worldForm.World;
+            world.UpdateEnemies(enemiesCount);
         }
     }
 }

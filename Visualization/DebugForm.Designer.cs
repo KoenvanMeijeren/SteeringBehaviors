@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.label26 = new System.Windows.Forms.Label();
             this.consequenceResultValue = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.ConsequenceRightShoulderMaxValue = new System.Windows.Forms.NumericUpDown();
@@ -130,7 +131,6 @@
             this.pauseButton = new System.Windows.Forms.Button();
             this.UpdateIntervalLabel = new System.Windows.Forms.Label();
             this.UpdateIntervalSelector = new System.Windows.Forms.NumericUpDown();
-            this.label26 = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConsequenceRightShoulderMaxValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConsequenceRightShoulderPeakValue)).BeginInit();
@@ -282,6 +282,14 @@
             this.mainPanel.Size = new System.Drawing.Size(402, 870);
             this.mainPanel.TabIndex = 1;
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(8, 853);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(0, 17);
+            this.label26.TabIndex = 105;
+            // 
             // consequenceResultValue
             // 
             this.consequenceResultValue.AutoSize = true;
@@ -404,27 +412,27 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(254, 725);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(100, 17);
+            this.label23.Size = new System.Drawing.Size(99, 17);
             this.label23.TabIndex = 91;
-            this.label23.Text = "Right shoulder";
+            this.label23.Text = "Very desirable";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(157, 725);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(60, 17);
+            this.label24.Size = new System.Drawing.Size(68, 17);
             this.label24.TabIndex = 90;
-            this.label24.Text = "Triangle";
+            this.label24.Text = "Desirable";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(60, 725);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(91, 17);
+            this.label25.Size = new System.Drawing.Size(84, 17);
             this.label25.TabIndex = 89;
-            this.label25.Text = "Left shoulder";
+            this.label25.Text = "Undesirable";
             // 
             // ConsequenceLeftShoulderMinValue
             // 
@@ -557,27 +565,27 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(253, 581);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(100, 17);
+            this.label17.Size = new System.Drawing.Size(29, 17);
             this.label17.TabIndex = 74;
-            this.label17.Text = "Right shoulder";
+            this.label17.Text = "Far";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(156, 581);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(60, 17);
+            this.label18.Size = new System.Drawing.Size(57, 17);
             this.label18.TabIndex = 73;
-            this.label18.Text = "Triangle";
+            this.label18.Text = "Medium";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(59, 581);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(91, 17);
+            this.label19.Size = new System.Drawing.Size(43, 17);
             this.label19.TabIndex = 72;
-            this.label19.Text = "Left shoulder";
+            this.label19.Text = "Close";
             // 
             // antecedentDTNGLeftShoulderMinValue
             // 
@@ -710,18 +718,18 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(245, 441);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 17);
+            this.label3.Size = new System.Drawing.Size(29, 17);
             this.label3.TabIndex = 57;
-            this.label3.Text = "Right shoulder";
+            this.label3.Text = "Far";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(148, 441);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 17);
+            this.label2.Size = new System.Drawing.Size(57, 17);
             this.label2.TabIndex = 56;
-            this.label2.Text = "Triangle";
+            this.label2.Text = "Medium";
             // 
             // label6
             // 
@@ -729,9 +737,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(1, 708);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(173, 17);
+            this.label6.Size = new System.Drawing.Size(182, 17);
             this.label6.TabIndex = 55;
-            this.label6.Text = "Consequent scareness";
+            this.label6.Text = "Consequent scaredness";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label5
@@ -771,15 +779,16 @@
             this.enemiesValue.Name = "enemiesValue";
             this.enemiesValue.Size = new System.Drawing.Size(51, 22);
             this.enemiesValue.TabIndex = 51;
+            this.enemiesValue.ValueChanged += new System.EventHandler(this.enemiesValue_ValueChanged);
             // 
             // antecedentDistanceToFinishLeftShoulderLabel
             // 
             this.antecedentDistanceToFinishLeftShoulderLabel.AutoSize = true;
             this.antecedentDistanceToFinishLeftShoulderLabel.Location = new System.Drawing.Point(51, 441);
             this.antecedentDistanceToFinishLeftShoulderLabel.Name = "antecedentDistanceToFinishLeftShoulderLabel";
-            this.antecedentDistanceToFinishLeftShoulderLabel.Size = new System.Drawing.Size(91, 17);
+            this.antecedentDistanceToFinishLeftShoulderLabel.Size = new System.Drawing.Size(43, 17);
             this.antecedentDistanceToFinishLeftShoulderLabel.TabIndex = 50;
-            this.antecedentDistanceToFinishLeftShoulderLabel.Text = "Left shoulder";
+            this.antecedentDistanceToFinishLeftShoulderLabel.Text = "Close";
             // 
             // antecedentDTFLeftShoulderMinValue
             // 
@@ -1225,14 +1234,6 @@
             this.UpdateIntervalSelector.TabIndex = 1;
             this.UpdateIntervalSelector.Value = new decimal(new int[] { 20, 0, 0, 0 });
             this.UpdateIntervalSelector.ValueChanged += new System.EventHandler(this.UpdateIntervalSelectorValueChangedChanged);
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(8, 853);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(0, 17);
-            this.label26.TabIndex = 105;
             // 
             // DebugForm
             // 
