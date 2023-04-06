@@ -9,6 +9,9 @@ namespace SteeringCS.state
     {
         public IMovingEntity MovingEntity { get; }
 
+        private double _distanceFromFinish; // Between 0 and 400
+        private double _distanceFromNearestGoomba; // Between 0 and 800
+
         public ScaredState(IMovingEntity movingEntity)
         {
             MovingEntity = movingEntity;
