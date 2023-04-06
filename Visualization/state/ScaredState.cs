@@ -26,6 +26,9 @@ namespace SteeringCS.state
         public void Execute()
         {
             // FUZY LOGIC (change to follow if fuzzy logics says so)
+            CalculateDistanceFromNearestGoomba();
+            CalculateDistanceFromNearestGoomba();
+            _distanceFromNearestGoomba = _distanceFromFinish;
         }
 
         public void CalculateDistanceFromFinish()
