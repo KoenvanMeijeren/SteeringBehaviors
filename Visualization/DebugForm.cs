@@ -247,7 +247,6 @@ namespace SteeringCS
             }
 
             distanceToNearestGoombaValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaValue.Text = world.FuzzyLogicData.DistanceToNearestGoomba.ToString("N2")));
-            distanceToNearestGoombaPercentageValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaPercentageValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaConverted.ToString("N2")));
             desirabilityToFollowMarioPercentageValue.Invoke((MethodInvoker)(() => desirabilityToFollowMarioPercentageValue.Text = world.FuzzyLogicData.DeFuzzifiedValue.ToString("N2")));
         }
 

@@ -1,4 +1,6 @@
-﻿using Src.entity;
+﻿using System;
+using System.Linq;
+using Src.entity;
 using Src.fuzzy_logic.Operator;
 using Src.fuzzy_logic.Term;
 using Src.world;
@@ -16,25 +18,23 @@ namespace Src.fuzzy_logic
             _movingEntity = movingEntity;
         }
 
-        private double CalculateDistanceToNearestGoomba()
+        private Tuple<double, string> CalculateNearestGoombaData()
         {
             double distanceToNearestGoomba = 800;
-
-            foreach (IEnemy goomba in _movingEntity.World.Enemies)
+            string stateOfNearestGoomba = null; 
+            foreach (IEnemy goomba in from goomba in _movingEntity.World.Enemies let distanceFromNearestGoomba = _movingEntity.Position.DistanceBetween(goomba.Position) where distanceFromNearestGoomba < distanceToNearestGoomba select goomba)
             {
-                double distanceFromNearestGoomba = _movingEntity.Position.DistanceBetween(goomba.Position);
-                if (distanceFromNearestGoomba < distanceToNearestGoomba)
-                {
-                    distanceToNearestGoomba = _movingEntity.Position.DistanceBetween(goomba.Position);
-                }
+                distanceToNearestGoomba = _movingEntity.Position.DistanceBetween(goomba.Position);
+                stateOfNearestGoomba = _movingEntity.State.ToString();
             }
 
-            return distanceToNearestGoomba;
+            return new Tuple<double, string>(distanceToNearestGoomba, stateOfNearestGoomba);
         }
 
         public bool ShouldFollowPlayer()
         {
-            FuzzyLogicData.DistanceToNearestGoomba = CalculateDistanceToNearestGoomba();
+            Tuple<double, string> nearestGoombaData = CalculateNearestGoombaData();
+            FuzzyLogicData.DistanceToNearestGoomba = nearestGoombaData.Item1;
 
             FuzzyModule fuzzyModule = new FuzzyModule();
             FuzzyVariable distanceToNearestGoomba = fuzzyModule.CreateFlv(FuzzyLogicFollowOrScareDataTransferObject.FuzzyVariableDistanceToNearestGoombaName);
@@ -50,10 +50,10 @@ namespace Src.fuzzy_logic
             fuzzyModule.AddRule(new FuzzyOperatorOr(distanceToNearestGoombaClose), undesirable);
             fuzzyModule.AddRule(new FuzzyOperatorOr(distanceToNearestGoombaMedium), desirable);
             fuzzyModule.AddRule(new FuzzyOperatorOr(distanceToNearestGoombaFar), veryDesirable);
-            fuzzyModule.Fuzzify(FuzzyLogicFollowOrScareDataTransferObject.FuzzyVariableDistanceToNearestGoombaName, FuzzyLogicData.DistanceToNearestGoombaConverted);
+            fuzzyModule.Fuzzify(FuzzyLogicFollowOrScareDataTransferObject.FuzzyVariableDistanceToNearestGoombaName, FuzzyLogicData.DistanceToNearestGoomba);
             FuzzyLogicData.DeFuzzifiedValue = fuzzyModule.DeFuzzify(FuzzyLogicFollowOrScareDataTransferObject.FuzzyVariableDesirabilityName);
 
-            return FuzzyLogicData.DeFuzzifiedValue == 0;
+            return FuzzyLogicData.DeFuzzifiedValue == 0 && !nearestGoombaData.Item2.Equals("Chase");
         }
     }
 
@@ -61,32 +61,35 @@ namespace Src.fuzzy_logic
     {
         public static string FuzzyVariableDistanceToNearestGoombaName => "DistanceToNearestGoomba";
         public static string FuzzyVariableDesirabilityName => "DesirabilityToFollowMario";
+        private static double DefaultLeftShoulderMinValue => 0;
+        private static double DefaultLeftShoulderPeakValue => 20;
+        private static double DefaultLeftShoulderMaxValue => 40;
+        private static double DefaultTriangleMinValue => 20;
+        private static double DefaultTrianglePeakValue => 40;
+        private static double DefaultTriangleMaxValue => 400;
+        private static double DefaultRightShoulderMinValue => 40;
+        private static double DefaultRightShoulderPeakValue => 400;
+        private static double DefaultRightShoulderMaxValue => 800;
+        public const int MaximumDistanceToNearestGoomba = 800;
+        public double DistanceToNearestGoombaLeftShoulderMinValue { get; set; } = DefaultLeftShoulderMinValue;
+        public double DistanceToNearestGoombaLeftShoulderPeakValue { get; set; } = DefaultLeftShoulderPeakValue;
+        public double DistanceToNearestGoombaLeftShoulderMaxValue { get; set; } = DefaultLeftShoulderMaxValue;
+        public double DistanceToNearestGoombaTriangleMinValue { get; set; } = DefaultTriangleMinValue;
+        public double DistanceToNearestGoombaTrianglePeakValue { get; set; } = DefaultTrianglePeakValue;
+        public double DistanceToNearestGoombaTriangleMaxValue { get; set; } = DefaultTriangleMaxValue;
+        public double DistanceToNearestGoombaRightShoulderMinValue { get; set; } = DefaultRightShoulderMinValue;
+        public double DistanceToNearestGoombaRightShoulderPeakValue { get; set; } = DefaultRightShoulderPeakValue;
+        public double DistanceToNearestGoombaRightShoulderMaxValue { get; set; } = DefaultRightShoulderMaxValue;
+        public double UndesirableLeftShoulderMinValue { get; set; } = DefaultLeftShoulderMinValue;
+        public double UndesirableLeftShoulderPeakValue { get; set; } = DefaultLeftShoulderPeakValue;
+        public double UndesirableLeftShoulderMaxValue { get; set; } = DefaultLeftShoulderMaxValue;
+        public double DesirableTriangleMinValue { get; set; } = DefaultTriangleMinValue;
+        public double DesirableTrianglePeakValue { get; set; } = DefaultTrianglePeakValue;
+        public double DesirableTriangleMaxValue { get; set; } = DefaultTriangleMaxValue;
+        public double VeryDesirableRightShoulderMinValue { get; set; } = DefaultRightShoulderMinValue;
+        public double VeryDesirableRightShoulderPeakValue { get; set; } = DefaultRightShoulderPeakValue;
+        public double VeryDesirableRightShoulderMaxValue { get; set; } = DefaultRightShoulderMaxValue;
         public double DistanceToNearestGoomba { get; set; } = 800;
-        public double DistanceToNearestGoombaConverted => ConvertRange(0, 800, 0, 100, DistanceToNearestGoomba);
         public double DeFuzzifiedValue { get; set; }
-        public double DistanceToNearestGoombaLeftShoulderMinValue { get; set; } = 0;
-        public double DistanceToNearestGoombaLeftShoulderPeakValue { get; set; } = 1.25;
-        public double DistanceToNearestGoombaLeftShoulderMaxValue { get; set; } = 3.75;
-        public double DistanceToNearestGoombaTriangleMinValue { get; set; } = 1.25;
-        public double DistanceToNearestGoombaTrianglePeakValue { get; set; } = 3.75;
-        public double DistanceToNearestGoombaTriangleMaxValue { get; set; } = 6.25;
-        public double DistanceToNearestGoombaRightShoulderMinValue { get; set; } = 3.75;
-        public double DistanceToNearestGoombaRightShoulderPeakValue { get; set; } = 6.25;
-        public double DistanceToNearestGoombaRightShoulderMaxValue { get; set; } = 100;
-        public double UndesirableLeftShoulderMinValue { get; set; } = 0;
-        public double UndesirableLeftShoulderPeakValue { get; set; } = 1.25;
-        public double UndesirableLeftShoulderMaxValue { get; set; } = 3.75;
-        public double DesirableTriangleMinValue { get; set; } = 1.25;
-        public double DesirableTrianglePeakValue { get; set; } = 3.75;
-        public double DesirableTriangleMaxValue { get; set; } = 6.25;
-        public double VeryDesirableRightShoulderMinValue { get; set; } = 1.25;
-        public double VeryDesirableRightShoulderPeakValue { get; set; } = 6.25;
-        public double VeryDesirableRightShoulderMaxValue { get; set; } = 100;
-        private static double ConvertRange(double originalStart, double originalEnd, double newStart, double newEnd, double value)
-        {
-            double scale = (newEnd - newStart) / (originalEnd - originalStart);
-
-            return (newStart + ((value - originalStart) * scale));
-        }
     }
 }
