@@ -55,6 +55,7 @@
     <Compile Include="entity\IEnemy.cs" />
     <Compile Include="entity\IPlayer.cs" />
     <Compile Include="entity\IRescuee.cs" />
+    <Compile Include="fuzzy-logic\FuzzyLogicFollowOrScareModule.cs" />
     <Compile Include="fuzzy-logic\FuzzyModule.cs" />
     <Compile Include="fuzzy-logic\FuzzyRule.cs" />
     <Compile Include="fuzzy-logic\FuzzyVariable.cs" />

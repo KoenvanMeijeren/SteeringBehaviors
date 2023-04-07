@@ -1,5 +1,6 @@
 ﻿using Src.behavior;
 using Src.entity;
+using Src.fuzzy_logic;
 using Src.state;
 using SteeringCS.behavior;
 
@@ -9,12 +10,12 @@ namespace SteeringCS.state
     {
         public IMovingEntity MovingEntity { get; }
 
-        private const int _distanceFromFinish = 80;
-        private const int _distanceFromNearestGoomba = 3;
+        private readonly FuzzyLogicFollowOrScareModule _fuzzyModule;
 
         public FollowState(IMovingEntity movingEntity)
         {
             MovingEntity = movingEntity;
+            _fuzzyModule = new FuzzyLogicFollowOrScareModule(MovingEntity);
         }
 
         public void Enter()
@@ -25,8 +26,12 @@ namespace SteeringCS.state
 
         public void Execute()
         {
-            // FUZY LOGIC (change to scared if fuzzy logics says so)
-            /*MovingEntity.ChangeState(new ScaredState(MovingEntity));*/
+            if (_fuzzyModule.ShouldFollowPlayer())
+            {
+                return;
+            }
+
+            MovingEntity.ChangeState(new ScaredState(MovingEntity));
         }
 
         public override string ToString() => "Follow";

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Src.entity;
 using Src.grid;
+using Src.util;
 
 namespace Src.world
 {
@@ -9,11 +10,12 @@ namespace Src.world
         public IPlayer Player { get; protected set; }
         public IRescuee Rescuee { get; protected set; }
 
-        public readonly List<IEnemy> Enemies;
+        public List<IEnemy> Enemies { get; protected set; }
         public IGrid Grid { get; protected set; }
 
         public int Width { get; }
         public int Height { get; }
+        public Vector Center { get; }
 
         protected WorldBase(int width, int height)
         {
@@ -24,6 +26,8 @@ namespace Src.world
             Player = GetPlayer();
             Rescuee = GetRescuee();
             Grid.AddOrMoveEntity(Player);
+
+            Center = new Vector(Width / 2, Height / 2);
         }
 
         protected abstract List<IEnemy> GetEnemies();
