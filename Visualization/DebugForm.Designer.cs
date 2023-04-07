@@ -1,4 +1,5 @@
 ﻿using System;
+using Src.fuzzy_logic;
 
 namespace SteeringCS
 {
@@ -39,9 +40,10 @@ namespace SteeringCS
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.enableFuzzyLogicCheckbox = new System.Windows.Forms.CheckBox();
             this.desirabilityToFollowMarioPercentageValue = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.distanceToNearestGoombaPercentageValue = new System.Windows.Forms.Label();
+            this.distanceToPlayerValue = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxShouldMovePlayerOnClick = new System.Windows.Forms.CheckBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -160,9 +162,10 @@ namespace SteeringCS
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.enableFuzzyLogicCheckbox);
             this.mainPanel.Controls.Add(this.desirabilityToFollowMarioPercentageValue);
             this.mainPanel.Controls.Add(this.label4);
-            this.mainPanel.Controls.Add(this.distanceToNearestGoombaPercentageValue);
+            this.mainPanel.Controls.Add(this.distanceToPlayerValue);
             this.mainPanel.Controls.Add(this.label3);
             this.mainPanel.Controls.Add(this.checkBoxShouldMovePlayerOnClick);
             this.mainPanel.Controls.Add(this.label26);
@@ -251,6 +254,17 @@ namespace SteeringCS
             this.mainPanel.Size = new System.Drawing.Size(418, 728);
             this.mainPanel.TabIndex = 1;
             // 
+            // enableFuzzyLogicCheckbox
+            // 
+            this.enableFuzzyLogicCheckbox.AutoSize = true;
+            this.enableFuzzyLogicCheckbox.Location = new System.Drawing.Point(4, 358);
+            this.enableFuzzyLogicCheckbox.Name = "enableFuzzyLogicCheckbox";
+            this.enableFuzzyLogicCheckbox.Size = new System.Drawing.Size(144, 21);
+            this.enableFuzzyLogicCheckbox.TabIndex = 111;
+            this.enableFuzzyLogicCheckbox.Text = "Enable fuzzy logic";
+            this.enableFuzzyLogicCheckbox.UseVisualStyleBackColor = true;
+            this.enableFuzzyLogicCheckbox.CheckedChanged += new System.EventHandler(this.enableFuzzyLogicCheckbox_CheckedChanged);
+            // 
             // desirabilityToFollowMarioPercentageValue
             // 
             this.desirabilityToFollowMarioPercentageValue.AutoSize = true;
@@ -265,32 +279,32 @@ namespace SteeringCS
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 686);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(212, 17);
+            this.label4.Size = new System.Drawing.Size(171, 17);
             this.label4.TabIndex = 109;
-            this.label4.Text = "Desirability to follow Mario (in %)";
+            this.label4.Text = "Desirability to follow Mario";
             // 
-            // distanceToNearestGoombaPercentageValue
+            // distanceToPlayerValue
             // 
-            this.distanceToNearestGoombaPercentageValue.AutoSize = true;
-            this.distanceToNearestGoombaPercentageValue.Location = new System.Drawing.Point(241, 536);
-            this.distanceToNearestGoombaPercentageValue.Name = "distanceToNearestGoombaPercentageValue";
-            this.distanceToNearestGoombaPercentageValue.Size = new System.Drawing.Size(13, 17);
-            this.distanceToNearestGoombaPercentageValue.TabIndex = 108;
-            this.distanceToNearestGoombaPercentageValue.Text = "-";
+            this.distanceToPlayerValue.AutoSize = true;
+            this.distanceToPlayerValue.Location = new System.Drawing.Point(241, 536);
+            this.distanceToPlayerValue.Name = "distanceToPlayerValue";
+            this.distanceToPlayerValue.Size = new System.Drawing.Size(13, 17);
+            this.distanceToPlayerValue.TabIndex = 108;
+            this.distanceToPlayerValue.Text = "-";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(8, 536);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(227, 17);
+            this.label3.Size = new System.Drawing.Size(122, 17);
             this.label3.TabIndex = 107;
-            this.label3.Text = "Distance to nearest goomba (in %)";
+            this.label3.Text = "Distance to player";
             // 
             // checkBoxShouldMovePlayerOnClick
             // 
             this.checkBoxShouldMovePlayerOnClick.AutoSize = true;
-            this.checkBoxShouldMovePlayerOnClick.Location = new System.Drawing.Point(263, 345);
+            this.checkBoxShouldMovePlayerOnClick.Location = new System.Drawing.Point(263, 338);
             this.checkBoxShouldMovePlayerOnClick.Name = "checkBoxShouldMovePlayerOnClick";
             this.checkBoxShouldMovePlayerOnClick.Size = new System.Drawing.Size(158, 21);
             this.checkBoxShouldMovePlayerOnClick.TabIndex = 106;
@@ -312,6 +326,7 @@ namespace SteeringCS
             this.ConsequenceRightShoulderMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.ConsequenceRightShoulderMaxValue.Location = new System.Drawing.Point(253, 648);
             this.ConsequenceRightShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.ConsequenceRightShoulderMaxValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.ConsequenceRightShoulderMaxValue.Name = "ConsequenceRightShoulderMaxValue";
             this.ConsequenceRightShoulderMaxValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceRightShoulderMaxValue.TabIndex = 102;
@@ -323,6 +338,7 @@ namespace SteeringCS
             this.ConsequenceRightShoulderPeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.ConsequenceRightShoulderPeakValue.Location = new System.Drawing.Point(252, 626);
             this.ConsequenceRightShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.ConsequenceRightShoulderPeakValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.ConsequenceRightShoulderPeakValue.Name = "ConsequenceRightShoulderPeakValue";
             this.ConsequenceRightShoulderPeakValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceRightShoulderPeakValue.TabIndex = 101;
@@ -334,6 +350,7 @@ namespace SteeringCS
             this.ConsequenceRightShoulderMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.ConsequenceRightShoulderMinValue.Location = new System.Drawing.Point(253, 604);
             this.ConsequenceRightShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.ConsequenceRightShoulderMinValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.ConsequenceRightShoulderMinValue.Name = "ConsequenceRightShoulderMinValue";
             this.ConsequenceRightShoulderMinValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceRightShoulderMinValue.TabIndex = 100;
@@ -345,6 +362,7 @@ namespace SteeringCS
             this.ConsequenceTriangleMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.ConsequenceTriangleMaxValue.Location = new System.Drawing.Point(156, 648);
             this.ConsequenceTriangleMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.ConsequenceTriangleMaxValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.ConsequenceTriangleMaxValue.Name = "ConsequenceTriangleMaxValue";
             this.ConsequenceTriangleMaxValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceTriangleMaxValue.TabIndex = 99;
@@ -356,6 +374,7 @@ namespace SteeringCS
             this.ConsequenceTrianglePeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.ConsequenceTrianglePeakValue.Location = new System.Drawing.Point(155, 626);
             this.ConsequenceTrianglePeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.ConsequenceTrianglePeakValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.ConsequenceTrianglePeakValue.Name = "ConsequenceTrianglePeakValue";
             this.ConsequenceTrianglePeakValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceTrianglePeakValue.TabIndex = 98;
@@ -367,6 +386,7 @@ namespace SteeringCS
             this.ConsequenceTriangleMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.ConsequenceTriangleMinValue.Location = new System.Drawing.Point(156, 604);
             this.ConsequenceTriangleMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.ConsequenceTriangleMinValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.ConsequenceTriangleMinValue.Name = "ConsequenceTriangleMinValue";
             this.ConsequenceTriangleMinValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceTriangleMinValue.TabIndex = 97;
@@ -378,6 +398,7 @@ namespace SteeringCS
             this.ConsequenceLeftShoulderMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.ConsequenceLeftShoulderMaxValue.Location = new System.Drawing.Point(61, 648);
             this.ConsequenceLeftShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.ConsequenceLeftShoulderMaxValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.ConsequenceLeftShoulderMaxValue.Name = "ConsequenceLeftShoulderMaxValue";
             this.ConsequenceLeftShoulderMaxValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceLeftShoulderMaxValue.TabIndex = 96;
@@ -389,6 +410,7 @@ namespace SteeringCS
             this.ConsequenceLeftShoulderPeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.ConsequenceLeftShoulderPeakValue.Location = new System.Drawing.Point(60, 626);
             this.ConsequenceLeftShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.ConsequenceLeftShoulderPeakValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.ConsequenceLeftShoulderPeakValue.Name = "ConsequenceLeftShoulderPeakValue";
             this.ConsequenceLeftShoulderPeakValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceLeftShoulderPeakValue.TabIndex = 95;
@@ -454,6 +476,7 @@ namespace SteeringCS
             this.ConsequenceLeftShoulderMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.ConsequenceLeftShoulderMinValue.Location = new System.Drawing.Point(61, 604);
             this.ConsequenceLeftShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.ConsequenceLeftShoulderMinValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.ConsequenceLeftShoulderMinValue.Name = "ConsequenceLeftShoulderMinValue";
             this.ConsequenceLeftShoulderMinValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceLeftShoulderMinValue.TabIndex = 88;
@@ -483,6 +506,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaRightShoulderMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.distanceToNearestGoombaRightShoulderMaxValue.Location = new System.Drawing.Point(252, 488);
             this.distanceToNearestGoombaRightShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaRightShoulderMaxValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.distanceToNearestGoombaRightShoulderMaxValue.Name = "distanceToNearestGoombaRightShoulderMaxValue";
             this.distanceToNearestGoombaRightShoulderMaxValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaRightShoulderMaxValue.TabIndex = 85;
@@ -494,6 +518,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaRightShoulderPeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.distanceToNearestGoombaRightShoulderPeakValue.Location = new System.Drawing.Point(251, 466);
             this.distanceToNearestGoombaRightShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaRightShoulderPeakValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.distanceToNearestGoombaRightShoulderPeakValue.Name = "distanceToNearestGoombaRightShoulderPeakValue";
             this.distanceToNearestGoombaRightShoulderPeakValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaRightShoulderPeakValue.TabIndex = 84;
@@ -505,6 +530,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaRightShoulderMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.distanceToNearestGoombaRightShoulderMinValue.Location = new System.Drawing.Point(252, 444);
             this.distanceToNearestGoombaRightShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaRightShoulderMinValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.distanceToNearestGoombaRightShoulderMinValue.Name = "distanceToNearestGoombaRightShoulderMinValue";
             this.distanceToNearestGoombaRightShoulderMinValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaRightShoulderMinValue.TabIndex = 83;
@@ -516,6 +542,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaTriangleMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.distanceToNearestGoombaTriangleMaxValue.Location = new System.Drawing.Point(155, 488);
             this.distanceToNearestGoombaTriangleMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaTriangleMaxValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.distanceToNearestGoombaTriangleMaxValue.Name = "distanceToNearestGoombaTriangleMaxValue";
             this.distanceToNearestGoombaTriangleMaxValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaTriangleMaxValue.TabIndex = 82;
@@ -527,6 +554,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaTrianglePeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.distanceToNearestGoombaTrianglePeakValue.Location = new System.Drawing.Point(154, 466);
             this.distanceToNearestGoombaTrianglePeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaTrianglePeakValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.distanceToNearestGoombaTrianglePeakValue.Name = "distanceToNearestGoombaTrianglePeakValue";
             this.distanceToNearestGoombaTrianglePeakValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaTrianglePeakValue.TabIndex = 81;
@@ -538,6 +566,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaTriangleMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.distanceToNearestGoombaTriangleMinValue.Location = new System.Drawing.Point(155, 444);
             this.distanceToNearestGoombaTriangleMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaTriangleMinValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.distanceToNearestGoombaTriangleMinValue.Name = "distanceToNearestGoombaTriangleMinValue";
             this.distanceToNearestGoombaTriangleMinValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaTriangleMinValue.TabIndex = 80;
@@ -549,6 +578,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaLeftShoulderMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.distanceToNearestGoombaLeftShoulderMaxValue.Location = new System.Drawing.Point(60, 488);
             this.distanceToNearestGoombaLeftShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaLeftShoulderMaxValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.distanceToNearestGoombaLeftShoulderMaxValue.Name = "distanceToNearestGoombaLeftShoulderMaxValue";
             this.distanceToNearestGoombaLeftShoulderMaxValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaLeftShoulderMaxValue.TabIndex = 79;
@@ -560,6 +590,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaLeftShoulderPeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.distanceToNearestGoombaLeftShoulderPeakValue.Location = new System.Drawing.Point(59, 466);
             this.distanceToNearestGoombaLeftShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaLeftShoulderPeakValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.distanceToNearestGoombaLeftShoulderPeakValue.Name = "distanceToNearestGoombaLeftShoulderPeakValue";
             this.distanceToNearestGoombaLeftShoulderPeakValue.Size = new System.Drawing.Size(66, 22);
             this.distanceToNearestGoombaLeftShoulderPeakValue.TabIndex = 78;
@@ -625,6 +656,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaLeftShoulderMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.distanceToNearestGoombaLeftShoulderMinValue.Location = new System.Drawing.Point(60, 444);
             this.distanceToNearestGoombaLeftShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaLeftShoulderMinValue.Maximum = new decimal(new int[] { 800, 0, 0, 0 });
             this.distanceToNearestGoombaLeftShoulderMinValue.Name = "distanceToNearestGoombaLeftShoulderMinValue";
             this.distanceToNearestGoombaLeftShoulderMinValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaLeftShoulderMinValue.TabIndex = 71;
@@ -636,9 +668,9 @@ namespace SteeringCS
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(-1, 567);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(312, 17);
+            this.label6.Size = new System.Drawing.Size(264, 17);
             this.label6.TabIndex = 55;
-            this.label6.Text = "Variable Desirability to follow Mario (in %)";
+            this.label6.Text = "Variable Desirability to follow Mario";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label5
@@ -647,9 +679,9 @@ namespace SteeringCS
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(-1, 407);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(323, 17);
+            this.label5.Size = new System.Drawing.Size(275, 17);
             this.label5.TabIndex = 54;
-            this.label5.Text = "Variable distance to nearest goomba (in %)";
+            this.label5.Text = "Variable distance to nearest goomba";
             // 
             // enemiesLabel
             // 
@@ -955,7 +987,7 @@ namespace SteeringCS
             // ShowVelocityCheckbox
             // 
             this.ShowVelocityCheckbox.AutoSize = true;
-            this.ShowVelocityCheckbox.Location = new System.Drawing.Point(4, 345);
+            this.ShowVelocityCheckbox.Location = new System.Drawing.Point(4, 338);
             this.ShowVelocityCheckbox.Name = "ShowVelocityCheckbox";
             this.ShowVelocityCheckbox.Size = new System.Drawing.Size(115, 21);
             this.ShowVelocityCheckbox.TabIndex = 18;
@@ -999,7 +1031,7 @@ namespace SteeringCS
             // ShowGridCheckbox
             // 
             this.ShowGridCheckbox.AutoSize = true;
-            this.ShowGridCheckbox.Location = new System.Drawing.Point(134, 345);
+            this.ShowGridCheckbox.Location = new System.Drawing.Point(134, 338);
             this.ShowGridCheckbox.Name = "ShowGridCheckbox";
             this.ShowGridCheckbox.Size = new System.Drawing.Size(92, 21);
             this.ShowGridCheckbox.TabIndex = 14;
@@ -1143,7 +1175,9 @@ namespace SteeringCS
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Label distanceToNearestGoombaPercentageValue;
+        private System.Windows.Forms.CheckBox enableFuzzyLogicCheckbox;
+
+        private System.Windows.Forms.Label distanceToPlayerValue;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label desirabilityToFollowMarioPercentageValue;
         private System.Windows.Forms.Label label4;

@@ -26,7 +26,7 @@ namespace Src.grid
             {
                 InitializeMazeTiles();
             }
-            
+
             InitializeFinishTiles();
             InitializePathTiles();
             InitializeGraph();
