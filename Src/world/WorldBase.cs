@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Src.entity;
 using Src.grid;
+using Src.util;
 
 namespace Src.world
 {
@@ -15,6 +16,7 @@ namespace Src.world
 
         public int Width { get; }
         public int Height { get; }
+        public Vector Center { get; }
 
         private int _enemiesCount = DefaultEnemiesCount;
 
@@ -27,6 +29,7 @@ namespace Src.world
             Player = GetPlayer();
             Rescuee = GetRescuee();
             Grid.AddOrMoveEntity(Player);
+            Center = new Vector(Width / 2, Height / 2);
         }
 
         protected abstract List<IEnemy> GetEnemies(int enemiesCount);
