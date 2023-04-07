@@ -514,7 +514,7 @@ namespace SteeringCS
         {
             distanceToNearestGoombaLeftShoulderMinValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) distanceToNearestGoombaLeftShoulderMinValue.Value;
+                double value = (double)distanceToNearestGoombaLeftShoulderMinValue.Value;
                 _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderMinValue = value;
             }));
         }
@@ -523,7 +523,7 @@ namespace SteeringCS
         {
             distanceToNearestGoombaLeftShoulderPeakValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) distanceToNearestGoombaLeftShoulderPeakValue.Value;
+                double value = (double)distanceToNearestGoombaLeftShoulderPeakValue.Value;
                 _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderPeakValue = value;
             }));
         }
@@ -532,7 +532,7 @@ namespace SteeringCS
         {
             distanceToNearestGoombaLeftShoulderMaxValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) distanceToNearestGoombaLeftShoulderMaxValue.Value;
+                double value = (double)distanceToNearestGoombaLeftShoulderMaxValue.Value;
                 _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderMaxValue = value;
             }));
         }
@@ -541,7 +541,7 @@ namespace SteeringCS
         {
             distanceToNearestGoombaTriangleMinValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) distanceToNearestGoombaTriangleMinValue.Value;
+                double value = (double)distanceToNearestGoombaTriangleMinValue.Value;
                 _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaTriangleMinValue = value;
             }));
         }
@@ -550,7 +550,7 @@ namespace SteeringCS
         {
             distanceToNearestGoombaTrianglePeakValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) distanceToNearestGoombaTrianglePeakValue.Value;
+                double value = (double)distanceToNearestGoombaTrianglePeakValue.Value;
                 _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaTrianglePeakValue = value;
             }));
         }
@@ -559,7 +559,7 @@ namespace SteeringCS
         {
             distanceToNearestGoombaTriangleMaxValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) distanceToNearestGoombaTriangleMaxValue.Value;
+                double value = (double)distanceToNearestGoombaTriangleMaxValue.Value;
                 _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaTriangleMaxValue = value;
             }));
         }
@@ -568,7 +568,7 @@ namespace SteeringCS
         {
             distanceToNearestGoombaRightShoulderMinValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) distanceToNearestGoombaRightShoulderMinValue.Value;
+                double value = (double)distanceToNearestGoombaRightShoulderMinValue.Value;
                 _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaRightShoulderMinValue = value;
             }));
         }
@@ -577,7 +577,7 @@ namespace SteeringCS
         {
             distanceToNearestGoombaRightShoulderPeakValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) distanceToNearestGoombaRightShoulderPeakValue.Value;
+                double value = (double)distanceToNearestGoombaRightShoulderPeakValue.Value;
                 _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaRightShoulderPeakValue = value;
             }));
         }
@@ -586,7 +586,7 @@ namespace SteeringCS
         {
             distanceToNearestGoombaRightShoulderMaxValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) distanceToNearestGoombaRightShoulderMaxValue.Value;
+                double value = (double)distanceToNearestGoombaRightShoulderMaxValue.Value;
                 _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaRightShoulderMaxValue = value;
             }));
         }
@@ -595,7 +595,7 @@ namespace SteeringCS
         {
             ConsequenceLeftShoulderMinValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) ConsequenceLeftShoulderMinValue.Value;
+                double value = (double)ConsequenceLeftShoulderMinValue.Value;
                 _worldForm.World.FuzzyLogicData.UndesirableLeftShoulderMinValue = value;
             }));
         }
@@ -604,7 +604,7 @@ namespace SteeringCS
         {
             ConsequenceLeftShoulderPeakValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) ConsequenceLeftShoulderPeakValue.Value;
+                double value = (double)ConsequenceLeftShoulderPeakValue.Value;
                 _worldForm.World.FuzzyLogicData.UndesirableLeftShoulderPeakValue = value;
             }));
         }
@@ -613,7 +613,7 @@ namespace SteeringCS
         {
             ConsequenceLeftShoulderMaxValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) ConsequenceLeftShoulderMaxValue.Value;
+                double value = (double)ConsequenceLeftShoulderMaxValue.Value;
                 _worldForm.World.FuzzyLogicData.UndesirableLeftShoulderMaxValue = value;
             }));
         }
@@ -622,7 +622,7 @@ namespace SteeringCS
         {
             ConsequenceTriangleMinValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) ConsequenceTriangleMinValue.Value;
+                double value = (double)ConsequenceTriangleMinValue.Value;
                 _worldForm.World.FuzzyLogicData.DesirableTriangleMinValue = value;
             }));
         }
@@ -631,7 +631,7 @@ namespace SteeringCS
         {
             ConsequenceTrianglePeakValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) ConsequenceTrianglePeakValue.Value;
+                double value = (double)ConsequenceTrianglePeakValue.Value;
                 _worldForm.World.FuzzyLogicData.DesirableTrianglePeakValue = value;
             }));
         }
@@ -640,7 +640,7 @@ namespace SteeringCS
         {
             ConsequenceTriangleMaxValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) ConsequenceTriangleMaxValue.Value;
+                double value = (double)ConsequenceTriangleMaxValue.Value;
                 _worldForm.World.FuzzyLogicData.DesirableTriangleMaxValue = value;
             }));
         }
@@ -649,7 +649,7 @@ namespace SteeringCS
         {
             ConsequenceRightShoulderMinValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) ConsequenceRightShoulderMinValue.Value;
+                double value = (double)ConsequenceRightShoulderMinValue.Value;
                 _worldForm.World.FuzzyLogicData.VeryDesirableRightShoulderMinValue = value;
             }));
         }
@@ -658,7 +658,7 @@ namespace SteeringCS
         {
             ConsequenceRightShoulderPeakValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) ConsequenceRightShoulderPeakValue.Value;
+                double value = (double)ConsequenceRightShoulderPeakValue.Value;
                 _worldForm.World.FuzzyLogicData.VeryDesirableRightShoulderPeakValue = value;
             }));
         }
@@ -667,7 +667,7 @@ namespace SteeringCS
         {
             ConsequenceRightShoulderMaxValue.Invoke((MethodInvoker)(() =>
             {
-                double value = (double) ConsequenceRightShoulderMaxValue.Value;
+                double value = (double)ConsequenceRightShoulderMaxValue.Value;
                 _worldForm.World.FuzzyLogicData.VeryDesirableRightShoulderMaxValue = value;
             }));
         }
