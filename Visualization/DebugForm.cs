@@ -143,103 +143,103 @@ namespace SteeringCS
             {
                 distanceToNearestGoombaLeftShoulderMinValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaLeftShoulderMinValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderMinValue.ToString("N2")));
             }
-            
+
             if (distanceToNearestGoombaLeftShoulderPeakValue.Value !=
                 (decimal)world.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderPeakValue)
             {
                 distanceToNearestGoombaLeftShoulderMinValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaLeftShoulderPeakValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderPeakValue.ToString("N2")));
             }
-            
+
             if (distanceToNearestGoombaLeftShoulderMaxValue.Value !=
                 (decimal)world.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderMaxValue)
             {
                 distanceToNearestGoombaLeftShoulderMaxValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaLeftShoulderMaxValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderMaxValue.ToString("N2")));
             }
-            
+
             if (distanceToNearestGoombaTriangleMinValue.Value !=
                 (decimal)world.FuzzyLogicData.DistanceToNearestGoombaTriangleMinValue)
             {
                 distanceToNearestGoombaTriangleMinValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaTriangleMinValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaTriangleMinValue.ToString("N2")));
             }
-            
+
             if (distanceToNearestGoombaTrianglePeakValue.Value !=
                 (decimal)world.FuzzyLogicData.DistanceToNearestGoombaTrianglePeakValue)
             {
                 distanceToNearestGoombaTriangleMinValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaTrianglePeakValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaTrianglePeakValue.ToString("N2")));
             }
-            
+
             if (distanceToNearestGoombaTriangleMaxValue.Value !=
                 (decimal)world.FuzzyLogicData.DistanceToNearestGoombaTriangleMaxValue)
             {
                 distanceToNearestGoombaTriangleMaxValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaTriangleMaxValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaTriangleMaxValue.ToString("N2")));
             }
-            
+
             if (distanceToNearestGoombaRightShoulderMinValue.Value !=
                 (decimal)world.FuzzyLogicData.DistanceToNearestGoombaRightShoulderMinValue)
             {
                 distanceToNearestGoombaRightShoulderMinValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaRightShoulderMinValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaRightShoulderMinValue.ToString("N2")));
             }
-            
+
             if (distanceToNearestGoombaRightShoulderPeakValue.Value !=
                 (decimal)world.FuzzyLogicData.DistanceToNearestGoombaRightShoulderPeakValue)
             {
                 distanceToNearestGoombaRightShoulderMinValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaRightShoulderPeakValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaRightShoulderPeakValue.ToString("N2")));
             }
-            
+
             if (distanceToNearestGoombaRightShoulderMaxValue.Value !=
                 (decimal)world.FuzzyLogicData.DistanceToNearestGoombaRightShoulderMaxValue)
             {
                 distanceToNearestGoombaRightShoulderMaxValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaRightShoulderMaxValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaRightShoulderMaxValue.ToString("N2")));
             }
-            
+
             if (ConsequenceLeftShoulderMinValue.Value !=
                 (decimal)world.FuzzyLogicData.UndesirableLeftShoulderMinValue)
             {
                 ConsequenceLeftShoulderMinValue.Invoke((MethodInvoker)(() => ConsequenceLeftShoulderMinValue.Text = world.FuzzyLogicData.UndesirableLeftShoulderMinValue.ToString("N2")));
             }
-            
+
             if (ConsequenceLeftShoulderPeakValue.Value !=
                 (decimal)world.FuzzyLogicData.UndesirableLeftShoulderPeakValue)
             {
                 ConsequenceLeftShoulderPeakValue.Invoke((MethodInvoker)(() => ConsequenceLeftShoulderPeakValue.Text = world.FuzzyLogicData.UndesirableLeftShoulderPeakValue.ToString("N2")));
             }
-            
+
             if (ConsequenceLeftShoulderMaxValue.Value !=
                 (decimal)world.FuzzyLogicData.UndesirableLeftShoulderMaxValue)
             {
                 ConsequenceLeftShoulderMaxValue.Invoke((MethodInvoker)(() => ConsequenceLeftShoulderMaxValue.Text = world.FuzzyLogicData.UndesirableLeftShoulderMaxValue.ToString("N2")));
             }
-            
+
             if (ConsequenceTriangleMinValue.Value !=
                 (decimal)world.FuzzyLogicData.DesirableTriangleMinValue)
             {
                 ConsequenceTriangleMinValue.Invoke((MethodInvoker)(() => ConsequenceTriangleMinValue.Text = world.FuzzyLogicData.DesirableTriangleMinValue.ToString("N2")));
             }
-            
+
             if (ConsequenceTrianglePeakValue.Value !=
                 (decimal)world.FuzzyLogicData.DesirableTrianglePeakValue)
             {
                 ConsequenceTrianglePeakValue.Invoke((MethodInvoker)(() => ConsequenceTrianglePeakValue.Text = world.FuzzyLogicData.DesirableTrianglePeakValue.ToString("N2")));
             }
-            
+
             if (ConsequenceTriangleMaxValue.Value !=
                 (decimal)world.FuzzyLogicData.DesirableTriangleMaxValue)
             {
                 ConsequenceTriangleMaxValue.Invoke((MethodInvoker)(() => ConsequenceTriangleMaxValue.Text = world.FuzzyLogicData.DesirableTriangleMaxValue.ToString("N2")));
             }
-            
+
             if (ConsequenceRightShoulderMinValue.Value !=
                 (decimal)world.FuzzyLogicData.VeryDesirableRightShoulderMinValue)
             {
                 ConsequenceRightShoulderMinValue.Invoke((MethodInvoker)(() => ConsequenceRightShoulderMinValue.Text = world.FuzzyLogicData.VeryDesirableRightShoulderMinValue.ToString("N2")));
             }
-            
+
             if (ConsequenceRightShoulderPeakValue.Value !=
                 (decimal)world.FuzzyLogicData.VeryDesirableRightShoulderPeakValue)
             {
                 ConsequenceRightShoulderPeakValue.Invoke((MethodInvoker)(() => ConsequenceRightShoulderPeakValue.Text = world.FuzzyLogicData.VeryDesirableRightShoulderPeakValue.ToString("N2")));
             }
-            
+
             if (ConsequenceRightShoulderMaxValue.Value !=
                 (decimal)world.FuzzyLogicData.VeryDesirableRightShoulderMaxValue)
             {

@@ -52,7 +52,7 @@ namespace Src.fuzzy_logic
             fuzzyModule.AddRule(new FuzzyOperatorOr(distanceToNearestGoombaFar), veryDesirable);
             fuzzyModule.Fuzzify(FuzzyLogicFollowOrScareDataTransferObject.FuzzyVariableDistanceToNearestGoombaName, FuzzyLogicData.DistanceToNearestGoombaConverted);
             FuzzyLogicData.DeFuzzifiedValue = fuzzyModule.DeFuzzify(FuzzyLogicFollowOrScareDataTransferObject.FuzzyVariableDesirabilityName);
-            
+
             return FuzzyLogicData.DeFuzzifiedValue != 0;
         }
     }
