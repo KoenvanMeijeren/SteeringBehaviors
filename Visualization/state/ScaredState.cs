@@ -1,5 +1,6 @@
 ﻿using Src.behavior;
 using Src.entity;
+using Src.fuzzy_logic;
 using Src.state;
 using SteeringCS.behavior;
 
@@ -9,12 +10,12 @@ namespace SteeringCS.state
     {
         public IMovingEntity MovingEntity { get; }
 
-        private double _distanceFromFinish; // Between 0 and 400
-        private double _distanceFromNearestGoomba; // Between 0 and 800
+        private readonly FuzzyLogicFollowOrScareModule _fuzzyModule;
 
         public ScaredState(IMovingEntity movingEntity)
         {
             MovingEntity = movingEntity;
+            _fuzzyModule = new FuzzyLogicFollowOrScareModule(MovingEntity);
         }
 
         public void Enter()
@@ -25,30 +26,12 @@ namespace SteeringCS.state
 
         public void Execute()
         {
-            // FUZY LOGIC (change to follow if fuzzy logics says so)
-            CalculateDistanceFromNearestGoomba();
-            CalculateDistanceFromNearestGoomba();
-            _distanceFromNearestGoomba = _distanceFromFinish;
-        }
-
-        public void CalculateDistanceFromFinish()
-        {
-            _distanceFromFinish = MovingEntity.Position.DistanceBetween(MovingEntity.World.Center);
-        }
-
-        public void CalculateDistanceFromNearestGoomba()
-        {
-            _distanceFromNearestGoomba = double.MaxValue;
-            double distanceFromNearestGoomba;
-
-            foreach (IEnemy goomba in MovingEntity.World.Enemies)
+            if (!_fuzzyModule.ShouldFollowPlayer())
             {
-                distanceFromNearestGoomba = MovingEntity.Position.DistanceBetween(goomba.Position);
-                if (distanceFromNearestGoomba < _distanceFromNearestGoomba)
-                {
-                    _distanceFromNearestGoomba = MovingEntity.Position.DistanceBetween(goomba.Position);
-                }
+                return;
             }
+
+            MovingEntity.ChangeState(new FollowState(MovingEntity));
         }
 
         public override string ToString() => "Scared";
