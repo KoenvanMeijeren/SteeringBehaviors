@@ -13,7 +13,7 @@ namespace Src.fuzzy_logic
         private readonly FuzzyModule _fuzzyModule = new FuzzyModule();
         private readonly IMovingEntity _movingEntity;
 
-        private double _distanceToNearestGoomba; // Between 0 and 800
+        private double _distanceToNearestGoomba;
 
         public FuzzyLogicFollowOrScareModule(IMovingEntity movingEntity)
         {
@@ -53,6 +53,10 @@ namespace Src.fuzzy_logic
         public bool ShouldFollowPlayer()
         {
             CalculateDistanceToNearestGoomba();
+            if (_distanceToNearestGoomba < 5)
+            {
+                return false;
+            }
 
             _fuzzyModule.Fuzzify(FuzzyVariableDistanceToNearestGoombaName, _distanceToNearestGoomba);
             double deFuzzifiedValue = _fuzzyModule.DeFuzzify(FuzzyVariableDesirabilityName);
