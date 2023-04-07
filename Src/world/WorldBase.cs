@@ -8,7 +8,7 @@ namespace Src.world
 {
     public abstract class WorldBase : IWorld
     {
-        public const int DefaultEnemiesCount = 3;
+        public const int DefaultEnemiesCount = 6;
         public IPlayer Player { get; protected set; }
         public IRescuee Rescuee { get; protected set; }
 
