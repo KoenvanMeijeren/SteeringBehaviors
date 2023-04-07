@@ -73,7 +73,6 @@ namespace Src.fuzzy_logic
         private static double DefaultRightShoulderMinValue => 40;
         private static double DefaultRightShoulderPeakValue => 400;
         private static double DefaultRightShoulderMaxValue => 800;
-        public const int MaximumDistanceToNearestGoomba = 800;
         public double DistanceToNearestGoombaLeftShoulderMinValue { get; set; } = DefaultLeftShoulderMinValue;
         public double DistanceToNearestGoombaLeftShoulderPeakValue { get; set; } = DefaultLeftShoulderPeakValue;
         public double DistanceToNearestGoombaLeftShoulderMaxValue { get; set; } = DefaultLeftShoulderMaxValue;
