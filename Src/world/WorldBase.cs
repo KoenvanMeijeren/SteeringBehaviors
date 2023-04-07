@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Src.entity;
+using Src.fuzzy_logic;
 using Src.grid;
 using Src.util;
 
@@ -17,6 +18,7 @@ namespace Src.world
         public int Width { get; }
         public int Height { get; }
         public Vector Center { get; }
+        public FuzzyLogicFollowOrScareDataTransferObject FuzzyLogicData { get; private set; }
 
         private int _enemiesCount = DefaultEnemiesCount;
 
@@ -30,6 +32,7 @@ namespace Src.world
             Rescuee = GetRescuee();
             Grid.AddOrMoveEntity(Player);
             Center = new Vector(Width / 2, Height / 2);
+            FuzzyLogicData = new FuzzyLogicFollowOrScareDataTransferObject();
         }
 
         protected abstract List<IEnemy> GetEnemies(int enemiesCount);

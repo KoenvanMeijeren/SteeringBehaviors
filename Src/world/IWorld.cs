@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Src.entity;
+using Src.fuzzy_logic;
 using Src.grid;
 using Src.util;
 
@@ -14,5 +15,6 @@ namespace Src.world
         int Width { get; }
         int Height { get; }
         Vector Center { get; }
+        FuzzyLogicFollowOrScareDataTransferObject FuzzyLogicData { get; }
     }
 }

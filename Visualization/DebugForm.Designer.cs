@@ -39,10 +39,12 @@ namespace SteeringCS
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.desirabilityToFollowMarioPercentageValue = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.distanceToNearestGoombaPercentageValue = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.checkBoxShouldMovePlayerOnClick = new System.Windows.Forms.CheckBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.consequenceResultValue = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
             this.ConsequenceRightShoulderMaxValue = new System.Windows.Forms.NumericUpDown();
             this.ConsequenceRightShoulderPeakValue = new System.Windows.Forms.NumericUpDown();
             this.ConsequenceRightShoulderMinValue = new System.Windows.Forms.NumericUpDown();
@@ -58,23 +60,23 @@ namespace SteeringCS
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.ConsequenceLeftShoulderMinValue = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
+            this.distanceToNearestGoombaValue = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.antecedentDTNGRightShoulderMaxValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTNGRightShoulderPeakValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTNGRightShoulderMinValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTNGTriangleMaxValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTNGTrianglePeakValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTNGTriangleMinValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTNGLeftShoulderMaxValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTNGLeftShoulderPeakValue = new System.Windows.Forms.NumericUpDown();
+            this.distanceToNearestGoombaRightShoulderMaxValue = new System.Windows.Forms.NumericUpDown();
+            this.distanceToNearestGoombaRightShoulderPeakValue = new System.Windows.Forms.NumericUpDown();
+            this.distanceToNearestGoombaRightShoulderMinValue = new System.Windows.Forms.NumericUpDown();
+            this.distanceToNearestGoombaTriangleMaxValue = new System.Windows.Forms.NumericUpDown();
+            this.distanceToNearestGoombaTrianglePeakValue = new System.Windows.Forms.NumericUpDown();
+            this.distanceToNearestGoombaTriangleMinValue = new System.Windows.Forms.NumericUpDown();
+            this.distanceToNearestGoombaLeftShoulderMaxValue = new System.Windows.Forms.NumericUpDown();
+            this.distanceToNearestGoombaLeftShoulderPeakValue = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.antecedentDTNGLeftShoulderMinValue = new System.Windows.Forms.NumericUpDown();
+            this.distanceToNearestGoombaLeftShoulderMinValue = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.enemiesLabel = new System.Windows.Forms.Label();
@@ -133,15 +135,15 @@ namespace SteeringCS
             ((System.ComponentModel.ISupportInitialize)(this.ConsequenceLeftShoulderMaxValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConsequenceLeftShoulderPeakValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConsequenceLeftShoulderMinValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGRightShoulderMaxValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGRightShoulderPeakValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGRightShoulderMinValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGTriangleMaxValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGTrianglePeakValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGTriangleMinValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGLeftShoulderMaxValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGLeftShoulderPeakValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGLeftShoulderMinValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaRightShoulderMaxValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaRightShoulderPeakValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaRightShoulderMinValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaTriangleMaxValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaTrianglePeakValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaTriangleMinValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaLeftShoulderMaxValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaLeftShoulderPeakValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaLeftShoulderMinValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemiesValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy3MaxSpeedValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy3MassValue)).BeginInit();
@@ -158,10 +160,12 @@ namespace SteeringCS
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.desirabilityToFollowMarioPercentageValue);
+            this.mainPanel.Controls.Add(this.label4);
+            this.mainPanel.Controls.Add(this.distanceToNearestGoombaPercentageValue);
+            this.mainPanel.Controls.Add(this.label3);
             this.mainPanel.Controls.Add(this.checkBoxShouldMovePlayerOnClick);
             this.mainPanel.Controls.Add(this.label26);
-            this.mainPanel.Controls.Add(this.consequenceResultValue);
-            this.mainPanel.Controls.Add(this.label27);
             this.mainPanel.Controls.Add(this.ConsequenceRightShoulderMaxValue);
             this.mainPanel.Controls.Add(this.ConsequenceRightShoulderPeakValue);
             this.mainPanel.Controls.Add(this.ConsequenceRightShoulderMinValue);
@@ -177,23 +181,23 @@ namespace SteeringCS
             this.mainPanel.Controls.Add(this.label24);
             this.mainPanel.Controls.Add(this.label25);
             this.mainPanel.Controls.Add(this.ConsequenceLeftShoulderMinValue);
-            this.mainPanel.Controls.Add(this.label12);
+            this.mainPanel.Controls.Add(this.distanceToNearestGoombaValue);
             this.mainPanel.Controls.Add(this.label13);
-            this.mainPanel.Controls.Add(this.antecedentDTNGRightShoulderMaxValue);
-            this.mainPanel.Controls.Add(this.antecedentDTNGRightShoulderPeakValue);
-            this.mainPanel.Controls.Add(this.antecedentDTNGRightShoulderMinValue);
-            this.mainPanel.Controls.Add(this.antecedentDTNGTriangleMaxValue);
-            this.mainPanel.Controls.Add(this.antecedentDTNGTrianglePeakValue);
-            this.mainPanel.Controls.Add(this.antecedentDTNGTriangleMinValue);
-            this.mainPanel.Controls.Add(this.antecedentDTNGLeftShoulderMaxValue);
-            this.mainPanel.Controls.Add(this.antecedentDTNGLeftShoulderPeakValue);
+            this.mainPanel.Controls.Add(this.distanceToNearestGoombaRightShoulderMaxValue);
+            this.mainPanel.Controls.Add(this.distanceToNearestGoombaRightShoulderPeakValue);
+            this.mainPanel.Controls.Add(this.distanceToNearestGoombaRightShoulderMinValue);
+            this.mainPanel.Controls.Add(this.distanceToNearestGoombaTriangleMaxValue);
+            this.mainPanel.Controls.Add(this.distanceToNearestGoombaTrianglePeakValue);
+            this.mainPanel.Controls.Add(this.distanceToNearestGoombaTriangleMinValue);
+            this.mainPanel.Controls.Add(this.distanceToNearestGoombaLeftShoulderMaxValue);
+            this.mainPanel.Controls.Add(this.distanceToNearestGoombaLeftShoulderPeakValue);
             this.mainPanel.Controls.Add(this.label14);
             this.mainPanel.Controls.Add(this.label15);
             this.mainPanel.Controls.Add(this.label16);
             this.mainPanel.Controls.Add(this.label17);
             this.mainPanel.Controls.Add(this.label18);
             this.mainPanel.Controls.Add(this.label19);
-            this.mainPanel.Controls.Add(this.antecedentDTNGLeftShoulderMinValue);
+            this.mainPanel.Controls.Add(this.distanceToNearestGoombaLeftShoulderMinValue);
             this.mainPanel.Controls.Add(this.label6);
             this.mainPanel.Controls.Add(this.label5);
             this.mainPanel.Controls.Add(this.enemiesLabel);
@@ -244,13 +248,49 @@ namespace SteeringCS
             this.mainPanel.Controls.Add(this.UpdateIntervalSelector);
             this.mainPanel.Location = new System.Drawing.Point(12, 12);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(418, 695);
+            this.mainPanel.Size = new System.Drawing.Size(418, 728);
             this.mainPanel.TabIndex = 1;
+            // 
+            // desirabilityToFollowMarioPercentageValue
+            // 
+            this.desirabilityToFollowMarioPercentageValue.AutoSize = true;
+            this.desirabilityToFollowMarioPercentageValue.Location = new System.Drawing.Point(241, 686);
+            this.desirabilityToFollowMarioPercentageValue.Name = "desirabilityToFollowMarioPercentageValue";
+            this.desirabilityToFollowMarioPercentageValue.Size = new System.Drawing.Size(13, 17);
+            this.desirabilityToFollowMarioPercentageValue.TabIndex = 110;
+            this.desirabilityToFollowMarioPercentageValue.Text = "-";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 686);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(212, 17);
+            this.label4.TabIndex = 109;
+            this.label4.Text = "Desirability to follow Mario (in %)";
+            // 
+            // distanceToNearestGoombaPercentageValue
+            // 
+            this.distanceToNearestGoombaPercentageValue.AutoSize = true;
+            this.distanceToNearestGoombaPercentageValue.Location = new System.Drawing.Point(241, 536);
+            this.distanceToNearestGoombaPercentageValue.Name = "distanceToNearestGoombaPercentageValue";
+            this.distanceToNearestGoombaPercentageValue.Size = new System.Drawing.Size(13, 17);
+            this.distanceToNearestGoombaPercentageValue.TabIndex = 108;
+            this.distanceToNearestGoombaPercentageValue.Text = "-";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 536);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(227, 17);
+            this.label3.TabIndex = 107;
+            this.label3.Text = "Distance to nearest goomba (in %)";
             // 
             // checkBoxShouldMovePlayerOnClick
             // 
             this.checkBoxShouldMovePlayerOnClick.AutoSize = true;
-            this.checkBoxShouldMovePlayerOnClick.Location = new System.Drawing.Point(263, 347);
+            this.checkBoxShouldMovePlayerOnClick.Location = new System.Drawing.Point(263, 345);
             this.checkBoxShouldMovePlayerOnClick.Name = "checkBoxShouldMovePlayerOnClick";
             this.checkBoxShouldMovePlayerOnClick.Size = new System.Drawing.Size(158, 21);
             this.checkBoxShouldMovePlayerOnClick.TabIndex = 106;
@@ -266,100 +306,90 @@ namespace SteeringCS
             this.label26.Size = new System.Drawing.Size(0, 17);
             this.label26.TabIndex = 105;
             // 
-            // consequenceResultValue
-            // 
-            this.consequenceResultValue.AutoSize = true;
-            this.consequenceResultValue.Location = new System.Drawing.Point(200, 661);
-            this.consequenceResultValue.Name = "consequenceResultValue";
-            this.consequenceResultValue.Size = new System.Drawing.Size(13, 17);
-            this.consequenceResultValue.TabIndex = 104;
-            this.consequenceResultValue.Text = "-";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(5, 661);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(171, 17);
-            this.label27.TabIndex = 103;
-            this.label27.Text = "Desirability to follow Mario";
-            // 
             // ConsequenceRightShoulderMaxValue
             // 
-            this.ConsequenceRightShoulderMaxValue.Location = new System.Drawing.Point(253, 636);
+            this.ConsequenceRightShoulderMaxValue.DecimalPlaces = 2;
+            this.ConsequenceRightShoulderMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.ConsequenceRightShoulderMaxValue.Location = new System.Drawing.Point(253, 648);
             this.ConsequenceRightShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.ConsequenceRightShoulderMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceRightShoulderMaxValue.Name = "ConsequenceRightShoulderMaxValue";
-            this.ConsequenceRightShoulderMaxValue.Size = new System.Drawing.Size(51, 22);
+            this.ConsequenceRightShoulderMaxValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceRightShoulderMaxValue.TabIndex = 102;
             // 
             // ConsequenceRightShoulderPeakValue
             // 
-            this.ConsequenceRightShoulderPeakValue.Location = new System.Drawing.Point(252, 608);
+            this.ConsequenceRightShoulderPeakValue.DecimalPlaces = 2;
+            this.ConsequenceRightShoulderPeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.ConsequenceRightShoulderPeakValue.Location = new System.Drawing.Point(252, 626);
             this.ConsequenceRightShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.ConsequenceRightShoulderPeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceRightShoulderPeakValue.Name = "ConsequenceRightShoulderPeakValue";
-            this.ConsequenceRightShoulderPeakValue.Size = new System.Drawing.Size(51, 22);
+            this.ConsequenceRightShoulderPeakValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceRightShoulderPeakValue.TabIndex = 101;
             // 
             // ConsequenceRightShoulderMinValue
             // 
-            this.ConsequenceRightShoulderMinValue.Location = new System.Drawing.Point(253, 586);
+            this.ConsequenceRightShoulderMinValue.DecimalPlaces = 2;
+            this.ConsequenceRightShoulderMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.ConsequenceRightShoulderMinValue.Location = new System.Drawing.Point(253, 604);
             this.ConsequenceRightShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.ConsequenceRightShoulderMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceRightShoulderMinValue.Name = "ConsequenceRightShoulderMinValue";
-            this.ConsequenceRightShoulderMinValue.Size = new System.Drawing.Size(51, 22);
+            this.ConsequenceRightShoulderMinValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceRightShoulderMinValue.TabIndex = 100;
             // 
             // ConsequenceTriangleMaxValue
             // 
-            this.ConsequenceTriangleMaxValue.Location = new System.Drawing.Point(156, 636);
+            this.ConsequenceTriangleMaxValue.DecimalPlaces = 2;
+            this.ConsequenceTriangleMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.ConsequenceTriangleMaxValue.Location = new System.Drawing.Point(156, 648);
             this.ConsequenceTriangleMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.ConsequenceTriangleMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceTriangleMaxValue.Name = "ConsequenceTriangleMaxValue";
-            this.ConsequenceTriangleMaxValue.Size = new System.Drawing.Size(51, 22);
+            this.ConsequenceTriangleMaxValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceTriangleMaxValue.TabIndex = 99;
             // 
             // ConsequenceTrianglePeakValue
             // 
-            this.ConsequenceTrianglePeakValue.Location = new System.Drawing.Point(155, 608);
+            this.ConsequenceTrianglePeakValue.DecimalPlaces = 2;
+            this.ConsequenceTrianglePeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.ConsequenceTrianglePeakValue.Location = new System.Drawing.Point(155, 626);
             this.ConsequenceTrianglePeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.ConsequenceTrianglePeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceTrianglePeakValue.Name = "ConsequenceTrianglePeakValue";
-            this.ConsequenceTrianglePeakValue.Size = new System.Drawing.Size(51, 22);
+            this.ConsequenceTrianglePeakValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceTrianglePeakValue.TabIndex = 98;
             // 
             // ConsequenceTriangleMinValue
             // 
-            this.ConsequenceTriangleMinValue.Location = new System.Drawing.Point(156, 586);
+            this.ConsequenceTriangleMinValue.DecimalPlaces = 2;
+            this.ConsequenceTriangleMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.ConsequenceTriangleMinValue.Location = new System.Drawing.Point(156, 604);
             this.ConsequenceTriangleMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.ConsequenceTriangleMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceTriangleMinValue.Name = "ConsequenceTriangleMinValue";
-            this.ConsequenceTriangleMinValue.Size = new System.Drawing.Size(51, 22);
+            this.ConsequenceTriangleMinValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceTriangleMinValue.TabIndex = 97;
             // 
             // ConsequenceLeftShoulderMaxValue
             // 
-            this.ConsequenceLeftShoulderMaxValue.Location = new System.Drawing.Point(61, 636);
+            this.ConsequenceLeftShoulderMaxValue.DecimalPlaces = 2;
+            this.ConsequenceLeftShoulderMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.ConsequenceLeftShoulderMaxValue.Location = new System.Drawing.Point(61, 648);
             this.ConsequenceLeftShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.ConsequenceLeftShoulderMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceLeftShoulderMaxValue.Name = "ConsequenceLeftShoulderMaxValue";
-            this.ConsequenceLeftShoulderMaxValue.Size = new System.Drawing.Size(51, 22);
+            this.ConsequenceLeftShoulderMaxValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceLeftShoulderMaxValue.TabIndex = 96;
             // 
             // ConsequenceLeftShoulderPeakValue
             // 
-            this.ConsequenceLeftShoulderPeakValue.Location = new System.Drawing.Point(60, 608);
+            this.ConsequenceLeftShoulderPeakValue.DecimalPlaces = 2;
+            this.ConsequenceLeftShoulderPeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.ConsequenceLeftShoulderPeakValue.Location = new System.Drawing.Point(60, 626);
             this.ConsequenceLeftShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.ConsequenceLeftShoulderPeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceLeftShoulderPeakValue.Name = "ConsequenceLeftShoulderPeakValue";
-            this.ConsequenceLeftShoulderPeakValue.Size = new System.Drawing.Size(51, 22);
+            this.ConsequenceLeftShoulderPeakValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceLeftShoulderPeakValue.TabIndex = 95;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(8, 638);
+            this.label20.Location = new System.Drawing.Point(8, 651);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(33, 17);
             this.label20.TabIndex = 94;
@@ -368,7 +398,7 @@ namespace SteeringCS
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(7, 613);
+            this.label21.Location = new System.Drawing.Point(7, 631);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(40, 17);
             this.label21.TabIndex = 93;
@@ -377,7 +407,7 @@ namespace SteeringCS
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(7, 591);
+            this.label22.Location = new System.Drawing.Point(7, 609);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(30, 17);
             this.label22.TabIndex = 92;
@@ -386,7 +416,7 @@ namespace SteeringCS
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(252, 566);
+            this.label23.Location = new System.Drawing.Point(252, 584);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(99, 17);
             this.label23.TabIndex = 91;
@@ -395,7 +425,7 @@ namespace SteeringCS
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(155, 566);
+            this.label24.Location = new System.Drawing.Point(155, 584);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(68, 17);
             this.label24.TabIndex = 90;
@@ -404,7 +434,7 @@ namespace SteeringCS
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(58, 566);
+            this.label25.Location = new System.Drawing.Point(58, 584);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(84, 17);
             this.label25.TabIndex = 89;
@@ -412,21 +442,22 @@ namespace SteeringCS
             // 
             // ConsequenceLeftShoulderMinValue
             // 
-            this.ConsequenceLeftShoulderMinValue.Location = new System.Drawing.Point(61, 586);
+            this.ConsequenceLeftShoulderMinValue.DecimalPlaces = 2;
+            this.ConsequenceLeftShoulderMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.ConsequenceLeftShoulderMinValue.Location = new System.Drawing.Point(61, 604);
             this.ConsequenceLeftShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.ConsequenceLeftShoulderMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceLeftShoulderMinValue.Name = "ConsequenceLeftShoulderMinValue";
-            this.ConsequenceLeftShoulderMinValue.Size = new System.Drawing.Size(51, 22);
+            this.ConsequenceLeftShoulderMinValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceLeftShoulderMinValue.TabIndex = 88;
             // 
-            // label12
+            // distanceToNearestGoombaValue
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(201, 519);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(13, 17);
-            this.label12.TabIndex = 87;
-            this.label12.Text = "-";
+            this.distanceToNearestGoombaValue.AutoSize = true;
+            this.distanceToNearestGoombaValue.Location = new System.Drawing.Point(241, 519);
+            this.distanceToNearestGoombaValue.Name = "distanceToNearestGoombaValue";
+            this.distanceToNearestGoombaValue.Size = new System.Drawing.Size(13, 17);
+            this.distanceToNearestGoombaValue.TabIndex = 87;
+            this.distanceToNearestGoombaValue.Text = "-";
             // 
             // label13
             // 
@@ -437,84 +468,90 @@ namespace SteeringCS
             this.label13.TabIndex = 86;
             this.label13.Text = "Distance to nearest goomba";
             // 
-            // antecedentDTNGRightShoulderMaxValue
+            // distanceToNearestGoombaRightShoulderMaxValue
             // 
-            this.antecedentDTNGRightShoulderMaxValue.Location = new System.Drawing.Point(252, 494);
-            this.antecedentDTNGRightShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTNGRightShoulderMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTNGRightShoulderMaxValue.Name = "antecedentDTNGRightShoulderMaxValue";
-            this.antecedentDTNGRightShoulderMaxValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTNGRightShoulderMaxValue.TabIndex = 85;
+            this.distanceToNearestGoombaRightShoulderMaxValue.DecimalPlaces = 2;
+            this.distanceToNearestGoombaRightShoulderMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.distanceToNearestGoombaRightShoulderMaxValue.Location = new System.Drawing.Point(252, 488);
+            this.distanceToNearestGoombaRightShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaRightShoulderMaxValue.Name = "distanceToNearestGoombaRightShoulderMaxValue";
+            this.distanceToNearestGoombaRightShoulderMaxValue.Size = new System.Drawing.Size(65, 22);
+            this.distanceToNearestGoombaRightShoulderMaxValue.TabIndex = 85;
             // 
-            // antecedentDTNGRightShoulderPeakValue
+            // distanceToNearestGoombaRightShoulderPeakValue
             // 
-            this.antecedentDTNGRightShoulderPeakValue.Location = new System.Drawing.Point(251, 466);
-            this.antecedentDTNGRightShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTNGRightShoulderPeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTNGRightShoulderPeakValue.Name = "antecedentDTNGRightShoulderPeakValue";
-            this.antecedentDTNGRightShoulderPeakValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTNGRightShoulderPeakValue.TabIndex = 84;
+            this.distanceToNearestGoombaRightShoulderPeakValue.DecimalPlaces = 2;
+            this.distanceToNearestGoombaRightShoulderPeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.distanceToNearestGoombaRightShoulderPeakValue.Location = new System.Drawing.Point(251, 466);
+            this.distanceToNearestGoombaRightShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaRightShoulderPeakValue.Name = "distanceToNearestGoombaRightShoulderPeakValue";
+            this.distanceToNearestGoombaRightShoulderPeakValue.Size = new System.Drawing.Size(65, 22);
+            this.distanceToNearestGoombaRightShoulderPeakValue.TabIndex = 84;
             // 
-            // antecedentDTNGRightShoulderMinValue
+            // distanceToNearestGoombaRightShoulderMinValue
             // 
-            this.antecedentDTNGRightShoulderMinValue.Location = new System.Drawing.Point(252, 444);
-            this.antecedentDTNGRightShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTNGRightShoulderMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTNGRightShoulderMinValue.Name = "antecedentDTNGRightShoulderMinValue";
-            this.antecedentDTNGRightShoulderMinValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTNGRightShoulderMinValue.TabIndex = 83;
+            this.distanceToNearestGoombaRightShoulderMinValue.DecimalPlaces = 2;
+            this.distanceToNearestGoombaRightShoulderMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.distanceToNearestGoombaRightShoulderMinValue.Location = new System.Drawing.Point(252, 444);
+            this.distanceToNearestGoombaRightShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaRightShoulderMinValue.Name = "distanceToNearestGoombaRightShoulderMinValue";
+            this.distanceToNearestGoombaRightShoulderMinValue.Size = new System.Drawing.Size(65, 22);
+            this.distanceToNearestGoombaRightShoulderMinValue.TabIndex = 83;
             // 
-            // antecedentDTNGTriangleMaxValue
+            // distanceToNearestGoombaTriangleMaxValue
             // 
-            this.antecedentDTNGTriangleMaxValue.Location = new System.Drawing.Point(155, 494);
-            this.antecedentDTNGTriangleMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTNGTriangleMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTNGTriangleMaxValue.Name = "antecedentDTNGTriangleMaxValue";
-            this.antecedentDTNGTriangleMaxValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTNGTriangleMaxValue.TabIndex = 82;
+            this.distanceToNearestGoombaTriangleMaxValue.DecimalPlaces = 2;
+            this.distanceToNearestGoombaTriangleMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.distanceToNearestGoombaTriangleMaxValue.Location = new System.Drawing.Point(155, 488);
+            this.distanceToNearestGoombaTriangleMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaTriangleMaxValue.Name = "distanceToNearestGoombaTriangleMaxValue";
+            this.distanceToNearestGoombaTriangleMaxValue.Size = new System.Drawing.Size(65, 22);
+            this.distanceToNearestGoombaTriangleMaxValue.TabIndex = 82;
             // 
-            // antecedentDTNGTrianglePeakValue
+            // distanceToNearestGoombaTrianglePeakValue
             // 
-            this.antecedentDTNGTrianglePeakValue.Location = new System.Drawing.Point(154, 466);
-            this.antecedentDTNGTrianglePeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTNGTrianglePeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTNGTrianglePeakValue.Name = "antecedentDTNGTrianglePeakValue";
-            this.antecedentDTNGTrianglePeakValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTNGTrianglePeakValue.TabIndex = 81;
+            this.distanceToNearestGoombaTrianglePeakValue.DecimalPlaces = 2;
+            this.distanceToNearestGoombaTrianglePeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.distanceToNearestGoombaTrianglePeakValue.Location = new System.Drawing.Point(154, 466);
+            this.distanceToNearestGoombaTrianglePeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaTrianglePeakValue.Name = "distanceToNearestGoombaTrianglePeakValue";
+            this.distanceToNearestGoombaTrianglePeakValue.Size = new System.Drawing.Size(65, 22);
+            this.distanceToNearestGoombaTrianglePeakValue.TabIndex = 81;
             // 
-            // antecedentDTNGTriangleMinValue
+            // distanceToNearestGoombaTriangleMinValue
             // 
-            this.antecedentDTNGTriangleMinValue.Location = new System.Drawing.Point(155, 444);
-            this.antecedentDTNGTriangleMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTNGTriangleMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTNGTriangleMinValue.Name = "antecedentDTNGTriangleMinValue";
-            this.antecedentDTNGTriangleMinValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTNGTriangleMinValue.TabIndex = 80;
+            this.distanceToNearestGoombaTriangleMinValue.DecimalPlaces = 2;
+            this.distanceToNearestGoombaTriangleMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.distanceToNearestGoombaTriangleMinValue.Location = new System.Drawing.Point(155, 444);
+            this.distanceToNearestGoombaTriangleMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaTriangleMinValue.Name = "distanceToNearestGoombaTriangleMinValue";
+            this.distanceToNearestGoombaTriangleMinValue.Size = new System.Drawing.Size(65, 22);
+            this.distanceToNearestGoombaTriangleMinValue.TabIndex = 80;
             // 
-            // antecedentDTNGLeftShoulderMaxValue
+            // distanceToNearestGoombaLeftShoulderMaxValue
             // 
-            this.antecedentDTNGLeftShoulderMaxValue.DecimalPlaces = 2;
-            this.antecedentDTNGLeftShoulderMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
-            this.antecedentDTNGLeftShoulderMaxValue.Location = new System.Drawing.Point(60, 494);
-            this.antecedentDTNGLeftShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTNGLeftShoulderMaxValue.Name = "antecedentDTNGLeftShoulderMaxValue";
-            this.antecedentDTNGLeftShoulderMaxValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTNGLeftShoulderMaxValue.TabIndex = 79;
+            this.distanceToNearestGoombaLeftShoulderMaxValue.DecimalPlaces = 2;
+            this.distanceToNearestGoombaLeftShoulderMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.distanceToNearestGoombaLeftShoulderMaxValue.Location = new System.Drawing.Point(60, 488);
+            this.distanceToNearestGoombaLeftShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaLeftShoulderMaxValue.Name = "distanceToNearestGoombaLeftShoulderMaxValue";
+            this.distanceToNearestGoombaLeftShoulderMaxValue.Size = new System.Drawing.Size(65, 22);
+            this.distanceToNearestGoombaLeftShoulderMaxValue.TabIndex = 79;
             // 
-            // antecedentDTNGLeftShoulderPeakValue
+            // distanceToNearestGoombaLeftShoulderPeakValue
             // 
-            this.antecedentDTNGLeftShoulderPeakValue.DecimalPlaces = 2;
-            this.antecedentDTNGLeftShoulderPeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
-            this.antecedentDTNGLeftShoulderPeakValue.Location = new System.Drawing.Point(59, 466);
-            this.antecedentDTNGLeftShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTNGLeftShoulderPeakValue.Name = "antecedentDTNGLeftShoulderPeakValue";
-            this.antecedentDTNGLeftShoulderPeakValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTNGLeftShoulderPeakValue.TabIndex = 78;
+            this.distanceToNearestGoombaLeftShoulderPeakValue.DecimalPlaces = 2;
+            this.distanceToNearestGoombaLeftShoulderPeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.distanceToNearestGoombaLeftShoulderPeakValue.Location = new System.Drawing.Point(59, 466);
+            this.distanceToNearestGoombaLeftShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaLeftShoulderPeakValue.Name = "distanceToNearestGoombaLeftShoulderPeakValue";
+            this.distanceToNearestGoombaLeftShoulderPeakValue.Size = new System.Drawing.Size(66, 22);
+            this.distanceToNearestGoombaLeftShoulderPeakValue.TabIndex = 78;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(7, 496);
+            this.label14.Location = new System.Drawing.Point(7, 491);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(33, 17);
             this.label14.TabIndex = 77;
@@ -565,21 +602,21 @@ namespace SteeringCS
             this.label19.TabIndex = 72;
             this.label19.Text = "Close";
             // 
-            // antecedentDTNGLeftShoulderMinValue
+            // distanceToNearestGoombaLeftShoulderMinValue
             // 
-            this.antecedentDTNGLeftShoulderMinValue.DecimalPlaces = 2;
-            this.antecedentDTNGLeftShoulderMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
-            this.antecedentDTNGLeftShoulderMinValue.Location = new System.Drawing.Point(60, 444);
-            this.antecedentDTNGLeftShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTNGLeftShoulderMinValue.Name = "antecedentDTNGLeftShoulderMinValue";
-            this.antecedentDTNGLeftShoulderMinValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTNGLeftShoulderMinValue.TabIndex = 71;
+            this.distanceToNearestGoombaLeftShoulderMinValue.DecimalPlaces = 2;
+            this.distanceToNearestGoombaLeftShoulderMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            this.distanceToNearestGoombaLeftShoulderMinValue.Location = new System.Drawing.Point(60, 444);
+            this.distanceToNearestGoombaLeftShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.distanceToNearestGoombaLeftShoulderMinValue.Name = "distanceToNearestGoombaLeftShoulderMinValue";
+            this.distanceToNearestGoombaLeftShoulderMinValue.Size = new System.Drawing.Size(65, 22);
+            this.distanceToNearestGoombaLeftShoulderMinValue.TabIndex = 71;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(-1, 549);
+            this.label6.Location = new System.Drawing.Point(-1, 567);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(312, 17);
             this.label6.TabIndex = 55;
@@ -900,7 +937,7 @@ namespace SteeringCS
             // ShowVelocityCheckbox
             // 
             this.ShowVelocityCheckbox.AutoSize = true;
-            this.ShowVelocityCheckbox.Location = new System.Drawing.Point(4, 347);
+            this.ShowVelocityCheckbox.Location = new System.Drawing.Point(4, 345);
             this.ShowVelocityCheckbox.Name = "ShowVelocityCheckbox";
             this.ShowVelocityCheckbox.Size = new System.Drawing.Size(115, 21);
             this.ShowVelocityCheckbox.TabIndex = 18;
@@ -944,7 +981,7 @@ namespace SteeringCS
             // ShowGridCheckbox
             // 
             this.ShowGridCheckbox.AutoSize = true;
-            this.ShowGridCheckbox.Location = new System.Drawing.Point(134, 347);
+            this.ShowGridCheckbox.Location = new System.Drawing.Point(134, 345);
             this.ShowGridCheckbox.Name = "ShowGridCheckbox";
             this.ShowGridCheckbox.Size = new System.Drawing.Size(92, 21);
             this.ShowGridCheckbox.TabIndex = 14;
@@ -1046,7 +1083,7 @@ namespace SteeringCS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 722);
+            this.ClientSize = new System.Drawing.Size(442, 753);
             this.Controls.Add(this.mainPanel);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -1064,15 +1101,15 @@ namespace SteeringCS
             ((System.ComponentModel.ISupportInitialize)(this.ConsequenceLeftShoulderMaxValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConsequenceLeftShoulderPeakValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConsequenceLeftShoulderMinValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGRightShoulderMaxValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGRightShoulderPeakValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGRightShoulderMinValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGTriangleMaxValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGTrianglePeakValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGTriangleMinValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGLeftShoulderMaxValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGLeftShoulderPeakValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGLeftShoulderMinValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaRightShoulderMaxValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaRightShoulderPeakValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaRightShoulderMinValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaTriangleMaxValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaTrianglePeakValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaTriangleMinValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaLeftShoulderMaxValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaLeftShoulderPeakValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.distanceToNearestGoombaLeftShoulderMinValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemiesValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy3MaxSpeedValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy3MassValue)).EndInit();
@@ -1088,36 +1125,39 @@ namespace SteeringCS
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.Label distanceToNearestGoombaPercentageValue;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label desirabilityToFollowMarioPercentageValue;
+        private System.Windows.Forms.Label label4;
+
         private System.Windows.Forms.CheckBox checkBoxShouldMovePlayerOnClick;
 
         private System.Windows.Forms.Label label26;
 
-        private System.Windows.Forms.Label consequenceResultValue;
-        private System.Windows.Forms.Label label27;
-
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label distanceToNearestGoombaValue;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown antecedentDTNGRightShoulderMaxValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTNGRightShoulderPeakValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTNGRightShoulderMinValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTNGTriangleMaxValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTNGTrianglePeakValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTNGTriangleMinValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTNGLeftShoulderMaxValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTNGLeftShoulderPeakValue;
+        private System.Windows.Forms.NumericUpDown distanceToNearestGoombaRightShoulderMaxValue;
+        private System.Windows.Forms.NumericUpDown distanceToNearestGoombaRightShoulderPeakValue;
+        private System.Windows.Forms.NumericUpDown distanceToNearestGoombaRightShoulderMinValue;
+        private System.Windows.Forms.NumericUpDown distanceToNearestGoombaTriangleMaxValue;
+        private System.Windows.Forms.NumericUpDown distanceToNearestGoombaTrianglePeakValue;
+        private System.Windows.Forms.NumericUpDown distanceToNearestGoombaTriangleMinValue;
+        private System.Windows.Forms.NumericUpDown distanceToNearestGoombaLeftShoulderMinValue;
+        private System.Windows.Forms.NumericUpDown distanceToNearestGoombaLeftShoulderMaxValue;
+        private System.Windows.Forms.NumericUpDown distanceToNearestGoombaLeftShoulderPeakValue;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown antecedentDTNGLeftShoulderMinValue;
         private System.Windows.Forms.NumericUpDown ConsequenceRightShoulderMaxValue;
         private System.Windows.Forms.NumericUpDown ConsequenceRightShoulderPeakValue;
         private System.Windows.Forms.NumericUpDown ConsequenceRightShoulderMinValue;
         private System.Windows.Forms.NumericUpDown ConsequenceTriangleMaxValue;
         private System.Windows.Forms.NumericUpDown ConsequenceTrianglePeakValue;
         private System.Windows.Forms.NumericUpDown ConsequenceTriangleMinValue;
+        private System.Windows.Forms.NumericUpDown ConsequenceLeftShoulderMinValue;
         private System.Windows.Forms.NumericUpDown ConsequenceLeftShoulderMaxValue;
         private System.Windows.Forms.NumericUpDown ConsequenceLeftShoulderPeakValue;
         private System.Windows.Forms.Label label20;
@@ -1126,7 +1166,6 @@ namespace SteeringCS
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.NumericUpDown ConsequenceLeftShoulderMinValue;
 
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
