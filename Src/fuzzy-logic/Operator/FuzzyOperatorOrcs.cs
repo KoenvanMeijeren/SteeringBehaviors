@@ -12,6 +12,11 @@ namespace Src.fuzzy_logic.Operator
         private readonly List<FuzzyTerm> _terms = new List<FuzzyTerm>();
         private FuzzyOperatorOr(FuzzyOperatorOr fuzzyOperatorOr) => _terms.AddRange(fuzzyOperatorOr._terms);
 
+        public FuzzyOperatorOr(FuzzyTerm term)
+        {
+            _terms.Add(term.Clone());
+        }
+
         public FuzzyOperatorOr(FuzzyTerm term1, FuzzyTerm term2)
         {
             _terms.Add(term1.Clone());
