@@ -26,7 +26,7 @@ namespace Src.world
         {
             Width = width;
             Height = height;
-            Grid = new Grid(width, height);
+            Grid = GetGrid();
             Enemies = GetEnemies(_enemiesCount);
             Player = GetPlayer();
             Rescuee = GetRescuee();
@@ -35,6 +35,7 @@ namespace Src.world
             FuzzyLogicData = new FuzzyLogicFollowOrScareDataTransferObject();
         }
 
+        protected abstract IGrid GetGrid();
         protected abstract List<IEnemy> GetEnemies(int enemiesCount);
         protected abstract IPlayer GetPlayer();
         protected abstract IRescuee GetRescuee();

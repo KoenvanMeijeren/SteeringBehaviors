@@ -14,7 +14,7 @@ namespace Src.grid
         public Graph Graph { get; private set; }
         private readonly Dictionary<IMovingEntity, PathTile> _entities;
 
-        public Grid(int width, int height)
+        public Grid(int width, int height, bool initializeMazeTiles)
         {
             Width = width;
             Height = height;
@@ -22,7 +22,11 @@ namespace Src.grid
 
             InitializeGridTilesArray();
             InitializeOutsideWallTiles();
-            InitializeMazeTiles();
+            if (initializeMazeTiles)
+            {
+                InitializeMazeTiles();
+            }
+            
             InitializeFinishTiles();
             InitializePathTiles();
             InitializeGraph();
