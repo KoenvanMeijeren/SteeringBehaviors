@@ -34,12 +34,10 @@ namespace SteeringCS.state
                 return;
             }
 
-            if (!_fuzzyModule.ShouldFollowPlayer())
+            if (_fuzzyModule.ShouldFollowPlayer())
             {
-                return;
+                MovingEntity.ChangeState(new FollowState(MovingEntity));
             }
-
-            MovingEntity.ChangeState(new FollowState(MovingEntity));
         }
 
         public override string ToString() => "Scared";
