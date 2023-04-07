@@ -22,7 +22,7 @@ namespace SteeringCS.world
         protected override List<IEnemy> GetEnemies()
         {
             List<IEnemy> enemies = new List<IEnemy>();
-            for (int index = 0; index < 3; index++)
+            for (int index = 0; index < 7; index++)
             {
                 PathTile randomPathTile = Grid.GetRandomPathTile();
                 Goomba goomba = new Goomba(
