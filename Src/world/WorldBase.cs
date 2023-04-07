@@ -27,7 +27,7 @@ namespace Src.world
             Rescuee = GetRescuee();
             Grid.AddOrMoveEntity(Player);
 
-            Center = new Vector(Width/2, Height/2);
+            Center = new Vector(Width / 2, Height / 2);
         }
 
         protected abstract List<IEnemy> GetEnemies();
