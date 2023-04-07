@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Src.entity;
 using Src.fuzzy_logic.Operator;
 using Src.fuzzy_logic.Term;
@@ -21,11 +20,15 @@ namespace Src.fuzzy_logic
         private Tuple<double, string> CalculateNearestGoombaData()
         {
             double distanceToNearestGoomba = 800;
-            string stateOfNearestGoomba = null; 
-            foreach (IEnemy goomba in from goomba in _movingEntity.World.Enemies let distanceFromNearestGoomba = _movingEntity.Position.DistanceBetween(goomba.Position) where distanceFromNearestGoomba < distanceToNearestGoomba select goomba)
+            string stateOfNearestGoomba = null;
+            foreach (IEnemy goomba in _movingEntity.World.Enemies)
             {
-                distanceToNearestGoomba = _movingEntity.Position.DistanceBetween(goomba.Position);
-                stateOfNearestGoomba = _movingEntity.State.ToString();
+                double distanceToGoomba = _movingEntity.Position.DistanceBetween(goomba.Position);
+                if (distanceToGoomba < distanceToNearestGoomba)
+                {
+                    distanceToNearestGoomba = distanceToGoomba;
+                    stateOfNearestGoomba = goomba.State?.ToString() ?? "";
+                }
             }
 
             return new Tuple<double, string>(distanceToNearestGoomba, stateOfNearestGoomba);
