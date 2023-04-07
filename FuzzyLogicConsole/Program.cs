@@ -7,21 +7,23 @@ namespace FuzzyLogicConsole
 {
     internal static class Program
     {
-        private const string FuzzyVariableDistanceToFinishName = "DistanceToFinish", 
+        private const string FuzzyVariableDistanceToFinishName = "DistanceToFinish",
             FuzzyVariableDistanceToNearestGoombaName = "DistanceToNearestGoomba",
             FuzzyVariableDesirabilityName = "DesirabilityToFollowMario";
-        
+
         private static void Main()
         {
             Console.WriteLine("Fuzzy logic demo");
 
             FuzzyModule fuzzyModule = new();
 
+            // Distance to finish can vary between 0 and 400.
             FuzzyVariable distanceToFinish = fuzzyModule.CreateFlv(FuzzyVariableDistanceToFinishName);
             FuzzyTermSet distanceToFinishClose = distanceToFinish.AddLeftShoulderSet("Close", 0, 10, 30);
             FuzzyTermSet distanceToFinishMedium = distanceToFinish.AddTriangleSet("Medium", 10, 50, 80);
             FuzzyTermSet distanceToFinishFar = distanceToFinish.AddRightShoulderSet("Far", 50, 80, 100);
 
+            // Distance to nearest goomba can vary between 0 and 800.
             FuzzyVariable distanceToNearestGoomba = fuzzyModule.CreateFlv(FuzzyVariableDistanceToNearestGoombaName);
             FuzzyTermSet distanceToNearestGoombaClose = distanceToNearestGoomba.AddLeftShoulderSet("Close", 0, 10, 30);
             FuzzyTermSet distanceToNearestGoombaMedium = distanceToNearestGoomba.AddTriangleSet("Medium", 10, 30, 50);
@@ -39,12 +41,12 @@ namespace FuzzyLogicConsole
             fuzzyModule.AddRule(new FuzzyOperatorAnd(distanceToFinishFar, distanceToNearestGoombaFar), veryDesirable);
 
             Console.WriteLine("Desirability for DTF and DTNG if hidden : <= 50: undesirable");
-            for (double hungerIndex = 0; hungerIndex < 100; hungerIndex += 1)
+            for (double distanceToFinishValue = 0; distanceToFinishValue < 100; distanceToFinishValue += 1)
             {
-                for (double sleepIndex = 0; sleepIndex < 100; sleepIndex += 1)
+                for (double distanceToNearestGoombaValue = 0; distanceToNearestGoombaValue < 100; distanceToNearestGoombaValue += 1)
                 {
-                    fuzzyModule.Fuzzify(FuzzyVariableDistanceToFinishName, hungerIndex);
-                    fuzzyModule.Fuzzify(FuzzyVariableDistanceToNearestGoombaName, sleepIndex);
+                    fuzzyModule.Fuzzify(FuzzyVariableDistanceToFinishName, distanceToFinishValue);
+                    fuzzyModule.Fuzzify(FuzzyVariableDistanceToNearestGoombaName, distanceToNearestGoombaValue);
                     double deFuzzifiedValue = fuzzyModule.DeFuzzify(FuzzyVariableDesirabilityName);
                     if (deFuzzifiedValue == 0)
                     {
@@ -58,7 +60,7 @@ namespace FuzzyLogicConsole
                         _ => "undesirable -> to follow mario"
                     };
 
-                    Console.WriteLine($"Desirability for hunger({hungerIndex:N2}) and sleep ({sleepIndex:N2}): " + deFuzzifiedValue.ToString("N2") + ": " + desirableValue);
+                    Console.WriteLine($"Desirability for DTF({distanceToFinishValue:N2}) and DTNG({distanceToNearestGoombaValue:N2}): " + deFuzzifiedValue.ToString("N2") + ": " + desirableValue);
                 }
             }
         }
