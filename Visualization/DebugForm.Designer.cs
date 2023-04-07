@@ -39,6 +39,7 @@ namespace SteeringCS
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.checkBoxShouldMovePlayerOnClick = new System.Windows.Forms.CheckBox();
             this.label26 = new System.Windows.Forms.Label();
             this.consequenceResultValue = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -74,28 +75,10 @@ namespace SteeringCS
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.antecedentDTNGLeftShoulderMinValue = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.antecedentDTFRightShoulderMaxValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTFRightShoulderPeakValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTFRightShoulderMinValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTFTriangleMaxValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTFTrianglePeakValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTFTriangleMinValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTFLeftShoulderMaxValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDTFLeftShoulderPeakValue = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.enemiesLabel = new System.Windows.Forms.Label();
             this.enemiesValue = new System.Windows.Forms.NumericUpDown();
-            this.antecedentDistanceToFinishLeftShoulderLabel = new System.Windows.Forms.Label();
-            this.antecedentDTFLeftShoulderMinValue = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.DebugSettingsLabel = new System.Windows.Forms.Label();
             this.Enemy3StateValue = new System.Windows.Forms.Label();
@@ -136,7 +119,6 @@ namespace SteeringCS
             this.PlayerMassLabel = new System.Windows.Forms.Label();
             this.PlayerMassValue = new System.Windows.Forms.NumericUpDown();
             this.PlayerSettingsLabel = new System.Windows.Forms.Label();
-            this.TimerSettingsLabel = new System.Windows.Forms.Label();
             this.nextButton = new System.Windows.Forms.Button();
             this.pauseButton = new System.Windows.Forms.Button();
             this.UpdateIntervalLabel = new System.Windows.Forms.Label();
@@ -160,16 +142,7 @@ namespace SteeringCS
             ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGLeftShoulderMaxValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGLeftShoulderPeakValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGLeftShoulderMinValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFRightShoulderMaxValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFRightShoulderPeakValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFRightShoulderMinValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFTriangleMaxValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFTrianglePeakValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFTriangleMinValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFLeftShoulderMaxValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFLeftShoulderPeakValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemiesValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFLeftShoulderMinValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy3MaxSpeedValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy3MassValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy2MaxSpeedValue)).BeginInit();
@@ -185,6 +158,7 @@ namespace SteeringCS
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.checkBoxShouldMovePlayerOnClick);
             this.mainPanel.Controls.Add(this.label26);
             this.mainPanel.Controls.Add(this.consequenceResultValue);
             this.mainPanel.Controls.Add(this.label27);
@@ -220,28 +194,10 @@ namespace SteeringCS
             this.mainPanel.Controls.Add(this.label18);
             this.mainPanel.Controls.Add(this.label19);
             this.mainPanel.Controls.Add(this.antecedentDTNGLeftShoulderMinValue);
-            this.mainPanel.Controls.Add(this.label10);
-            this.mainPanel.Controls.Add(this.label11);
-            this.mainPanel.Controls.Add(this.antecedentDTFRightShoulderMaxValue);
-            this.mainPanel.Controls.Add(this.antecedentDTFRightShoulderPeakValue);
-            this.mainPanel.Controls.Add(this.antecedentDTFRightShoulderMinValue);
-            this.mainPanel.Controls.Add(this.antecedentDTFTriangleMaxValue);
-            this.mainPanel.Controls.Add(this.antecedentDTFTrianglePeakValue);
-            this.mainPanel.Controls.Add(this.antecedentDTFTriangleMinValue);
-            this.mainPanel.Controls.Add(this.antecedentDTFLeftShoulderMaxValue);
-            this.mainPanel.Controls.Add(this.antecedentDTFLeftShoulderPeakValue);
-            this.mainPanel.Controls.Add(this.label9);
-            this.mainPanel.Controls.Add(this.label8);
-            this.mainPanel.Controls.Add(this.label7);
-            this.mainPanel.Controls.Add(this.label3);
-            this.mainPanel.Controls.Add(this.label2);
             this.mainPanel.Controls.Add(this.label6);
             this.mainPanel.Controls.Add(this.label5);
-            this.mainPanel.Controls.Add(this.label4);
             this.mainPanel.Controls.Add(this.enemiesLabel);
             this.mainPanel.Controls.Add(this.enemiesValue);
-            this.mainPanel.Controls.Add(this.antecedentDistanceToFinishLeftShoulderLabel);
-            this.mainPanel.Controls.Add(this.antecedentDTFLeftShoulderMinValue);
             this.mainPanel.Controls.Add(this.label1);
             this.mainPanel.Controls.Add(this.DebugSettingsLabel);
             this.mainPanel.Controls.Add(this.Enemy3StateValue);
@@ -282,15 +238,25 @@ namespace SteeringCS
             this.mainPanel.Controls.Add(this.PlayerMassLabel);
             this.mainPanel.Controls.Add(this.PlayerMassValue);
             this.mainPanel.Controls.Add(this.PlayerSettingsLabel);
-            this.mainPanel.Controls.Add(this.TimerSettingsLabel);
             this.mainPanel.Controls.Add(this.nextButton);
             this.mainPanel.Controls.Add(this.pauseButton);
             this.mainPanel.Controls.Add(this.UpdateIntervalLabel);
             this.mainPanel.Controls.Add(this.UpdateIntervalSelector);
-            this.mainPanel.Location = new System.Drawing.Point(12, 0);
+            this.mainPanel.Location = new System.Drawing.Point(12, 12);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(402, 870);
+            this.mainPanel.Size = new System.Drawing.Size(418, 695);
             this.mainPanel.TabIndex = 1;
+            // 
+            // checkBoxShouldMovePlayerOnClick
+            // 
+            this.checkBoxShouldMovePlayerOnClick.AutoSize = true;
+            this.checkBoxShouldMovePlayerOnClick.Location = new System.Drawing.Point(263, 347);
+            this.checkBoxShouldMovePlayerOnClick.Name = "checkBoxShouldMovePlayerOnClick";
+            this.checkBoxShouldMovePlayerOnClick.Size = new System.Drawing.Size(158, 21);
+            this.checkBoxShouldMovePlayerOnClick.TabIndex = 106;
+            this.checkBoxShouldMovePlayerOnClick.Text = "Move player on click";
+            this.checkBoxShouldMovePlayerOnClick.UseVisualStyleBackColor = true;
+            this.checkBoxShouldMovePlayerOnClick.CheckedChanged += new System.EventHandler(this.checkBoxShouldMovePlayerOnClick_CheckedChanged);
             // 
             // label26
             // 
@@ -303,7 +269,7 @@ namespace SteeringCS
             // consequenceResultValue
             // 
             this.consequenceResultValue.AutoSize = true;
-            this.consequenceResultValue.Location = new System.Drawing.Point(202, 820);
+            this.consequenceResultValue.Location = new System.Drawing.Point(200, 661);
             this.consequenceResultValue.Name = "consequenceResultValue";
             this.consequenceResultValue.Size = new System.Drawing.Size(13, 17);
             this.consequenceResultValue.TabIndex = 104;
@@ -312,7 +278,7 @@ namespace SteeringCS
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(7, 820);
+            this.label27.Location = new System.Drawing.Point(5, 661);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(171, 17);
             this.label27.TabIndex = 103;
@@ -320,7 +286,7 @@ namespace SteeringCS
             // 
             // ConsequenceRightShoulderMaxValue
             // 
-            this.ConsequenceRightShoulderMaxValue.Location = new System.Drawing.Point(255, 795);
+            this.ConsequenceRightShoulderMaxValue.Location = new System.Drawing.Point(253, 636);
             this.ConsequenceRightShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.ConsequenceRightShoulderMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceRightShoulderMaxValue.Name = "ConsequenceRightShoulderMaxValue";
@@ -329,7 +295,7 @@ namespace SteeringCS
             // 
             // ConsequenceRightShoulderPeakValue
             // 
-            this.ConsequenceRightShoulderPeakValue.Location = new System.Drawing.Point(254, 767);
+            this.ConsequenceRightShoulderPeakValue.Location = new System.Drawing.Point(252, 608);
             this.ConsequenceRightShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.ConsequenceRightShoulderPeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceRightShoulderPeakValue.Name = "ConsequenceRightShoulderPeakValue";
@@ -338,7 +304,7 @@ namespace SteeringCS
             // 
             // ConsequenceRightShoulderMinValue
             // 
-            this.ConsequenceRightShoulderMinValue.Location = new System.Drawing.Point(255, 745);
+            this.ConsequenceRightShoulderMinValue.Location = new System.Drawing.Point(253, 586);
             this.ConsequenceRightShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.ConsequenceRightShoulderMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceRightShoulderMinValue.Name = "ConsequenceRightShoulderMinValue";
@@ -347,7 +313,7 @@ namespace SteeringCS
             // 
             // ConsequenceTriangleMaxValue
             // 
-            this.ConsequenceTriangleMaxValue.Location = new System.Drawing.Point(158, 795);
+            this.ConsequenceTriangleMaxValue.Location = new System.Drawing.Point(156, 636);
             this.ConsequenceTriangleMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.ConsequenceTriangleMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceTriangleMaxValue.Name = "ConsequenceTriangleMaxValue";
@@ -356,7 +322,7 @@ namespace SteeringCS
             // 
             // ConsequenceTrianglePeakValue
             // 
-            this.ConsequenceTrianglePeakValue.Location = new System.Drawing.Point(157, 767);
+            this.ConsequenceTrianglePeakValue.Location = new System.Drawing.Point(155, 608);
             this.ConsequenceTrianglePeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.ConsequenceTrianglePeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceTrianglePeakValue.Name = "ConsequenceTrianglePeakValue";
@@ -365,7 +331,7 @@ namespace SteeringCS
             // 
             // ConsequenceTriangleMinValue
             // 
-            this.ConsequenceTriangleMinValue.Location = new System.Drawing.Point(158, 745);
+            this.ConsequenceTriangleMinValue.Location = new System.Drawing.Point(156, 586);
             this.ConsequenceTriangleMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.ConsequenceTriangleMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceTriangleMinValue.Name = "ConsequenceTriangleMinValue";
@@ -374,7 +340,7 @@ namespace SteeringCS
             // 
             // ConsequenceLeftShoulderMaxValue
             // 
-            this.ConsequenceLeftShoulderMaxValue.Location = new System.Drawing.Point(63, 795);
+            this.ConsequenceLeftShoulderMaxValue.Location = new System.Drawing.Point(61, 636);
             this.ConsequenceLeftShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.ConsequenceLeftShoulderMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceLeftShoulderMaxValue.Name = "ConsequenceLeftShoulderMaxValue";
@@ -383,7 +349,7 @@ namespace SteeringCS
             // 
             // ConsequenceLeftShoulderPeakValue
             // 
-            this.ConsequenceLeftShoulderPeakValue.Location = new System.Drawing.Point(62, 767);
+            this.ConsequenceLeftShoulderPeakValue.Location = new System.Drawing.Point(60, 608);
             this.ConsequenceLeftShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.ConsequenceLeftShoulderPeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceLeftShoulderPeakValue.Name = "ConsequenceLeftShoulderPeakValue";
@@ -393,7 +359,7 @@ namespace SteeringCS
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(10, 797);
+            this.label20.Location = new System.Drawing.Point(8, 638);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(33, 17);
             this.label20.TabIndex = 94;
@@ -402,7 +368,7 @@ namespace SteeringCS
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(9, 772);
+            this.label21.Location = new System.Drawing.Point(7, 613);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(40, 17);
             this.label21.TabIndex = 93;
@@ -411,7 +377,7 @@ namespace SteeringCS
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(9, 750);
+            this.label22.Location = new System.Drawing.Point(7, 591);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(30, 17);
             this.label22.TabIndex = 92;
@@ -420,7 +386,7 @@ namespace SteeringCS
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(254, 725);
+            this.label23.Location = new System.Drawing.Point(252, 566);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(99, 17);
             this.label23.TabIndex = 91;
@@ -429,7 +395,7 @@ namespace SteeringCS
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(157, 725);
+            this.label24.Location = new System.Drawing.Point(155, 566);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(68, 17);
             this.label24.TabIndex = 90;
@@ -438,7 +404,7 @@ namespace SteeringCS
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(60, 725);
+            this.label25.Location = new System.Drawing.Point(58, 566);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(84, 17);
             this.label25.TabIndex = 89;
@@ -446,7 +412,7 @@ namespace SteeringCS
             // 
             // ConsequenceLeftShoulderMinValue
             // 
-            this.ConsequenceLeftShoulderMinValue.Location = new System.Drawing.Point(63, 745);
+            this.ConsequenceLeftShoulderMinValue.Location = new System.Drawing.Point(61, 586);
             this.ConsequenceLeftShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.ConsequenceLeftShoulderMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.ConsequenceLeftShoulderMinValue.Name = "ConsequenceLeftShoulderMinValue";
@@ -456,7 +422,7 @@ namespace SteeringCS
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(203, 676);
+            this.label12.Location = new System.Drawing.Point(201, 519);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(13, 17);
             this.label12.TabIndex = 87;
@@ -465,7 +431,7 @@ namespace SteeringCS
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 676);
+            this.label13.Location = new System.Drawing.Point(7, 519);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(186, 17);
             this.label13.TabIndex = 86;
@@ -473,7 +439,7 @@ namespace SteeringCS
             // 
             // antecedentDTNGRightShoulderMaxValue
             // 
-            this.antecedentDTNGRightShoulderMaxValue.Location = new System.Drawing.Point(254, 651);
+            this.antecedentDTNGRightShoulderMaxValue.Location = new System.Drawing.Point(252, 494);
             this.antecedentDTNGRightShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.antecedentDTNGRightShoulderMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.antecedentDTNGRightShoulderMaxValue.Name = "antecedentDTNGRightShoulderMaxValue";
@@ -482,7 +448,7 @@ namespace SteeringCS
             // 
             // antecedentDTNGRightShoulderPeakValue
             // 
-            this.antecedentDTNGRightShoulderPeakValue.Location = new System.Drawing.Point(253, 623);
+            this.antecedentDTNGRightShoulderPeakValue.Location = new System.Drawing.Point(251, 466);
             this.antecedentDTNGRightShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.antecedentDTNGRightShoulderPeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.antecedentDTNGRightShoulderPeakValue.Name = "antecedentDTNGRightShoulderPeakValue";
@@ -491,7 +457,7 @@ namespace SteeringCS
             // 
             // antecedentDTNGRightShoulderMinValue
             // 
-            this.antecedentDTNGRightShoulderMinValue.Location = new System.Drawing.Point(254, 601);
+            this.antecedentDTNGRightShoulderMinValue.Location = new System.Drawing.Point(252, 444);
             this.antecedentDTNGRightShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.antecedentDTNGRightShoulderMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.antecedentDTNGRightShoulderMinValue.Name = "antecedentDTNGRightShoulderMinValue";
@@ -500,7 +466,7 @@ namespace SteeringCS
             // 
             // antecedentDTNGTriangleMaxValue
             // 
-            this.antecedentDTNGTriangleMaxValue.Location = new System.Drawing.Point(157, 651);
+            this.antecedentDTNGTriangleMaxValue.Location = new System.Drawing.Point(155, 494);
             this.antecedentDTNGTriangleMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.antecedentDTNGTriangleMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.antecedentDTNGTriangleMaxValue.Name = "antecedentDTNGTriangleMaxValue";
@@ -509,7 +475,7 @@ namespace SteeringCS
             // 
             // antecedentDTNGTrianglePeakValue
             // 
-            this.antecedentDTNGTrianglePeakValue.Location = new System.Drawing.Point(156, 623);
+            this.antecedentDTNGTrianglePeakValue.Location = new System.Drawing.Point(154, 466);
             this.antecedentDTNGTrianglePeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.antecedentDTNGTrianglePeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.antecedentDTNGTrianglePeakValue.Name = "antecedentDTNGTrianglePeakValue";
@@ -518,7 +484,7 @@ namespace SteeringCS
             // 
             // antecedentDTNGTriangleMinValue
             // 
-            this.antecedentDTNGTriangleMinValue.Location = new System.Drawing.Point(157, 601);
+            this.antecedentDTNGTriangleMinValue.Location = new System.Drawing.Point(155, 444);
             this.antecedentDTNGTriangleMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.antecedentDTNGTriangleMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.antecedentDTNGTriangleMinValue.Name = "antecedentDTNGTriangleMinValue";
@@ -527,7 +493,7 @@ namespace SteeringCS
             // 
             // antecedentDTNGLeftShoulderMaxValue
             // 
-            this.antecedentDTNGLeftShoulderMaxValue.Location = new System.Drawing.Point(62, 651);
+            this.antecedentDTNGLeftShoulderMaxValue.Location = new System.Drawing.Point(60, 494);
             this.antecedentDTNGLeftShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.antecedentDTNGLeftShoulderMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.antecedentDTNGLeftShoulderMaxValue.Name = "antecedentDTNGLeftShoulderMaxValue";
@@ -536,7 +502,7 @@ namespace SteeringCS
             // 
             // antecedentDTNGLeftShoulderPeakValue
             // 
-            this.antecedentDTNGLeftShoulderPeakValue.Location = new System.Drawing.Point(61, 623);
+            this.antecedentDTNGLeftShoulderPeakValue.Location = new System.Drawing.Point(59, 466);
             this.antecedentDTNGLeftShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.antecedentDTNGLeftShoulderPeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.antecedentDTNGLeftShoulderPeakValue.Name = "antecedentDTNGLeftShoulderPeakValue";
@@ -546,7 +512,7 @@ namespace SteeringCS
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 653);
+            this.label14.Location = new System.Drawing.Point(7, 496);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(33, 17);
             this.label14.TabIndex = 77;
@@ -555,7 +521,7 @@ namespace SteeringCS
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(8, 628);
+            this.label15.Location = new System.Drawing.Point(6, 471);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(40, 17);
             this.label15.TabIndex = 76;
@@ -564,7 +530,7 @@ namespace SteeringCS
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(8, 606);
+            this.label16.Location = new System.Drawing.Point(6, 449);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(30, 17);
             this.label16.TabIndex = 75;
@@ -573,7 +539,7 @@ namespace SteeringCS
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(253, 581);
+            this.label17.Location = new System.Drawing.Point(251, 424);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(29, 17);
             this.label17.TabIndex = 74;
@@ -582,7 +548,7 @@ namespace SteeringCS
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(156, 581);
+            this.label18.Location = new System.Drawing.Point(154, 424);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(57, 17);
             this.label18.TabIndex = 73;
@@ -591,7 +557,7 @@ namespace SteeringCS
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(59, 581);
+            this.label19.Location = new System.Drawing.Point(57, 424);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(43, 17);
             this.label19.TabIndex = 72;
@@ -599,191 +565,46 @@ namespace SteeringCS
             // 
             // antecedentDTNGLeftShoulderMinValue
             // 
-            this.antecedentDTNGLeftShoulderMinValue.Location = new System.Drawing.Point(62, 601);
+            this.antecedentDTNGLeftShoulderMinValue.Location = new System.Drawing.Point(60, 444);
             this.antecedentDTNGLeftShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.antecedentDTNGLeftShoulderMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.antecedentDTNGLeftShoulderMinValue.Name = "antecedentDTNGLeftShoulderMinValue";
             this.antecedentDTNGLeftShoulderMinValue.Size = new System.Drawing.Size(51, 22);
             this.antecedentDTNGLeftShoulderMinValue.TabIndex = 71;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(193, 536);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(13, 17);
-            this.label10.TabIndex = 70;
-            this.label10.Text = "-";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1, 536);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(116, 17);
-            this.label11.TabIndex = 69;
-            this.label11.Text = "Distance to finish";
-            // 
-            // antecedentDTFRightShoulderMaxValue
-            // 
-            this.antecedentDTFRightShoulderMaxValue.Location = new System.Drawing.Point(246, 511);
-            this.antecedentDTFRightShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTFRightShoulderMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTFRightShoulderMaxValue.Name = "antecedentDTFRightShoulderMaxValue";
-            this.antecedentDTFRightShoulderMaxValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTFRightShoulderMaxValue.TabIndex = 68;
-            // 
-            // antecedentDTFRightShoulderPeakValue
-            // 
-            this.antecedentDTFRightShoulderPeakValue.Location = new System.Drawing.Point(245, 483);
-            this.antecedentDTFRightShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTFRightShoulderPeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTFRightShoulderPeakValue.Name = "antecedentDTFRightShoulderPeakValue";
-            this.antecedentDTFRightShoulderPeakValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTFRightShoulderPeakValue.TabIndex = 67;
-            // 
-            // antecedentDTFRightShoulderMinValue
-            // 
-            this.antecedentDTFRightShoulderMinValue.Location = new System.Drawing.Point(246, 461);
-            this.antecedentDTFRightShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTFRightShoulderMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTFRightShoulderMinValue.Name = "antecedentDTFRightShoulderMinValue";
-            this.antecedentDTFRightShoulderMinValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTFRightShoulderMinValue.TabIndex = 66;
-            // 
-            // antecedentDTFTriangleMaxValue
-            // 
-            this.antecedentDTFTriangleMaxValue.Location = new System.Drawing.Point(149, 511);
-            this.antecedentDTFTriangleMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTFTriangleMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTFTriangleMaxValue.Name = "antecedentDTFTriangleMaxValue";
-            this.antecedentDTFTriangleMaxValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTFTriangleMaxValue.TabIndex = 65;
-            // 
-            // antecedentDTFTrianglePeakValue
-            // 
-            this.antecedentDTFTrianglePeakValue.Location = new System.Drawing.Point(148, 483);
-            this.antecedentDTFTrianglePeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTFTrianglePeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTFTrianglePeakValue.Name = "antecedentDTFTrianglePeakValue";
-            this.antecedentDTFTrianglePeakValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTFTrianglePeakValue.TabIndex = 64;
-            // 
-            // antecedentDTFTriangleMinValue
-            // 
-            this.antecedentDTFTriangleMinValue.Location = new System.Drawing.Point(149, 461);
-            this.antecedentDTFTriangleMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTFTriangleMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTFTriangleMinValue.Name = "antecedentDTFTriangleMinValue";
-            this.antecedentDTFTriangleMinValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTFTriangleMinValue.TabIndex = 63;
-            // 
-            // antecedentDTFLeftShoulderMaxValue
-            // 
-            this.antecedentDTFLeftShoulderMaxValue.Location = new System.Drawing.Point(54, 511);
-            this.antecedentDTFLeftShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTFLeftShoulderMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTFLeftShoulderMaxValue.Name = "antecedentDTFLeftShoulderMaxValue";
-            this.antecedentDTFLeftShoulderMaxValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTFLeftShoulderMaxValue.TabIndex = 62;
-            // 
-            // antecedentDTFLeftShoulderPeakValue
-            // 
-            this.antecedentDTFLeftShoulderPeakValue.Location = new System.Drawing.Point(53, 483);
-            this.antecedentDTFLeftShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTFLeftShoulderPeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTFLeftShoulderPeakValue.Name = "antecedentDTFLeftShoulderPeakValue";
-            this.antecedentDTFLeftShoulderPeakValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTFLeftShoulderPeakValue.TabIndex = 61;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1, 513);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(33, 17);
-            this.label9.TabIndex = 60;
-            this.label9.Text = "Max";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(0, 488);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 17);
-            this.label8.TabIndex = 59;
-            this.label8.Text = "Peak";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(0, 466);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 17);
-            this.label7.TabIndex = 58;
-            this.label7.Text = "Min";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(245, 441);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 17);
-            this.label3.TabIndex = 57;
-            this.label3.Text = "Far";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(148, 441);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 17);
-            this.label2.TabIndex = 56;
-            this.label2.Text = "Medium";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1, 708);
+            this.label6.Location = new System.Drawing.Point(-1, 549);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(182, 17);
+            this.label6.Size = new System.Drawing.Size(264, 17);
             this.label6.TabIndex = 55;
-            this.label6.Text = "Consequent scaredness";
+            this.label6.Text = "Variable Desirability to follow mario";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1, 564);
+            this.label5.Location = new System.Drawing.Point(-1, 407);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(297, 17);
+            this.label5.Size = new System.Drawing.Size(275, 17);
             this.label5.TabIndex = 54;
-            this.label5.Text = "Antecedent distance to nearest goomba";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(-1, 419);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(219, 17);
-            this.label4.TabIndex = 53;
-            this.label4.Text = "Antecedent distance to finish";
+            this.label5.Text = "Variable distance to nearest goomba";
             // 
             // enemiesLabel
             // 
             this.enemiesLabel.AutoSize = true;
-            this.enemiesLabel.Location = new System.Drawing.Point(2, 195);
+            this.enemiesLabel.Location = new System.Drawing.Point(2, 176);
             this.enemiesLabel.Name = "enemiesLabel";
-            this.enemiesLabel.Size = new System.Drawing.Size(66, 17);
+            this.enemiesLabel.Size = new System.Drawing.Size(135, 17);
             this.enemiesLabel.TabIndex = 52;
-            this.enemiesLabel.Text = "Enemies:";
+            this.enemiesLabel.Text = "Number of enemies:";
             // 
             // enemiesValue
             // 
-            this.enemiesValue.Location = new System.Drawing.Point(209, 193);
+            this.enemiesValue.Location = new System.Drawing.Point(209, 174);
             this.enemiesValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.enemiesValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.enemiesValue.Name = "enemiesValue";
@@ -791,29 +612,11 @@ namespace SteeringCS
             this.enemiesValue.TabIndex = 51;
             this.enemiesValue.ValueChanged += new System.EventHandler(this.enemiesValue_ValueChanged);
             // 
-            // antecedentDistanceToFinishLeftShoulderLabel
-            // 
-            this.antecedentDistanceToFinishLeftShoulderLabel.AutoSize = true;
-            this.antecedentDistanceToFinishLeftShoulderLabel.Location = new System.Drawing.Point(51, 441);
-            this.antecedentDistanceToFinishLeftShoulderLabel.Name = "antecedentDistanceToFinishLeftShoulderLabel";
-            this.antecedentDistanceToFinishLeftShoulderLabel.Size = new System.Drawing.Size(43, 17);
-            this.antecedentDistanceToFinishLeftShoulderLabel.TabIndex = 50;
-            this.antecedentDistanceToFinishLeftShoulderLabel.Text = "Close";
-            // 
-            // antecedentDTFLeftShoulderMinValue
-            // 
-            this.antecedentDTFLeftShoulderMinValue.Location = new System.Drawing.Point(54, 461);
-            this.antecedentDTFLeftShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTFLeftShoulderMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
-            this.antecedentDTFLeftShoulderMinValue.Name = "antecedentDTFLeftShoulderMinValue";
-            this.antecedentDTFLeftShoulderMinValue.Size = new System.Drawing.Size(51, 22);
-            this.antecedentDTFLeftShoulderMinValue.TabIndex = 49;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 402);
+            this.label1.Location = new System.Drawing.Point(1, 380);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(151, 17);
             this.label1.TabIndex = 48;
@@ -823,7 +626,7 @@ namespace SteeringCS
             // 
             this.DebugSettingsLabel.AutoSize = true;
             this.DebugSettingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DebugSettingsLabel.Location = new System.Drawing.Point(0, 316);
+            this.DebugSettingsLabel.Location = new System.Drawing.Point(0, 297);
             this.DebugSettingsLabel.Name = "DebugSettingsLabel";
             this.DebugSettingsLabel.Size = new System.Drawing.Size(117, 17);
             this.DebugSettingsLabel.TabIndex = 47;
@@ -832,7 +635,7 @@ namespace SteeringCS
             // Enemy3StateValue
             // 
             this.Enemy3StateValue.AutoSize = true;
-            this.Enemy3StateValue.Location = new System.Drawing.Point(336, 282);
+            this.Enemy3StateValue.Location = new System.Drawing.Point(336, 263);
             this.Enemy3StateValue.Name = "Enemy3StateValue";
             this.Enemy3StateValue.Size = new System.Drawing.Size(13, 17);
             this.Enemy3StateValue.TabIndex = 46;
@@ -841,7 +644,7 @@ namespace SteeringCS
             // Enemy3StateLabel
             // 
             this.Enemy3StateLabel.AutoSize = true;
-            this.Enemy3StateLabel.Location = new System.Drawing.Point(278, 285);
+            this.Enemy3StateLabel.Location = new System.Drawing.Point(278, 266);
             this.Enemy3StateLabel.Name = "Enemy3StateLabel";
             this.Enemy3StateLabel.Size = new System.Drawing.Size(57, 17);
             this.Enemy3StateLabel.TabIndex = 45;
@@ -850,7 +653,7 @@ namespace SteeringCS
             // Enemy3MaxSpeedLabel
             // 
             this.Enemy3MaxSpeedLabel.AutoSize = true;
-            this.Enemy3MaxSpeedLabel.Location = new System.Drawing.Point(117, 282);
+            this.Enemy3MaxSpeedLabel.Location = new System.Drawing.Point(117, 263);
             this.Enemy3MaxSpeedLabel.Name = "Enemy3MaxSpeedLabel";
             this.Enemy3MaxSpeedLabel.Size = new System.Drawing.Size(92, 17);
             this.Enemy3MaxSpeedLabel.TabIndex = 44;
@@ -858,7 +661,7 @@ namespace SteeringCS
             // 
             // Enemy3MaxSpeedValue
             // 
-            this.Enemy3MaxSpeedValue.Location = new System.Drawing.Point(210, 280);
+            this.Enemy3MaxSpeedValue.Location = new System.Drawing.Point(210, 261);
             this.Enemy3MaxSpeedValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.Enemy3MaxSpeedValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.Enemy3MaxSpeedValue.Name = "Enemy3MaxSpeedValue";
@@ -869,7 +672,7 @@ namespace SteeringCS
             // Enemy3MassLabel
             // 
             this.Enemy3MassLabel.AutoSize = true;
-            this.Enemy3MassLabel.Location = new System.Drawing.Point(1, 282);
+            this.Enemy3MassLabel.Location = new System.Drawing.Point(1, 263);
             this.Enemy3MassLabel.Name = "Enemy3MassLabel";
             this.Enemy3MassLabel.Size = new System.Drawing.Size(57, 17);
             this.Enemy3MassLabel.TabIndex = 42;
@@ -877,7 +680,7 @@ namespace SteeringCS
             // 
             // Enemy3MassValue
             // 
-            this.Enemy3MassValue.Location = new System.Drawing.Point(60, 277);
+            this.Enemy3MassValue.Location = new System.Drawing.Point(60, 258);
             this.Enemy3MassValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.Enemy3MassValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.Enemy3MassValue.Name = "Enemy3MassValue";
@@ -888,7 +691,7 @@ namespace SteeringCS
             // Enemy2StateValue
             // 
             this.Enemy2StateValue.AutoSize = true;
-            this.Enemy2StateValue.Location = new System.Drawing.Point(336, 255);
+            this.Enemy2StateValue.Location = new System.Drawing.Point(336, 236);
             this.Enemy2StateValue.Name = "Enemy2StateValue";
             this.Enemy2StateValue.Size = new System.Drawing.Size(13, 17);
             this.Enemy2StateValue.TabIndex = 40;
@@ -897,7 +700,7 @@ namespace SteeringCS
             // Enemy2StateLabel
             // 
             this.Enemy2StateLabel.AutoSize = true;
-            this.Enemy2StateLabel.Location = new System.Drawing.Point(278, 255);
+            this.Enemy2StateLabel.Location = new System.Drawing.Point(278, 236);
             this.Enemy2StateLabel.Name = "Enemy2StateLabel";
             this.Enemy2StateLabel.Size = new System.Drawing.Size(57, 17);
             this.Enemy2StateLabel.TabIndex = 39;
@@ -906,7 +709,7 @@ namespace SteeringCS
             // Enemy2MaxSpeedLabel
             // 
             this.Enemy2MaxSpeedLabel.AutoSize = true;
-            this.Enemy2MaxSpeedLabel.Location = new System.Drawing.Point(117, 252);
+            this.Enemy2MaxSpeedLabel.Location = new System.Drawing.Point(117, 233);
             this.Enemy2MaxSpeedLabel.Name = "Enemy2MaxSpeedLabel";
             this.Enemy2MaxSpeedLabel.Size = new System.Drawing.Size(92, 17);
             this.Enemy2MaxSpeedLabel.TabIndex = 38;
@@ -914,7 +717,7 @@ namespace SteeringCS
             // 
             // Enemy2MaxSpeedValue
             // 
-            this.Enemy2MaxSpeedValue.Location = new System.Drawing.Point(210, 250);
+            this.Enemy2MaxSpeedValue.Location = new System.Drawing.Point(210, 231);
             this.Enemy2MaxSpeedValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.Enemy2MaxSpeedValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.Enemy2MaxSpeedValue.Name = "Enemy2MaxSpeedValue";
@@ -925,7 +728,7 @@ namespace SteeringCS
             // Enemy2MassLabel
             // 
             this.Enemy2MassLabel.AutoSize = true;
-            this.Enemy2MassLabel.Location = new System.Drawing.Point(1, 252);
+            this.Enemy2MassLabel.Location = new System.Drawing.Point(1, 233);
             this.Enemy2MassLabel.Name = "Enemy2MassLabel";
             this.Enemy2MassLabel.Size = new System.Drawing.Size(57, 17);
             this.Enemy2MassLabel.TabIndex = 36;
@@ -933,7 +736,7 @@ namespace SteeringCS
             // 
             // Enemy2MassValue
             // 
-            this.Enemy2MassValue.Location = new System.Drawing.Point(60, 250);
+            this.Enemy2MassValue.Location = new System.Drawing.Point(60, 231);
             this.Enemy2MassValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.Enemy2MassValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.Enemy2MassValue.Name = "Enemy2MassValue";
@@ -944,7 +747,7 @@ namespace SteeringCS
             // Enemy1StateValue
             // 
             this.Enemy1StateValue.AutoSize = true;
-            this.Enemy1StateValue.Location = new System.Drawing.Point(337, 226);
+            this.Enemy1StateValue.Location = new System.Drawing.Point(337, 207);
             this.Enemy1StateValue.Name = "Enemy1StateValue";
             this.Enemy1StateValue.Size = new System.Drawing.Size(13, 17);
             this.Enemy1StateValue.TabIndex = 34;
@@ -953,7 +756,7 @@ namespace SteeringCS
             // Enemy1StateLabel
             // 
             this.Enemy1StateLabel.AutoSize = true;
-            this.Enemy1StateLabel.Location = new System.Drawing.Point(279, 223);
+            this.Enemy1StateLabel.Location = new System.Drawing.Point(279, 204);
             this.Enemy1StateLabel.Name = "Enemy1StateLabel";
             this.Enemy1StateLabel.Size = new System.Drawing.Size(57, 17);
             this.Enemy1StateLabel.TabIndex = 33;
@@ -962,7 +765,7 @@ namespace SteeringCS
             // Enemy1MaxSpeedLabel
             // 
             this.Enemy1MaxSpeedLabel.AutoSize = true;
-            this.Enemy1MaxSpeedLabel.Location = new System.Drawing.Point(118, 223);
+            this.Enemy1MaxSpeedLabel.Location = new System.Drawing.Point(118, 204);
             this.Enemy1MaxSpeedLabel.Name = "Enemy1MaxSpeedLabel";
             this.Enemy1MaxSpeedLabel.Size = new System.Drawing.Size(92, 17);
             this.Enemy1MaxSpeedLabel.TabIndex = 32;
@@ -970,7 +773,7 @@ namespace SteeringCS
             // 
             // Enemy1MaxSpeedValue
             // 
-            this.Enemy1MaxSpeedValue.Location = new System.Drawing.Point(211, 221);
+            this.Enemy1MaxSpeedValue.Location = new System.Drawing.Point(211, 202);
             this.Enemy1MaxSpeedValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.Enemy1MaxSpeedValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.Enemy1MaxSpeedValue.Name = "Enemy1MaxSpeedValue";
@@ -981,7 +784,7 @@ namespace SteeringCS
             // Enemy1MassLabel
             // 
             this.Enemy1MassLabel.AutoSize = true;
-            this.Enemy1MassLabel.Location = new System.Drawing.Point(2, 223);
+            this.Enemy1MassLabel.Location = new System.Drawing.Point(2, 204);
             this.Enemy1MassLabel.Name = "Enemy1MassLabel";
             this.Enemy1MassLabel.Size = new System.Drawing.Size(57, 17);
             this.Enemy1MassLabel.TabIndex = 30;
@@ -989,7 +792,7 @@ namespace SteeringCS
             // 
             // Enemy1MassValue
             // 
-            this.Enemy1MassValue.Location = new System.Drawing.Point(61, 221);
+            this.Enemy1MassValue.Location = new System.Drawing.Point(61, 202);
             this.Enemy1MassValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.Enemy1MassValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.Enemy1MassValue.Name = "Enemy1MassValue";
@@ -1001,16 +804,16 @@ namespace SteeringCS
             // 
             this.EnemiesSettingsLabel.AutoSize = true;
             this.EnemiesSettingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnemiesSettingsLabel.Location = new System.Drawing.Point(0, 171);
+            this.EnemiesSettingsLabel.Location = new System.Drawing.Point(0, 152);
             this.EnemiesSettingsLabel.Name = "EnemiesSettingsLabel";
-            this.EnemiesSettingsLabel.Size = new System.Drawing.Size(131, 17);
+            this.EnemiesSettingsLabel.Size = new System.Drawing.Size(304, 17);
             this.EnemiesSettingsLabel.TabIndex = 28;
-            this.EnemiesSettingsLabel.Text = "Enemies settings";
+            this.EnemiesSettingsLabel.Text = "Enemies settings (only first 3 are shown)";
             // 
             // RescueeStateValue
             // 
             this.RescueeStateValue.AutoSize = true;
-            this.RescueeStateValue.Location = new System.Drawing.Point(337, 142);
+            this.RescueeStateValue.Location = new System.Drawing.Point(335, 118);
             this.RescueeStateValue.Name = "RescueeStateValue";
             this.RescueeStateValue.Size = new System.Drawing.Size(13, 17);
             this.RescueeStateValue.TabIndex = 27;
@@ -1019,7 +822,7 @@ namespace SteeringCS
             // RescueeStateLabel
             // 
             this.RescueeStateLabel.AutoSize = true;
-            this.RescueeStateLabel.Location = new System.Drawing.Point(279, 142);
+            this.RescueeStateLabel.Location = new System.Drawing.Point(277, 118);
             this.RescueeStateLabel.Name = "RescueeStateLabel";
             this.RescueeStateLabel.Size = new System.Drawing.Size(45, 17);
             this.RescueeStateLabel.TabIndex = 26;
@@ -1028,7 +831,7 @@ namespace SteeringCS
             // RescueeMaxSpeedLabel
             // 
             this.RescueeMaxSpeedLabel.AutoSize = true;
-            this.RescueeMaxSpeedLabel.Location = new System.Drawing.Point(116, 139);
+            this.RescueeMaxSpeedLabel.Location = new System.Drawing.Point(114, 115);
             this.RescueeMaxSpeedLabel.Name = "RescueeMaxSpeedLabel";
             this.RescueeMaxSpeedLabel.Size = new System.Drawing.Size(80, 17);
             this.RescueeMaxSpeedLabel.TabIndex = 25;
@@ -1036,7 +839,7 @@ namespace SteeringCS
             // 
             // RescueeMaxSpeedValue
             // 
-            this.RescueeMaxSpeedValue.Location = new System.Drawing.Point(209, 137);
+            this.RescueeMaxSpeedValue.Location = new System.Drawing.Point(207, 113);
             this.RescueeMaxSpeedValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.RescueeMaxSpeedValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.RescueeMaxSpeedValue.Name = "RescueeMaxSpeedValue";
@@ -1047,7 +850,7 @@ namespace SteeringCS
             // RescueeMassLabel
             // 
             this.RescueeMassLabel.AutoSize = true;
-            this.RescueeMassLabel.Location = new System.Drawing.Point(0, 139);
+            this.RescueeMassLabel.Location = new System.Drawing.Point(-2, 115);
             this.RescueeMassLabel.Name = "RescueeMassLabel";
             this.RescueeMassLabel.Size = new System.Drawing.Size(45, 17);
             this.RescueeMassLabel.TabIndex = 23;
@@ -1055,7 +858,7 @@ namespace SteeringCS
             // 
             // RescueeMassValue
             // 
-            this.RescueeMassValue.Location = new System.Drawing.Point(59, 137);
+            this.RescueeMassValue.Location = new System.Drawing.Point(57, 113);
             this.RescueeMassValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.RescueeMassValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.RescueeMassValue.Name = "RescueeMassValue";
@@ -1067,7 +870,7 @@ namespace SteeringCS
             // 
             this.RescueeSettingsLabel.AutoSize = true;
             this.RescueeSettingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RescueeSettingsLabel.Location = new System.Drawing.Point(0, 117);
+            this.RescueeSettingsLabel.Location = new System.Drawing.Point(-2, 93);
             this.RescueeSettingsLabel.Name = "RescueeSettingsLabel";
             this.RescueeSettingsLabel.Size = new System.Drawing.Size(133, 17);
             this.RescueeSettingsLabel.TabIndex = 21;
@@ -1076,7 +879,7 @@ namespace SteeringCS
             // PlayerStateValue
             // 
             this.PlayerStateValue.AutoSize = true;
-            this.PlayerStateValue.Location = new System.Drawing.Point(336, 87);
+            this.PlayerStateValue.Location = new System.Drawing.Point(334, 63);
             this.PlayerStateValue.Name = "PlayerStateValue";
             this.PlayerStateValue.Size = new System.Drawing.Size(13, 17);
             this.PlayerStateValue.TabIndex = 20;
@@ -1085,7 +888,7 @@ namespace SteeringCS
             // PlayerStateLabel
             // 
             this.PlayerStateLabel.AutoSize = true;
-            this.PlayerStateLabel.Location = new System.Drawing.Point(278, 87);
+            this.PlayerStateLabel.Location = new System.Drawing.Point(276, 63);
             this.PlayerStateLabel.Name = "PlayerStateLabel";
             this.PlayerStateLabel.Size = new System.Drawing.Size(45, 17);
             this.PlayerStateLabel.TabIndex = 19;
@@ -1094,7 +897,7 @@ namespace SteeringCS
             // ShowVelocityCheckbox
             // 
             this.ShowVelocityCheckbox.AutoSize = true;
-            this.ShowVelocityCheckbox.Location = new System.Drawing.Point(4, 366);
+            this.ShowVelocityCheckbox.Location = new System.Drawing.Point(4, 347);
             this.ShowVelocityCheckbox.Name = "ShowVelocityCheckbox";
             this.ShowVelocityCheckbox.Size = new System.Drawing.Size(115, 21);
             this.ShowVelocityCheckbox.TabIndex = 18;
@@ -1105,7 +908,7 @@ namespace SteeringCS
             // ShowBehaviorCheckbox
             // 
             this.ShowBehaviorCheckbox.AutoSize = true;
-            this.ShowBehaviorCheckbox.Location = new System.Drawing.Point(133, 336);
+            this.ShowBehaviorCheckbox.Location = new System.Drawing.Point(134, 317);
             this.ShowBehaviorCheckbox.Name = "ShowBehaviorCheckbox";
             this.ShowBehaviorCheckbox.Size = new System.Drawing.Size(123, 21);
             this.ShowBehaviorCheckbox.TabIndex = 17;
@@ -1116,7 +919,7 @@ namespace SteeringCS
             // ShowHitboxCheckbox
             // 
             this.ShowHitboxCheckbox.AutoSize = true;
-            this.ShowHitboxCheckbox.Location = new System.Drawing.Point(4, 336);
+            this.ShowHitboxCheckbox.Location = new System.Drawing.Point(4, 317);
             this.ShowHitboxCheckbox.Name = "ShowHitboxCheckbox";
             this.ShowHitboxCheckbox.Size = new System.Drawing.Size(105, 21);
             this.ShowHitboxCheckbox.TabIndex = 16;
@@ -1127,7 +930,7 @@ namespace SteeringCS
             // ShowGraphCheckbox
             // 
             this.ShowGraphCheckbox.AutoSize = true;
-            this.ShowGraphCheckbox.Location = new System.Drawing.Point(262, 336);
+            this.ShowGraphCheckbox.Location = new System.Drawing.Point(263, 317);
             this.ShowGraphCheckbox.Name = "ShowGraphCheckbox";
             this.ShowGraphCheckbox.Size = new System.Drawing.Size(105, 21);
             this.ShowGraphCheckbox.TabIndex = 15;
@@ -1138,7 +941,7 @@ namespace SteeringCS
             // ShowGridCheckbox
             // 
             this.ShowGridCheckbox.AutoSize = true;
-            this.ShowGridCheckbox.Location = new System.Drawing.Point(134, 366);
+            this.ShowGridCheckbox.Location = new System.Drawing.Point(134, 347);
             this.ShowGridCheckbox.Name = "ShowGridCheckbox";
             this.ShowGridCheckbox.Size = new System.Drawing.Size(92, 21);
             this.ShowGridCheckbox.TabIndex = 14;
@@ -1149,7 +952,7 @@ namespace SteeringCS
             // PlayerMaxSpeedLabel
             // 
             this.PlayerMaxSpeedLabel.AutoSize = true;
-            this.PlayerMaxSpeedLabel.Location = new System.Drawing.Point(114, 84);
+            this.PlayerMaxSpeedLabel.Location = new System.Drawing.Point(112, 60);
             this.PlayerMaxSpeedLabel.Name = "PlayerMaxSpeedLabel";
             this.PlayerMaxSpeedLabel.Size = new System.Drawing.Size(80, 17);
             this.PlayerMaxSpeedLabel.TabIndex = 10;
@@ -1157,7 +960,7 @@ namespace SteeringCS
             // 
             // PlayerMaxSpeedValue
             // 
-            this.PlayerMaxSpeedValue.Location = new System.Drawing.Point(208, 82);
+            this.PlayerMaxSpeedValue.Location = new System.Drawing.Point(206, 58);
             this.PlayerMaxSpeedValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.PlayerMaxSpeedValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.PlayerMaxSpeedValue.Name = "PlayerMaxSpeedValue";
@@ -1168,7 +971,7 @@ namespace SteeringCS
             // PlayerMassLabel
             // 
             this.PlayerMassLabel.AutoSize = true;
-            this.PlayerMassLabel.Location = new System.Drawing.Point(-2, 84);
+            this.PlayerMassLabel.Location = new System.Drawing.Point(-4, 60);
             this.PlayerMassLabel.Name = "PlayerMassLabel";
             this.PlayerMassLabel.Size = new System.Drawing.Size(45, 17);
             this.PlayerMassLabel.TabIndex = 8;
@@ -1176,7 +979,7 @@ namespace SteeringCS
             // 
             // PlayerMassValue
             // 
-            this.PlayerMassValue.Location = new System.Drawing.Point(58, 82);
+            this.PlayerMassValue.Location = new System.Drawing.Point(56, 58);
             this.PlayerMassValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.PlayerMassValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.PlayerMassValue.Name = "PlayerMassValue";
@@ -1188,26 +991,16 @@ namespace SteeringCS
             // 
             this.PlayerSettingsLabel.AutoSize = true;
             this.PlayerSettingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlayerSettingsLabel.Location = new System.Drawing.Point(-2, 62);
+            this.PlayerSettingsLabel.Location = new System.Drawing.Point(-4, 38);
             this.PlayerSettingsLabel.Name = "PlayerSettingsLabel";
             this.PlayerSettingsLabel.Size = new System.Drawing.Size(116, 17);
             this.PlayerSettingsLabel.TabIndex = 6;
             this.PlayerSettingsLabel.Text = "Player settings";
             // 
-            // TimerSettingsLabel
-            // 
-            this.TimerSettingsLabel.AutoSize = true;
-            this.TimerSettingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimerSettingsLabel.Location = new System.Drawing.Point(-4, 9);
-            this.TimerSettingsLabel.Name = "TimerSettingsLabel";
-            this.TimerSettingsLabel.Size = new System.Drawing.Size(49, 17);
-            this.TimerSettingsLabel.TabIndex = 5;
-            this.TimerSettingsLabel.Text = "Timer";
-            // 
             // nextButton
             // 
             this.nextButton.Enabled = false;
-            this.nextButton.Location = new System.Drawing.Point(159, 6);
+            this.nextButton.Location = new System.Drawing.Point(315, 6);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(100, 23);
             this.nextButton.TabIndex = 4;
@@ -1217,7 +1010,7 @@ namespace SteeringCS
             // 
             // pauseButton
             // 
-            this.pauseButton.Location = new System.Drawing.Point(49, 6);
+            this.pauseButton.Location = new System.Drawing.Point(209, 6);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(100, 23);
             this.pauseButton.TabIndex = 3;
@@ -1228,15 +1021,16 @@ namespace SteeringCS
             // UpdateIntervalLabel
             // 
             this.UpdateIntervalLabel.AutoSize = true;
-            this.UpdateIntervalLabel.Location = new System.Drawing.Point(-2, 33);
+            this.UpdateIntervalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateIntervalLabel.Location = new System.Drawing.Point(-2, 12);
             this.UpdateIntervalLabel.Name = "UpdateIntervalLabel";
-            this.UpdateIntervalLabel.Size = new System.Drawing.Size(140, 17);
+            this.UpdateIntervalLabel.Size = new System.Drawing.Size(150, 17);
             this.UpdateIntervalLabel.TabIndex = 2;
-            this.UpdateIntervalLabel.Text = "Update Interval (ms):";
+            this.UpdateIntervalLabel.Text = "Timer Interval (ms):";
             // 
             // UpdateIntervalSelector
             // 
-            this.UpdateIntervalSelector.Location = new System.Drawing.Point(208, 31);
+            this.UpdateIntervalSelector.Location = new System.Drawing.Point(146, 10);
             this.UpdateIntervalSelector.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.UpdateIntervalSelector.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.UpdateIntervalSelector.Name = "UpdateIntervalSelector";
@@ -1249,7 +1043,7 @@ namespace SteeringCS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 882);
+            this.ClientSize = new System.Drawing.Size(442, 722);
             this.Controls.Add(this.mainPanel);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -1276,16 +1070,7 @@ namespace SteeringCS
             ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGLeftShoulderMaxValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGLeftShoulderPeakValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.antecedentDTNGLeftShoulderMinValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFRightShoulderMaxValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFRightShoulderPeakValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFRightShoulderMinValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFTriangleMaxValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFTrianglePeakValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFTriangleMinValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFLeftShoulderMaxValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFLeftShoulderPeakValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemiesValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.antecedentDTFLeftShoulderMinValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy3MaxSpeedValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy3MassValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy2MaxSpeedValue)).EndInit();
@@ -1300,26 +1085,13 @@ namespace SteeringCS
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.CheckBox checkBoxShouldMovePlayerOnClick;
+
         private System.Windows.Forms.Label label26;
 
         private System.Windows.Forms.Label consequenceResultValue;
         private System.Windows.Forms.Label label27;
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.NumericUpDown antecedentDTFLeftShoulderPeakValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTFLeftShoulderMaxValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTFTriangleMaxValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTFTrianglePeakValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTFTriangleMinValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTFRightShoulderMaxValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTFRightShoulderPeakValue;
-        private System.Windows.Forms.NumericUpDown antecedentDTFRightShoulderMinValue;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown antecedentDTNGRightShoulderMaxValue;
@@ -1356,11 +1128,7 @@ namespace SteeringCS
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
 
-        private System.Windows.Forms.Label label4;
-
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label antecedentDistanceToFinishLeftShoulderLabel;
-        private System.Windows.Forms.NumericUpDown antecedentDTFLeftShoulderMinValue;
         private System.Windows.Forms.Label enemiesLabel;
         private System.Windows.Forms.NumericUpDown enemiesValue;
 
@@ -1370,7 +1138,6 @@ namespace SteeringCS
         private System.Windows.Forms.NumericUpDown UpdateIntervalSelector;
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button pauseButton;
-        private System.Windows.Forms.Label TimerSettingsLabel;
         private System.Windows.Forms.Label PlayerSettingsLabel;
         private System.Windows.Forms.Label PlayerMaxSpeedLabel;
         private System.Windows.Forms.NumericUpDown PlayerMaxSpeedValue;

@@ -14,18 +14,18 @@ namespace SteeringCS
     {
         public event EventHandler<UpdateWorldEvent> UpdateWorldEventHandler;
         public WorldVisualization World { get; private set; }
-        private const int WorldHeight = 640;
-        private const int WorldWidth = 640;
+        private const int WorldHeight = 640,
+            WorldWidth = 640;
 
-        private bool _gameIsActive;
-        private bool _gameLost;
-        private bool _gameWon;
-
-        private bool _renderGrid;
-        private bool _renderGraph;
-        private bool _renderHitBox;
-        private bool _renderSteeringBehavior;
-        private bool _renderVelocity;
+        private bool _gameIsActive,
+            _gameLost,
+            _gameWon,
+            _renderGrid,
+            _renderGraph,
+            _renderHitBox,
+            _renderSteeringBehavior,
+            _renderVelocity,
+            _allowPlayerMoveOnMouseClick;
 
         private const float TimeDelta = 0.8f;
         private readonly Timer _timer = new Timer();
@@ -67,9 +67,8 @@ namespace SteeringCS
             graphics.DrawString("MARIO BROS.", logoFont, blackBrush, 135, 115);
             graphics.DrawString("MARIO BROS.", logoFont, logoBrush, 130, 110);
 
-            // Set gamestate related graphics
+            // Set game state related graphics
             string stateText = "TRY TO SAVE LUIGI!";
-
             if (_gameLost)
             {
                 stateText = "FAILED SAVING LUIGI!";
@@ -175,7 +174,7 @@ namespace SteeringCS
 
         private void OnTargetEntityPositionMouseClick(object sender, MouseEventArgs eventArgs)
         {
-            if (!_gameIsActive)
+            if (!_gameIsActive || !_allowPlayerMoveOnMouseClick)
             {
                 return;
             }
@@ -185,25 +184,13 @@ namespace SteeringCS
             dbPanel.Invalidate();
         }
 
-        public void UpdateTimerInterval(int interval)
-        {
-            _timer.Interval = interval;
-        }
+        public void UpdateTimerInterval(int interval) => _timer.Interval = interval;
 
-        public bool IsTimerEnabled()
-        {
-            return _timer.Enabled;
-        }
+        public bool IsTimerEnabled() => _timer.Enabled;
 
-        public void EnableTimer()
-        {
-            _timer.Enabled = true;
-        }
+        public void EnableTimer() => _timer.Enabled = true;
 
-        public void DisableTimer()
-        {
-            _timer.Enabled = false;
-        }
+        public void DisableTimer() => _timer.Enabled = false;
 
         public void UpdateWorld()
         {
@@ -212,55 +199,28 @@ namespace SteeringCS
             dbPanel.Invalidate();
         }
 
-        public void DisableGridRender()
-        {
-            _renderGrid = false;
-        }
+        public void DisableGridRender() => _renderGrid = false;
 
-        public void EnableGridRender()
-        {
-            _renderGrid = true;
-        }
+        public void EnableGridRender() => _renderGrid = true;
 
-        public void DisableGraphRender()
-        {
-            _renderGraph = false;
-        }
+        public void DisableGraphRender() => _renderGraph = false;
 
-        public void EnableGraphRender()
-        {
-            _renderGraph = true;
-        }
+        public void EnableGraphRender() => _renderGraph = true;
 
-        public void DisableHitBoxRender()
-        {
-            _renderHitBox = false;
-        }
+        public void DisableHitBoxRender() => _renderHitBox = false;
 
-        public void EnableHitBoxRender()
-        {
-            _renderHitBox = true;
-        }
+        public void EnableHitBoxRender() => _renderHitBox = true;
 
-        public void DisableSteeringBehaviorRender()
-        {
-            _renderSteeringBehavior = false;
-        }
+        public void DisableSteeringBehaviorRender() => _renderSteeringBehavior = false;
 
-        public void EnableSteeringBehaviorRender()
-        {
-            _renderSteeringBehavior = true;
-        }
+        public void EnableSteeringBehaviorRender() => _renderSteeringBehavior = true;
 
-        public void DisableVelocityRender()
-        {
-            _renderVelocity = false;
-        }
+        public void DisableVelocityRender() => _renderVelocity = false;
 
-        public void EnableVelocityRender()
-        {
-            _renderVelocity = true;
-        }
+        public void EnableVelocityRender() => _renderVelocity = true;
+
+        public void DisablePlayerMoveOnMouseClick() => _allowPlayerMoveOnMouseClick = false;
+        public void EnablePlayerMoveOnMouseClick() => _allowPlayerMoveOnMouseClick = true;
 
         private void OnWorldFormKeyDown(object sender, KeyEventArgs eventArgs)
         {
@@ -277,9 +237,6 @@ namespace SteeringCS
             }
         }
 
-        private void OnWorldFormKeyUp(object sender, KeyEventArgs eventArgs)
-        {
-            KeyHandler.RegisterUnpressedKeys(KeyEventArgsConverter.CreateFromEvent(eventArgs));
-        }
+        private void OnWorldFormKeyUp(object sender, KeyEventArgs eventArgs) => KeyHandler.RegisterUnpressedKeys(KeyEventArgsConverter.CreateFromEvent(eventArgs));
     }
 }

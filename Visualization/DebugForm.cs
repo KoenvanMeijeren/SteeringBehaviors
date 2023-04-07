@@ -386,5 +386,16 @@ namespace SteeringCS
             WorldVisualization world = _worldForm.World;
             world.UpdateEnemies(enemiesCount);
         }
+
+        private void checkBoxShouldMovePlayerOnClick_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShouldMovePlayerOnClick.Checked)
+            {
+                _worldForm.EnablePlayerMoveOnMouseClick();
+                return;
+            }
+
+            _worldForm.DisablePlayerMoveOnMouseClick();
+        }
     }
 }
