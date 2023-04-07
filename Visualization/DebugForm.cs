@@ -246,6 +246,7 @@ namespace SteeringCS
                 ConsequenceRightShoulderMaxValue.Invoke((MethodInvoker)(() => ConsequenceRightShoulderMaxValue.Text = world.FuzzyLogicData.VeryDesirableRightShoulderMaxValue.ToString("N2")));
             }
 
+            distanceToPlayerValue.Invoke((MethodInvoker)(() => distanceToPlayerValue.Text = world.FuzzyLogicData.DistanceToPlayer.ToString("N2")));
             distanceToNearestGoombaValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaValue.Text = world.FuzzyLogicData.DistanceToNearestGoomba.ToString("N2")));
             desirabilityToFollowMarioPercentageValue.Invoke((MethodInvoker)(() => desirabilityToFollowMarioPercentageValue.Text = world.FuzzyLogicData.DeFuzzifiedValue.ToString("N2")));
         }
@@ -669,6 +670,17 @@ namespace SteeringCS
                 double value = (double)ConsequenceRightShoulderMaxValue.Value;
                 _worldForm.World.FuzzyLogicData.VeryDesirableRightShoulderMaxValue = value;
             }));
+        }
+
+        private void enableFuzzyLogicCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (enableFuzzyLogicCheckbox.Checked)
+            {
+                _worldForm.World.FuzzyLogicData.IsEnabled = true;
+                return;
+            }
+            
+            _worldForm.World.FuzzyLogicData.IsEnabled = false;
         }
     }
 }

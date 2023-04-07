@@ -40,9 +40,10 @@ namespace SteeringCS
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.enableFuzzyLogicCheckbox = new System.Windows.Forms.CheckBox();
             this.desirabilityToFollowMarioPercentageValue = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.distanceToNearestGoombaPercentageValue = new System.Windows.Forms.Label();
+            this.distanceToPlayerValue = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxShouldMovePlayerOnClick = new System.Windows.Forms.CheckBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -161,9 +162,10 @@ namespace SteeringCS
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.enableFuzzyLogicCheckbox);
             this.mainPanel.Controls.Add(this.desirabilityToFollowMarioPercentageValue);
             this.mainPanel.Controls.Add(this.label4);
-            this.mainPanel.Controls.Add(this.distanceToNearestGoombaPercentageValue);
+            this.mainPanel.Controls.Add(this.distanceToPlayerValue);
             this.mainPanel.Controls.Add(this.label3);
             this.mainPanel.Controls.Add(this.checkBoxShouldMovePlayerOnClick);
             this.mainPanel.Controls.Add(this.label26);
@@ -252,6 +254,17 @@ namespace SteeringCS
             this.mainPanel.Size = new System.Drawing.Size(418, 728);
             this.mainPanel.TabIndex = 1;
             // 
+            // enableFuzzyLogicCheckbox
+            // 
+            this.enableFuzzyLogicCheckbox.AutoSize = true;
+            this.enableFuzzyLogicCheckbox.Location = new System.Drawing.Point(4, 358);
+            this.enableFuzzyLogicCheckbox.Name = "enableFuzzyLogicCheckbox";
+            this.enableFuzzyLogicCheckbox.Size = new System.Drawing.Size(144, 21);
+            this.enableFuzzyLogicCheckbox.TabIndex = 111;
+            this.enableFuzzyLogicCheckbox.Text = "Enable fuzzy logic";
+            this.enableFuzzyLogicCheckbox.UseVisualStyleBackColor = true;
+            this.enableFuzzyLogicCheckbox.CheckedChanged += new System.EventHandler(this.enableFuzzyLogicCheckbox_CheckedChanged);
+            // 
             // desirabilityToFollowMarioPercentageValue
             // 
             this.desirabilityToFollowMarioPercentageValue.AutoSize = true;
@@ -270,28 +283,28 @@ namespace SteeringCS
             this.label4.TabIndex = 109;
             this.label4.Text = "Desirability to follow Mario";
             // 
-            // distanceToNearestGoombaPercentageValue
+            // distanceToPlayerValue
             // 
-            this.distanceToNearestGoombaPercentageValue.AutoSize = true;
-            this.distanceToNearestGoombaPercentageValue.Location = new System.Drawing.Point(241, 536);
-            this.distanceToNearestGoombaPercentageValue.Name = "distanceToNearestGoombaPercentageValue";
-            this.distanceToNearestGoombaPercentageValue.Size = new System.Drawing.Size(13, 17);
-            this.distanceToNearestGoombaPercentageValue.TabIndex = 108;
-            this.distanceToNearestGoombaPercentageValue.Text = "-";
+            this.distanceToPlayerValue.AutoSize = true;
+            this.distanceToPlayerValue.Location = new System.Drawing.Point(241, 536);
+            this.distanceToPlayerValue.Name = "distanceToPlayerValue";
+            this.distanceToPlayerValue.Size = new System.Drawing.Size(13, 17);
+            this.distanceToPlayerValue.TabIndex = 108;
+            this.distanceToPlayerValue.Text = "-";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(8, 536);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(186, 17);
+            this.label3.Size = new System.Drawing.Size(122, 17);
             this.label3.TabIndex = 107;
-            this.label3.Text = "Distance to nearest goomba";
+            this.label3.Text = "Distance to player";
             // 
             // checkBoxShouldMovePlayerOnClick
             // 
             this.checkBoxShouldMovePlayerOnClick.AutoSize = true;
-            this.checkBoxShouldMovePlayerOnClick.Location = new System.Drawing.Point(263, 345);
+            this.checkBoxShouldMovePlayerOnClick.Location = new System.Drawing.Point(263, 338);
             this.checkBoxShouldMovePlayerOnClick.Name = "checkBoxShouldMovePlayerOnClick";
             this.checkBoxShouldMovePlayerOnClick.Size = new System.Drawing.Size(158, 21);
             this.checkBoxShouldMovePlayerOnClick.TabIndex = 106;
@@ -974,7 +987,7 @@ namespace SteeringCS
             // ShowVelocityCheckbox
             // 
             this.ShowVelocityCheckbox.AutoSize = true;
-            this.ShowVelocityCheckbox.Location = new System.Drawing.Point(4, 345);
+            this.ShowVelocityCheckbox.Location = new System.Drawing.Point(4, 338);
             this.ShowVelocityCheckbox.Name = "ShowVelocityCheckbox";
             this.ShowVelocityCheckbox.Size = new System.Drawing.Size(115, 21);
             this.ShowVelocityCheckbox.TabIndex = 18;
@@ -1018,7 +1031,7 @@ namespace SteeringCS
             // ShowGridCheckbox
             // 
             this.ShowGridCheckbox.AutoSize = true;
-            this.ShowGridCheckbox.Location = new System.Drawing.Point(134, 345);
+            this.ShowGridCheckbox.Location = new System.Drawing.Point(134, 338);
             this.ShowGridCheckbox.Name = "ShowGridCheckbox";
             this.ShowGridCheckbox.Size = new System.Drawing.Size(92, 21);
             this.ShowGridCheckbox.TabIndex = 14;
@@ -1162,7 +1175,9 @@ namespace SteeringCS
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Label distanceToNearestGoombaPercentageValue;
+        private System.Windows.Forms.CheckBox enableFuzzyLogicCheckbox;
+
+        private System.Windows.Forms.Label distanceToPlayerValue;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label desirabilityToFollowMarioPercentageValue;
         private System.Windows.Forms.Label label4;

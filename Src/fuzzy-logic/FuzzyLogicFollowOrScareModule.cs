@@ -17,27 +17,33 @@ namespace Src.fuzzy_logic
             _movingEntity = movingEntity;
         }
 
-        private Tuple<double, string> CalculateNearestGoombaData()
+        private Tuple<IEnemy, double> CalculateNearestGoombaData()
         {
             double distanceToNearestGoomba = 800;
-            string stateOfNearestGoomba = null;
+            IEnemy nearestEnemy = null;
             foreach (IEnemy goomba in _movingEntity.World.Enemies)
             {
                 double distanceToGoomba = _movingEntity.Position.DistanceBetween(goomba.Position);
                 if (distanceToGoomba < distanceToNearestGoomba)
                 {
                     distanceToNearestGoomba = distanceToGoomba;
-                    stateOfNearestGoomba = goomba.State?.ToString() ?? "";
+                    nearestEnemy = goomba;
                 }
             }
 
-            return new Tuple<double, string>(distanceToNearestGoomba, stateOfNearestGoomba);
+            return new Tuple<IEnemy, double>(nearestEnemy, distanceToNearestGoomba);
         }
 
         public bool ShouldFollowPlayer()
         {
-            Tuple<double, string> nearestGoombaData = CalculateNearestGoombaData();
-            FuzzyLogicData.DistanceToNearestGoomba = nearestGoombaData.Item1;
+            Tuple<IEnemy, double> nearestGoombaData = CalculateNearestGoombaData();
+            IEnemy nearestEnemy = nearestGoombaData.Item1;
+            FuzzyLogicData.DistanceToPlayer = _movingEntity.World.Player.Position.DistanceBetween(_movingEntity.Position);
+            FuzzyLogicData.DistanceToNearestGoomba = nearestGoombaData.Item2;
+            if (!FuzzyLogicData.IsEnabled)
+            {
+                return FuzzyLogicData.DistanceToNearestGoomba > 40;
+            }
 
             FuzzyModule fuzzyModule = new FuzzyModule();
             FuzzyVariable distanceToNearestGoomba = fuzzyModule.CreateFlv(FuzzyLogicFollowOrScareDataTransferObject.FuzzyVariableDistanceToNearestGoombaName);
@@ -56,7 +62,7 @@ namespace Src.fuzzy_logic
             fuzzyModule.Fuzzify(FuzzyLogicFollowOrScareDataTransferObject.FuzzyVariableDistanceToNearestGoombaName, FuzzyLogicData.DistanceToNearestGoomba);
             FuzzyLogicData.DeFuzzifiedValue = fuzzyModule.DeFuzzify(FuzzyLogicFollowOrScareDataTransferObject.FuzzyVariableDesirabilityName);
 
-            return FuzzyLogicData.DeFuzzifiedValue == 0 && !nearestGoombaData.Item2.Equals("Chase");
+            return FuzzyLogicData.DeFuzzifiedValue == 0 && !nearestEnemy.State.ToString().Equals("Chase");
         }
     }
 
@@ -91,7 +97,10 @@ namespace Src.fuzzy_logic
         public double VeryDesirableRightShoulderMinValue { get; set; } = DefaultRightShoulderMinValue;
         public double VeryDesirableRightShoulderPeakValue { get; set; } = DefaultRightShoulderPeakValue;
         public double VeryDesirableRightShoulderMaxValue { get; set; } = DefaultRightShoulderMaxValue;
+        public double DistanceToPlayer { get; set; } = 800;
         public double DistanceToNearestGoomba { get; set; } = 800;
         public double DeFuzzifiedValue { get; set; }
+        
+        public bool IsEnabled { get; set; }
     }
 }
