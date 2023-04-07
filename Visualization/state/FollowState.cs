@@ -26,7 +26,7 @@ namespace SteeringCS.state
         public void Execute()
         {
             // FUZY LOGIC (change to scared if fuzzy logics says so)
-            MovingEntity.ChangeState(new ScaredState(MovingEntity));
+            /*MovingEntity.ChangeState(new ScaredState(MovingEntity));*/
         }
 
         public override string ToString() => "Follow";

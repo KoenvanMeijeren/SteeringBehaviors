@@ -12,7 +12,7 @@ namespace SteeringCS.state
     public class SearchState : IState
     {
         public IMovingEntity MovingEntity { get; }
-        private const int _searchDistance = 80;
+        private const int _searchDistance = 200;
         private const int _maxShortestPathDistance = 3;
 
         public SearchState(IMovingEntity movingEntity)

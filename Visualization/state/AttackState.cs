@@ -16,7 +16,7 @@ namespace SteeringCS.state
     {
         public IMovingEntity MovingEntity { get; }
         private IAttackState _attackState;
-        private const int _maxShortestPathDistance = 3;
+        private const int _maxShortestPathDistance = 4;
         public const int _maxPower = 100;
         public int Power { get; set; } = _maxPower;
 
