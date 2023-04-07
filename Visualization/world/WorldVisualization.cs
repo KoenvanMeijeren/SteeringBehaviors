@@ -18,7 +18,7 @@ namespace SteeringCS.world
         public WorldVisualization(int width, int height) : base(width, height)
         {
         }
-        
+
         protected override IGrid GetGrid() => new Grid(Width, Height, true);
 
         protected override List<IEnemy> GetEnemies(int enemiesCount)

@@ -679,7 +679,7 @@ namespace SteeringCS
                 _worldForm.World.FuzzyLogicData.IsEnabled = true;
                 return;
             }
-            
+
             _worldForm.World.FuzzyLogicData.IsEnabled = false;
         }
     }

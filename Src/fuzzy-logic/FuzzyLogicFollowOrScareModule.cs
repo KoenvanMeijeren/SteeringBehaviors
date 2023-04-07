@@ -36,10 +36,9 @@ namespace Src.fuzzy_logic
 
         public bool ShouldFollowPlayer()
         {
-            Tuple<IEnemy, double> nearestGoombaData = CalculateNearestGoombaData();
-            IEnemy nearestEnemy = nearestGoombaData.Item1;
+            (IEnemy nearestEnemy, double distanceToNearestGoombaValue) = CalculateNearestGoombaData();
             FuzzyLogicData.DistanceToPlayer = _movingEntity.World.Player.Position.DistanceBetween(_movingEntity.Position);
-            FuzzyLogicData.DistanceToNearestGoomba = nearestGoombaData.Item2;
+            FuzzyLogicData.DistanceToNearestGoomba = distanceToNearestGoombaValue;
             if (!FuzzyLogicData.IsEnabled)
             {
                 return FuzzyLogicData.DistanceToNearestGoomba > 40;
@@ -100,7 +99,7 @@ namespace Src.fuzzy_logic
         public double DistanceToPlayer { get; set; } = 800;
         public double DistanceToNearestGoomba { get; set; } = 800;
         public double DeFuzzifiedValue { get; set; }
-        
+
         public bool IsEnabled { get; set; }
     }
 }
