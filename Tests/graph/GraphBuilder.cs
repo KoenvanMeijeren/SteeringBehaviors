@@ -50,7 +50,7 @@ namespace Tests.graph
 
         public static Graph CreateGridGraph(int width, int height)
         {
-            Grid grid = new Grid(width, height);
+            Grid grid = new Grid(width, height, false);
 
             return grid.Graph;
         }

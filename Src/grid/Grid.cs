@@ -14,7 +14,7 @@ namespace Src.grid
         public Graph Graph { get; private set; }
         private readonly Dictionary<IMovingEntity, PathTile> _entities;
 
-        public Grid(int width, int height)
+        public Grid(int width, int height, bool initializeMazeTiles)
         {
             Width = width;
             Height = height;
@@ -22,7 +22,11 @@ namespace Src.grid
 
             InitializeGridTilesArray();
             InitializeOutsideWallTiles();
-            InitializeMazeTiles();
+            if (initializeMazeTiles)
+            {
+                InitializeMazeTiles();
+            }
+            
             InitializeFinishTiles();
             InitializePathTiles();
             InitializeGraph();
@@ -327,6 +331,17 @@ namespace Src.grid
             currentPathTile.RemoveEntity(entity);
             newPathTile.AddEntity(entity);
             _entities[entity] = newPathTile;
+        }
+
+        public void RemoveEntity(IMovingEntity entity)
+        {
+            if (entity == null)
+            {
+                return;
+            }
+
+            PathTile currentPathTile = _entities[entity];
+            currentPathTile.RemoveEntity(entity);
         }
 
         private static bool IsPositionWithInBounds(int row, int column, GridTile[,] tiles)

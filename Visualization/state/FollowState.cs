@@ -26,12 +26,10 @@ namespace SteeringCS.state
 
         public void Execute()
         {
-            if (_fuzzyModule.ShouldFollowPlayer())
+            if (!_fuzzyModule.ShouldFollowPlayer())
             {
-                return;
+                MovingEntity.ChangeState(new ScaredState(MovingEntity));
             }
-
-            MovingEntity.ChangeState(new ScaredState(MovingEntity));
         }
 
         public override string ToString() => "Follow";

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using Src.entity;
+using Src.world;
 using SteeringCS.events;
 using SteeringCS.world;
 
@@ -131,6 +132,123 @@ namespace SteeringCS
             {
                 Enemy3StateValue.Invoke((MethodInvoker)(() => Enemy3StateValue.Text = enemy3.State.ToString()));
             }
+
+            if (world.Enemies.Count != enemiesValue.Value)
+            {
+                enemiesValue.Invoke((MethodInvoker)(() => enemiesValue.Value = WorldBase.DefaultEnemiesCount));
+            }
+
+            if (distanceToNearestGoombaLeftShoulderMinValue.Value !=
+                (decimal)world.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderMinValue)
+            {
+                distanceToNearestGoombaLeftShoulderMinValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaLeftShoulderMinValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderMinValue.ToString("N2")));
+            }
+
+            if (distanceToNearestGoombaLeftShoulderPeakValue.Value !=
+                (decimal)world.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderPeakValue)
+            {
+                distanceToNearestGoombaLeftShoulderMinValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaLeftShoulderPeakValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderPeakValue.ToString("N2")));
+            }
+
+            if (distanceToNearestGoombaLeftShoulderMaxValue.Value !=
+                (decimal)world.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderMaxValue)
+            {
+                distanceToNearestGoombaLeftShoulderMaxValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaLeftShoulderMaxValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderMaxValue.ToString("N2")));
+            }
+
+            if (distanceToNearestGoombaTriangleMinValue.Value !=
+                (decimal)world.FuzzyLogicData.DistanceToNearestGoombaTriangleMinValue)
+            {
+                distanceToNearestGoombaTriangleMinValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaTriangleMinValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaTriangleMinValue.ToString("N2")));
+            }
+
+            if (distanceToNearestGoombaTrianglePeakValue.Value !=
+                (decimal)world.FuzzyLogicData.DistanceToNearestGoombaTrianglePeakValue)
+            {
+                distanceToNearestGoombaTriangleMinValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaTrianglePeakValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaTrianglePeakValue.ToString("N2")));
+            }
+
+            if (distanceToNearestGoombaTriangleMaxValue.Value !=
+                (decimal)world.FuzzyLogicData.DistanceToNearestGoombaTriangleMaxValue)
+            {
+                distanceToNearestGoombaTriangleMaxValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaTriangleMaxValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaTriangleMaxValue.ToString("N2")));
+            }
+
+            if (distanceToNearestGoombaRightShoulderMinValue.Value !=
+                (decimal)world.FuzzyLogicData.DistanceToNearestGoombaRightShoulderMinValue)
+            {
+                distanceToNearestGoombaRightShoulderMinValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaRightShoulderMinValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaRightShoulderMinValue.ToString("N2")));
+            }
+
+            if (distanceToNearestGoombaRightShoulderPeakValue.Value !=
+                (decimal)world.FuzzyLogicData.DistanceToNearestGoombaRightShoulderPeakValue)
+            {
+                distanceToNearestGoombaRightShoulderMinValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaRightShoulderPeakValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaRightShoulderPeakValue.ToString("N2")));
+            }
+
+            if (distanceToNearestGoombaRightShoulderMaxValue.Value !=
+                (decimal)world.FuzzyLogicData.DistanceToNearestGoombaRightShoulderMaxValue)
+            {
+                distanceToNearestGoombaRightShoulderMaxValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaRightShoulderMaxValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaRightShoulderMaxValue.ToString("N2")));
+            }
+
+            if (ConsequenceLeftShoulderMinValue.Value !=
+                (decimal)world.FuzzyLogicData.UndesirableLeftShoulderMinValue)
+            {
+                ConsequenceLeftShoulderMinValue.Invoke((MethodInvoker)(() => ConsequenceLeftShoulderMinValue.Text = world.FuzzyLogicData.UndesirableLeftShoulderMinValue.ToString("N2")));
+            }
+
+            if (ConsequenceLeftShoulderPeakValue.Value !=
+                (decimal)world.FuzzyLogicData.UndesirableLeftShoulderPeakValue)
+            {
+                ConsequenceLeftShoulderPeakValue.Invoke((MethodInvoker)(() => ConsequenceLeftShoulderPeakValue.Text = world.FuzzyLogicData.UndesirableLeftShoulderPeakValue.ToString("N2")));
+            }
+
+            if (ConsequenceLeftShoulderMaxValue.Value !=
+                (decimal)world.FuzzyLogicData.UndesirableLeftShoulderMaxValue)
+            {
+                ConsequenceLeftShoulderMaxValue.Invoke((MethodInvoker)(() => ConsequenceLeftShoulderMaxValue.Text = world.FuzzyLogicData.UndesirableLeftShoulderMaxValue.ToString("N2")));
+            }
+
+            if (ConsequenceTriangleMinValue.Value !=
+                (decimal)world.FuzzyLogicData.DesirableTriangleMinValue)
+            {
+                ConsequenceTriangleMinValue.Invoke((MethodInvoker)(() => ConsequenceTriangleMinValue.Text = world.FuzzyLogicData.DesirableTriangleMinValue.ToString("N2")));
+            }
+
+            if (ConsequenceTrianglePeakValue.Value !=
+                (decimal)world.FuzzyLogicData.DesirableTrianglePeakValue)
+            {
+                ConsequenceTrianglePeakValue.Invoke((MethodInvoker)(() => ConsequenceTrianglePeakValue.Text = world.FuzzyLogicData.DesirableTrianglePeakValue.ToString("N2")));
+            }
+
+            if (ConsequenceTriangleMaxValue.Value !=
+                (decimal)world.FuzzyLogicData.DesirableTriangleMaxValue)
+            {
+                ConsequenceTriangleMaxValue.Invoke((MethodInvoker)(() => ConsequenceTriangleMaxValue.Text = world.FuzzyLogicData.DesirableTriangleMaxValue.ToString("N2")));
+            }
+
+            if (ConsequenceRightShoulderMinValue.Value !=
+                (decimal)world.FuzzyLogicData.VeryDesirableRightShoulderMinValue)
+            {
+                ConsequenceRightShoulderMinValue.Invoke((MethodInvoker)(() => ConsequenceRightShoulderMinValue.Text = world.FuzzyLogicData.VeryDesirableRightShoulderMinValue.ToString("N2")));
+            }
+
+            if (ConsequenceRightShoulderPeakValue.Value !=
+                (decimal)world.FuzzyLogicData.VeryDesirableRightShoulderPeakValue)
+            {
+                ConsequenceRightShoulderPeakValue.Invoke((MethodInvoker)(() => ConsequenceRightShoulderPeakValue.Text = world.FuzzyLogicData.VeryDesirableRightShoulderPeakValue.ToString("N2")));
+            }
+
+            if (ConsequenceRightShoulderMaxValue.Value !=
+                (decimal)world.FuzzyLogicData.VeryDesirableRightShoulderMaxValue)
+            {
+                ConsequenceRightShoulderMaxValue.Invoke((MethodInvoker)(() => ConsequenceRightShoulderMaxValue.Text = world.FuzzyLogicData.VeryDesirableRightShoulderMaxValue.ToString("N2")));
+            }
+
+            distanceToNearestGoombaValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaValue.Text = world.FuzzyLogicData.DistanceToNearestGoomba.ToString("N2")));
+            distanceToNearestGoombaPercentageValue.Invoke((MethodInvoker)(() => distanceToNearestGoombaPercentageValue.Text = world.FuzzyLogicData.DistanceToNearestGoombaConverted.ToString("N2")));
+            desirabilityToFollowMarioPercentageValue.Invoke((MethodInvoker)(() => desirabilityToFollowMarioPercentageValue.Text = world.FuzzyLogicData.DeFuzzifiedValue.ToString("N2")));
         }
 
         private void UpdateIntervalSelectorValueChangedChanged(object sender, EventArgs e)
@@ -372,6 +490,186 @@ namespace SteeringCS
             }
 
             enemy.MaxSpeed = maxSpeed;
+        }
+
+        private void enemiesValue_ValueChanged(object sender, EventArgs e)
+        {
+            int enemiesCount = (int)enemiesValue.Value;
+            WorldVisualization world = _worldForm.World;
+            world.UpdateEnemies(enemiesCount);
+        }
+
+        private void checkBoxShouldMovePlayerOnClick_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShouldMovePlayerOnClick.Checked)
+            {
+                _worldForm.EnablePlayerMoveOnMouseClick();
+                return;
+            }
+
+            _worldForm.DisablePlayerMoveOnMouseClick();
+        }
+
+        private void distanceToNearestGoombaLeftShoulderMinValue_ValueChanged(object sender, EventArgs e)
+        {
+            distanceToNearestGoombaLeftShoulderMinValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)distanceToNearestGoombaLeftShoulderMinValue.Value;
+                _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderMinValue = value;
+            }));
+        }
+
+        private void distanceToNearestGoombaLeftShoulderPeakValue_ValueChanged(object sender, EventArgs e)
+        {
+            distanceToNearestGoombaLeftShoulderPeakValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)distanceToNearestGoombaLeftShoulderPeakValue.Value;
+                _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderPeakValue = value;
+            }));
+        }
+
+        private void distanceToNearestGoombaLeftShoulderMaxValue_ValueChanged(object sender, EventArgs e)
+        {
+            distanceToNearestGoombaLeftShoulderMaxValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)distanceToNearestGoombaLeftShoulderMaxValue.Value;
+                _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaLeftShoulderMaxValue = value;
+            }));
+        }
+
+        private void distanceToNearestGoombaTriangleMinValue_ValueChanged(object sender, EventArgs e)
+        {
+            distanceToNearestGoombaTriangleMinValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)distanceToNearestGoombaTriangleMinValue.Value;
+                _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaTriangleMinValue = value;
+            }));
+        }
+
+        private void distanceToNearestGoombaTrianglePeakValue_ValueChanged(object sender, EventArgs e)
+        {
+            distanceToNearestGoombaTrianglePeakValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)distanceToNearestGoombaTrianglePeakValue.Value;
+                _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaTrianglePeakValue = value;
+            }));
+        }
+
+        private void distanceToNearestGoombaTriangleMaxValue_ValueChanged(object sender, EventArgs e)
+        {
+            distanceToNearestGoombaTriangleMaxValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)distanceToNearestGoombaTriangleMaxValue.Value;
+                _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaTriangleMaxValue = value;
+            }));
+        }
+
+        private void distanceToNearestGoombaRightShoulderMinValue_ValueChanged(object sender, EventArgs e)
+        {
+            distanceToNearestGoombaRightShoulderMinValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)distanceToNearestGoombaRightShoulderMinValue.Value;
+                _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaRightShoulderMinValue = value;
+            }));
+        }
+
+        private void distanceToNearestGoombaRightShoulderPeakValue_ValueChanged(object sender, EventArgs e)
+        {
+            distanceToNearestGoombaRightShoulderPeakValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)distanceToNearestGoombaRightShoulderPeakValue.Value;
+                _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaRightShoulderPeakValue = value;
+            }));
+        }
+
+        private void distanceToNearestGoombaRightShoulderMaxValue_ValueChanged(object sender, EventArgs e)
+        {
+            distanceToNearestGoombaRightShoulderMaxValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)distanceToNearestGoombaRightShoulderMaxValue.Value;
+                _worldForm.World.FuzzyLogicData.DistanceToNearestGoombaRightShoulderMaxValue = value;
+            }));
+        }
+
+        private void ConsequenceLeftShoulderMinValue_ValueChanged(object sender, EventArgs e)
+        {
+            ConsequenceLeftShoulderMinValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)ConsequenceLeftShoulderMinValue.Value;
+                _worldForm.World.FuzzyLogicData.UndesirableLeftShoulderMinValue = value;
+            }));
+        }
+
+        private void ConsequenceLeftShoulderPeakValue_ValueChanged(object sender, EventArgs e)
+        {
+            ConsequenceLeftShoulderPeakValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)ConsequenceLeftShoulderPeakValue.Value;
+                _worldForm.World.FuzzyLogicData.UndesirableLeftShoulderPeakValue = value;
+            }));
+        }
+
+        private void ConsequenceLeftShoulderMaxValue_ValueChanged(object sender, EventArgs e)
+        {
+            ConsequenceLeftShoulderMaxValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)ConsequenceLeftShoulderMaxValue.Value;
+                _worldForm.World.FuzzyLogicData.UndesirableLeftShoulderMaxValue = value;
+            }));
+        }
+
+        private void ConsequenceTriangleMinValue_ValueChanged(object sender, EventArgs e)
+        {
+            ConsequenceTriangleMinValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)ConsequenceTriangleMinValue.Value;
+                _worldForm.World.FuzzyLogicData.DesirableTriangleMinValue = value;
+            }));
+        }
+
+        private void ConsequenceTrianglePeakValue_ValueChanged(object sender, EventArgs e)
+        {
+            ConsequenceTrianglePeakValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)ConsequenceTrianglePeakValue.Value;
+                _worldForm.World.FuzzyLogicData.DesirableTrianglePeakValue = value;
+            }));
+        }
+
+        private void ConsequenceTriangleMaxValue_ValueChanged(object sender, EventArgs e)
+        {
+            ConsequenceTriangleMaxValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)ConsequenceTriangleMaxValue.Value;
+                _worldForm.World.FuzzyLogicData.DesirableTriangleMaxValue = value;
+            }));
+        }
+
+        private void ConsequenceRightShoulderMinValue_ValueChanged(object sender, EventArgs e)
+        {
+            ConsequenceRightShoulderMinValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)ConsequenceRightShoulderMinValue.Value;
+                _worldForm.World.FuzzyLogicData.VeryDesirableRightShoulderMinValue = value;
+            }));
+        }
+
+        private void ConsequenceRightShoulderPeakValue_ValueChanged(object sender, EventArgs e)
+        {
+            ConsequenceRightShoulderPeakValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)ConsequenceRightShoulderPeakValue.Value;
+                _worldForm.World.FuzzyLogicData.VeryDesirableRightShoulderPeakValue = value;
+            }));
+        }
+
+        private void ConsequenceRightShoulderMaxValue_ValueChanged(object sender, EventArgs e)
+        {
+            ConsequenceRightShoulderMaxValue.Invoke((MethodInvoker)(() =>
+            {
+                double value = (double)ConsequenceRightShoulderMaxValue.Value;
+                _worldForm.World.FuzzyLogicData.VeryDesirableRightShoulderMaxValue = value;
+            }));
         }
     }
 }

@@ -18,11 +18,13 @@ namespace SteeringCS.world
         public WorldVisualization(int width, int height) : base(width, height)
         {
         }
+        
+        protected override IGrid GetGrid() => new Grid(Width, Height, true);
 
-        protected override List<IEnemy> GetEnemies()
+        protected override List<IEnemy> GetEnemies(int enemiesCount)
         {
             List<IEnemy> enemies = new List<IEnemy>();
-            for (int index = 0; index < 7; index++)
+            for (int index = 0; index < enemiesCount; index++)
             {
                 PathTile randomPathTile = Grid.GetRandomPathTile();
                 Goomba goomba = new Goomba(

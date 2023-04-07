@@ -1,7 +1,8 @@
-﻿using Src.entity;
+﻿using System.Collections.Generic;
+using Src.entity;
+using Src.fuzzy_logic;
 using Src.grid;
 using Src.util;
-using System.Collections.Generic;
 
 namespace Src.world
 {
@@ -11,9 +12,9 @@ namespace Src.world
         IRescuee Rescuee { get; }
         List<IEnemy> Enemies { get; }
         IGrid Grid { get; }
-
         int Width { get; }
         int Height { get; }
         Vector Center { get; }
+        FuzzyLogicFollowOrScareDataTransferObject FuzzyLogicData { get; }
     }
 }

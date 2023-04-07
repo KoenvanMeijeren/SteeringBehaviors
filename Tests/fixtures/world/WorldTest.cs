@@ -13,23 +13,16 @@ namespace Tests.fixtures.world
         {
             Player = new VehicleTest(targetEntityPosition, this);
             Rescuee = new VehicleTest(seekingEntityPosition, this);
-            Grid = new Grid(width, height);
+            Grid = new Grid(width, height, false);
             Grid.AddOrMoveEntity(Player);
         }
 
-        protected override List<IEnemy> GetEnemies()
-        {
-            return new List<IEnemy>();
-        }
+        protected override IGrid GetGrid() => new Grid(Width, Height, false);
 
-        protected override IPlayer GetPlayer()
-        {
-            return null;
-        }
+        protected override List<IEnemy> GetEnemies(int enemiesCount) => new();
 
-        protected override IRescuee GetRescuee()
-        {
-            return null;
-        }
+        protected override IPlayer GetPlayer() => null;
+
+        protected override IRescuee GetRescuee() => null;
     }
 }
