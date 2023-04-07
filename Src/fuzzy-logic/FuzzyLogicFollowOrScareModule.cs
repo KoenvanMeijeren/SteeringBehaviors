@@ -19,7 +19,7 @@ namespace Src.fuzzy_logic
 
         private Tuple<IEnemy, double> CalculateNearestGoombaData()
         {
-            double distanceToNearestGoomba = 800;
+            double distanceToNearestGoomba = FuzzyLogicFollowOrScareDataTransferObject.MaximumDistanceToNearestGoomba;
             IEnemy nearestEnemy = null;
             foreach (IEnemy goomba in _movingEntity.World.Enemies)
             {
@@ -96,8 +96,9 @@ namespace Src.fuzzy_logic
         public double VeryDesirableRightShoulderMinValue { get; set; } = DefaultRightShoulderMinValue;
         public double VeryDesirableRightShoulderPeakValue { get; set; } = DefaultRightShoulderPeakValue;
         public double VeryDesirableRightShoulderMaxValue { get; set; } = DefaultRightShoulderMaxValue;
-        public double DistanceToPlayer { get; set; } = 800;
-        public double DistanceToNearestGoomba { get; set; } = 800;
+        public const double MaximumDistanceToNearestGoomba = 800;
+        public double DistanceToPlayer { get; set; } = MaximumDistanceToNearestGoomba;
+        public double DistanceToNearestGoomba { get; set; } = MaximumDistanceToNearestGoomba;
         public double DeFuzzifiedValue { get; set; }
 
         public bool IsEnabled { get; set; }
