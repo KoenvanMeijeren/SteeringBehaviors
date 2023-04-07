@@ -33,7 +33,7 @@ namespace SteeringCS.state
                 MovingEntity.ChangeState(new LostState(MovingEntity));
                 return;
             }
-            
+
             if (!_fuzzyModule.ShouldFollowPlayer())
             {
                 return;
