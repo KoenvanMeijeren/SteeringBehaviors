@@ -195,8 +195,9 @@ namespace SteeringCS
         public void UpdateWorld()
         {
             World.Update(TimeDelta);
-
             dbPanel.Invalidate();
+
+            UpdateWorldEventHandler?.Invoke(this, new UpdateWorldEvent(World));
         }
 
         public void DisableGridRender() => _renderGrid = false;
