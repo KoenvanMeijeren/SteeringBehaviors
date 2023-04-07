@@ -493,18 +493,20 @@ namespace SteeringCS
             // 
             // antecedentDTNGLeftShoulderMaxValue
             // 
+            this.antecedentDTNGLeftShoulderMaxValue.DecimalPlaces = 2;
+            this.antecedentDTNGLeftShoulderMaxValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.antecedentDTNGLeftShoulderMaxValue.Location = new System.Drawing.Point(60, 494);
             this.antecedentDTNGLeftShoulderMaxValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTNGLeftShoulderMaxValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.antecedentDTNGLeftShoulderMaxValue.Name = "antecedentDTNGLeftShoulderMaxValue";
             this.antecedentDTNGLeftShoulderMaxValue.Size = new System.Drawing.Size(51, 22);
             this.antecedentDTNGLeftShoulderMaxValue.TabIndex = 79;
             // 
             // antecedentDTNGLeftShoulderPeakValue
             // 
+            this.antecedentDTNGLeftShoulderPeakValue.DecimalPlaces = 2;
+            this.antecedentDTNGLeftShoulderPeakValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.antecedentDTNGLeftShoulderPeakValue.Location = new System.Drawing.Point(59, 466);
             this.antecedentDTNGLeftShoulderPeakValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTNGLeftShoulderPeakValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.antecedentDTNGLeftShoulderPeakValue.Name = "antecedentDTNGLeftShoulderPeakValue";
             this.antecedentDTNGLeftShoulderPeakValue.Size = new System.Drawing.Size(51, 22);
             this.antecedentDTNGLeftShoulderPeakValue.TabIndex = 78;
@@ -565,9 +567,10 @@ namespace SteeringCS
             // 
             // antecedentDTNGLeftShoulderMinValue
             // 
+            this.antecedentDTNGLeftShoulderMinValue.DecimalPlaces = 2;
+            this.antecedentDTNGLeftShoulderMinValue.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
             this.antecedentDTNGLeftShoulderMinValue.Location = new System.Drawing.Point(60, 444);
             this.antecedentDTNGLeftShoulderMinValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.antecedentDTNGLeftShoulderMinValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
             this.antecedentDTNGLeftShoulderMinValue.Name = "antecedentDTNGLeftShoulderMinValue";
             this.antecedentDTNGLeftShoulderMinValue.Size = new System.Drawing.Size(51, 22);
             this.antecedentDTNGLeftShoulderMinValue.TabIndex = 71;
@@ -578,9 +581,9 @@ namespace SteeringCS
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(-1, 549);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(264, 17);
+            this.label6.Size = new System.Drawing.Size(312, 17);
             this.label6.TabIndex = 55;
-            this.label6.Text = "Variable Desirability to follow mario";
+            this.label6.Text = "Variable Desirability to follow Mario (in %)";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label5
@@ -589,9 +592,9 @@ namespace SteeringCS
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(-1, 407);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(275, 17);
+            this.label5.Size = new System.Drawing.Size(323, 17);
             this.label5.TabIndex = 54;
-            this.label5.Text = "Variable distance to nearest goomba";
+            this.label5.Text = "Variable distance to nearest goomba (in %)";
             // 
             // enemiesLabel
             // 
@@ -606,7 +609,7 @@ namespace SteeringCS
             // 
             this.enemiesValue.Location = new System.Drawing.Point(209, 174);
             this.enemiesValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.enemiesValue.Maximum = new decimal(new int[] { 2000, 0, 0, 0 });
+            this.enemiesValue.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             this.enemiesValue.Name = "enemiesValue";
             this.enemiesValue.Size = new System.Drawing.Size(51, 22);
             this.enemiesValue.TabIndex = 51;
@@ -616,7 +619,7 @@ namespace SteeringCS
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1, 380);
+            this.label1.Location = new System.Drawing.Point(-4, 380);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(151, 17);
             this.label1.TabIndex = 48;
@@ -626,7 +629,7 @@ namespace SteeringCS
             // 
             this.DebugSettingsLabel.AutoSize = true;
             this.DebugSettingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DebugSettingsLabel.Location = new System.Drawing.Point(0, 297);
+            this.DebugSettingsLabel.Location = new System.Drawing.Point(-4, 297);
             this.DebugSettingsLabel.Name = "DebugSettingsLabel";
             this.DebugSettingsLabel.Size = new System.Drawing.Size(117, 17);
             this.DebugSettingsLabel.TabIndex = 47;
@@ -804,7 +807,7 @@ namespace SteeringCS
             // 
             this.EnemiesSettingsLabel.AutoSize = true;
             this.EnemiesSettingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnemiesSettingsLabel.Location = new System.Drawing.Point(0, 152);
+            this.EnemiesSettingsLabel.Location = new System.Drawing.Point(-4, 152);
             this.EnemiesSettingsLabel.Name = "EnemiesSettingsLabel";
             this.EnemiesSettingsLabel.Size = new System.Drawing.Size(304, 17);
             this.EnemiesSettingsLabel.TabIndex = 28;
@@ -870,7 +873,7 @@ namespace SteeringCS
             // 
             this.RescueeSettingsLabel.AutoSize = true;
             this.RescueeSettingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RescueeSettingsLabel.Location = new System.Drawing.Point(-2, 93);
+            this.RescueeSettingsLabel.Location = new System.Drawing.Point(-4, 93);
             this.RescueeSettingsLabel.Name = "RescueeSettingsLabel";
             this.RescueeSettingsLabel.Size = new System.Drawing.Size(133, 17);
             this.RescueeSettingsLabel.TabIndex = 21;
@@ -1022,7 +1025,7 @@ namespace SteeringCS
             // 
             this.UpdateIntervalLabel.AutoSize = true;
             this.UpdateIntervalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateIntervalLabel.Location = new System.Drawing.Point(-2, 12);
+            this.UpdateIntervalLabel.Location = new System.Drawing.Point(-4, 12);
             this.UpdateIntervalLabel.Name = "UpdateIntervalLabel";
             this.UpdateIntervalLabel.Size = new System.Drawing.Size(150, 17);
             this.UpdateIntervalLabel.TabIndex = 2;
