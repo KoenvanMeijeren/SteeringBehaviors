@@ -8,6 +8,7 @@ namespace SteeringCS.state
 {
     public class ScaredState : IState
     {
+        private const int MaximumDistanceBetweenPlayerToBeScared = 150;
         public IMovingEntity MovingEntity { get; }
 
         private readonly FuzzyLogicFollowOrScareModule _fuzzyModule;
@@ -26,6 +27,13 @@ namespace SteeringCS.state
 
         public void Execute()
         {
+            double distanceToPlayer = MovingEntity.Position.DistanceBetween(MovingEntity.World.Player.Position);
+            if (distanceToPlayer > MaximumDistanceBetweenPlayerToBeScared)
+            {
+                MovingEntity.ChangeState(new LostState(MovingEntity));
+                return;
+            }
+            
             if (!_fuzzyModule.ShouldFollowPlayer())
             {
                 return;
