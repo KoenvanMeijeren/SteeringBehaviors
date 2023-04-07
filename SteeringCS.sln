@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Src", "Src\Src.csproj", "{AE3BEC73-AEF9-4222-A255-3033E543960F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NestedStatesConsole", "NestedStatesConsole\NestedStatesConsole.csproj", "{59425EEB-09F8-4218-8BC8-B5C1C49AA60A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuzzyLogicConsole", "FuzzyLogicConsole\FuzzyLogicConsole.csproj", "{B697CFE8-A01E-4CAF-9188-B0E5D16E13D8}"
 EndProject
 Global
@@ -31,10 +29,6 @@ Global
 		{AE3BEC73-AEF9-4222-A255-3033E543960F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE3BEC73-AEF9-4222-A255-3033E543960F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE3BEC73-AEF9-4222-A255-3033E543960F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59425EEB-09F8-4218-8BC8-B5C1C49AA60A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59425EEB-09F8-4218-8BC8-B5C1C49AA60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59425EEB-09F8-4218-8BC8-B5C1C49AA60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59425EEB-09F8-4218-8BC8-B5C1C49AA60A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B697CFE8-A01E-4CAF-9188-B0E5D16E13D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B697CFE8-A01E-4CAF-9188-B0E5D16E13D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B697CFE8-A01E-4CAF-9188-B0E5D16E13D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
