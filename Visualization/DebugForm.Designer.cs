@@ -315,6 +315,7 @@ namespace SteeringCS
             this.ConsequenceRightShoulderMaxValue.Name = "ConsequenceRightShoulderMaxValue";
             this.ConsequenceRightShoulderMaxValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceRightShoulderMaxValue.TabIndex = 102;
+            this.ConsequenceRightShoulderMaxValue.ValueChanged += new System.EventHandler(this.ConsequenceRightShoulderMaxValue_ValueChanged);
             // 
             // ConsequenceRightShoulderPeakValue
             // 
@@ -325,6 +326,7 @@ namespace SteeringCS
             this.ConsequenceRightShoulderPeakValue.Name = "ConsequenceRightShoulderPeakValue";
             this.ConsequenceRightShoulderPeakValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceRightShoulderPeakValue.TabIndex = 101;
+            this.ConsequenceRightShoulderPeakValue.ValueChanged += new System.EventHandler(this.ConsequenceRightShoulderPeakValue_ValueChanged);
             // 
             // ConsequenceRightShoulderMinValue
             // 
@@ -335,6 +337,7 @@ namespace SteeringCS
             this.ConsequenceRightShoulderMinValue.Name = "ConsequenceRightShoulderMinValue";
             this.ConsequenceRightShoulderMinValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceRightShoulderMinValue.TabIndex = 100;
+            this.ConsequenceRightShoulderMinValue.ValueChanged += new System.EventHandler(this.ConsequenceRightShoulderMinValue_ValueChanged);
             // 
             // ConsequenceTriangleMaxValue
             // 
@@ -345,6 +348,7 @@ namespace SteeringCS
             this.ConsequenceTriangleMaxValue.Name = "ConsequenceTriangleMaxValue";
             this.ConsequenceTriangleMaxValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceTriangleMaxValue.TabIndex = 99;
+            this.ConsequenceTriangleMaxValue.ValueChanged += new System.EventHandler(this.ConsequenceTriangleMaxValue_ValueChanged);
             // 
             // ConsequenceTrianglePeakValue
             // 
@@ -355,6 +359,7 @@ namespace SteeringCS
             this.ConsequenceTrianglePeakValue.Name = "ConsequenceTrianglePeakValue";
             this.ConsequenceTrianglePeakValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceTrianglePeakValue.TabIndex = 98;
+            this.ConsequenceTrianglePeakValue.ValueChanged += new System.EventHandler(this.ConsequenceTrianglePeakValue_ValueChanged);
             // 
             // ConsequenceTriangleMinValue
             // 
@@ -365,6 +370,7 @@ namespace SteeringCS
             this.ConsequenceTriangleMinValue.Name = "ConsequenceTriangleMinValue";
             this.ConsequenceTriangleMinValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceTriangleMinValue.TabIndex = 97;
+            this.ConsequenceTriangleMinValue.ValueChanged += new System.EventHandler(this.ConsequenceTriangleMinValue_ValueChanged);
             // 
             // ConsequenceLeftShoulderMaxValue
             // 
@@ -375,6 +381,7 @@ namespace SteeringCS
             this.ConsequenceLeftShoulderMaxValue.Name = "ConsequenceLeftShoulderMaxValue";
             this.ConsequenceLeftShoulderMaxValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceLeftShoulderMaxValue.TabIndex = 96;
+            this.ConsequenceLeftShoulderMaxValue.ValueChanged += new System.EventHandler(this.ConsequenceLeftShoulderMaxValue_ValueChanged);
             // 
             // ConsequenceLeftShoulderPeakValue
             // 
@@ -385,6 +392,7 @@ namespace SteeringCS
             this.ConsequenceLeftShoulderPeakValue.Name = "ConsequenceLeftShoulderPeakValue";
             this.ConsequenceLeftShoulderPeakValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceLeftShoulderPeakValue.TabIndex = 95;
+            this.ConsequenceLeftShoulderPeakValue.ValueChanged += new System.EventHandler(this.ConsequenceLeftShoulderPeakValue_ValueChanged);
             // 
             // label20
             // 
@@ -449,6 +457,7 @@ namespace SteeringCS
             this.ConsequenceLeftShoulderMinValue.Name = "ConsequenceLeftShoulderMinValue";
             this.ConsequenceLeftShoulderMinValue.Size = new System.Drawing.Size(65, 22);
             this.ConsequenceLeftShoulderMinValue.TabIndex = 88;
+            this.ConsequenceLeftShoulderMinValue.ValueChanged += new System.EventHandler(this.ConsequenceLeftShoulderMinValue_ValueChanged);
             // 
             // distanceToNearestGoombaValue
             // 
@@ -477,6 +486,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaRightShoulderMaxValue.Name = "distanceToNearestGoombaRightShoulderMaxValue";
             this.distanceToNearestGoombaRightShoulderMaxValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaRightShoulderMaxValue.TabIndex = 85;
+            this.distanceToNearestGoombaRightShoulderMaxValue.ValueChanged += new System.EventHandler(this.distanceToNearestGoombaRightShoulderMaxValue_ValueChanged);
             // 
             // distanceToNearestGoombaRightShoulderPeakValue
             // 
@@ -487,6 +497,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaRightShoulderPeakValue.Name = "distanceToNearestGoombaRightShoulderPeakValue";
             this.distanceToNearestGoombaRightShoulderPeakValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaRightShoulderPeakValue.TabIndex = 84;
+            this.distanceToNearestGoombaRightShoulderPeakValue.ValueChanged += new System.EventHandler(this.distanceToNearestGoombaRightShoulderPeakValue_ValueChanged);
             // 
             // distanceToNearestGoombaRightShoulderMinValue
             // 
@@ -497,6 +508,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaRightShoulderMinValue.Name = "distanceToNearestGoombaRightShoulderMinValue";
             this.distanceToNearestGoombaRightShoulderMinValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaRightShoulderMinValue.TabIndex = 83;
+            this.distanceToNearestGoombaRightShoulderMinValue.ValueChanged += new System.EventHandler(this.distanceToNearestGoombaRightShoulderMinValue_ValueChanged);
             // 
             // distanceToNearestGoombaTriangleMaxValue
             // 
@@ -507,6 +519,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaTriangleMaxValue.Name = "distanceToNearestGoombaTriangleMaxValue";
             this.distanceToNearestGoombaTriangleMaxValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaTriangleMaxValue.TabIndex = 82;
+            this.distanceToNearestGoombaTriangleMaxValue.ValueChanged += new System.EventHandler(this.distanceToNearestGoombaTriangleMaxValue_ValueChanged);
             // 
             // distanceToNearestGoombaTrianglePeakValue
             // 
@@ -517,6 +530,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaTrianglePeakValue.Name = "distanceToNearestGoombaTrianglePeakValue";
             this.distanceToNearestGoombaTrianglePeakValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaTrianglePeakValue.TabIndex = 81;
+            this.distanceToNearestGoombaTrianglePeakValue.ValueChanged += new System.EventHandler(this.distanceToNearestGoombaTrianglePeakValue_ValueChanged);
             // 
             // distanceToNearestGoombaTriangleMinValue
             // 
@@ -527,6 +541,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaTriangleMinValue.Name = "distanceToNearestGoombaTriangleMinValue";
             this.distanceToNearestGoombaTriangleMinValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaTriangleMinValue.TabIndex = 80;
+            this.distanceToNearestGoombaTriangleMinValue.ValueChanged += new System.EventHandler(this.distanceToNearestGoombaTriangleMinValue_ValueChanged);
             // 
             // distanceToNearestGoombaLeftShoulderMaxValue
             // 
@@ -537,6 +552,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaLeftShoulderMaxValue.Name = "distanceToNearestGoombaLeftShoulderMaxValue";
             this.distanceToNearestGoombaLeftShoulderMaxValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaLeftShoulderMaxValue.TabIndex = 79;
+            this.distanceToNearestGoombaLeftShoulderMaxValue.ValueChanged += new System.EventHandler(this.distanceToNearestGoombaLeftShoulderMaxValue_ValueChanged);
             // 
             // distanceToNearestGoombaLeftShoulderPeakValue
             // 
@@ -547,6 +563,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaLeftShoulderPeakValue.Name = "distanceToNearestGoombaLeftShoulderPeakValue";
             this.distanceToNearestGoombaLeftShoulderPeakValue.Size = new System.Drawing.Size(66, 22);
             this.distanceToNearestGoombaLeftShoulderPeakValue.TabIndex = 78;
+            this.distanceToNearestGoombaLeftShoulderPeakValue.ValueChanged += new System.EventHandler(this.distanceToNearestGoombaLeftShoulderPeakValue_ValueChanged);
             // 
             // label14
             // 
@@ -611,6 +628,7 @@ namespace SteeringCS
             this.distanceToNearestGoombaLeftShoulderMinValue.Name = "distanceToNearestGoombaLeftShoulderMinValue";
             this.distanceToNearestGoombaLeftShoulderMinValue.Size = new System.Drawing.Size(65, 22);
             this.distanceToNearestGoombaLeftShoulderMinValue.TabIndex = 71;
+            this.distanceToNearestGoombaLeftShoulderMinValue.ValueChanged += new System.EventHandler(this.distanceToNearestGoombaLeftShoulderMinValue_ValueChanged);
             // 
             // label6
             // 
