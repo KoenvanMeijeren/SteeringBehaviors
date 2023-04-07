@@ -1,5 +1,5 @@
 # Steering Behaviors
-This repository demonstrates various steering behaviors. Those behaviors can be used for game development.
+This repository demonstrates various techniques for game development.
 
 # Tests
 The application is tested on the formatting of the code and the unit tests are executed.
