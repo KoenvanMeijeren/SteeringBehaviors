@@ -17,7 +17,6 @@ namespace SteeringCS
         {
             _worldForm = worldForm;
             InitializeComponent();
-            Text = pauseButton.Text;
 
             worldForm.UpdateWorldEventHandler += WorldFormOnUpdateWorldEventHandler;
         }

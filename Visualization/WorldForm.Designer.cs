@@ -51,7 +51,7 @@
             this.Controls.Add(this.dbPanel);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WorldForm";
-            this.Text = "WorldForm";
+            this.Text = "Amazing Mario Bros.";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnWorldFormKeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnWorldFormKeyUp);
             this.ResumeLayout(false);

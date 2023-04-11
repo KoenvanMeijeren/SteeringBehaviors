@@ -1138,7 +1138,7 @@ namespace SteeringCS
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DebugForm";
-            this.Text = "DebugForm";
+            this.Text = "Debug tools";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DebugForm_KeyDown);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
