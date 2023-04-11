@@ -98,6 +98,11 @@ namespace SteeringCS
 
         private void StartGame()
         {
+            if (_gameIsActive)
+            {
+                return;
+            }
+
             World = new WorldVisualization(width: WorldWidth, height: WorldHeight);
             _timer.Enabled = true;
             _gameIsActive = true;
